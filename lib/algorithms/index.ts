@@ -12,6 +12,23 @@ const visualizations: Record<string, () => Promise<{ default: AlgorithmDefinitio
   'climbing-stairs': () => import('./climbing-stairs'),
   'n-queens': () => import('./n-queens'),
   'dutch-national-flag': () => import('./dutch-national-flag'),
+  'triplet-sum': () => import('./triplet-sum'),
+  'is-palindrome-valid': () => import('./is-palindrome-valid'),
+  'largest-container': () => import('./largest-container'),
+  'shift-zeros-to-the-end': () => import('./shift-zeros-to-the-end'),
+  'next-lexicographical-sequence': () => import('./next-lexicographical-sequence'),
+  'verify-sudoku-board': () => import('./verify-sudoku-board'),
+  'zero-striping': () => import('./zero-striping'),
+  'longest-chain-of-consecutive-numbers': () => import('./longest-chain-of-consecutive-numbers'),
+  'geometric-sequence-triplets': () => import('./geometric-sequence-triplets'),
+  'substring-anagrams': () => import('./substring-anagrams'),
+  'longest-uniform-substring-after-replacements': () => import('./longest-uniform-substring-after-replacements'),
+  'linked-list-loop': () => import('./linked-list-loop'),
+  'linked-list-midpoint': () => import('./linked-list-midpoint'),
+  'happy-number': () => import('./happy-number'),
+  'hamming-weights-of-integers': () => import('./hamming-weights-of-integers'),
+  'lonely-integer': () => import('./lonely-integer'),
+  'swap-odd-and-even-bits': () => import('./swap-odd-and-even-bits'),
 };
 
 /**

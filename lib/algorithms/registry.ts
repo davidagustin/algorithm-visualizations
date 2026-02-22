@@ -47,7 +47,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 15,
         description:
           'Find all unique triplets in an array that sum to zero by combining sorting with two pointers.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['two-pointers', 'array', 'sorting'],
       },
       {
@@ -57,7 +57,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 125,
         description:
           'Determine if a string is a valid palindrome considering only alphanumeric characters and ignoring case.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['two-pointers', 'string'],
       },
       {
@@ -67,7 +67,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 11,
         description:
           'Find two lines that together with the x-axis form a container holding the most water.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['two-pointers', 'array', 'greedy'],
       },
       {
@@ -77,7 +77,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 283,
         description:
           'Move all zeros in an array to the end while maintaining the relative order of non-zero elements.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['two-pointers', 'array', 'in-place'],
       },
       {
@@ -87,7 +87,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 31,
         description:
           'Rearrange numbers into the next lexicographically greater permutation of the array.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['two-pointers', 'array', 'permutation'],
       },
     ],
@@ -119,7 +119,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 36,
         description:
           'Validate whether a partially filled 9x9 Sudoku board is valid using hash sets for rows, columns, and boxes.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['hash-set', 'matrix', 'validation'],
       },
       {
@@ -129,7 +129,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 73,
         description:
           'If an element in a matrix is zero, set its entire row and column to zero.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['hash-set', 'matrix', 'in-place'],
       },
       {
@@ -139,7 +139,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 128,
         description:
           'Find the length of the longest sequence of consecutive integers in an unsorted array using a hash set.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['hash-set', 'array', 'sequence'],
       },
       {
@@ -148,7 +148,7 @@ export const CATEGORIES: CategoryInfo[] = [
         difficulty: 'Medium',
         description:
           'Count triplets in an array that form a geometric progression with a given common ratio.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['hash-map', 'array', 'math'],
       },
     ],
@@ -242,7 +242,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 141,
         description:
           'Detect whether a linked list contains a cycle using Floyd\'s tortoise and hare algorithm.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'fast-slow-pointers', 'cycle-detection'],
       },
       {
@@ -252,7 +252,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 876,
         description:
           'Find the middle node of a linked list in a single pass using fast and slow pointers.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'fast-slow-pointers'],
       },
       {
@@ -262,7 +262,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 202,
         description:
           'Determine if a number eventually reaches 1 when repeatedly replacing it with the sum of the squares of its digits.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['math', 'fast-slow-pointers', 'cycle-detection'],
       },
     ],
@@ -284,7 +284,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 438,
         description:
           'Find all start indices of anagrams of a pattern within a string using a sliding window with character counts.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['sliding-window', 'string', 'hash-map'],
       },
       {
@@ -304,7 +304,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 424,
         description:
           'Find the longest substring of identical characters you can achieve with at most k character replacements.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['sliding-window', 'string'],
       },
     ],
@@ -1168,7 +1168,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 338,
         description:
           'Count the number of 1-bits for every integer from 0 to n using DP on the least significant bit.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['bit-manipulation', 'dynamic-programming'],
       },
       {
@@ -1178,7 +1178,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 136,
         description:
           'Find the single element that appears only once in an array where every other element appears twice using XOR.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['bit-manipulation', 'array'],
       },
       {
@@ -1187,7 +1187,7 @@ export const CATEGORIES: CategoryInfo[] = [
         difficulty: 'Easy',
         description:
           'Swap all odd-positioned bits with even-positioned bits in an integer using bit masks and shifts.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['bit-manipulation'],
       },
     ],
