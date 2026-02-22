@@ -2253,6 +2253,244 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['graph', 'dfs', 'backtracking', 'matrix'],
       },
+      // ── Shortest Path, MST, Topo Sort, Union-Find ──
+      {
+        id: 'network-delay-time',
+        title: 'Network Delay Time',
+        difficulty: 'Medium',
+        leetcodeNumber: 743,
+        description:
+          'Find how long it takes for all nodes to receive a signal from source k using Bellman-Ford edge relaxation.',
+        hasVisualization: true,
+        tags: ['bellman-ford', 'shortest path', 'graph'],
+      },
+      {
+        id: 'bellman-ford-algorithm',
+        title: 'Bellman-Ford Shortest Path',
+        difficulty: 'Medium',
+        description:
+          'Classic Bellman-Ford: relax all edges V-1 times to find single-source shortest paths, even with negative weights.',
+        hasVisualization: true,
+        tags: ['bellman-ford', 'shortest path', 'graph'],
+      },
+      {
+        id: 'floyd-warshall-algorithm',
+        title: 'Floyd-Warshall All-Pairs Shortest Path',
+        difficulty: 'Medium',
+        description:
+          'Compute shortest paths between all pairs of vertices using dynamic programming with intermediate vertex enumeration.',
+        hasVisualization: true,
+        tags: ['floyd-warshall', 'all-pairs shortest path', 'graph'],
+      },
+      {
+        id: 'kruskals-algorithm',
+        title: 'Kruskal MST Algorithm',
+        difficulty: 'Medium',
+        description:
+          'Build a Minimum Spanning Tree by sorting edges by weight and greedily adding edges that do not form cycles using Union-Find.',
+        hasVisualization: true,
+        tags: ['kruskal', 'MST', 'union-find', 'greedy', 'graph'],
+      },
+      {
+        id: 'prims-algorithm',
+        title: 'Prim MST Algorithm',
+        difficulty: 'Medium',
+        description:
+          'Grow a Minimum Spanning Tree vertex by vertex using a min-priority queue to always pick the cheapest cut edge.',
+        hasVisualization: true,
+        tags: ['prim', 'MST', 'priority queue', 'greedy', 'graph'],
+      },
+      {
+        id: 'topological-sort-bfs',
+        title: 'Topological Sort (Kahn BFS)',
+        difficulty: 'Medium',
+        description:
+          'Perform topological ordering of a DAG using Kahn BFS: enqueue zero-in-degree nodes and repeatedly remove them.',
+        hasVisualization: true,
+        tags: ['topological sort', 'BFS', 'Kahn', 'DAG', 'graph'],
+      },
+      {
+        id: 'topological-sort-dfs',
+        title: 'Topological Sort (DFS)',
+        difficulty: 'Medium',
+        description:
+          'Produce a topological order of a DAG using DFS post-order: after all descendants are visited, push the node to a stack.',
+        hasVisualization: true,
+        tags: ['topological sort', 'DFS', 'DAG', 'graph'],
+      },
+      {
+        id: 'tarjans-strongly-connected',
+        title: 'Tarjan Strongly Connected Components',
+        difficulty: 'Hard',
+        description:
+          'Find all SCCs in a directed graph in O(V+E) using DFS with discovery time and low-link values.',
+        hasVisualization: true,
+        tags: ['tarjan', 'SCC', 'DFS', 'graph'],
+      },
+      {
+        id: 'articulation-points',
+        title: 'Articulation Points in Graph',
+        difficulty: 'Hard',
+        description:
+          'Find all cut vertices in an undirected graph whose removal increases the number of connected components.',
+        hasVisualization: true,
+        tags: ['articulation points', 'DFS', 'low-link', 'graph'],
+      },
+      {
+        id: 'bridges-in-graph',
+        title: 'Bridges in Graph (Critical Connections)',
+        difficulty: 'Hard',
+        leetcodeNumber: 1192,
+        description:
+          'Find all bridge edges in an undirected graph using DFS with low-link values. An edge is a bridge if low[v] > disc[u].',
+        hasVisualization: true,
+        tags: ['bridges', 'critical connections', 'DFS', 'graph'],
+      },
+      {
+        id: 'dijkstra-with-path',
+        title: 'Dijkstra with Path Reconstruction',
+        difficulty: 'Medium',
+        description:
+          'Dijkstra shortest-path algorithm augmented with a predecessor array to reconstruct the actual shortest path.',
+        hasVisualization: true,
+        tags: ['dijkstra', 'shortest path', 'priority queue', 'graph'],
+      },
+      {
+        id: 'a-star-search',
+        title: 'A* Pathfinding Algorithm',
+        difficulty: 'Hard',
+        description:
+          'Informed search using f(n) = g(n) + h(n) with an admissible heuristic to find shortest paths faster than Dijkstra.',
+        hasVisualization: true,
+        tags: ['A*', 'heuristic search', 'shortest path', 'graph'],
+      },
+      {
+        id: 'word-ladder-ii',
+        title: 'Word Ladder II',
+        difficulty: 'Hard',
+        leetcodeNumber: 126,
+        description:
+          'Find all shortest transformation sequences between two words using BFS to build a shortest-path DAG and DFS to enumerate paths.',
+        hasVisualization: true,
+        tags: ['BFS', 'DFS', 'word ladder', 'shortest path', 'graph'],
+      },
+      {
+        id: 'reconstruct-itinerary',
+        title: 'Reconstruct Itinerary',
+        difficulty: 'Hard',
+        leetcodeNumber: 332,
+        description:
+          'Find the lexicographically smallest Eulerian path in a directed multigraph of airline tickets using Hierholzer algorithm.',
+        hasVisualization: true,
+        tags: ['Eulerian path', 'Hierholzer', 'DFS', 'graph'],
+      },
+      {
+        id: 'min-cost-to-connect-all-points',
+        title: 'Min Cost to Connect All Points',
+        difficulty: 'Medium',
+        leetcodeNumber: 1584,
+        description:
+          'Find the minimum cost MST on 2D points where edge weights are Manhattan distances, solved with Kruskal algorithm.',
+        hasVisualization: true,
+        tags: ['MST', 'Kruskal', 'union-find', 'Manhattan distance', 'graph'],
+      },
+      {
+        id: 'checking-existence-of-edge-length-limited-paths',
+        title: 'Edge Length Limited Paths',
+        difficulty: 'Hard',
+        leetcodeNumber: 1697,
+        description:
+          'Answer offline queries about path existence with edge weight limit using sorted edges and incremental Union-Find.',
+        hasVisualization: true,
+        tags: ['union-find', 'offline queries', 'sorting', 'graph'],
+      },
+      {
+        id: 'count-unreachable-pairs',
+        title: 'Count Unreachable Pairs of Nodes',
+        difficulty: 'Medium',
+        leetcodeNumber: 2316,
+        description:
+          'Count node pairs with no connecting path by finding connected components with Union-Find and multiplying component sizes.',
+        hasVisualization: true,
+        tags: ['union-find', 'connected components', 'counting', 'graph'],
+      },
+      {
+        id: 'longest-cycle-in-graph',
+        title: 'Longest Cycle in a Graph',
+        difficulty: 'Hard',
+        leetcodeNumber: 2360,
+        description:
+          'Find the longest cycle in a functional directed graph (each node has at most one outgoing edge) using visited-time tracking.',
+        hasVisualization: true,
+        tags: ['cycle detection', 'directed graph', 'DFS', 'graph'],
+      },
+      {
+        id: 'shortest-path-with-alternating-colors',
+        title: 'Shortest Path with Alternating Colors',
+        difficulty: 'Medium',
+        leetcodeNumber: 1129,
+        description:
+          'BFS on a state graph (node, lastColor) to find shortest paths that alternate between red and blue edges.',
+        hasVisualization: true,
+        tags: ['BFS', 'shortest path', 'state graph', 'graph'],
+      },
+      {
+        id: 'parallel-courses',
+        title: 'Parallel Courses',
+        difficulty: 'Medium',
+        leetcodeNumber: 1136,
+        description:
+          'Find the minimum semesters to complete all courses (unlimited per semester) using topological sort layer BFS.',
+        hasVisualization: true,
+        tags: ['topological sort', 'DAG', 'BFS', 'longest path', 'graph'],
+      },
+      {
+        id: 'course-schedule-iv',
+        title: 'Course Schedule IV',
+        difficulty: 'Medium',
+        leetcodeNumber: 1462,
+        description:
+          'Answer prerequisite reachability queries in O(1) each by precomputing transitive closure with Floyd-Warshall.',
+        hasVisualization: true,
+        tags: ['transitive closure', 'Floyd-Warshall', 'DAG', 'graph'],
+      },
+      {
+        id: 'minimum-cost-to-make-valid-path',
+        title: 'Minimum Cost to Make at Least One Valid Path in a Grid',
+        difficulty: 'Hard',
+        leetcodeNumber: 1368,
+        description:
+          'Find minimum direction-change cost for a grid path using 0-1 BFS: free moves go to deque front, costly moves to back.',
+        hasVisualization: true,
+        tags: ['0-1 BFS', 'deque', 'shortest path', 'grid', 'graph'],
+      },
+      {
+        id: 'graph-coloring',
+        title: 'Graph Coloring with Backtracking',
+        difficulty: 'Medium',
+        description:
+          'Assign colors to graph vertices so no adjacent pair shares a color, using backtracking to explore all valid assignments.',
+        hasVisualization: true,
+        tags: ['graph coloring', 'backtracking', 'chromatic number', 'graph'],
+      },
+      {
+        id: 'euler-circuit',
+        title: 'Euler Circuit in Graph',
+        difficulty: 'Hard',
+        description:
+          'Find an Eulerian circuit visiting every edge exactly once using Hierholzer algorithm on an even-degree undirected graph.',
+        hasVisualization: true,
+        tags: ['Euler circuit', 'Hierholzer', 'DFS', 'graph'],
+      },
+      {
+        id: 'hamiltonian-path',
+        title: 'Hamiltonian Path with Backtracking',
+        difficulty: 'Hard',
+        description:
+          'Find a path visiting every vertex exactly once (NP-complete) using backtracking with visited set and path extension.',
+        hasVisualization: true,
+        tags: ['Hamiltonian path', 'backtracking', 'NP-complete', 'graph'],
+      },
     ],
   },
 
