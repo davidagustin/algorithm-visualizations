@@ -252,7 +252,7 @@ export default function AlgorithmPage({
 
         <div className="pt-20 pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <Breadcrumb catName={catName} title={title} />
+          <Breadcrumb catName={catName} catId={categoryInfo?.id || ''} title={title} />
 
           {/* Title bar */}
           <div className="mb-6 animate-slide-up">
@@ -313,8 +313,27 @@ export default function AlgorithmPage({
             />
           </div>
 
-          {/* Main visualization layout */}
+          {/* Explanation + Variables */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 animate-slide-up delay-200">
+            {step && (
+              <>
+                <div className="glass rounded-xl p-4">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
+                    Explanation
+                  </h3>
+                  <StepExplanation
+                    explanation={step.explanation}
+                    stepNumber={currentStep}
+                    totalSteps={steps.length}
+                  />
+                </div>
+                <VariableWatch variables={step.variables} />
+              </>
+            )}
+          </div>
+
+          {/* Main visualization layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 animate-slide-up delay-300">
             {/* Left: Code Panel */}
             <div className="h-[350px] sm:h-[450px] lg:h-[500px] flex flex-col">
               <CodePanel
@@ -350,7 +369,7 @@ export default function AlgorithmPage({
           </div>
 
           {/* Controls */}
-          <div className="mb-6 animate-slide-up delay-300">
+          <div className="mb-6 animate-slide-up delay-400">
             <Controls
               isPlaying={isPlaying}
               onTogglePlay={handleTogglePlay}
@@ -363,25 +382,6 @@ export default function AlgorithmPage({
               currentStep={currentStep}
               totalSteps={steps.length}
             />
-          </div>
-
-          {/* Explanation + Variables */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-slide-up delay-400">
-            {step && (
-              <>
-                <div className="glass rounded-xl p-4">
-                  <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
-                    Explanation
-                  </h3>
-                  <StepExplanation
-                    explanation={step.explanation}
-                    stepNumber={currentStep}
-                    totalSteps={steps.length}
-                  />
-                </div>
-                <VariableWatch variables={step.variables} />
-              </>
-            )}
           </div>
         </div>
 
@@ -404,7 +404,7 @@ export default function AlgorithmPage({
 
       <div className="pt-20 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <Breadcrumb catName={catName} title={title} />
+        <Breadcrumb catName={catName} catId={categoryInfo?.id || ''} title={title} />
 
         {/* Title bar */}
         <div className="mb-8 animate-slide-up">
@@ -556,7 +556,7 @@ export default function AlgorithmPage({
 
 // ─── Breadcrumb Component ─────────────────────────────────────
 
-function Breadcrumb({ catName, title }: { catName: string; title: string }) {
+function Breadcrumb({ catName, catId, title }: { catName: string; catId: string; title: string }) {
   return (
     <nav className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-6 pt-4">
       <Link
@@ -579,7 +579,7 @@ function Breadcrumb({ catName, title }: { catName: string; title: string }) {
       {catName && (
         <>
           <Link
-            href="/#problems"
+            href={`/?category=${catId}#problems`}
             className="hover:text-[var(--text-secondary)] transition-colors duration-150"
           >
             {catName}
