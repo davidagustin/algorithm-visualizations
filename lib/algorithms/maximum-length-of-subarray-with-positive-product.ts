@@ -5,7 +5,7 @@ const maximumLengthOfSubarrayWithPositiveProduct: AlgorithmDefinition = {
   title: 'Maximum Length of Subarray With Positive Product',
   leetcodeNumber: 1567,
   difficulty: 'Medium',
-  category: 'Greedy',
+  category: 'Sliding Window',
   description:
     'Given an array of integers, find the maximum length of a subarray with a positive product. Greedy: track two lengths - pos (length of longest subarray ending here with positive product) and neg (length with negative product). When encountering a positive number, both extend; negative number swaps pos and neg; zero resets both.',
   tags: ['greedy', 'array', 'dynamic programming'],
