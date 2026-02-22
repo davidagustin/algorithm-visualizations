@@ -1,109 +1,94 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, DPVisualization } from '../types';
 
 const matchsticksToSquare: AlgorithmDefinition = {
   id: 'matchsticks-to-square',
   title: 'Matchsticks to Square',
   leetcodeNumber: 473,
   difficulty: 'Medium',
-  category: 'Backtracking',
+  category: 'Dynamic Programming',
   description:
-    'Given matchsticks of various lengths, determine if they can form a perfect square where all 4 sides have equal length. Each matchstick must be used exactly once. Uses backtracking with pruning: sort descending to fail fast, skip duplicate bucket sums to avoid redundant branches.',
-  tags: ['backtracking', 'array', 'bit manipulation', 'sorting', 'pruning'],
-
+    'Given matchstick lengths, determine if they can form a perfect square (4 equal sides). Uses bitmask DP: dp[mask] = remaining length needed to complete current side when sticks in mask are used.',
+  tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Array'],
   code: {
     pseudocode: `function makesquare(matchsticks):
   total = sum(matchsticks)
   if total % 4 != 0: return false
   side = total / 4
-  sort matchsticks descending
-  if matchsticks[0] > side: return false
-  sides = [0, 0, 0, 0]
-  return backtrack(matchsticks, 0, sides, side)
-
-function backtrack(sticks, index, sides, target):
-  if index == length(sticks): return all sides == target
-  seen = set()
-  for s from 0 to 3:
-    if sides[s] + sticks[index] <= target and sides[s] not in seen:
-      seen.add(sides[s])
-      sides[s] += sticks[index]
-      if backtrack(sticks, index+1, sides, target): return true
-      sides[s] -= sticks[index]
-  return false`,
-
-    python: `def makesquare(matchsticks: list[int]) -> bool:
+  n = length(matchsticks)
+  dp = array of size 2^n, fill -1
+  dp[0] = 0
+  for mask from 1 to 2^n - 1:
+    for i from 0 to n-1:
+      if not (mask & (1<<i)): continue
+      prev = mask ^ (1<<i)
+      cur = dp[prev] == -1 ? -1 : dp[prev] + matchsticks[i]
+      if cur <= side:
+        dp[mask] = cur % side
+        break
+  return dp[(1<<n)-1] == 0`,
+    python: `def makesquare(matchsticks):
     total = sum(matchsticks)
     if total % 4 != 0:
         return False
     side = total // 4
-    matchsticks.sort(reverse=True)
-    if matchsticks[0] > side:
-        return False
-    sides = [0] * 4
-    def backtrack(index):
-        if index == len(matchsticks):
-            return sides[0] == sides[1] == sides[2] == side
-        seen = set()
-        for s in range(4):
-            if sides[s] + matchsticks[index] <= side and sides[s] not in seen:
-                seen.add(sides[s])
-                sides[s] += matchsticks[index]
-                if backtrack(index + 1):
-                    return True
-                sides[s] -= matchsticks[index]
-        return False
-    return backtrack(0)`,
-
+    n = len(matchsticks)
+    dp = [-1] * (1 << n)
+    dp[0] = 0
+    for mask in range(1, 1 << n):
+        for i in range(n):
+            if not (mask & (1 << i)):
+                continue
+            prev = mask ^ (1 << i)
+            if dp[prev] == -1:
+                continue
+            cur = dp[prev] + matchsticks[i]
+            if cur <= side:
+                dp[mask] = cur % side
+                break
+    return dp[(1 << n) - 1] == 0`,
     javascript: `function makesquare(matchsticks) {
   const total = matchsticks.reduce((a, b) => a + b, 0);
   if (total % 4 !== 0) return false;
   const side = total / 4;
-  matchsticks.sort((a, b) => b - a);
-  if (matchsticks[0] > side) return false;
-  const sides = [0, 0, 0, 0];
-  function backtrack(index) {
-    if (index === matchsticks.length) return sides.every(s => s === side);
-    const seen = new Set();
-    for (let s = 0; s < 4; s++) {
-      if (sides[s] + matchsticks[index] <= side && !seen.has(sides[s])) {
-        seen.add(sides[s]);
-        sides[s] += matchsticks[index];
-        if (backtrack(index + 1)) return true;
-        sides[s] -= matchsticks[index];
+  const n = matchsticks.length;
+  const dp = new Array(1 << n).fill(-1);
+  dp[0] = 0;
+  for (let mask = 1; mask < (1 << n); mask++) {
+    for (let i = 0; i < n; i++) {
+      if (!(mask & (1 << i))) continue;
+      const prev = mask ^ (1 << i);
+      if (dp[prev] === -1) continue;
+      const cur = dp[prev] + matchsticks[i];
+      if (cur <= side) {
+        dp[mask] = cur % side;
+        break;
       }
     }
-    return false;
   }
-  return backtrack(0);
+  return dp[(1 << n) - 1] === 0;
 }`,
-
     java: `public boolean makesquare(int[] matchsticks) {
-    int total = Arrays.stream(matchsticks).sum();
+    int total = 0;
+    for (int x : matchsticks) total += x;
     if (total % 4 != 0) return false;
     int side = total / 4;
-    Arrays.sort(matchsticks);
-    if (matchsticks[matchsticks.length - 1] > side) return false;
-    int[] sides = new int[4];
-    return backtrack(matchsticks, matchsticks.length - 1, sides, side);
-}
-private boolean backtrack(int[] m, int idx, int[] sides, int target) {
-    if (idx < 0) return sides[0] == sides[1] && sides[1] == sides[2] && sides[2] == target;
-    Set<Integer> seen = new HashSet<>();
-    for (int s = 0; s < 4; s++) {
-        if (sides[s] + m[idx] <= target && seen.add(sides[s])) {
-            sides[s] += m[idx];
-            if (backtrack(m, idx - 1, sides, target)) return true;
-            sides[s] -= m[idx];
+    int n = matchsticks.length;
+    int[] dp = new int[1 << n];
+    Arrays.fill(dp, -1);
+    dp[0] = 0;
+    for (int mask = 1; mask < (1 << n); mask++) {
+        for (int i = 0; i < n; i++) {
+            if ((mask & (1 << i)) == 0) continue;
+            int prev = mask ^ (1 << i);
+            if (dp[prev] == -1) continue;
+            int cur = dp[prev] + matchsticks[i];
+            if (cur <= side) { dp[mask] = cur % side; break; }
         }
     }
-    return false;
+    return dp[(1 << n) - 1] == 0;
 }`,
   },
-
-  defaultInput: {
-    matchsticks: [1, 1, 2, 2, 2],
-  },
-
+  defaultInput: { matchsticks: [1, 1, 2, 2, 2] },
   inputFields: [
     {
       name: 'matchsticks',
@@ -111,132 +96,84 @@ private boolean backtrack(int[] m, int idx, int[] sides, int target) {
       type: 'array',
       defaultValue: [1, 1, 2, 2, 2],
       placeholder: '1,1,2,2,2',
-      helperText: 'Comma-separated matchstick lengths',
+      helperText: 'Lengths of matchsticks to form a square',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const matchsticks = [...(input.matchsticks as number[])].sort((a, b) => b - a);
+    const matchsticks = (input.matchsticks as number[]).slice(0, 6);
     const steps: AlgorithmStep[] = [];
-
+    const n = matchsticks.length;
     const total = matchsticks.reduce((a, b) => a + b, 0);
+    const size = 1 << n;
+    const dp: (number | null)[] = new Array(size).fill(null);
+    const labels: string[] = Array.from({ length: size }, (_, i) =>
+      i.toString(2).padStart(n, '0')
+    );
 
-    steps.push({
-      line: 1,
-      explanation: `Total length = ${total}. For a square, need 4 equal sides. Target side = ${total}/4 = ${total % 4 === 0 ? total / 4 : 'NOT INTEGER'}.`,
-      variables: { total, divisibleBy4: total % 4 === 0 },
-      visualization: {
-        type: 'array',
-        array: matchsticks,
-        highlights: {},
-        labels: matchsticks.reduce((acc, v, i) => ({ ...acc, [i]: `${v}` }), {} as Record<number, string>),
-      },
-    });
+    function makeViz(activeIdx: number | null, prevIdx: number | null): DPVisualization {
+      const highlights: Record<number, string> = {};
+      for (let m = 0; m < size; m++) {
+        if (dp[m] !== null) highlights[m] = 'found';
+      }
+      if (prevIdx !== null) highlights[prevIdx] = 'comparing';
+      if (activeIdx !== null) highlights[activeIdx] = 'active';
+      return { type: 'dp-table', values: dp.slice(), highlights, labels };
+    }
 
     if (total % 4 !== 0) {
       steps.push({
-        line: 3,
-        explanation: `Total ${total} is not divisible by 4. Cannot form a square. Return false.`,
-        variables: { total, result: false },
-        visualization: {
-          type: 'array',
-          array: matchsticks,
-          highlights: matchsticks.reduce((acc, _, i) => ({ ...acc, [i]: 'mismatch' }), {}),
-          labels: {},
-        },
+        line: 2,
+        explanation: `Total=${total} not divisible by 4. Cannot form a square.`,
+        variables: { total },
+        visualization: makeViz(null, null),
       });
       return steps;
     }
 
     const side = total / 4;
-    const sides = [0, 0, 0, 0];
-    let found = false;
-
     steps.push({
-      line: 6,
-      explanation: `Target side length = ${side}. Matchsticks sorted descending: [${matchsticks.join(', ')}]. Starting backtracking with 4 empty sides.`,
-      variables: { side, matchsticks, sides: [...sides] },
-      visualization: {
-        type: 'array',
-        array: matchsticks,
-        highlights: {},
-        labels: matchsticks.reduce((acc, v, i) => ({ ...acc, [i]: `${v}` }), {} as Record<number, string>),
-      },
+      line: 1,
+      explanation: `matchsticks=${JSON.stringify(matchsticks)}, total=${total}, side=${side}. dp[mask]=progress filling current side.`,
+      variables: { matchsticks, total, side },
+      visualization: makeViz(null, null),
     });
 
-    function backtrack(index: number): boolean {
-      if (index === matchsticks.length) {
-        if (sides.every(s => s === side)) {
-          found = true;
+    dp[0] = 0;
+    steps.push({
+      line: 7,
+      explanation: 'dp[0]=0: no sticks used, current side progress=0.',
+      variables: { 'dp[0]': 0 },
+      visualization: makeViz(0, null),
+    });
+
+    for (let mask = 1; mask < size; mask++) {
+      for (let i = 0; i < n; i++) {
+        if (!(mask & (1 << i))) continue;
+        const prev = mask ^ (1 << i);
+        if (dp[prev] === null) continue;
+        const cur = (dp[prev] as number) + matchsticks[i];
+        if (cur <= side) {
+          dp[mask] = cur % side;
           steps.push({
-            line: 10,
-            explanation: `All matchsticks placed! Sides = [${sides.join(', ')}]. All equal ${side}. Square is POSSIBLE!`,
-            variables: { sides: [...sides], side, result: true },
-            visualization: {
-              type: 'array',
-              array: [...sides],
-              highlights: { 0: 'found', 1: 'found', 2: 'found', 3: 'found' },
-              labels: { 0: `S1:${sides[0]}`, 1: `S2:${sides[1]}`, 2: `S3:${sides[2]}`, 3: `S4:${sides[3]}` },
-            },
+            line: 11,
+            explanation: `mask=${mask.toString(2).padStart(n,'0')}: add stick[${i}]=${matchsticks[i]} from prev=${prev.toString(2).padStart(n,'0')}. cur=${cur}<=side=${side}. dp[mask]=${dp[mask]}.`,
+            variables: { mask, i, 'matchstick[i]': matchsticks[i], cur, 'dp[mask]': dp[mask] },
+            visualization: makeViz(mask, prev),
           });
-          return true;
-        }
-        return false;
-      }
-
-      const seen = new Set<number>();
-      for (let s = 0; s < 4; s++) {
-        if (sides[s] + matchsticks[index] <= side && !seen.has(sides[s])) {
-          seen.add(sides[s]);
-          sides[s] += matchsticks[index];
-
-          steps.push({
-            line: 14,
-            explanation: `Place matchstick ${matchsticks[index]} into side ${s + 1}. Side ${s + 1} now = ${sides[s]}/${side}.`,
-            variables: { matchstick: matchsticks[index], side: s + 1, sideSum: sides[s], target: side },
-            visualization: {
-              type: 'array',
-              array: [...sides],
-              highlights: { [s]: 'active' },
-              labels: { 0: `S1:${sides[0]}`, 1: `S2:${sides[1]}`, 2: `S3:${sides[2]}`, 3: `S4:${sides[3]}` },
-            },
-          });
-
-          if (backtrack(index + 1)) return true;
-
-          sides[s] -= matchsticks[index];
-
-          steps.push({
-            line: 16,
-            explanation: `Backtrack: remove ${matchsticks[index]} from side ${s + 1}. Side ${s + 1} back to ${sides[s]}.`,
-            variables: { removed: matchsticks[index], side: s + 1, sideSum: sides[s] },
-            visualization: {
-              type: 'array',
-              array: [...sides],
-              highlights: { [s]: 'comparing' },
-              labels: { 0: `S1:${sides[0]}`, 1: `S2:${sides[1]}`, 2: `S3:${sides[2]}`, 3: `S4:${sides[3]}` },
-            },
-          });
+          break;
         }
       }
-      return false;
     }
 
-    backtrack(0);
-
-    if (!found) {
-      steps.push({
-        line: 17,
-        explanation: `No valid arrangement found. Cannot form a square with these matchsticks.`,
-        variables: { result: false, matchsticks },
-        visualization: {
-          type: 'array',
-          array: matchsticks,
-          highlights: matchsticks.reduce((acc, _, i) => ({ ...acc, [i]: 'mismatch' }), {}),
-          labels: {},
-        },
-      });
-    }
+    const fullMask = size - 1;
+    const result = dp[fullMask] === 0;
+    steps.push({
+      line: 14,
+      explanation: `dp[${fullMask.toString(2).padStart(n,'0')}]=${dp[fullMask]}. ${result ? 'Can form a square!' : 'Cannot form a square.'}`,
+      variables: { result, 'dp[fullMask]': dp[fullMask] },
+      visualization: makeViz(fullMask, null),
+    });
 
     return steps;
   },

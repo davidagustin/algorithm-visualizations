@@ -1,110 +1,89 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, DPVisualization } from '../types';
 
 const partitionToKEqualSumSubsets: AlgorithmDefinition = {
   id: 'partition-to-k-equal-sum-subsets',
   title: 'Partition to K Equal Sum Subsets',
   leetcodeNumber: 698,
   difficulty: 'Medium',
-  category: 'Backtracking',
+  category: 'Dynamic Programming',
   description:
-    'Given an integer array and a number k, determine if the array can be partitioned into k non-empty subsets whose sums are all equal. Uses backtracking to try placing each number into one of k buckets, pruning when a bucket would exceed the target sum.',
-  tags: ['backtracking', 'array', 'recursion', 'subset', 'partition'],
-
+    'Given an array of integers nums and a positive integer k, check if it is possible to divide the array into k non-empty subsets whose sums are all equal. Uses bitmask DP where dp[mask] = remaining sum in current bucket when elements in mask are used.',
+  tags: ['Dynamic Programming', 'Bitmask', 'Backtracking', 'Bit Manipulation'],
   code: {
     pseudocode: `function canPartitionKSubsets(nums, k):
   total = sum(nums)
   if total % k != 0: return false
   target = total / k
-  sort nums descending
-  if nums[0] > target: return false
-  buckets = array of k zeros
-  return backtrack(nums, 0, buckets, target)
-
-function backtrack(nums, index, buckets, target):
-  if index == length(nums): return true
-  seen = set()
-  for each bucket b:
-    if buckets[b] + nums[index] <= target and buckets[b] not in seen:
-      seen.add(buckets[b])
-      buckets[b] += nums[index]
-      if backtrack(nums, index+1, buckets, target): return true
-      buckets[b] -= nums[index]
-  return false`,
-
-    python: `def canPartitionKSubsets(nums: list[int], k: int) -> bool:
+  n = length(nums)
+  dp = array of size 2^n, fill -1
+  dp[0] = 0
+  for mask from 0 to 2^n - 1:
+    if dp[mask] == -1: continue
+    for i from 0 to n-1:
+      if mask has bit i set: continue
+      next = dp[mask] + nums[i]
+      if next <= target:
+        dp[mask | (1 << i)] = next % target
+  return dp[(1<<n)-1] == 0`,
+    python: `def canPartitionKSubsets(nums, k):
     total = sum(nums)
     if total % k != 0:
         return False
     target = total // k
-    nums.sort(reverse=True)
-    if nums[0] > target:
-        return False
-    buckets = [0] * k
-    def backtrack(index):
-        if index == len(nums):
-            return True
-        seen = set()
-        for b in range(k):
-            if buckets[b] + nums[index] <= target and buckets[b] not in seen:
-                seen.add(buckets[b])
-                buckets[b] += nums[index]
-                if backtrack(index + 1):
-                    return True
-                buckets[b] -= nums[index]
-        return False
-    return backtrack(0)`,
-
+    n = len(nums)
+    dp = [-1] * (1 << n)
+    dp[0] = 0
+    for mask in range(1 << n):
+        if dp[mask] == -1:
+            continue
+        for i in range(n):
+            if mask & (1 << i):
+                continue
+            next_val = dp[mask] + nums[i]
+            if next_val <= target:
+                dp[mask | (1 << i)] = next_val % target
+    return dp[(1 << n) - 1] == 0`,
     javascript: `function canPartitionKSubsets(nums, k) {
   const total = nums.reduce((a, b) => a + b, 0);
   if (total % k !== 0) return false;
   const target = total / k;
-  nums.sort((a, b) => b - a);
-  if (nums[0] > target) return false;
-  const buckets = new Array(k).fill(0);
-  function backtrack(index) {
-    if (index === nums.length) return true;
-    const seen = new Set();
-    for (let b = 0; b < k; b++) {
-      if (buckets[b] + nums[index] <= target && !seen.has(buckets[b])) {
-        seen.add(buckets[b]);
-        buckets[b] += nums[index];
-        if (backtrack(index + 1)) return true;
-        buckets[b] -= nums[index];
+  const n = nums.length;
+  const dp = new Array(1 << n).fill(-1);
+  dp[0] = 0;
+  for (let mask = 0; mask < (1 << n); mask++) {
+    if (dp[mask] === -1) continue;
+    for (let i = 0; i < n; i++) {
+      if (mask & (1 << i)) continue;
+      const next = dp[mask] + nums[i];
+      if (next <= target) {
+        dp[mask | (1 << i)] = next % target;
       }
     }
-    return false;
   }
-  return backtrack(0);
+  return dp[(1 << n) - 1] === 0;
 }`,
-
     java: `public boolean canPartitionKSubsets(int[] nums, int k) {
-    int total = Arrays.stream(nums).sum();
+    int total = 0;
+    for (int x : nums) total += x;
     if (total % k != 0) return false;
     int target = total / k;
-    Arrays.sort(nums);
-    if (nums[nums.length - 1] > target) return false;
-    int[] buckets = new int[k];
-    return backtrack(nums, nums.length - 1, buckets, k, target);
-}
-private boolean backtrack(int[] nums, int index, int[] buckets, int k, int target) {
-    if (index < 0) return true;
-    Set<Integer> seen = new HashSet<>();
-    for (int b = 0; b < k; b++) {
-        if (buckets[b] + nums[index] <= target && seen.add(buckets[b])) {
-            buckets[b] += nums[index];
-            if (backtrack(nums, index - 1, buckets, k, target)) return true;
-            buckets[b] -= nums[index];
+    int n = nums.length;
+    int[] dp = new int[1 << n];
+    Arrays.fill(dp, -1);
+    dp[0] = 0;
+    for (int mask = 0; mask < (1 << n); mask++) {
+        if (dp[mask] == -1) continue;
+        for (int i = 0; i < n; i++) {
+            if ((mask & (1 << i)) != 0) continue;
+            int next = dp[mask] + nums[i];
+            if (next <= target)
+                dp[mask | (1 << i)] = next % target;
         }
     }
-    return false;
+    return dp[(1 << n) - 1] == 0;
 }`,
   },
-
-  defaultInput: {
-    nums: [4, 3, 2, 3, 5, 2, 1],
-    k: 4,
-  },
-
+  defaultInput: { nums: [4, 3, 2, 3, 5, 2, 1], k: 4 },
   inputFields: [
     {
       name: 'nums',
@@ -112,154 +91,92 @@ private boolean backtrack(int[] nums, int index, int[] buckets, int k, int targe
       type: 'array',
       defaultValue: [4, 3, 2, 3, 5, 2, 1],
       placeholder: '4,3,2,3,5,2,1',
-      helperText: 'Comma-separated positive integers',
+      helperText: 'Array of integers to partition',
     },
     {
       name: 'k',
-      label: 'Number of Subsets (k)',
+      label: 'K (number of subsets)',
       type: 'number',
       defaultValue: 4,
       placeholder: '4',
-      helperText: 'Number of equal-sum subsets to form',
+      helperText: 'Number of equal-sum subsets',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const nums = [...(input.nums as number[])].sort((a, b) => b - a);
+    const nums = (input.nums as number[]).slice(0, 5);
     const k = input.k as number;
     const steps: AlgorithmStep[] = [];
-
+    const n = nums.length;
     const total = nums.reduce((a, b) => a + b, 0);
+    const size = 1 << n;
+    const dp: (number | null)[] = new Array(size).fill(null);
+    const labels: string[] = Array.from({ length: size }, (_, i) =>
+      i.toString(2).padStart(n, '0')
+    );
 
-    steps.push({
-      line: 1,
-      explanation: `Checking partition feasibility. Total sum = ${total}, k = ${k}. Target per subset = ${total}/${k}.`,
-      variables: { total, k, targetPerSubset: total % k === 0 ? total / k : 'N/A' },
-      visualization: {
-        type: 'array',
-        array: nums,
-        highlights: {},
-        labels: nums.reduce((acc, _, i) => ({ ...acc, [i]: `${nums[i]}` }), {} as Record<number, string>),
-      },
-    });
+    function makeViz(activeIdx: number | null, comparingIdx: number | null): DPVisualization {
+      const highlights: Record<number, string> = {};
+      for (let m = 0; m < size; m++) {
+        if (dp[m] !== null) highlights[m] = 'found';
+      }
+      if (comparingIdx !== null) highlights[comparingIdx] = 'comparing';
+      if (activeIdx !== null) highlights[activeIdx] = 'active';
+      return { type: 'dp-table', values: dp.slice(), highlights, labels };
+    }
 
     if (total % k !== 0) {
       steps.push({
-        line: 3,
-        explanation: `Total ${total} is not divisible by k=${k}. Partition is impossible.`,
-        variables: { total, k, divisible: false },
-        visualization: {
-          type: 'array',
-          array: nums,
-          highlights: nums.reduce((acc, _, i) => ({ ...acc, [i]: 'mismatch' }), {}),
-          labels: {},
-        },
+        line: 2,
+        explanation: `Sum=${total} not divisible by k=${k}. Return false.`,
+        variables: { total, k },
+        visualization: makeViz(null, null),
       });
       return steps;
     }
 
     const target = total / k;
-
-    if (nums[0] > target) {
-      steps.push({
-        line: 7,
-        explanation: `Largest element ${nums[0]} exceeds target ${target}. Partition is impossible.`,
-        variables: { largest: nums[0], target, possible: false },
-        visualization: {
-          type: 'array',
-          array: nums,
-          highlights: { 0: 'mismatch' },
-          labels: { 0: 'too big' },
-        },
-      });
-      return steps;
-    }
-
-    const buckets = new Array(k).fill(0);
-    let found = false;
-
     steps.push({
-      line: 8,
-      explanation: `Target per subset = ${target}. Nums sorted descending: [${nums.join(', ')}]. Starting backtracking with ${k} empty buckets.`,
-      variables: { target, k, buckets: [...buckets], sortedNums: nums },
-      visualization: {
-        type: 'array',
-        array: nums,
-        highlights: {},
-        labels: nums.reduce((acc, _, i) => ({ ...acc, [i]: `${nums[i]}` }), {} as Record<number, string>),
-      },
+      line: 1,
+      explanation: `nums=${JSON.stringify(nums)}, k=${k}. total=${total}, target per subset=${target}. dp[mask]=remaining sum in current bucket.`,
+      variables: { nums, k, total, target },
+      visualization: makeViz(null, null),
     });
 
-    function backtrack(index: number): boolean {
-      if (index === nums.length) {
-        found = true;
-        steps.push({
-          line: 10,
-          explanation: `All numbers placed! Each bucket sums to ${target}. Partition is POSSIBLE!`,
-          variables: { buckets: [...buckets], target, result: true },
-          visualization: {
-            type: 'array',
-            array: [...buckets],
-            highlights: buckets.reduce((acc, _, i) => ({ ...acc, [i]: 'found' }), {}),
-            labels: buckets.reduce((acc, v, i) => ({ ...acc, [i]: `B${i+1}:${v}` }), {} as Record<number, string>),
-          },
-        });
-        return true;
-      }
+    dp[0] = 0;
+    steps.push({
+      line: 7,
+      explanation: 'dp[0]=0: empty mask, current bucket sum is 0.',
+      variables: { 'dp[0]': 0 },
+      visualization: makeViz(0, null),
+    });
 
-      const seen = new Set<number>();
-      for (let b = 0; b < k; b++) {
-        if (buckets[b] + nums[index] <= target && !seen.has(buckets[b])) {
-          seen.add(buckets[b]);
-          buckets[b] += nums[index];
-
+    for (let mask = 0; mask < size; mask++) {
+      if (dp[mask] === null) continue;
+      for (let i = 0; i < n; i++) {
+        if (mask & (1 << i)) continue;
+        const next = (dp[mask] as number) + nums[i];
+        if (next <= target) {
+          const newMask = mask | (1 << i);
+          dp[newMask] = next % target;
           steps.push({
-            line: 14,
-            explanation: `Place nums[${index}]=${nums[index]} into bucket ${b+1}. Bucket ${b+1} now = ${buckets[b]}/${target}.`,
-            variables: { numPlaced: nums[index], bucket: b + 1, bucketSum: buckets[b], target, index },
-            visualization: {
-              type: 'array',
-              array: [...buckets],
-              highlights: { [b]: 'active' },
-              labels: buckets.reduce((acc, v, i) => ({ ...acc, [i]: `B${i+1}:${v}` }), {} as Record<number, string>),
-            },
-          });
-
-          if (backtrack(index + 1)) return true;
-
-          buckets[b] -= nums[index];
-
-          steps.push({
-            line: 16,
-            explanation: `Backtrack: remove ${nums[index]} from bucket ${b+1}. Bucket ${b+1} back to ${buckets[b]}.`,
-            variables: { removed: nums[index], bucket: b + 1, bucketSum: buckets[b] },
-            visualization: {
-              type: 'array',
-              array: [...buckets],
-              highlights: { [b]: 'comparing' },
-              labels: buckets.reduce((acc, v, i) => ({ ...acc, [i]: `B${i+1}:${v}` }), {} as Record<number, string>),
-            },
+            line: 11,
+            explanation: `mask=${mask.toString(2).padStart(n,'0')}: add nums[${i}]=${nums[i]}, sum=${next}<=target=${target}. dp[${newMask.toString(2).padStart(n,'0')}]=${next % target}.`,
+            variables: { mask, i, next, newMask, 'dp[newMask]': dp[newMask] },
+            visualization: makeViz(newMask, mask),
           });
         }
       }
-      return false;
     }
 
-    const canPartition = backtrack(0);
-
-    if (!found) {
-      steps.push({
-        line: 17,
-        explanation: `Exhausted all possibilities. Cannot partition into ${k} subsets with equal sum ${target}.`,
-        variables: { result: false, k, target },
-        visualization: {
-          type: 'array',
-          array: nums,
-          highlights: nums.reduce((acc, _, i) => ({ ...acc, [i]: 'mismatch' }), {}),
-          labels: {},
-        },
-      });
-    }
+    const fullMask = size - 1;
+    const result = dp[fullMask] === 0;
+    steps.push({
+      line: 13,
+      explanation: `dp[${fullMask.toString(2).padStart(n,'0')}]=${dp[fullMask]}. ${result ? 'Can partition into k equal subsets!' : 'Cannot partition.'}`,
+      variables: { result, 'dp[fullMask]': dp[fullMask] },
+      visualization: makeViz(fullMask, null),
+    });
 
     return steps;
   },

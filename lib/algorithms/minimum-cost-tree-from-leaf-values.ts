@@ -1,151 +1,154 @@
-import type { AlgorithmDefinition, AlgorithmStep, StackVisualization } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, TreeVisualization } from '../types';
 
 const minimumCostTreeFromLeafValues: AlgorithmDefinition = {
   id: 'minimum-cost-tree-from-leaf-values',
-  title: 'Minimum Cost Tree from Leaf Values',
+  title: 'Minimum Cost Tree From Leaf Values',
   leetcodeNumber: 1130,
   difficulty: 'Medium',
-  category: 'Stack',
+  category: 'Dynamic Programming',
   description:
-    'Given an array of leaf values, build a binary tree where each non-leaf node value equals the product of its left and right subtree maximums. Minimize the sum of all non-leaf node values. Use a monotonic decreasing stack: when a leaf is smaller than its neighbors, multiply it with the smaller neighbor and add to the answer.',
-  tags: ['stack', 'monotonic stack', 'greedy', 'dynamic programming', 'tree'],
-
+    'Given an array of leaf values, build a binary tree where all leaf nodes in order are the input array. Each non-leaf node\'s value equals the product of the max leaves in its left and right subtrees. Minimize the sum of all non-leaf node values. Use interval DP: dp[i][j] = min cost to build a tree with leaves arr[i..j], trying every split point k.',
+  tags: ['Tree', 'Dynamic Programming', 'Stack', 'Greedy'],
   code: {
     pseudocode: `function mctFromLeafValues(arr):
-  stack = [Infinity]
-  ans = 0
-  for each a in arr:
-    while stack.top <= a:
-      mid = stack.pop()
-      ans += mid * min(stack.top, a)
-    stack.push(a)
-  while len(stack) > 2:
-    ans += stack.pop() * stack.top
-  return ans`,
-
-    python: `def mctFromLeafValues(arr: list[int]) -> int:
-    stack = [float('inf')]
-    ans = 0
-    for a in arr:
-        while stack[-1] <= a:
-            mid = stack.pop()
-            ans += mid * min(stack[-1], a)
-        stack.append(a)
-    while len(stack) > 2:
-        ans += stack.pop() * stack[-1]
-    return ans`,
-
+  n = len(arr)
+  dp[i][j] = min cost for leaves arr[i..j]
+  maxVal[i][j] = max of arr[i..j]
+  for len 2 to n:
+    for i from 0 to n-len:
+      j = i + len - 1
+      dp[i][j] = INF
+      for k from i to j-1:
+        cost = maxVal[i][k] * maxVal[k+1][j] + dp[i][k] + dp[k+1][j]
+        dp[i][j] = min(dp[i][j], cost)
+  return dp[0][n-1]`,
+    python: `def mctFromLeafValues(arr):
+    n = len(arr)
+    dp = [[0]*n for _ in range(n)]
+    maxVal = [[0]*n for _ in range(n)]
+    for i in range(n):
+        maxVal[i][i] = arr[i]
+        for j in range(i+1, n):
+            maxVal[i][j] = max(maxVal[i][j-1], arr[j])
+    for length in range(2, n+1):
+        for i in range(n - length + 1):
+            j = i + length - 1
+            dp[i][j] = float('inf')
+            for k in range(i, j):
+                dp[i][j] = min(dp[i][j],
+                    maxVal[i][k]*maxVal[k+1][j] + dp[i][k] + dp[k+1][j])
+    return dp[0][n-1]`,
     javascript: `function mctFromLeafValues(arr) {
-  const stack = [Infinity];
-  let ans = 0;
-  for (const a of arr) {
-    while (stack.at(-1) <= a) {
-      const mid = stack.pop();
-      ans += mid * Math.min(stack.at(-1), a);
+  const n = arr.length;
+  const dp = Array.from({length:n}, () => new Array(n).fill(0));
+  const maxVal = Array.from({length:n}, () => new Array(n).fill(0));
+  for (let i = 0; i < n; i++) {
+    maxVal[i][i] = arr[i];
+    for (let j = i+1; j < n; j++)
+      maxVal[i][j] = Math.max(maxVal[i][j-1], arr[j]);
+  }
+  for (let len = 2; len <= n; len++)
+    for (let i = 0; i <= n-len; i++) {
+      const j = i+len-1; dp[i][j] = Infinity;
+      for (let k = i; k < j; k++)
+        dp[i][j] = Math.min(dp[i][j],
+          maxVal[i][k]*maxVal[k+1][j]+dp[i][k]+dp[k+1][j]);
     }
-    stack.push(a);
-  }
-  while (stack.length > 2) {
-    ans += stack.pop() * stack.at(-1);
-  }
-  return ans;
+  return dp[0][n-1];
 }`,
-
     java: `public int mctFromLeafValues(int[] arr) {
-    Deque<Integer> stack = new ArrayDeque<>();
-    stack.push(Integer.MAX_VALUE);
-    int ans = 0;
-    for (int a : arr) {
-        while (stack.peek() <= a) {
-            int mid = stack.pop();
-            ans += mid * Math.min(stack.peek(), a);
+    int n = arr.length;
+    int[][] dp = new int[n][n], maxVal = new int[n][n];
+    for (int i = 0; i < n; i++) {
+        maxVal[i][i] = arr[i];
+        for (int j = i+1; j < n; j++)
+            maxVal[i][j] = Math.max(maxVal[i][j-1], arr[j]);
+    }
+    for (int len = 2; len <= n; len++)
+        for (int i = 0; i <= n-len; i++) {
+            int j = i+len-1; dp[i][j] = Integer.MAX_VALUE;
+            for (int k = i; k < j; k++)
+                dp[i][j] = Math.min(dp[i][j],
+                    maxVal[i][k]*maxVal[k+1][j]+dp[i][k]+dp[k+1][j]);
         }
-        stack.push(a);
-    }
-    while (stack.size() > 2) {
-        ans += stack.pop() * stack.peek();
-    }
-    return ans;
+    return dp[0][n-1];
 }`,
   },
-
-  defaultInput: {
-    arr: [6, 2, 4],
-  },
-
+  defaultInput: { tree: [6, 2, 4] },
   inputFields: [
     {
-      name: 'arr',
-      label: 'Leaf Values',
-      type: 'array',
+      name: 'tree',
+      label: 'Leaf values array (shown as tree)',
+      type: 'tree',
       defaultValue: [6, 2, 4],
-      placeholder: '6,2,4',
-      helperText: 'Comma-separated positive integers (leaf values)',
+      placeholder: 'e.g. 6,2,4',
+      helperText: 'Array of leaf values. The tree shows the interval DP progression.',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const arr = input.arr as number[];
+    const arr = (input.tree as (number | null)[]).filter(v => v != null) as number[];
     const steps: AlgorithmStep[] = [];
-    const stack: number[] = [Infinity];
-    let ans = 0;
+    const n = arr.length;
 
-    const makeViz = (idx: number, action: StackVisualization['action']): StackVisualization => ({
-      type: 'stack',
-      items: stack.map(v => v === Infinity ? 'INF' : String(v)),
-      inputChars: arr.map(v => String(v)),
-      currentIndex: idx,
-      action,
-    });
+    const treeNodes: (number | null)[] = [...arr, ...new Array(Math.max(0, 7 - arr.length)).fill(null)];
+
+    function makeViz(highlights: Record<number, string> = {}): TreeVisualization {
+      return { type: 'tree', nodes: treeNodes.slice(), highlights };
+    }
 
     steps.push({
       line: 1,
-      explanation: `arr = [${arr.join(', ')}]. Initialize stack = [INF], ans = 0. Use monotonic decreasing stack.`,
-      variables: { arr: [...arr], stack: ['INF'], ans: 0 },
-      visualization: makeViz(-1, 'idle'),
+      explanation: `Minimum Cost Tree from Leaf Values: arr=[${arr.join(',')}]. Use interval DP. dp[i][j] = min cost for leaves arr[i..j].`,
+      variables: { arr: arr.join(','), n },
+      visualization: makeViz(),
     });
 
-    for (let i = 0; i < arr.length; i++) {
-      const a = arr[i];
+    const dp: number[][] = Array.from({ length: n }, () => new Array(n).fill(0));
+    const maxVal: number[][] = Array.from({ length: n }, () => new Array(n).fill(0));
 
-      while (stack[stack.length - 1] <= a) {
-        const mid = stack.pop()!;
-        const cost = mid * Math.min(stack[stack.length - 1] === Infinity ? 999999 : stack[stack.length - 1], a);
-        ans += cost;
-        steps.push({
-          line: 4,
-          explanation: `arr[${i}]=${a} >= stack top ${mid === Infinity ? 'INF' : mid}. Pop ${mid}. Multiply with min(${stack[stack.length - 1] === Infinity ? 'INF' : stack[stack.length - 1]}, ${a}) = ${Math.min(stack[stack.length - 1], a)}. Cost = ${cost}. ans = ${ans}.`,
-          variables: { a, mid, cost, ans, stack: stack.map(v => v === Infinity ? Infinity : v) },
-          visualization: makeViz(i, 'pop'),
-        });
+    for (let i = 0; i < n; i++) {
+      maxVal[i][i] = arr[i];
+      for (let j = i + 1; j < n; j++) {
+        maxVal[i][j] = Math.max(maxVal[i][j - 1], arr[j]);
       }
-
-      stack.push(a);
-      steps.push({
-        line: 5,
-        explanation: `Push ${a} onto stack. Stack = [${stack.map(v => v === Infinity ? 'INF' : v).join(', ')}].`,
-        variables: { a, ans, stack: stack.map(v => v === Infinity ? 'INF' : v) },
-        visualization: makeViz(i, 'push'),
-      });
-    }
-
-    while (stack.length > 2) {
-      const top = stack.pop()!;
-      const cost = top * stack[stack.length - 1];
-      ans += cost;
-      steps.push({
-        line: 8,
-        explanation: `Cleanup: pop ${top}, multiply with ${stack[stack.length - 1]}. Cost = ${cost}. ans = ${ans}.`,
-        variables: { top, cost, ans },
-        visualization: makeViz(arr.length, 'pop'),
-      });
     }
 
     steps.push({
-      line: 9,
-      explanation: `Minimum cost tree answer = ${ans}.`,
-      variables: { result: ans },
-      visualization: makeViz(arr.length, 'match'),
+      line: 3,
+      explanation: `Precomputed maxVal[i][j] = max of arr[i..j]. Now fill dp for increasing lengths.`,
+      variables: { maxVal: maxVal.map(r => r.join(',')).join(' | ') },
+      visualization: makeViz({ 0: 'visited' }),
+    });
+
+    for (let len = 2; len <= n; len++) {
+      for (let i = 0; i <= n - len; i++) {
+        const j = i + len - 1;
+        dp[i][j] = Infinity;
+        for (let k = i; k < j; k++) {
+          const cost = maxVal[i][k] * maxVal[k + 1][j] + dp[i][k] + dp[k + 1][j];
+          if (cost < dp[i][j]) {
+            dp[i][j] = cost;
+          }
+          steps.push({
+            line: 9,
+            explanation: `dp[${i}][${j}]: split k=${k}. maxVal[${i}][${k}]=${maxVal[i][k]} * maxVal[${k+1}][${j}]=${maxVal[k+1][j]} + dp[${i}][${k}]=${dp[i][k]=== Infinity ? 'INF' : dp[i][k]} + dp[${k+1}][${j}]=${dp[k+1][j] === Infinity ? 'INF' : dp[k+1][j]} = ${cost}. Best=${dp[i][j]}.`,
+            variables: { i, j, k, cost, best: dp[i][j] },
+            visualization: makeViz({
+              [Math.min(i, treeNodes.length - 1)]: 'active',
+              [Math.min(j, treeNodes.length - 1)]: 'comparing',
+              [Math.min(k, treeNodes.length - 1)]: 'found',
+            }),
+          });
+        }
+      }
+    }
+
+    steps.push({
+      line: 11,
+      explanation: `Minimum cost = dp[0][${n - 1}] = ${dp[0][n - 1]}.`,
+      variables: { answer: dp[0][n - 1] },
+      visualization: makeViz({ 0: 'found', [Math.min(n - 1, treeNodes.length - 1)]: 'found' }),
     });
 
     return steps;
