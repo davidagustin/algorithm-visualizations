@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { CATEGORIES, getAllProblems } from '@/lib/algorithms/registry';
 import type { CategoryInfo } from '@/lib/algorithms/registry';
 import Header from '@/components/Header';
@@ -99,7 +100,9 @@ export default function Home() {
 
       {/* ─── Problem Browser (Client Component) ──────────────── */}
       <section id="problems" className="scroll-mt-20">
-        <ProblemBrowser categories={CATEGORIES} />
+        <Suspense>
+          <ProblemBrowser categories={CATEGORIES} />
+        </Suspense>
       </section>
 
       {/* ─── Category Cards ────────────────────────────────────── */}

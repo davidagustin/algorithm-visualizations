@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { CategoryInfo, ProblemInfo } from '@/lib/algorithms/registry';
 import type { Difficulty } from '@/lib/types';
@@ -14,8 +15,17 @@ interface ProblemBrowserProps {
 }
 
 export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
+
+  // Sync category filter from URL search params
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat && categories.some((c) => c.id === cat)) {
+      setCategoryFilter(cat);
+    }
+  }, [searchParams, categories]);
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('All');
   const [viewMode, setViewMode] = useState<ViewMode>('cards');
   const [vizOnly, setVizOnly] = useState(false);
