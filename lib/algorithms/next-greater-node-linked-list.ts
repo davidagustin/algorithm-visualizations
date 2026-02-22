@@ -144,7 +144,7 @@ const nextGreaterNodeLinkedList: AlgorithmDefinition = {
       line: 10,
       explanation: `Result: [${result.join(', ')}]. Each value is the next greater element in the original linked list.`,
       variables: { result: [...result] },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

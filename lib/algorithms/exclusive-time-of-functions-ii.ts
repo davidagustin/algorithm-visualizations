@@ -181,7 +181,7 @@ const exclusiveTimeOfFunctionsIi: AlgorithmDefinition = {
       line: 13,
       explanation: `All logs processed. Exclusive times: [${result.join(', ')}]. Function 0 ran for ${result[0]} units total.`,
       variables: { result: [...result] },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

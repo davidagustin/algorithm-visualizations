@@ -124,7 +124,7 @@ const countCollisionsOnRoad: AlgorithmDefinition = {
       line: 5,
       explanation: `Total collisions = ${collisions}. Each non-stopped car in the trimmed range will collide exactly once.`,
       variables: { result: collisions },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

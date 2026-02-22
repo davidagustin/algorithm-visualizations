@@ -158,7 +158,7 @@ const smallestSubsequenceOfDistinctChars: AlgorithmDefinition = {
       line: 9,
       explanation: `Done. Lexicographically smallest subsequence with all distinct chars: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

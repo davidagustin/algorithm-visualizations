@@ -190,7 +190,7 @@ const carFleetIi: AlgorithmDefinition = {
           line: 13,
           explanation: `Car ${i} will collide with car ${j} at time ${result[i].toFixed(2)}.`,
           variables: { i, j, collisionTime: result[i].toFixed(2) },
-          visualization: makeViz(i, 'found'),
+          visualization: makeViz(i, 'match'),
         });
       } else {
         steps.push({

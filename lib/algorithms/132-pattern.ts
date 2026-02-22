@@ -114,7 +114,7 @@ const pattern132: AlgorithmDefinition = {
           line: 6,
           explanation: `nums[${i}]=${val} < third=${third}. Found 132 pattern! nums[i]=${val} is the "1", third=${third} is the "2", and some previous element is the "3".`,
           variables: { i, val, third, result: true },
-          visualization: makeViz(i, 'found'),
+          visualization: makeViz(i, 'match'),
         });
         steps.push({
           line: 7,

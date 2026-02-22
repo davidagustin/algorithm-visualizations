@@ -156,7 +156,7 @@ const binaryTreePreorderIterative: AlgorithmDefinition = {
       line: 9,
       explanation: `Preorder traversal complete. Result: [${result.join(', ')}].`,
       variables: { result: [...result] },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

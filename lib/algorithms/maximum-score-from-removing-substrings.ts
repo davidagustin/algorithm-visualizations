@@ -248,7 +248,7 @@ const maximumScoreFromRemovingSubstrings: AlgorithmDefinition = {
       line: 22,
       explanation: `Done. Maximum score = ${score}.`,
       variables: { result: score },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

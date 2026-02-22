@@ -214,7 +214,7 @@ const robotCollisions: AlgorithmDefinition = {
       line: 16,
       explanation: `Simulation complete. Surviving robot healths: [${survivors.join(', ')}].`,
       variables: { survivors: [...survivors] },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

@@ -176,7 +176,7 @@ const evaluateBracketPairs: AlgorithmDefinition = {
       line: 12,
       explanation: `Done. Final evaluated string: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

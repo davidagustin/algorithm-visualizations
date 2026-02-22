@@ -114,7 +114,7 @@ const removingStarsFromString: AlgorithmDefinition = {
       line: 7,
       explanation: `Done. Remaining letters in stack form the result: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

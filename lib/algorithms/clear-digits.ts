@@ -124,7 +124,7 @@ const clearDigits: AlgorithmDefinition = {
       line: 8,
       explanation: `Done. Remaining letters: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

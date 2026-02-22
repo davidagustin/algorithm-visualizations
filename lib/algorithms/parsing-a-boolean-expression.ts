@@ -189,7 +189,7 @@ const parsingABooleanExpression: AlgorithmDefinition = {
       line: 16,
       explanation: `Evaluation complete. Final result: ${finalResult}.`,
       variables: { result: finalResult },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

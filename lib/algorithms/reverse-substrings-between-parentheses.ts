@@ -150,7 +150,7 @@ const reverseSubstringsBetweenParentheses: AlgorithmDefinition = {
       line: 10,
       explanation: `Done. Final result: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     void stackDisplay; // suppress unused warning

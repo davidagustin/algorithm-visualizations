@@ -65,10 +65,10 @@ const countAllValidPickupDelivery: AlgorithmDefinition = {
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
     const n = input.n as number;
     const steps: AlgorithmStep[] = [];
-    const MOD = 1000000007n;
+    const MOD = 1000000007;
 
     const dpValues: number[] = [1];
-    let result = 1n;
+    let result = 1;
 
     const makeViz = (vals: number[], highlights: Record<number, string>): ArrayVisualization => ({
       type: 'array',
@@ -85,21 +85,21 @@ const countAllValidPickupDelivery: AlgorithmDefinition = {
     });
 
     for (let i = 2; i <= n; i++) {
-      const spaces = BigInt(2 * i - 1);
-      result = result * spaces % MOD * (spaces + 1n) / 2n % MOD;
-      dpValues.push(Number(result));
+      const spaces = 2 * i - 1;
+      result = Math.floor(result * spaces % MOD * (spaces + 1) / 2) % MOD;
+      dpValues.push(result);
       steps.push({
         line: 5,
-        explanation: `Order ${i}: ${2 * i - 1} gaps for pickup P${i}, then (${2 * i - 1}+1)/2 = ${i} positions for D${i}. Multiply result by ${2 * i - 1} * ${i} = ${(2 * i - 1) * i}. Result = ${result.toString()}.`,
-        variables: { i, spaces: 2 * i - 1, pickupPositions: 2 * i - 1, deliveryPositions: i, result: result.toString() },
+        explanation: `Order ${i}: ${2 * i - 1} gaps for pickup P${i}, then (${2 * i - 1}+1)/2 = ${i} positions for D${i}. Multiply result by ${2 * i - 1} * ${i} = ${(2 * i - 1) * i}. Result = ${result}.`,
+        variables: { i, spaces: 2 * i - 1, pickupPositions: 2 * i - 1, deliveryPositions: i, result },
         visualization: makeViz([...dpValues], { [i - 1]: 'found', [i - 2]: 'comparing' }),
       });
     }
 
     steps.push({
       line: 7,
-      explanation: `Total valid orderings for ${n} pickup/delivery pairs = ${result.toString()}.`,
-      variables: { result: result.toString() },
+      explanation: `Total valid orderings for ${n} pickup/delivery pairs = ${result}.`,
+      variables: { result },
       visualization: makeViz([...dpValues], { [n - 1]: 'found' }),
     });
 

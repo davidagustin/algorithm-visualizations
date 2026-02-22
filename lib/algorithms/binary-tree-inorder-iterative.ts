@@ -159,7 +159,7 @@ const binaryTreeInorderIterative: AlgorithmDefinition = {
       line: 10,
       explanation: `Inorder traversal complete. Result: [${result.join(', ')}].`,
       variables: { result: [...result] },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

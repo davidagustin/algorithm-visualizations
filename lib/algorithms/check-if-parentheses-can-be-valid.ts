@@ -240,7 +240,7 @@ const checkIfParenthesesCanBeValid: AlgorithmDefinition = {
       line: 15,
       explanation: `Final check: openStack ${result ? 'is empty' : 'has unmatched opens'}. Result: ${result}.`,
       variables: { unmatchedOpens: openStack.length, result },
-      visualization: makeViz(-1, result ? 'found' : 'mismatch'),
+      visualization: makeViz(-1, result ? 'match' : 'mismatch'),
     });
 
     return steps;

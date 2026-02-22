@@ -156,7 +156,7 @@ const binaryTreePostorderIterative: AlgorithmDefinition = {
       line: 9,
       explanation: `Postorder traversal complete. Final result (already reversed during insertion): [${result.join(', ')}].`,
       variables: { result: [...result] },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

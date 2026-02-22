@@ -167,7 +167,7 @@ const removeOutermostParentheses: AlgorithmDefinition = {
       line: 9,
       explanation: `Done. Outermost parentheses removed. Result: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

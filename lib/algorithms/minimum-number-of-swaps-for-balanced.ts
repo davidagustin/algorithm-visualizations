@@ -127,7 +127,7 @@ const minimumNumberOfSwapsForBalanced: AlgorithmDefinition = {
       line: 7,
       explanation: `Unmatched open brackets remaining = ${openCount}. Each swap fixes 2 unmatched brackets. Minimum swaps = ceil(${openCount}/2) = ${answer}.`,
       variables: { unmatchedOpen: openCount, result: answer },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

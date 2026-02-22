@@ -206,7 +206,7 @@ const maximumSubarrayMinProduct: AlgorithmDefinition = {
       line: 16,
       explanation: `Maximum min-product = ${ans} (at index ${bestIdx}, min value ${nums[bestIdx]}).`,
       variables: { result: ans % (1e9 + 7) },
-      visualization: makeViz(bestIdx, 'found'),
+      visualization: makeViz(bestIdx, 'match'),
     });
 
     return steps;

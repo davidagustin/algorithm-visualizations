@@ -237,7 +237,7 @@ const numberOfAtomsStack: AlgorithmDefinition = {
       line: 20,
       explanation: `Final atom counts: {${sortedAtoms.map(a => a + ':' + finalMap.get(a)).join(', ')}}. Sorted result: "${result}".`,
       variables: { result, counts: Object.fromEntries(finalMap) },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     void stackDisplay;

@@ -181,7 +181,7 @@ const usingRobotToPrintSmallest: AlgorithmDefinition = {
       line: 12,
       explanation: `Done. Lexicographically smallest string: "${result}".`,
       variables: { result },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

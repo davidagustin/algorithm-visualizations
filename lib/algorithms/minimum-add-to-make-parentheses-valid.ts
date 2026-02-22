@@ -146,7 +146,7 @@ const minimumAddToMakeParenthesesValid: AlgorithmDefinition = {
       line: 10,
       explanation: `Done. Unmatched opens in stack = ${stack.length}, unmatched closes = ${unmatchedClose}. Minimum additions = ${stack.length} + ${unmatchedClose} = ${answer}.`,
       variables: { unmatchedOpen: stack.length, unmatchedClose, result: answer },
-      visualization: makeViz(-1, 'found'),
+      visualization: makeViz(-1, 'match'),
     });
 
     return steps;

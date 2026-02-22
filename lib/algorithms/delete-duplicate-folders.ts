@@ -174,7 +174,7 @@ const deleteDuplicateFolders: AlgorithmDefinition = {
       line: 10,
       explanation: `Serialized all subtrees. Found ${dupKeys.length} duplicate subtree structure(s). These folders will be deleted.`,
       variables: { duplicates: dupKeys.length, structures: dupKeys.join(', ') },
-      visualization: makeViz(Object.values(serializeMap), { ...(dupKeys.length > 0 ? { 0: 'mismatch' } : {}) }, Object.fromEntries(Object.entries(serializeMap).map(([k, v], i) => [i, `count:${v}`]))),
+      visualization: makeViz(Object.values(serializeMap), (dupKeys.length > 0 ? { 0: 'mismatch' } : {}) as Record<number, string>, Object.fromEntries(Object.entries(serializeMap).map(([k, v], i) => [i, `count:${v}`]))),
     });
 
     // Collect survivors
