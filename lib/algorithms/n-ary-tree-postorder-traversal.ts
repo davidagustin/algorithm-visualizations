@@ -7,173 +7,118 @@ const nAryTreePostorderTraversal: AlgorithmDefinition = {
   difficulty: 'Easy',
   category: 'Tree',
   description:
-    'Given an n-ary tree, return the postorder traversal of its node values. In postorder traversal, all children are visited recursively from left to right before the root node is visited. The root appears last in the output.',
-  tags: ['tree', 'dfs', 'postorder', 'n-ary tree', 'recursion'],
-
+    'Given the root of an N-ary tree, return the postorder traversal of its nodes values. In postorder, recursively visit each child left to right, then visit the root.',
+  tags: ['Tree', 'DFS', 'Postorder'],
   code: {
     pseudocode: `function postorder(root):
+  if root is null: return []
   result = []
-  function dfs(node):
-    if node is null: return
-    for child in node.children:
-      dfs(child)               // visit children first
-    result.append(node.val)    // visit root last
-  dfs(root)
+  for child in root.children:
+    result += postorder(child)
+  result.append(root.val)
   return result`,
-
-    python: `def postorder(self, root):
+    python: `def postorder(root):
+    if not root:
+        return []
     result = []
-    def dfs(node):
-        if not node:
-            return
-        for child in node.children:
-            dfs(child)
-        result.append(node.val)
-    dfs(root)
+    for child in root.children:
+        result.extend(postorder(child))
+    result.append(root.val)
     return result`,
-
     javascript: `function postorder(root) {
+  if (!root) return [];
   const result = [];
-  function dfs(node) {
-    if (!node) return;
-    for (const child of node.children) {
-      dfs(child);
-    }
-    result.push(node.val);
-  }
-  dfs(root);
+  for (const child of root.children)
+    result.push(...postorder(child));
+  result.push(root.val);
   return result;
 }`,
-
     java: `public List<Integer> postorder(Node root) {
     List<Integer> result = new ArrayList<>();
-    dfs(root, result);
+    if (root == null) return result;
+    for (Node child : root.children)
+        result.addAll(postorder(child));
+    result.add(root.val);
     return result;
-}
-private void dfs(Node node, List<Integer> result) {
-    if (node == null) return;
-    for (Node child : node.children) {
-        dfs(child, result);
-    }
-    result.add(node.val);
 }`,
   },
-
-  defaultInput: {
-    nodes: [1, null, 3, 2, 4, null, 5, 6],
-  },
-
+  defaultInput: { tree: [1, null, 3, 2, 4, null, 5, 6] },
   inputFields: [
     {
-      name: 'nodes',
-      label: 'Tree (level order encoded)',
-      type: 'array',
+      name: 'tree',
+      label: 'N-ary Tree (level-order)',
+      type: 'tree',
       defaultValue: [1, null, 3, 2, 4, null, 5, 6],
-      placeholder: '1,null,3,2,4,null,5,6',
-      helperText: 'N-ary tree level-order encoding with null separators',
+      placeholder: 'e.g. 1,null,3,2,4,null,5,6',
+      helperText: 'Visualized as binary tree for display.',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
+    const rawTree = (input.tree as (number | null)[]).filter(v => v !== null) as number[];
+    const tree: (number | null)[] = rawTree;
     const steps: AlgorithmStep[] = [];
+    const result: number[] = [];
+    const visited = new Set<number>();
 
-    // Tree: 1 -> [3,2,4], 3 -> [5,6]
-    // Postorder: [5, 6, 3, 2, 4, 1]
-    const makeViz = (highlights: Record<number, string>): TreeVisualization => ({
-      type: 'tree',
-      nodes: [1, 3, 2, 4, 5, 6, null, null],
-      highlights,
-    });
+    function makeViz(highlights: Record<number, string>): TreeVisualization {
+      return { type: 'tree', nodes: tree.slice(), highlights };
+    }
+
+    if (tree.length === 0) {
+      steps.push({ line: 2, explanation: 'Tree is empty. Return [].', variables: { result: [] }, visualization: makeViz({}) });
+      return steps;
+    }
 
     steps.push({
       line: 1,
-      explanation: 'Initialize result array. Start DFS from root node 1.',
-      variables: { result: '[]', current: 1 },
+      explanation: 'Start DFS postorder: visit each child left to right, then the root.',
+      variables: { root: tree[0] },
       visualization: makeViz({ 0: 'active' }),
     });
 
-    steps.push({
-      line: 5,
-      explanation: 'Postorder: visit children before root. Node 1 has children [3,2,4]. Enter child 3 first.',
-      variables: { current: 3, result: '[]' },
-      visualization: makeViz({ 0: 'current', 1: 'active' }),
-    });
+    function dfs(idx: number): void {
+      if (idx >= tree.length || tree[idx] == null) return;
+
+      const highlights: Record<number, string> = {};
+      visited.forEach(i => { highlights[i] = 'visited'; });
+      highlights[idx] = 'comparing';
+
+      steps.push({
+        line: 3,
+        explanation: `Postorder: recurse into children of node ${tree[idx]} before visiting it.`,
+        variables: { node: tree[idx] },
+        visualization: makeViz(highlights),
+      });
+
+      dfs(2 * idx + 1);
+      dfs(2 * idx + 2);
+
+      visited.add(idx);
+      result.push(tree[idx] as number);
+
+      const highlights2: Record<number, string> = {};
+      visited.forEach(i => { highlights2[i] = 'visited'; });
+      highlights2[idx] = 'active';
+
+      steps.push({
+        line: 5,
+        explanation: `Postorder visit node ${tree[idx]}. Current result: [${result.join(', ')}].`,
+        variables: { node: tree[idx], result: [...result] },
+        visualization: makeViz(highlights2),
+      });
+    }
+
+    dfs(0);
+
+    const finalHighlights: Record<number, string> = {};
+    visited.forEach(i => { finalHighlights[i] = 'found'; });
 
     steps.push({
-      line: 5,
-      explanation: 'Node 3 has children [5,6]. Enter child 5 first.',
-      variables: { current: 5, result: '[]' },
-      visualization: makeViz({ 0: 'current', 1: 'current', 4: 'active' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'Node 5 has no children. Append 5 to result (postorder: leaf first).',
-      variables: { result: '[5]', current: 5 },
-      visualization: makeViz({ 0: 'current', 1: 'current', 4: 'found' }),
-    });
-
-    steps.push({
-      line: 5,
-      explanation: 'Return to node 3. Visit next child: node 6.',
-      variables: { current: 6, result: '[5]' },
-      visualization: makeViz({ 0: 'current', 1: 'current', 4: 'sorted', 5: 'active' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'Node 6 has no children. Append 6 to result.',
-      variables: { result: '[5,6]', current: 6 },
-      visualization: makeViz({ 0: 'current', 1: 'current', 4: 'sorted', 5: 'found' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'All children of node 3 visited. Now append node 3 to result.',
-      variables: { result: '[5,6,3]', current: 3 },
-      visualization: makeViz({ 0: 'current', 1: 'found', 4: 'sorted', 5: 'sorted' }),
-    });
-
-    steps.push({
-      line: 5,
-      explanation: 'Return to node 1. Visit next child: node 2. Node 2 has no children.',
-      variables: { current: 2, result: '[5,6,3]' },
-      visualization: makeViz({ 0: 'current', 1: 'sorted', 2: 'active', 4: 'sorted', 5: 'sorted' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'Node 2 has no children. Append 2 to result.',
-      variables: { result: '[5,6,3,2]', current: 2 },
-      visualization: makeViz({ 0: 'current', 1: 'sorted', 2: 'found', 4: 'sorted', 5: 'sorted' }),
-    });
-
-    steps.push({
-      line: 5,
-      explanation: 'Return to node 1. Visit last child: node 4. Node 4 has no children.',
-      variables: { current: 4, result: '[5,6,3,2]' },
-      visualization: makeViz({ 0: 'current', 1: 'sorted', 2: 'sorted', 3: 'active', 4: 'sorted', 5: 'sorted' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'Node 4 has no children. Append 4 to result.',
-      variables: { result: '[5,6,3,2,4]', current: 4 },
-      visualization: makeViz({ 0: 'current', 1: 'sorted', 2: 'sorted', 3: 'found', 4: 'sorted', 5: 'sorted' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'All children of root 1 visited. Append root 1 to result last.',
-      variables: { result: '[5,6,3,2,4,1]', current: 1 },
-      visualization: makeViz({ 0: 'found', 1: 'sorted', 2: 'sorted', 3: 'sorted', 4: 'sorted', 5: 'sorted' }),
-    });
-
-    steps.push({
-      line: 9,
-      explanation: 'Postorder traversal complete. Final result: [5, 6, 3, 2, 4, 1].',
-      variables: { result: '[5,6,3,2,4,1]' },
-      visualization: makeViz({ 0: 'found', 1: 'found', 2: 'found', 3: 'found', 4: 'found', 5: 'found' }),
+      line: 6,
+      explanation: `Postorder traversal complete: [${result.join(', ')}].`,
+      variables: { result },
+      visualization: makeViz(finalHighlights),
     });
 
     return steps;

@@ -7,143 +7,126 @@ const distributeCoinsInBinaryTree: AlgorithmDefinition = {
   difficulty: 'Medium',
   category: 'Tree',
   description:
-    'Given a binary tree with N nodes and N coins (each node has some coins), find the minimum number of moves to give every node exactly one coin. Use postorder DFS: each node returns its excess (coins - 1 + left excess + right excess). Moves = sum of absolute excess values from all subtrees.',
-  tags: ['tree', 'dfs', 'postorder', 'coin distribution', 'greedy'],
-
+    'You have a binary tree where each node has some coins, and total coins equals the number of nodes. In one move, a coin can be moved along an edge. Return the minimum moves to give every node exactly one coin. For each node, the excess = node.val + left_excess + right_excess - 1. Moves = sum of |excess| for all nodes.',
+  tags: ['Tree', 'DFS', 'Post-order'],
   code: {
-    pseudocode: `function distributeCoins(root):
-  moves = 0
-  function dfs(node):
-    if node is null: return 0
-    leftExcess = dfs(node.left)
-    rightExcess = dfs(node.right)
-    moves += abs(leftExcess) + abs(rightExcess)
-    return node.val - 1 + leftExcess + rightExcess
+    pseudocode: `moves = 0
+function distributeCoins(root):
   dfs(root)
-  return moves`,
+  return moves
 
-    python: `def distributeCoins(self, root):
-    self.moves = 0
+function dfs(node):
+  if null: return 0
+  leftExcess = dfs(node.left)
+  rightExcess = dfs(node.right)
+  excess = node.val + leftExcess + rightExcess - 1
+  moves += abs(leftExcess) + abs(rightExcess)
+  return excess`,
+    python: `def distributeCoins(root):
+    moves = 0
     def dfs(node):
-        if not node:
-            return 0
-        left_excess = dfs(node.left)
-        right_excess = dfs(node.right)
-        self.moves += abs(left_excess) + abs(right_excess)
-        return node.val - 1 + left_excess + right_excess
+        nonlocal moves
+        if not node: return 0
+        left = dfs(node.left)
+        right = dfs(node.right)
+        moves += abs(left) + abs(right)
+        return node.val + left + right - 1
     dfs(root)
-    return self.moves`,
-
+    return moves`,
     javascript: `function distributeCoins(root) {
   let moves = 0;
   function dfs(node) {
     if (!node) return 0;
-    const leftExcess = dfs(node.left);
-    const rightExcess = dfs(node.right);
-    moves += Math.abs(leftExcess) + Math.abs(rightExcess);
-    return node.val - 1 + leftExcess + rightExcess;
+    const left = dfs(node.left);
+    const right = dfs(node.right);
+    moves += Math.abs(left) + Math.abs(right);
+    return node.val + left + right - 1;
   }
   dfs(root);
   return moves;
 }`,
-
     java: `int moves = 0;
 public int distributeCoins(TreeNode root) {
     dfs(root);
     return moves;
 }
-private int dfs(TreeNode node) {
+int dfs(TreeNode node) {
     if (node == null) return 0;
-    int leftExcess = dfs(node.left);
-    int rightExcess = dfs(node.right);
-    moves += Math.abs(leftExcess) + Math.abs(rightExcess);
-    return node.val - 1 + leftExcess + rightExcess;
+    int left = dfs(node.left), right = dfs(node.right);
+    moves += Math.abs(left) + Math.abs(right);
+    return node.val + left + right - 1;
 }`,
   },
-
-  defaultInput: {
-    nodes: [3, 0, 0],
-  },
-
+  defaultInput: { tree: [3, 0, 0] },
   inputFields: [
     {
-      name: 'nodes',
-      label: 'Binary Tree coin values (level order)',
-      type: 'array',
+      name: 'tree',
+      label: 'Binary Tree (level-order)',
+      type: 'tree',
       defaultValue: [3, 0, 0],
-      placeholder: '3,0,0',
-      helperText: 'Each node value is the number of coins at that node. Sum = N nodes.',
+      placeholder: 'e.g. 3,0,0',
+      helperText: 'Level-order. Total coins = number of nodes.',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const rawNodes = input.nodes as (number | null)[];
+    const tree = (input.tree as (number | null)[]).slice();
     const steps: AlgorithmStep[] = [];
+    let moves = 0;
+    const visited = new Set<number>();
 
-    const makeViz = (highlights: Record<number, string>): TreeVisualization => ({
-      type: 'tree',
-      nodes: rawNodes,
-      highlights,
-    });
+    function makeViz(highlights: Record<number, string>): TreeVisualization {
+      return { type: 'tree', nodes: tree.slice(), highlights };
+    }
 
-    // Tree: root=3 coins, left=0 coins, right=0 coins
-    // Left subtree excess = 0-1 = -1 (needs 1 coin)
-    // Right subtree excess = 0-1 = -1 (needs 1 coin)
-    // Moves = |leftExcess| + |rightExcess| = 1 + 1 = 2
+    if (tree.length === 0 || tree[0] == null) {
+      steps.push({ line: 2, explanation: 'Tree is empty. Moves = 0.', variables: { moves: 0 }, visualization: makeViz({}) });
+      return steps;
+    }
+
     steps.push({
       line: 1,
-      explanation: 'Initialize moves=0. Start postorder DFS. Each node returns its excess coins (val-1 + children excess).',
-      variables: { moves: 0, strategy: 'postorder DFS' },
+      explanation: 'Distribute coins so each node has exactly 1. Count moves = sum of |excess| at each edge.',
+      variables: { root: tree[0], moves: 0 },
       visualization: makeViz({ 0: 'active' }),
     });
 
-    steps.push({
-      line: 4,
-      explanation: 'Visit left child (val=0). Its children are null (return 0 each). leftExcess = 0-1+0+0 = -1.',
-      variables: { node: 0, position: 'left child', leftExcess: -1, meaning: 'needs 1 coin' },
-      visualization: makeViz({ 1: 'active' }),
-    });
+    function dfs(idx: number): number {
+      if (idx >= tree.length || tree[idx] == null) return 0;
+      visited.add(idx);
+
+      const highlights: Record<number, string> = {};
+      visited.forEach(i => { highlights[i] = 'visited'; });
+      highlights[idx] = 'active';
+
+      const l = 2 * idx + 1, r = 2 * idx + 2;
+      const leftExcess = dfs(l);
+      const rightExcess = dfs(r);
+
+      const movesHere = Math.abs(leftExcess) + Math.abs(rightExcess);
+      moves += movesHere;
+      const excess = (tree[idx] as number) + leftExcess + rightExcess - 1;
+
+      steps.push({
+        line: 9,
+        explanation: `Node ${tree[idx]}: leftExcess=${leftExcess}, rightExcess=${rightExcess}. movesHere=|${leftExcess}|+|${rightExcess}|=${movesHere}. excess=${excess}. Total moves=${moves}.`,
+        variables: { node: tree[idx], leftExcess, rightExcess, movesHere, excess, totalMoves: moves },
+        visualization: makeViz(highlights),
+      });
+
+      return excess;
+    }
+
+    dfs(0);
+
+    const finalHighlights: Record<number, string> = {};
+    visited.forEach(i => { finalHighlights[i] = 'found'; });
 
     steps.push({
-      line: 6,
-      explanation: 'Left node: abs(-1) = 1 move needed to send 1 coin down from parent. moves += 1. Return excess=-1.',
-      variables: { moves: 1, leftExcess: -1 },
-      visualization: makeViz({ 1: 'found' }),
-    });
-
-    steps.push({
-      line: 4,
-      explanation: 'Visit right child (val=0). Children are null. rightExcess = 0-1+0+0 = -1.',
-      variables: { node: 0, position: 'right child', rightExcess: -1, meaning: 'needs 1 coin' },
-      visualization: makeViz({ 1: 'sorted', 2: 'active' }),
-    });
-
-    steps.push({
-      line: 6,
-      explanation: 'Right node: abs(-1) = 1 move. moves += 1. Total moves = 2. Return excess=-1.',
-      variables: { moves: 2, rightExcess: -1 },
-      visualization: makeViz({ 1: 'sorted', 2: 'found' }),
-    });
-
-    steps.push({
-      line: 7,
-      explanation: 'Back at root (val=3). leftExcess=-1, rightExcess=-1. moves += abs(-1)+abs(-1) = moves+2. But wait: moves are accumulated in children, so total stays 2.',
-      variables: { root: 3, leftExcess: -1, rightExcess: -1, movesFromChildren: 2 },
-      visualization: makeViz({ 0: 'active', 1: 'sorted', 2: 'sorted' }),
-    });
-
-    steps.push({
-      line: 8,
-      explanation: 'Root excess = 3-1+(-1)+(-1) = 0. Root ends balanced. It sends 1 coin to each child.',
-      variables: { rootExcess: 0, coinsDistributed: '1 to left, 1 to right' },
-      visualization: makeViz({ 0: 'found', 1: 'found', 2: 'found' }),
-    });
-
-    steps.push({
-      line: 9,
-      explanation: 'Return total moves = 2. Each of the 2 zero-coin nodes needs 1 coin moved from root.',
-      variables: { result: 2, explanation: '2 moves total: root gives 1 coin left, 1 coin right' },
-      visualization: makeViz({ 0: 'found', 1: 'found', 2: 'found' }),
+      line: 5,
+      explanation: `Minimum moves to distribute all coins = ${moves}.`,
+      variables: { moves },
+      visualization: makeViz(finalHighlights),
     });
 
     return steps;
