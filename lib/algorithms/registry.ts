@@ -1093,6 +1093,713 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['two pointers', 'array', 'sorting', 'greedy'],
       },
+    
+      {
+        id: 'basic-string-calculator',
+        title: 'Basic Calculator',
+        leetcodeNumber: 224,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Evaluate a basic mathematical expression string with +, -, (, ) and spaces. Use a stack to handle parentheses: when seeing \\',
+        hasVisualization: true,
+        tags: ['string', 'stack', 'math', 'expression evaluation'],
+      },
+      {
+        id: 'battleships-in-a-board',
+        title: 'Battleships in a Board',
+        leetcodeNumber: 419,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of battleships in an m x n board. Battleships are represented by ',
+        hasVisualization: true,
+        tags: ['Matrix', 'Counting'],
+      },
+      {
+        id: 'car-fleet-intervals',
+        title: 'Car Fleet (Interval Approach)',
+        leetcodeNumber: 853,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given car positions and speeds heading toward target, determine how many fleets arrive together. Model each car as an interval: sort by position descending. Compute arrival time for each car; if a car\\',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Monotonic Stack', 'Sorting'],
+      },
+      {
+        id: 'check-if-every-row-and-column-contains-all-numbers',
+        title: 'Check if Every Row and Column Contains All Numbers',
+        leetcodeNumber: 2133,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'An n x n matrix is valid if every row and every column contains all integers from 1 to n exactly once. Check each row and column using a set of expected values.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Hash Map', 'Validation'],
+      },
+      {
+        id: 'count-and-say-ii',
+        title: 'Count and Say',
+        leetcodeNumber: 38,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The count-and-say sequence: ',
+        hasVisualization: true,
+        tags: ['string', 'run-length encoding', 'simulation', 'sequence'],
+      },
+      {
+        id: 'count-integers-in-intervals',
+        title: 'Count Integers in Intervals',
+        leetcodeNumber: 2276,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design a data structure that adds intervals and counts the total distinct integers covered. When adding [l, r], merge with any existing overlapping intervals and update the count. Uses a sorted interval list; each add is O(n) worst case but amortized O(log n) with sorted containers.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Design', 'Sorted List', 'Segment Tree'],
+      },
+      {
+        id: 'count-negative-numbers-matrix',
+        title: 'Count Negative Numbers in a Sorted Matrix',
+        leetcodeNumber: 1351,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Count the number of negative numbers in an m x n matrix sorted in non-increasing order (each row and column is sorted descending). Use a staircase search starting from the top-right corner for O(m+n) time.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Binary Search', 'Counting'],
+      },
+      {
+        id: 'determine-if-two-events-have-conflict',
+        title: 'Determine If Two Events Have Conflict',
+        leetcodeNumber: 2446,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given two events as ',
+        hasVisualization: true,
+        tags: ['Intervals', 'String', 'Greedy'],
+      },
+      {
+        id: 'determine-whether-matrix-can-be-obtained',
+        title: 'Determine Whether Matrix Can Be Obtained By Rotation',
+        leetcodeNumber: 1886,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given two n x n binary matrices mat and target, return true if target can be obtained from mat by rotating it 0, 90, 180, or 270 degrees clockwise. Try each rotation and compare.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Simulation', 'Rotation'],
+      },
+      {
+        id: 'diagonal-traverse-ii',
+        title: 'Diagonal Traverse II',
+        leetcodeNumber: 1424,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a 2D list of different row lengths, return all elements in diagonal order. Group elements by their (row + col) sum - elements on the same anti-diagonal have the same r+c sum. Within each diagonal, add elements in reverse row order (bottom to top). O(n) time where n = total elements.',
+        hasVisualization: true,
+        tags: ['Simulation', 'Array', 'Hash Map', 'Sorting'],
+      },
+      {
+        id: 'difference-between-ones-and-zeros',
+        title: 'Difference Between Ones and Zeros in Row and Column',
+        leetcodeNumber: 2482,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an m x n binary matrix, compute diff[i][j] = onesRow[i] + onesCol[j] - zerosRow[i] - zerosCol[j], where onesRow[i] is the count of 1s in row i, etc. Precompute row/col counts then fill the result matrix.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Prefix Sum', 'Array'],
+      },
+      {
+        id: 'distinct-echo-substrings',
+        title: 'Distinct Echo Substrings',
+        leetcodeNumber: 1316,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Count distinct substrings of the form s+s (echo strings). For each even-length window of length 2k, check if the first half equals the second half. Use rolling hash or Z-function for efficient comparison.',
+        hasVisualization: true,
+        tags: ['string', 'rolling hash', 'hashing', 'substring'],
+      },
+      {
+        id: 'divide-intervals-into-minimum-groups',
+        title: 'Divide Intervals Into Minimum Groups',
+        leetcodeNumber: 2406,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Partition intervals into the minimum number of groups such that no two intervals in the same group overlap. The answer equals the maximum number of intervals active at any single point (the maximum depth). Use event-based sweep: +1 at each start, -1 at each end+1, track running max. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Heap', 'Sweep Line'],
+      },
+      {
+        id: 'encode-and-decode-strings',
+        title: 'Encode and Decode Strings',
+        leetcodeNumber: 271,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design an algorithm to encode a list of strings to a single string, and decode it back. Use a length-prefix encoding: prepend each string with its length and a delimiter like ',
+        hasVisualization: true,
+        tags: ['string', 'design', 'encoding', 'serialization'],
+      },
+      {
+        id: 'game-of-life-ii',
+        title: 'Game of Life',
+        leetcodeNumber: 289,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Conway',
+        hasVisualization: true,
+        tags: ['Matrix', 'Simulation', 'In-place'],
+      },
+      {
+        id: 'group-shifted-strings-ii',
+        title: 'Group Shifted Strings',
+        leetcodeNumber: 249,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Group strings that belong to the same shifting sequence. A string belongs to a shifting sequence if shifting each character by the same amount gives another string in the sequence. Encode each string as its ',
+        hasVisualization: true,
+        tags: ['string', 'hash map', 'grouping', 'encoding'],
+      },
+      {
+        id: 'image-overlap',
+        title: 'Image Overlap',
+        leetcodeNumber: 835,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given two n x n binary matrices A and B, return the largest possible overlap when translating A over B. The overlap is the number of cells where both have a 1 after translation. Try all possible (dx, dy) offsets and count matching 1-1 cells.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Counting', 'Simulation'],
+      },
+      {
+        id: 'insert-interval-iii',
+        title: 'Insert Interval III',
+        leetcodeNumber: 57,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a sorted non-overlapping list of intervals and a new interval, insert it in the correct position and merge any overlaps. Three phases: add all intervals ending before newInterval starts, merge overlapping intervals, then add remaining. O(n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy'],
+      },
+      {
+        id: 'interval-list-intersections-iii',
+        title: 'Interval List Intersections III',
+        leetcodeNumber: 986,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given two lists of closed intervals A and B (each sorted and non-overlapping), return the intersection. Two-pointer approach: compute overlap as [max(starts), min(ends)]; if valid, record it. Advance the pointer for whichever interval ends first. O(m+n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Two Pointers'],
+      },
+      {
+        id: 'island-perimeter-ii',
+        title: 'Island Perimeter',
+        leetcodeNumber: 463,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Calculate the perimeter of the island in a grid. Each land cell (1) contributes 4 to the perimeter, but each shared edge with another land cell subtracts 2. Alternatively, count each land-to-water/border edge.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Math', 'Counting'],
+      },
+      {
+        id: 'isomorphic-strings-ii',
+        title: 'Isomorphic Strings',
+        leetcodeNumber: 205,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Two strings s and t are isomorphic if characters in s can be replaced to get t, preserving order. Use two maps: one from s->t chars and one from t->s chars. Check consistency at each position.',
+        hasVisualization: true,
+        tags: ['string', 'hash map', 'isomorphic', 'character mapping'],
+      },
+      {
+        id: 'kmp-pattern-matching',
+        title: 'KMP Pattern Matching',
+        leetcodeNumber: 28,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Knuth-Morris-Pratt (KMP) algorithm finds all occurrences of a pattern in a text in O(n+m) time. It builds a failure function (partial match table) to skip redundant comparisons after a mismatch.',
+        hasVisualization: true,
+        tags: ['string', 'kmp', 'pattern matching', 'failure function'],
+      },
+      {
+        id: 'longest-duplicate-substring',
+        title: 'Longest Duplicate Substring',
+        leetcodeNumber: 1044,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the longest substring that appears at least twice. Uses binary search on length + Rabin-Karp rolling hash to check for duplicate substrings of a given length in O(n log n) expected time.',
+        hasVisualization: true,
+        tags: ['string', 'binary search', 'rolling hash', 'rabin-karp', 'suffix array'],
+      },
+      {
+        id: 'longest-happy-prefix',
+        title: 'Longest Happy Prefix',
+        leetcodeNumber: 1392,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'A ',
+        hasVisualization: true,
+        tags: ['string', 'kmp', 'failure function', 'prefix', 'suffix'],
+      },
+      {
+        id: 'longest-palindromic-substring-manacher',
+        title: 'Longest Palindromic Substring (Manacher',
+        leetcodeNumber: 5,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Manacher',
+        hasVisualization: true,
+        tags: ['string', 'manacher', 'palindrome', 'linear time'],
+      },
+      {
+        id: 'lucky-numbers-in-matrix',
+        title: 'Lucky Numbers in a Matrix',
+        leetcodeNumber: 1380,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'A lucky number in a matrix is the minimum of its row AND the maximum of its column. Find all lucky numbers. First compute row minimums and column maximums, then check which cells satisfy both conditions.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Array'],
+      },
+      {
+        id: 'maximum-length-of-pair-chain-greedy',
+        title: 'Maximum Length of Pair Chain (Greedy)',
+        leetcodeNumber: 646,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the longest chain of pairs where each pair (c,d) follows (a,b) only if b < c. Sort by end (greedy activity selection): keep a pair only if its start > currentEnd, then update currentEnd. O(n log n) time — optimal greedy interval scheduling.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Sorting', 'Dynamic Programming'],
+      },
+      {
+        id: 'meeting-rooms-iv',
+        title: 'Meeting Rooms IV (Min Rooms)',
+        leetcodeNumber: 253,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of meeting time intervals, find the minimum number of conference rooms required. Use a min-heap of end times: sort by start, allocate a new room or reuse the earliest-ending room. The heap size at any point is the current room count. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Heap', 'Greedy', 'Sorting'],
+      },
+      {
+        id: 'meeting-rooms-v',
+        title: 'Meeting Rooms V (Conference Allocation)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Conference room allocation: given meetings and k rooms, determine the maximum number of meetings that can be scheduled without overlap, and which meetings get assigned to which room. Sort by duration then start time; greedily assign each meeting to the earliest-free room. O(n log n + n·k) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Heap', 'Sorting'],
+      },
+      {
+        id: 'merge-intervals-iii',
+        title: 'Merge Intervals III',
+        leetcodeNumber: 56,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a collection of intervals, merge all overlapping intervals. Sort by start, then greedily merge: if the current interval overlaps with the last merged, extend the end; otherwise push a new interval. Returns the minimum number of non-overlapping intervals. O(n log n) time, O(n) space.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Sorting', 'Greedy'],
+      },
+      {
+        id: 'minimum-interval-to-include-query',
+        title: 'Minimum Interval to Include Each Query',
+        leetcodeNumber: 1851,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'For each query point, find the size (end-start+1) of the smallest interval containing it. Sort queries and intervals by start; use a min-heap of (size, end) for active intervals. Process queries in order, adding intervals whose start <= query, then remove stale intervals, answer is heap top. O(n log n + q log q).',
+        hasVisualization: true,
+        tags: ['Intervals', 'Sorting', 'Heap', 'Sweep Line'],
+      },
+      {
+        id: 'minimum-number-of-arrows-iv',
+        title: 'Minimum Number of Arrows IV',
+        leetcodeNumber: 452,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given balloon intervals on a number line, find the minimum number of arrows to burst all balloons. An arrow at x bursts all balloons where start <= x <= end. Sort by end; greedily shoot at the rightmost point of the current balloon and count how many subsequent balloons it bursts. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Sorting'],
+      },
+      {
+        id: 'minimum-number-of-deletions-to-make-sorted',
+        title: 'Minimum Deletions to Make String Sorted',
+        leetcodeNumber: 1578,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a string of \\',
+        hasVisualization: true,
+        tags: ['string', 'greedy', 'prefix sum', 'sorting'],
+      },
+      {
+        id: 'minimum-number-of-groups-to-clear-intervals',
+        title: 'Minimum Number of Groups to Clear Intervals',
+        leetcodeNumber: 2406,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Variant of LC 2406: partition intervals into minimum groups where no two intervals in a group overlap. This equals the maximum number of intervals active simultaneously at any point. Use a min-heap of end times: for each interval sorted by start, if earliest-ending active interval ends before this starts, reuse that group; else add new group. O(n log n).',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Heap', 'Sweep Line'],
+      },
+      {
+        id: 'multiply-strings-ii',
+        title: 'Multiply Strings',
+        leetcodeNumber: 43,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Multiply two non-negative integers represented as strings without using BigInteger. For digits num1[i] and num2[j], their product contributes to result positions [i+j] and [i+j+1]. Process all digit pairs, then handle carries.',
+        hasVisualization: true,
+        tags: ['string', 'math', 'multiplication', 'grade school'],
+      },
+      {
+        id: 'my-calendar-i-ii',
+        title: 'My Calendar I II',
+        leetcodeNumber: 729,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a calendar that prevents double booking. For each new event [start, end), check if it overlaps any booked event (overlap exists when start < booked.end AND end > booked.start). If no overlap, book it. O(n) per booking, O(n) space.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Design', 'Sorted List'],
+      },
+      {
+        id: 'my-calendar-ii-ii',
+        title: 'My Calendar II II',
+        leetcodeNumber: 731,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a calendar allowing double booking but not triple booking. Maintain a list of single bookings and double bookings. For a new event, if it overlaps any double booking → reject. Otherwise add overlaps with single bookings to double bookings list, then add to single bookings. O(n) per booking.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Design'],
+      },
+      {
+        id: 'my-calendar-iii-ii',
+        title: 'My Calendar III II',
+        leetcodeNumber: 732,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Return the max k-booking count after each event is booked. Use a difference array / event counting approach: increment at start, decrement at end, track running maximum over all intervals. O(n^2) per booking with sorted events. Returns the maximum simultaneous bookings.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Design', 'Difference Array', 'Segment Tree'],
+      },
+      {
+        id: 'next-closest-time',
+        title: 'Next Closest Time',
+        leetcodeNumber: 681,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a time ',
+        hasVisualization: true,
+        tags: ['String', 'Simulation', 'Enumeration'],
+      },
+      {
+        id: 'non-overlapping-intervals-ii',
+        title: 'Non-Overlapping Intervals II',
+        leetcodeNumber: 435,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the minimum number of intervals to remove to make the rest non-overlapping. Sort by end time; greedily keep intervals that don\\',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Sorting'],
+      },
+      {
+        id: 'pascals-triangle-ii',
+        title: 'Pascal',
+        leetcodeNumber: 119,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Return the rowIndex-th (0-indexed) row of Pascal',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Array', 'Math'],
+      },
+      {
+        id: 'pascals-triangle-iii',
+        title: 'Pascal',
+        leetcodeNumber: 118,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Generate the first numRows of Pascal',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Array', 'Math'],
+      },
+      {
+        id: 'points-that-intersect-with-cars',
+        title: 'Points That Intersect With Cars',
+        leetcodeNumber: 2848,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given cars on a number line (each occupying interval [start, end]), count distinct integer points covered by at least one car. Merge intervals then count total length. Sort by start, merge overlapping, sum (end-start+1) of each merged interval. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Sorting', 'Greedy'],
+      },
+      {
+        id: 'pour-water',
+        title: 'Pour Water',
+        leetcodeNumber: 755,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Simulate pouring V units of water at position K on a terrain. Each unit: look left first, find the lowest point (must be strictly lower than starting position) - if found, drop there; else look right; else stay at K. The water fills valleys and stacks on flat surfaces.',
+        hasVisualization: true,
+        tags: ['Simulation', 'Array'],
+      },
+      {
+        id: 'prison-cells-after-n-days',
+        title: 'Prison Cells After N Days',
+        leetcodeNumber: 957,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given 8 prison cells (0=empty, 1=occupied), each day a cell becomes occupied if both neighbors were the same state, otherwise empty. First and last cells always empty after day 1. Detect the cycle (max 256 states) and compute state at day N using N % cycleLength. O(1) time after cycle detection.',
+        hasVisualization: true,
+        tags: ['Simulation', 'Array', 'Bit Manipulation', 'Hash Map'],
+      },
+      {
+        id: 'rabin-karp-search',
+        title: 'Rabin-Karp String Search',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Rabin-Karp uses rolling hash to search for a pattern in a text. The hash of the current window is computed in O(1) by subtracting the outgoing character and adding the incoming character. Average O(n+m), worst O(nm).',
+        hasVisualization: true,
+        tags: ['string', 'rolling hash', 'rabin-karp', 'pattern matching'],
+      },
+      {
+        id: 'range-module-ii',
+        title: 'Range Module II',
+        leetcodeNumber: 715,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design a Range Module that tracks ranges of numbers. Supports addRange(l,r), removeRange(l,r), queryRange(l,r). Uses a sorted list of disjoint intervals. addRange merges overlapping/adjacent intervals; removeRange splits or trims; queryRange checks if [l,r) is fully covered. O(n) per operation.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Design', 'Sorted List', 'Segment Tree'],
+      },
+      {
+        id: 'remove-covered-intervals-ii',
+        title: 'Remove Covered Intervals II',
+        leetcodeNumber: 1288,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of remaining intervals after removing all intervals covered by another interval. An interval [a,b] is covered by [c,d] if c<=a and b<=d. Sort by start ascending and end descending; greedily track max end seen — if current end <= maxEnd, it is covered. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Sorting'],
+      },
+      {
+        id: 'repeated-string-match-kmp',
+        title: 'Repeated String Match (KMP)',
+        leetcodeNumber: 686,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the minimum number of times string a must be repeated so that b is a substring. Key insight: repeat a enough times to cover b\\',
+        hasVisualization: true,
+        tags: ['string', 'kmp', 'pattern matching', 'string repetition'],
+      },
+      {
+        id: 'reshape-the-matrix',
+        title: 'Reshape the Matrix',
+        leetcodeNumber: 566,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Reshape an m x n matrix into an r x c matrix with the same elements in row-major order. If total elements differ, return the original matrix. Use the flat index: element k goes to result[k/c][k%c].',
+        hasVisualization: true,
+        tags: ['Matrix', 'Simulation'],
+      },
+      {
+        id: 'robot-return-to-origin-ii',
+        title: 'Robot Return to Origin II',
+        leetcodeNumber: 657,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given a sequence of moves (U, D, L, R), determine if a robot starting at (0,0) returns to the origin. The robot returns to origin if and only if the number of U moves equals D moves AND L moves equals R moves. O(n) time, O(1) space.',
+        hasVisualization: true,
+        tags: ['Simulation', 'String'],
+      },
+      {
+        id: 'rotate-image-ii',
+        title: 'Rotate Image',
+        leetcodeNumber: 48,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Rotate an n x n matrix 90 degrees clockwise in-place. The approach is to first transpose the matrix (swap matrix[i][j] with matrix[j][i]), then reverse each row. This achieves the rotation without extra space.',
+        hasVisualization: true,
+        tags: ['Matrix', 'In-place', 'Simulation'],
+      },
+      {
+        id: 'search-a-2d-matrix-ii-advanced',
+        title: 'Search a 2D Matrix II',
+        leetcodeNumber: 240,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Search for a target in an m x n matrix where each row and column is sorted in ascending order. Start from the top-right corner: if current > target, move left; if current < target, move down. This eliminates one row or column per step, achieving O(m+n) time.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Binary Search', 'Divide and Conquer'],
+      },
+      {
+        id: 'set-intersection-size-at-least-two',
+        title: 'Set Intersection Size At Least Two',
+        leetcodeNumber: 757,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the minimum size of a set S such that every interval [a,b] contains at least 2 elements of S. Sort intervals by end ascending, then by start descending for ties. Greedily add two rightmost points of each interval not yet covered by at least 2 points. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Sorting'],
+      },
+      {
+        id: 'set-matrix-zeroes-ii',
+        title: 'Set Matrix Zeroes',
+        leetcodeNumber: 73,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an m x n matrix, if an element is 0, set its entire row and column to 0 in-place. Use O(1) extra space by storing the zero-row/col flags in the first row and first column of the matrix itself.',
+        hasVisualization: true,
+        tags: ['Matrix', 'In-place', 'Hash Map'],
+      },
+      {
+        id: 'shortest-palindrome-kmp',
+        title: 'Shortest Palindrome (KMP)',
+        leetcodeNumber: 214,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the shortest palindrome by adding characters in front of the given string. Key insight: find the longest palindromic prefix using KMP on the string combined with its reverse. Prepend the remaining suffix reversed.',
+        hasVisualization: true,
+        tags: ['string', 'kmp', 'palindrome', 'failure function'],
+      },
+      {
+        id: 'spiral-matrix-iii',
+        title: 'Spiral Matrix III',
+        leetcodeNumber: 885,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Starting at (rStart, cStart) in an R x C grid, walk in a clockwise spiral and return the coordinates of all cells in the order visited. The spiral grows: right 1, down 1, left 2, up 2, right 3, down 3, ...',
+        hasVisualization: true,
+        tags: ['Matrix', 'Simulation', 'Spiral'],
+      },
+      {
+        id: 'spiral-matrix-iv',
+        title: 'Spiral Matrix IV',
+        leetcodeNumber: 2326,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Fill an m x n matrix with values from a linked list in spiral order. Traverse the matrix in spiral order (right, down, left, up) and place linked list values. Any remaining cells are filled with -1. O(m*n) time and space.',
+        hasVisualization: true,
+        tags: ['Simulation', 'Matrix', 'Linked List', 'Array'],
+      },
+      {
+        id: 'string-compression-iii',
+        title: 'String Compression III',
+        leetcodeNumber: 3163,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compress a string by counting consecutive characters, but limit each run to at most 9. For example ',
+        hasVisualization: true,
+        tags: ['string', 'compression', 'run-length encoding', 'greedy'],
+      },
+      {
+        id: 'string-matching-in-array',
+        title: 'String Matching in an Array',
+        leetcodeNumber: 1408,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an array of strings, return all strings that are substrings of another string in the array. For each pair (i, j) where i != j, check if words[i] is a substring of words[j].',
+        hasVisualization: true,
+        tags: ['string', 'substring', 'brute force'],
+      },
+      {
+        id: 'suffix-array-construction',
+        title: 'Suffix Array Construction',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'A suffix array is a sorted array of all suffixes of a string. Naive O(n^2 log n) construction: generate all suffixes, sort them lexicographically, record starting indices. Enables O(m log n) pattern search.',
+        hasVisualization: true,
+        tags: ['string', 'suffix array', 'sorting', 'advanced'],
+      },
+      {
+        id: 'sum-of-scores-of-built-strings',
+        title: 'Sum of Scores of Built Strings',
+        leetcodeNumber: 2223,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'The score of a string is the length of the longest common prefix between the string and any of its suffixes. Sum the scores for all built strings s[0..i]. This equals Z[0] + sum(Z[i]) where Z is the Z-array, with Z[0]=n.',
+        hasVisualization: true,
+        tags: ['string', 'z-algorithm', 'z-array', 'prefix'],
+      },
+      {
+        id: 'summary-ranges-ii',
+        title: 'Summary Ranges II',
+        leetcodeNumber: 228,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given a sorted unique integer array, return the smallest sorted list of ranges that cover all numbers. Consecutive numbers form a range ',
+        hasVisualization: true,
+        tags: ['Intervals', 'Two Pointers', 'Array'],
+      },
+      {
+        id: 'teemo-attacking-ii',
+        title: 'Teemo Attacking II',
+        leetcodeNumber: 495,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Teemo attacks at times in timeSeries, each poisoning the enemy for duration seconds. Calculate total seconds of poison. Key insight: for consecutive attacks, the actual poison time is min(timeSeries[i+1] - timeSeries[i], duration). Add duration for the last attack. O(n) time.',
+        hasVisualization: true,
+        tags: ['Simulation', 'Array', 'Greedy'],
+      },
+      {
+        id: 'text-justification-ii',
+        title: 'Text Justification',
+        leetcodeNumber: 68,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given words and a max width, format text so each line has exactly maxWidth characters with full justification. Greedily pack words per line, then distribute spaces evenly (extra spaces go to left slots). Last line is left-justified.',
+        hasVisualization: true,
+        tags: ['string', 'greedy', 'simulation', 'text formatting'],
+      },
+      {
+        id: 'toeplitz-matrix-ii',
+        title: 'Toeplitz Matrix',
+        leetcodeNumber: 766,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element. Check this by verifying matrix[i][j] == matrix[i-1][j-1] for all valid i, j.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Validation'],
+      },
+      {
+        id: 'valid-sudoku-ii',
+        title: 'Valid Sudoku',
+        leetcodeNumber: 36,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Determine if a 9x9 Sudoku board is valid. Each row, column, and 3x3 sub-box must contain digits 1-9 without repetition. Use three sets of hash sets — one per row, one per column, one per box — to detect duplicates in a single pass.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Hash Map', 'Validation'],
+      },
+      {
+        id: 'video-stitching-iii',
+        title: 'Video Stitching III',
+        leetcodeNumber: 1024,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given clips and a time range [0, T], find the minimum number of clips needed to cover the entire range. Sort clips by start; greedily extend the current coverage as far as possible using clips whose start is within current reach, picking the one with farthest end. O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Intervals', 'Greedy', 'Dynamic Programming'],
+      },
+      {
+        id: 'walking-robot-simulation-ii',
+        title: 'Walking Robot Simulation II',
+        leetcodeNumber: 874,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'A robot on an infinite grid faces North, East, South, or West. Given commands (-2=left turn, -1=right turn, 1-9=move forward) and obstacle positions, simulate movement. Return the maximum Euclidean distance squared from origin. O(n+k) where n=commands, k=obstacles.',
+        hasVisualization: true,
+        tags: ['Simulation', 'Hash Set', 'Array'],
+      },
+      {
+        id: 'z-algorithm-string',
+        title: 'Z-Algorithm String Matching',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The Z-algorithm computes the Z-array where Z[i] is the length of the longest substring starting from s[i] that is also a prefix of s. Pattern matching: concatenate pattern+',
+        hasVisualization: true,
+        tags: ['string', 'z-algorithm', 'pattern matching', 'prefix'],
+      },
+      {
+        id: 'zigzag-conversion-ii',
+        title: 'Zigzag Conversion',
+        leetcodeNumber: 6,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Write a string in a zigzag pattern across numRows rows, then read row by row. Use an array of row strings and a direction flag: add each character to the current row, flip direction at top/bottom rows.',
+        hasVisualization: true,
+        tags: ['string', 'simulation', 'zigzag', 'row traversal'],
+      },
     ],
   },
 
@@ -1975,6 +2682,326 @@ export const CATEGORIES: CategoryInfo[] = [
           'Given a list of words sorted in an alien language order and a string order representing the alien alphabet, return true if the words are sorted lexicographically according to the alien order. Map each character to its rank, then compare adjacent words character by character.',
         hasVisualization: true,
         tags: ['hash map', 'string', 'array', 'sorting'],
+      },
+    
+      {
+        id: 'design-a-number-container-system',
+        title: 'Design a Number Container System',
+        leetcodeNumber: 2349,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a number container system that can insert or replace a number at an index, and find the smallest index for a given number. Use two hash maps: one from index to number, and one from number to sorted set of indices.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Heap', 'Ordered Set'],
+      },
+      {
+        id: 'design-a-stack-with-increment',
+        title: 'Design a Stack With Increment Operation',
+        leetcodeNumber: 1381,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a stack that supports push, pop, and increment operations. The increment(k, val) operation increments the bottom k elements by val. Use a lazy increment array for O(1) increment.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Stack', 'Array'],
+      },
+      {
+        id: 'design-circular-deque-ii',
+        title: 'Design Circular Deque',
+        leetcodeNumber: 641,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a circular double-ended queue (deque). Implement insertFront, insertLast, deleteFront, deleteLast, getFront, getRear, isEmpty, and isFull operations, all in O(1) time.',
+        hasVisualization: true,
+        tags: ['Queue', 'Design', 'Array', 'Deque'],
+      },
+      {
+        id: 'design-circular-queue-ii',
+        title: 'Design Circular Queue',
+        leetcodeNumber: 622,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a circular queue data structure. A circular queue is a linear data structure where the operations are performed based on FIFO principle and the last position is connected back to the first position. Implement enQueue, deQueue, Front, Rear, isEmpty, and isFull.',
+        hasVisualization: true,
+        tags: ['Queue', 'Design', 'Array'],
+      },
+      {
+        id: 'design-compressed-string-iterator',
+        title: 'Design Compressed String Iterator',
+        leetcodeNumber: 604,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a StringIterator for a compressed string like ',
+        hasVisualization: true,
+        tags: ['Design', 'String', 'Iterator'],
+      },
+      {
+        id: 'design-front-middle-back-queue-ii',
+        title: 'Design Front Middle Back Queue',
+        leetcodeNumber: 1670,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a queue that supports push and pop operations from front, middle, and back. The middle is defined as floor(size/2) (0-indexed). Use two deques of roughly equal size to maintain O(1) or O(n/2) complexity.',
+        hasVisualization: true,
+        tags: ['Queue', 'Design', 'Deque', 'Two Pointers'],
+      },
+      {
+        id: 'design-hashmap-ii',
+        title: 'Design HashMap',
+        leetcodeNumber: 706,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a HashMap without using any built-in hash table libraries. Implement put, get, and remove operations. Use an array of buckets with chaining to handle collisions.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Array'],
+      },
+      {
+        id: 'design-hashset-ii',
+        title: 'Design HashSet',
+        leetcodeNumber: 705,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a HashSet without using any built-in hash set libraries. Implement add, remove, and contains operations. Use an array of buckets with chaining for collision handling.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Array'],
+      },
+      {
+        id: 'design-hit-counter-ii',
+        title: 'Design Hit Counter',
+        leetcodeNumber: 362,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a hit counter which counts the number of hits received in the past 5 minutes (300 seconds). Implement hit(timestamp) and getHits(timestamp). Each timestamp is in seconds granularity.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Queue'],
+      },
+      {
+        id: 'design-linked-list-ii',
+        title: 'Design Linked List',
+        leetcodeNumber: 707,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design your own linked list. Support get(index), addAtHead(val), addAtTail(val), addAtIndex(index, val), and deleteAtIndex(index). The linked list is 0-indexed.',
+        hasVisualization: true,
+        tags: ['Linked List', 'Design'],
+      },
+      {
+        id: 'design-parking-system-ii',
+        title: 'Design Parking System',
+        leetcodeNumber: 1603,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a parking system for a parking lot with three kinds of parking spaces: big, medium, and small. Each has a fixed number of slots. Implement addCar(carType) which returns true if there is a space and false otherwise.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Simulation'],
+      },
+      {
+        id: 'design-phone-directory',
+        title: 'Design Phone Directory',
+        leetcodeNumber: 379,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a Phone Directory which supports operations to get an available number, check if a number is available, and release a number. Use a set to track available numbers for O(1) operations.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Queue'],
+      },
+      {
+        id: 'design-snake-game',
+        title: 'Design Snake Game',
+        leetcodeNumber: 353,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a Snake game on an m x n grid. The snake starts at (0,0) with length 1. Food appears at specific positions. Move the snake in U/D/L/R directions. Return score (foods eaten) or -1 if game over.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Queue', 'Simulation'],
+      },
+      {
+        id: 'design-tic-tac-toe-ii',
+        title: 'Design Tic-Tac-Toe',
+        leetcodeNumber: 348,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a Tic-Tac-Toe game. Players alternate placing pieces on an n x n board. A player wins when they fill an entire row, column, or diagonal. Use row/column/diagonal counters for O(1) win check.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Array', 'Matrix'],
+      },
+      {
+        id: 'design-twitter-ii',
+        title: 'Design Twitter',
+        leetcodeNumber: 355,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a simplified version of Twitter. Users can post tweets, follow/unfollow others, and retrieve the 10 most recent tweet IDs from their news feed (own tweets + followed users tweets).',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Heap'],
+      },
+      {
+        id: 'design-underground-system-ii',
+        title: 'Design Underground System',
+        leetcodeNumber: 1396,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a system for the London Underground to track passenger check-ins and check-outs. Calculate the average travel time between any two stations using two hash maps: one for active passengers and one for route statistics.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'String'],
+      },
+      {
+        id: 'exam-room',
+        title: 'Exam Room',
+        leetcodeNumber: 855,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Students take a seat to maximize the distance to the nearest person. seat() returns the seat that maximizes min distance. leave(p) makes seat p available. Use a sorted set of occupied seats to efficiently find the best seat.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Sorted Set', 'Ordered Set'],
+      },
+      {
+        id: 'flatten-2d-vector-ii',
+        title: 'Flatten 2D Vector II',
+        leetcodeNumber: 251,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design an iterator to flatten a 2D vector. Use an outer index for the row and an inner index for the column. hasNext() advances past empty rows. next() returns the current element and advances. O(1) amortized per call.',
+        hasVisualization: true,
+        tags: ['Design', 'Iterator', 'Array', 'Two Pointers'],
+      },
+      {
+        id: 'insert-delete-getrandom-ii',
+        title: 'Insert Delete GetRandom O(1) - Duplicates allowed',
+        leetcodeNumber: 381,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design a data structure that supports insert, remove, and getRandom in O(1) average time, with duplicates allowed. Use an array for O(1) random access and a hash map from value to set of indices for O(1) lookup and removal.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Array', 'Random'],
+      },
+      {
+        id: 'iterator-for-combination',
+        title: 'Iterator for Combination',
+        leetcodeNumber: 1286,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a CombinationIterator that generates all length-k combinations from a sorted character string in lexicographic order. Pre-generate all combinations using backtracking, store in a list, and iterate through them. O(C(n,k)) space and time for initialization.',
+        hasVisualization: true,
+        tags: ['Design', 'Iterator', 'Backtracking', 'String'],
+      },
+      {
+        id: 'logger-rate-limiter-ii',
+        title: 'Logger Rate Limiter II',
+        leetcodeNumber: 359,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a logger that limits duplicate messages to once every 10 seconds. shouldPrintMessage(timestamp, message) returns true only if the message has not been printed in the past 10 seconds. Use a hash map to store the last print time for each message. O(1) per call.',
+        hasVisualization: true,
+        tags: ['Design', 'Hash Map'],
+      },
+      {
+        id: 'moving-average-from-data-stream-ii',
+        title: 'Moving Average from Data Stream II',
+        leetcodeNumber: 346,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a MovingAverage class to compute the moving average of a stream of integers in a sliding window of size k. Use a fixed-size circular buffer (queue). When buffer is full, remove the oldest value before adding the new one. O(1) per insertion.',
+        hasVisualization: true,
+        tags: ['Design', 'Queue', 'Sliding Window', 'Array'],
+      },
+      {
+        id: 'number-of-recent-calls-ii',
+        title: 'Number of Recent Calls II',
+        leetcodeNumber: 933,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a RecentCounter that counts recent requests in the past 3000ms. Each ping(t) adds a request at time t and returns the count of requests in [t-3000, t]. Use a queue: add t, then remove all timestamps older than t-3000. O(1) amortized per call.',
+        hasVisualization: true,
+        tags: ['Design', 'Queue', 'Sliding Window'],
+      },
+      {
+        id: 'online-stock-span-design',
+        title: 'Online Stock Span',
+        leetcodeNumber: 901,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design an algorithm to collect daily price quotes and return the span (number of consecutive days the price was <= today, including today). Use a monotonic decreasing stack of (price, span) pairs for O(1) amortized time.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Stack', 'Monotonic Stack'],
+      },
+      {
+        id: 'peeking-iterator-ii',
+        title: 'Peeking Iterator II',
+        leetcodeNumber: 284,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design an iterator that supports peek() in addition to next() and hasNext(). Cache the next value by calling next() eagerly. peek() returns the cached value without advancing. next() returns cached and fetches the next one. O(1) per operation.',
+        hasVisualization: true,
+        tags: ['Design', 'Iterator', 'Array'],
+      },
+      {
+        id: 'random-pick-with-weight-ii',
+        title: 'Random Pick with Weight',
+        leetcodeNumber: 528,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of weights, implement pickIndex() to randomly pick an index with probability proportional to its weight. Build a prefix sum array and use binary search to find the target index in O(log n).',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Binary Search', 'Prefix Sum', 'Random'],
+      },
+      {
+        id: 'rle-iterator-ii',
+        title: 'RLE Iterator II',
+        leetcodeNumber: 900,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design an RLE (Run Length Encoded) iterator. Input is an encoding where encoding[2i]=count and encoding[2i+1]=value. next(n) exhausts the next n elements and returns the last element, or -1 if none remain. Use a pointer and decrement counts. O(n/total) per call.',
+        hasVisualization: true,
+        tags: ['Design', 'Iterator', 'Array'],
+      },
+      {
+        id: 'snapshot-array-ii',
+        title: 'Snapshot Array',
+        leetcodeNumber: 1146,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Implement a SnapshotArray that supports set(index, val), snap() which takes a snapshot and returns a snap_id, and get(index, snap_id) which returns the value at index at the time of the snapshot with that id. Use copy-on-write with sorted snap IDs per index.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Binary Search', 'Array'],
+      },
+      {
+        id: 'stock-price-design',
+        title: 'Stock Price Fluctuation',
+        leetcodeNumber: 2034,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a class to track stock prices at different timestamps. Support update(timestamp, price), current(), maximum(), and minimum(). Use a hash map for timestamps and a sorted structure for min/max queries.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Heap', 'Sorted Set'],
+      },
+      {
+        id: 'string-iterator',
+        title: 'String Iterator',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Design a basic string iterator that supports next() to return the next character and hasNext() to check if more characters remain. Uses a single index pointer. O(1) per operation, O(n) space for the string.',
+        hasVisualization: true,
+        tags: ['Design', 'Iterator', 'String'],
+      },
+      {
+        id: 'time-based-key-value-store-ii',
+        title: 'Time Based Key-Value Store',
+        leetcodeNumber: 981,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a time-based key-value store. Implement set(key, value, timestamp) and get(key, timestamp). get returns the value with the largest timestamp <= given timestamp for that key, or empty string if none exists.',
+        hasVisualization: true,
+        tags: ['Hash Map', 'Design', 'Binary Search', 'String'],
+      },
+      {
+        id: 'zigzag-iterator-ii',
+        title: 'Zigzag Iterator II',
+        leetcodeNumber: 281,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a ZigzagIterator that interleaves elements from two lists alternately. Uses two pointers and a flag to track which list to draw from next. next() returns alternate elements from v1 and v2 until one is exhausted, then continues from the remaining list. O(1) per call.',
+        hasVisualization: true,
+        tags: ['Design', 'Iterator', 'Array', 'Two Pointers'],
       },
     ],
   },
@@ -3340,6 +4367,246 @@ export const CATEGORIES: CategoryInfo[] = [
           'Given a string s containing only a, b, c and an integer k, each minute take one character from the left or right end. Return the minimum number of minutes to have taken at least k of each character. Use sliding window to find the largest middle portion to skip.',
         hasVisualization: true,
         tags: ['sliding window', 'string', 'hash map'],
+      },
+    
+      {
+        id: 'binary-subarrays-with-sum-iii',
+        title: 'Binary Subarrays with Sum III',
+        leetcodeNumber: 930,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum equal to goal. Uses the prefix sum + hash map approach: for each position, count how many previous prefix sums equal (currentSum - goal), giving O(n) time and O(n) space.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Hash Map', 'Prefix Sum', 'Two Pointers'],
+      },
+      {
+        id: 'count-of-range-sum-ii',
+        title: 'Count of Range Sum II',
+        leetcodeNumber: 327,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums and a range [lower, upper], return the number of range sums that lie in [lower, upper] inclusive. A range sum S(i, j) is defined as the sum of elements in nums between indices i and j. Uses merge sort on prefix sums for O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Merge Sort', 'Prefix Sum', 'Divide and Conquer'],
+      },
+      {
+        id: 'count-of-smaller-ii',
+        title: 'Count of Smaller Numbers After Self II',
+        leetcodeNumber: 315,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums, return an array counts where counts[i] is the number of smaller elements to the right of nums[i]. Uses a modified merge sort that tracks indices to count inversions, achieving O(n log n) time complexity.',
+        hasVisualization: true,
+        tags: ['Merge Sort', 'Binary Indexed Tree', 'Divide and Conquer'],
+      },
+      {
+        id: 'count-subarrays-with-fixed-bounds-ii',
+        title: 'Count Subarrays with Fixed Bounds II',
+        leetcodeNumber: 2444,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums and two integers minK and maxK, return the number of fixed-bound subarrays. A fixed-bound subarray must contain both minK and maxK as its minimum and maximum. Track the last position of minK, maxK, and any out-of-range element to compute the count efficiently.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Array', 'Queue'],
+      },
+      {
+        id: 'fruits-into-baskets-iii',
+        title: 'Fruits Into Baskets III',
+        leetcodeNumber: 904,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'You have two baskets, and each basket can carry any quantity of fruit but only one type. Given an array of fruit types, find the maximum number of fruits you can pick by starting from any tree and picking from consecutive trees (at most 2 distinct types). Classic sliding window with at most k=2 distinct elements.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Hash Map', 'Two Pointers', 'Array'],
+      },
+      {
+        id: 'grumpy-bookstore-owner-iii',
+        title: 'Grumpy Bookstore Owner III',
+        leetcodeNumber: 1052,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'A bookstore owner can suppress grumpiness for minutes consecutive minutes. Given customers[] and grumpy[], find the max customers satisfied. Base = sum of customers where owner is not grumpy. Bonus = max extra customers gained by the sliding window of size minutes where grumpy=1. Answer = base + max bonus.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Array', 'Greedy'],
+      },
+      {
+        id: 'longest-nice-subarray-ii',
+        title: 'Longest Nice Subarray II',
+        leetcodeNumber: 2401,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of positive integers, find the longest subarray where the bitwise AND of every pair of adjacent elements is 0 (no bit is shared between any two elements). Use a sliding window and track used bits. When a new element shares bits with used bits, shrink the window from the left.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Bit Manipulation', 'Two Pointers'],
+      },
+      {
+        id: 'longest-subarray-with-sum-k',
+        title: 'Longest Subarray with Sum K',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array and a target sum k, find the length of the longest subarray with sum exactly equal to k. Uses prefix sums with a hash map: for each prefix sum, check if (prefixSum - k) exists in the map. The first occurrence index is stored to maximize the length.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Sliding Window', 'Array'],
+      },
+      {
+        id: 'maximum-erasure-value-ii',
+        title: 'Maximum Erasure Value II',
+        leetcodeNumber: 1695,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of positive integers nums, find the maximum sum of a subarray with all unique elements. When a duplicate is found, shrink the window from the left until the duplicate is removed. Track the maximum window sum seen.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Hash Set', 'Two Pointers', 'Array'],
+      },
+      {
+        id: 'maximum-gap-ii',
+        title: 'Maximum Gap II',
+        leetcodeNumber: 164,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an unsorted array, find the maximum difference between successive elements in its sorted form. Must run in O(n) time and space. Uses bucket sort (radix sort variant): create n+1 buckets, place each element in a bucket, then check gaps between consecutive non-empty buckets.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Bucket Sort', 'Radix Sort', 'Array'],
+      },
+      {
+        id: 'maximum-points-from-cards-ii',
+        title: 'Maximum Points from Cards II',
+        leetcodeNumber: 1423,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array cardPoints and integer k, pick exactly k cards from either the left or right end to maximize total points. Insight: instead of choosing k cards from ends, find the minimum sum subarray of size n-k in the middle. The answer is totalSum minus that minimum subarray sum.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Prefix Sum', 'Array', 'Greedy'],
+      },
+      {
+        id: 'maximum-product-subarray-ii',
+        title: 'Maximum Product Subarray II',
+        leetcodeNumber: 152,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer array nums, find a contiguous subarray that has the largest product and return its product. Track both the maximum and minimum product ending at each position because a negative number can flip min to max. Uses dynamic programming with O(n) time and O(1) space.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Array', 'Greedy'],
+      },
+      {
+        id: 'maximum-subarray-divide-conquer',
+        title: 'Maximum Subarray (Divide and Conquer)',
+        leetcodeNumber: 53,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the maximum sum subarray using divide and conquer. Split the array in half, recursively find the max subarray in each half, and find the max crossing subarray (spans both halves). The maximum of these three is the answer. Time complexity: O(n log n).',
+        hasVisualization: true,
+        tags: ['Divide and Conquer', 'Array', 'Dynamic Programming'],
+      },
+      {
+        id: 'median-of-data-stream',
+        title: 'Median of Data Stream',
+        leetcodeNumber: 295,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design a data structure that supports adding integers and finding the median at any time. Use two heaps: a max-heap for the lower half and a min-heap for the upper half. Keep them balanced so the median can be computed in O(1).',
+        hasVisualization: true,
+        tags: ['Heap', 'Two Pointers', 'Data Stream', 'Design'],
+      },
+      {
+        id: 'minimum-operations-to-reduce-x-ii',
+        title: 'Minimum Operations to Reduce X to Zero II',
+        leetcodeNumber: 1658,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer array nums and integer x, find the minimum number of operations to reduce x to exactly 0 by removing elements from the left or right ends. Instead of tracking removed elements, find the longest subarray with sum = totalSum - x. The answer is n minus that subarray length.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Hash Map', 'Two Pointers', 'Prefix Sum'],
+      },
+      {
+        id: 'minimum-size-subarray-sum-advanced',
+        title: 'Minimum Size Subarray Sum (Advanced)',
+        leetcodeNumber: 209,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If no such subarray, return 0. Uses a sliding window: expand right, shrink left when sum >= target. Track minimum window length.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Two Pointers', 'Binary Search', 'Prefix Sum'],
+      },
+      {
+        id: 'range-sum-query-2d-mutable',
+        title: 'Range Sum Query 2D Mutable',
+        leetcodeNumber: 308,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design a data structure for a 2D matrix that supports update operations and range sum queries. Use a 2D Binary Indexed Tree (Fenwick Tree) for O(log m * log n) updates and queries. Each query asks for the sum of a rectangular submatrix.',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Segment Tree', 'Design', 'Matrix'],
+      },
+      {
+        id: 'reverse-pairs-ii',
+        title: 'Reverse Pairs II',
+        leetcodeNumber: 493,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums, return the number of reverse pairs. A reverse pair is (i, j) where i < j and nums[i] > 2 * nums[j]. Uses modified merge sort to count pairs during the merge step in O(n log n) time.',
+        hasVisualization: true,
+        tags: ['Merge Sort', 'Binary Indexed Tree', 'Divide and Conquer'],
+      },
+      {
+        id: 'shortest-subarray-with-sum-at-least-k-ii',
+        title: 'Shortest Subarray with Sum at Least K II',
+        leetcodeNumber: 862,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums (may contain negatives) and an integer k, return the length of the shortest non-empty subarray with a sum of at least k. If there is no such subarray, return -1. Uses prefix sums combined with a monotonic deque to achieve O(n) time.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Deque', 'Prefix Sum', 'Monotonic Queue'],
+      },
+      {
+        id: 'skyline-problem-ii',
+        title: 'Skyline Problem II',
+        leetcodeNumber: 218,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a list of buildings represented as [left, right, height], return the skyline outline. The skyline is a list of key points [x, height] where the maximum height changes. Uses a max-heap to track active building heights as we sweep from left to right.',
+        hasVisualization: true,
+        tags: ['Heap', 'Divide and Conquer', 'Sweep Line', 'Sorted Set'],
+      },
+      {
+        id: 'sliding-window-median-ii',
+        title: 'Sliding Window Median II',
+        leetcodeNumber: 480,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an array nums and a window size k, find the median of each window as it slides from left to right. Use two heaps (max-heap for lower half, min-heap for upper half) and a lazy deletion map to efficiently maintain the sliding window.',
+        hasVisualization: true,
+        tags: ['Heap', 'Sliding Window', 'Two Pointers', 'Sorting'],
+      },
+      {
+        id: 'subarray-product-less-than-k-ii',
+        title: 'Subarray Product Less Than K II',
+        leetcodeNumber: 713,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of positive integers nums and a positive integer k, return the number of contiguous subarrays where the product of all elements is strictly less than k. Uses a sliding window: expand right, shrink left when product >= k. Each valid right pointer adds (right - left + 1) new subarrays.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Two Pointers', 'Array'],
+      },
+      {
+        id: 'subarrays-with-k-different-integers-ii',
+        title: 'Subarrays with K Different Integers II',
+        leetcodeNumber: 992,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums and an integer k, return the number of good subarrays (with exactly k different integers). Key insight: count(exactly k) = count(at most k) - count(at most k-1). Use two sliding windows with ',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Hash Map', 'Two Pointers', 'Array'],
+      },
+      {
+        id: 'trapping-rain-water-3d',
+        title: 'Trapping Rain Water 3D',
+        leetcodeNumber: 407,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an m x n matrix of non-negative integers representing the height of each unit cell in a 2D elevation map, compute the volume of water it can trap after raining. Uses a min-heap (priority queue) to process cells from the boundary inward, tracking water level.',
+        hasVisualization: true,
+        tags: ['Heap', 'BFS', 'Matrix', 'Priority Queue'],
       },
     ],
   },
@@ -4945,6 +6212,227 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['stack', 'greedy', 'string', 'hash map'],
       },
+    
+      {
+        id: 'beautiful-towers',
+        title: 'Beautiful Towers',
+        leetcodeNumber: 2866,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given maxHeights[], assign heights to towers such that they form a mountain shape (non-decreasing then non-increasing) and each height <= maxHeights[i]. Maximize the sum. For each peak candidate, use monotonic stacks to compute max sum of left and right sides.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Dynamic Programming'],
+      },
+      {
+        id: 'buildings-with-ocean-view',
+        title: 'Buildings With Ocean View',
+        leetcodeNumber: 1762,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of building heights, find all buildings that have an ocean view (to the right). A building has an ocean view if all buildings to its right are shorter. Use a monotonic decreasing stack: traverse right-to-left, maintaining the maximum height seen.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Greedy'],
+      },
+      {
+        id: 'constrained-subsequence-sum',
+        title: 'Constrained Subsequence Sum',
+        leetcodeNumber: 1425,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an integer array nums and integer k, return the maximum sum of a non-empty subsequence where for every consecutive pair (i, j) in the subsequence, i < j <= i+k. Use DP with a monotonic deque to maintain the max dp value in the window of size k.',
+        hasVisualization: true,
+        tags: ['Stack', 'Deque', 'Monotonic Queue', 'Dynamic Programming', 'Hard'],
+      },
+      {
+        id: 'create-maximum-number',
+        title: 'Create Maximum Number',
+        leetcodeNumber: 321,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given two integer arrays nums1 and nums2 of lengths m and n, create the maximum number of length k by picking digits from both arrays while maintaining relative order. For each split i+j=k, use monotonic stack to find best i-digit subsequence from each array, then merge the two.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Greedy', 'Hard'],
+      },
+      {
+        id: 'daily-temperatures-iii',
+        title: 'Daily Temperatures III (Advanced)',
+        leetcodeNumber: 739,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'An advanced variant of Daily Temperatures: for each day find how many days until a warmer temperature, AND find the second next greater element. Extend the classic monotonic stack to track multiple future temperature records per day.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Extended Variant'],
+      },
+      {
+        id: 'final-prices-with-special-discount-ii',
+        title: 'Final Prices With Special Discount II',
+        leetcodeNumber: 1475,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given prices[], for each item find the final price after applying the discount: the first item to the right with price <= current price. This is the classic ',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array'],
+      },
+      {
+        id: 'jump-game-vi-deque',
+        title: 'Jump Game VI (Deque)',
+        leetcodeNumber: 1696,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'You are given an array nums and integer k. Starting at index 0, in each jump you can move at most k indices forward. Maximize the score (sum of chosen elements). Uses a monotonic deque to maintain the maximum dp value in the window of size k.',
+        hasVisualization: true,
+        tags: ['Stack', 'Deque', 'Monotonic Queue', 'Dynamic Programming', 'Sliding Window'],
+      },
+      {
+        id: 'longest-well-performing-interval',
+        title: 'Longest Well-Performing Interval',
+        leetcodeNumber: 1124,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'A day is ',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Prefix Sum', 'Hash Map'],
+      },
+      {
+        id: 'max-chunks-to-make-sorted-i',
+        title: 'Max Chunks To Make Sorted I',
+        leetcodeNumber: 769,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a permutation of [0..n-1], find the maximum number of chunks to sort independently. Since values are a permutation, a chunk boundary exists at index i if max(arr[0..i]) == i. Equivalently, use a monotonic stack approach tracking chunk maxima.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Greedy'],
+      },
+      {
+        id: 'max-chunks-to-make-sorted-ii',
+        title: 'Max Chunks To Make Sorted II',
+        leetcodeNumber: 768,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an array that may contain duplicates, find the maximum number of chunks it can be divided into such that sorting each chunk individually results in the whole array being sorted. Use a monotonic stack: maintain the max of each chunk; merge chunks when the next element is smaller than the top chunk\\',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Greedy', 'Hard'],
+      },
+      {
+        id: 'maximum-sum-circular-subarray-ii',
+        title: 'Maximum Sum Circular Subarray II',
+        leetcodeNumber: 918,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the maximum subarray sum in a circular array. The answer is either: 1) max non-circular subarray sum (Kadane\\',
+        hasVisualization: true,
+        tags: ['Stack', 'Deque', 'Monotonic Queue', 'Dynamic Programming', 'Prefix Sum'],
+      },
+      {
+        id: 'maximum-width-ramp-stack',
+        title: 'Maximum Width Ramp (Stack)',
+        leetcodeNumber: 962,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the maximum width of a ramp (i, j) where i < j and nums[i] <= nums[j]. Build a monotonic decreasing stack of candidate left indices, then scan right-to-left trying to match each element with the largest valid left index.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Two Pointers'],
+      },
+      {
+        id: 'next-greater-element-iii',
+        title: 'Next Greater Element III',
+        leetcodeNumber: 556,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a positive 32-bit integer n, find the smallest integer that is greater than n and has exactly the same digits. Use a monotonic stack approach on the digit array: find the rightmost digit that can be swapped with a larger digit to its right.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Math', 'String'],
+      },
+      {
+        id: 'next-greater-element-iv',
+        title: 'Next Greater Element IV',
+        leetcodeNumber: 2454,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'For each index i, find the second next greater element (the next greater element of the next greater element). Use two monotonic stacks: the first processes the array and the second tracks elements waiting for their second greater element.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Hard'],
+      },
+      {
+        id: 'number-of-visible-people-in-queue',
+        title: 'Number of Visible People in a Queue',
+        leetcodeNumber: 1944,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given heights of people in a queue, for each person count how many others they can see to their right. Person i can see person j if all people between i and j are shorter than min(heights[i], heights[j]). Use a monotonic decreasing stack scanning right-to-left.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Hard'],
+      },
+      {
+        id: 'odd-even-jump',
+        title: 'Odd Even Jump',
+        leetcodeNumber: 975,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'From each index you can make odd-numbered jumps (to the next greater or equal value) or even-numbered jumps (to the next smaller or equal value). Starting at each index, can you reach the end? Uses a monotonic stack + sorted index maps to find valid next jumps.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Dynamic Programming', 'Hard'],
+      },
+      {
+        id: 'remove-k-digits-ii',
+        title: 'Remove K Digits II',
+        leetcodeNumber: 402,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a string num and integer k, remove k digits to make the smallest possible number. Uses a monotonic non-decreasing stack: for each digit, while the stack top is greater than current and we still have removals left, pop the stack.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Greedy', 'String'],
+      },
+      {
+        id: 'stamping-the-grid',
+        title: 'Stamping the Grid',
+        leetcodeNumber: 2132,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a binary grid and stamp dimensions, determine if you can cover all 0s with stamps (stampHeight x stampWidth rectangles) without covering any 1s. Uses 2D prefix sums to check valid stamp placement, combined with a difference array to mark stamp coverage.',
+        hasVisualization: true,
+        tags: ['Stack', 'Array', 'Greedy', 'Prefix Sum', '2D Grid', 'Hard'],
+      },
+      {
+        id: 'steps-to-make-array-non-decreasing',
+        title: 'Steps to Make Array Non-Decreasing',
+        leetcodeNumber: 2289,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer array, in one step remove all elements that are strictly less than the element immediately to their left. Return the number of steps until the array is non-decreasing. Use a monotonic stack where each entry tracks how many steps it takes for that element to ',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Simulation'],
+      },
+      {
+        id: 'stock-spanner-ii',
+        title: 'Stock Spanner II',
+        leetcodeNumber: 901,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a StockSpanner class that collects daily price quotes and returns the span of the stock price for the current day. The span is the maximum number of consecutive days (starting from today and going backwards) for which the price was <= today\\',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Design', 'Online Algorithm'],
+      },
+      {
+        id: 'sum-of-subarray-minimums-ii',
+        title: 'Sum of Subarray Minimums II',
+        leetcodeNumber: 907,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the sum of min(b) over every subarray b. For each element, use a monotonic stack to find how many subarrays it is the minimum of. Contribution = arr[i] * left_count * right_count. Return sum mod 1e9+7.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Array', 'Math'],
+      },
+      {
+        id: 'sum-of-total-strength-of-wizards',
+        title: 'Sum of Total Strength of Wizards',
+        leetcodeNumber: 2281,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'For each subarray, total strength = min(subarray) * sum(subarray). Return the sum over all subarrays. Use a monotonic stack to find, for each wizard, all subarrays where it is the minimum, combined with prefix sums of prefix sums for O(n) computation.',
+        hasVisualization: true,
+        tags: ['Stack', 'Monotonic Stack', 'Prefix Sum', 'Math', 'Hard'],
+      },
     ],
   },
 
@@ -5651,6 +7139,257 @@ export const CATEGORIES: CategoryInfo[] = [
           'Count the number of non-empty subarrays whose sum is divisible by k. Use prefix sums mod k: two indices i and j give a subarray sum divisible by k if and only if prefix[i] % k == prefix[j] % k. Count pairs of equal remainders using a frequency map. Handle negative remainders by adding k before taking mod.',
         hasVisualization: true,
         tags: ['prefix sum', 'hash map', 'modulo', 'counting'],
+      },
+    
+      {
+        id: 'binary-subarrays-with-sum-ii',
+        title: 'Binary Subarrays With Sum II',
+        leetcodeNumber: 930,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count binary subarrays with sum exactly equal to goal. Use prefix sum with a frequency map: for each prefix sum, count how many times (prefixSum - goal) has appeared. A subarray [i..j] sums to goal iff prefixSum[j] - prefixSum[i-1] = goal. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array', 'Binary Array'],
+      },
+      {
+        id: 'contiguous-array-ii',
+        title: 'Contiguous Array II',
+        leetcodeNumber: 525,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the maximum length subarray with an equal number of 0s and 1s. Replace 0 with -1, then the problem becomes finding the longest subarray with sum 0. Use a prefix sum + hash map: if prefix[i] was seen before at index j, subarray (j+1..i) has sum 0. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array'],
+      },
+      {
+        id: 'count-nice-pairs',
+        title: 'Count Nice Pairs in an Array',
+        leetcodeNumber: 1814,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count pairs (i,j) where i < j and nums[i]+rev(nums[j]) == nums[j]+rev(nums[i]), equivalently nums[i]-rev(nums[i]) == nums[j]-rev(nums[j]). Compute diff[i]=nums[i]-rev(nums[i]) for each element, then count pairs with equal diff values using a frequency map. O(n*D) where D is digits.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array', 'Math'],
+      },
+      {
+        id: 'count-subarrays-with-score-less-than-k',
+        title: 'Count Subarrays With Score Less Than K',
+        leetcodeNumber: 2302,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'The score of a subarray is defined as sum * length. Count subarrays with score < k. Use a sliding window: expand right, shrink left when score >= k. At each right position, all subarrays ending at right with left pointer in valid range contribute (right - left + 1) counts. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Sliding Window', 'Array'],
+      },
+      {
+        id: 'count-vowel-strings-in-ranges',
+        title: 'Count Vowel Strings in Ranges',
+        leetcodeNumber: 2559,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of words and queries [li, ri], for each query count words[li..ri] that start and end with a vowel. Build a prefix sum of ',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'String'],
+      },
+      {
+        id: 'find-pivot-index-iii',
+        title: 'Find Pivot Index III',
+        leetcodeNumber: 724,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Find the leftmost index where the sum of all elements to the left equals the sum of all elements to the right. Compute total sum, then scan left to right maintaining leftSum. At each index, rightSum = total - leftSum - nums[i]. If leftSum == rightSum, return the index.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'find-the-highest-altitude-ii',
+        title: 'Find the Highest Altitude II',
+        leetcodeNumber: 1732,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'A biker goes on a road trip starting at altitude 0. Given the net gain array, find the highest altitude reached. Build a running altitude prefix sum starting at 0 and track the maximum. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'k-radius-subarray-averages-ii',
+        title: 'K Radius Subarray Averages II',
+        leetcodeNumber: 2090,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'For each index i, compute the average of nums[i-k..i+k] if that window exists, else -1. Build a prefix sum array, then for each valid index the window sum is prefix[i+k+1] - prefix[i-k] and the average is that divided by (2k+1). O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Sliding Window'],
+      },
+      {
+        id: 'left-and-right-sum-differences',
+        title: 'Left and Right Sum Differences',
+        leetcodeNumber: 2574,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Return answer[i] = |leftSum[i] - rightSum[i]| where leftSum[i] is sum of nums[0..i-1] and rightSum[i] is sum of nums[i+1..n-1]. Build prefix sums from both directions, then compute differences. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'make-sum-divisible-by-p',
+        title: 'Make Sum Divisible by P',
+        leetcodeNumber: 1590,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the smallest subarray to remove so the remaining sum is divisible by p. Compute total % p (target remainder). For each prefix sum mod p, check if a previous prefix sum equals (current - target + p) % p exists in a map. The gap length is the subarray to remove. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array'],
+      },
+      {
+        id: 'max-sum-of-pair-equal-digit-sum',
+        title: 'Max Sum of a Pair with Equal Sum of Digits',
+        leetcodeNumber: 2342,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the maximum sum of nums[i] + nums[j] where i != j and digitSum(nums[i]) == digitSum(nums[j]). Group numbers by their digit sum using a hash map, keeping the largest two per group. O(n * D) where D is number of digits.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array', 'Math'],
+      },
+      {
+        id: 'maximum-size-subarray-sum-equals-k',
+        title: 'Maximum Size Subarray Sum Equals k',
+        leetcodeNumber: 325,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the maximum length of a subarray that sums to k. Use a prefix sum + hash map. Record the earliest index where each prefix sum occurs. For each index i, if (prefixSum - k) was seen at index j, subarray (j+1..i) sums to k with length i-j. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array'],
+      },
+      {
+        id: 'maximum-sum-obtained-of-any-permutation',
+        title: 'Maximum Sum Obtained of Any Permutation',
+        leetcodeNumber: 1589,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given requests [start, end] on an array, maximize the total sum. Count how many times each index is requested using a difference array (range increment), then sort both the frequency array and nums array in descending order to greedily assign largest values to most-requested indices. O(n log n).',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Greedy', 'Sorting', 'Array'],
+      },
+      {
+        id: 'minimum-average-difference',
+        title: 'Minimum Average Difference',
+        leetcodeNumber: 2256,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the index with minimum average difference: |avg(nums[0..i]) - avg(nums[i+1..n-1])|. Use a prefix sum to compute left sum in O(1), derive right sum from total. Handle edge case where right side is empty (i == n-1). O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'minimum-value-to-get-positive-step-ii',
+        title: 'Minimum Value to Get Positive Step by Step Sum II',
+        leetcodeNumber: 1413,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Find the minimum positive integer startValue such that the running sum (startValue + nums[0] + ... + nums[i]) is always >= 1. Compute the minimum prefix sum; startValue = max(1, 1 - minPrefixSum). O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'number-of-sub-arrays-with-odd-sum',
+        title: 'Number of Sub-arrays With Odd Sum',
+        leetcodeNumber: 1524,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count subarrays with an odd sum. Track counts of even and odd prefix sums. A subarray [i..j] has odd sum iff prefixSum[j] and prefixSum[i-1] have different parities. For each new prefix sum, add the count of prefix sums with opposite parity. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Math'],
+      },
+      {
+        id: 'number-of-subarrays-with-bounded-maximum',
+        title: 'Number of Subarrays with Bounded Maximum',
+        leetcodeNumber: 795,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count subarrays where the maximum element is in [left, right]. Use the inclusion-exclusion principle: count(max <= right) - count(max <= left-1). The helper f(bound) counts subarrays with max <= bound by resetting start on elements > bound. O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Counting'],
+      },
+      {
+        id: 'number-of-ways-to-split-array-ii',
+        title: 'Number of Ways to Split Array II',
+        leetcodeNumber: 2270,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of valid split positions where leftSum >= rightSum. A valid split at index i means sum(nums[0..i]) >= sum(nums[i+1..n-1]). Build a prefix sum once, then scan for valid splits in O(n) time.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'product-of-array-except-self-ii',
+        title: 'Product of Array Except Self II',
+        leetcodeNumber: 238,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Return an array where output[i] is the product of all elements except nums[i], without using division and in O(n). Use a left-prefix product pass then a right-suffix product pass. Each output[i] = leftProduct[i] * rightProduct[i].',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Product'],
+      },
+      {
+        id: 'range-sum-query-2d-ii',
+        title: 'Range Sum Query 2D - Immutable II',
+        leetcodeNumber: 304,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a 2D matrix, handle multiple sumRegion queries efficiently. Build a 2D prefix sum where prefix[i][j] is the sum of all elements in the sub-rectangle from (0,0) to (i-1,j-1). Use inclusion-exclusion to answer each query in O(1).',
+        hasVisualization: true,
+        tags: ['Prefix Sum', '2D Array', 'Matrix', 'Design'],
+      },
+      {
+        id: 'range-sum-query-immutable-ii',
+        title: 'Range Sum Query - Immutable II',
+        leetcodeNumber: 303,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an immutable integer array, handle multiple range sum queries efficiently. Precompute a prefix sum array so each query is answered in O(1) time. prefix[i] stores the sum of nums[0..i-1], and sumRange(left, right) = prefix[right+1] - prefix[left].',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Design'],
+      },
+      {
+        id: 'running-sum-of-1d-array-ii',
+        title: 'Running Sum of 1D Array II',
+        leetcodeNumber: 1480,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an array nums, return a running sum array where runningSum[i] = sum(nums[0..i]). This is a simple in-place prefix sum: for each index from 1 onwards, add the previous element. O(n) time, O(1) extra space.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array'],
+      },
+      {
+        id: 'subarray-sum-equals-k-ii',
+        title: 'Subarray Sum Equals K II',
+        leetcodeNumber: 560,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of contiguous subarrays whose sum equals k. Maintain a running prefix sum and a frequency map. For each index, check how many previous prefix sums equal (current - k); those subarrays end here and sum to k. O(n) time, O(n) space.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array'],
+      },
+      {
+        id: 'sum-of-absolute-differences',
+        title: 'Sum of Absolute Differences in a Sorted Array',
+        leetcodeNumber: 1685,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a sorted array, compute result[i] = sum of |nums[i] - nums[j]| for all j. For a sorted array at index i: left elements contribute i*nums[i] - leftSum, right elements contribute rightSum - (n-1-i)*nums[i]. Use prefix sums for O(n) computation.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Math'],
+      },
+      {
+        id: 'ways-to-split-array-into-good-subarrays',
+        title: 'Ways to Split Array Into Good Subarrays',
+        leetcodeNumber: 2750,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of ways to split a binary array into subarrays each containing exactly one 1. Between every two consecutive 1s there are some 0s; the number of split positions between them equals (gap between 1s). Multiply all such gaps. Return answer mod 10^9+7.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Array', 'Math'],
       },
     ],
   },
@@ -6734,6 +8473,666 @@ export const CATEGORIES: CategoryInfo[] = [
           'Design a tree data structure supporting lock, unlock, and upgrade operations. Upgrade locks a node and frees all locked descendants if no ancestor is locked.',
         hasVisualization: true,
         tags: ['tree', 'design', 'dfs', 'hash map'],
+      },
+    
+      {
+        id: 'all-possible-full-binary-trees',
+        title: 'All Possible Full Binary Trees',
+        leetcodeNumber: 894,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an odd integer n, return all structurally unique full binary trees with exactly n nodes. A full binary tree is one where every node has 0 or 2 children. We enumerate all ways to split n-1 nodes into left and right subtrees, recursing on each split.',
+        hasVisualization: true,
+        tags: ['Tree', 'Recursion', 'Dynamic Programming', 'Memoization'],
+      },
+      {
+        id: 'average-of-levels-ii',
+        title: 'Average of Levels in Binary Tree',
+        leetcodeNumber: 637,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the average value of the nodes on each level. Use BFS to process level by level, computing the average at each level.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Level Order'],
+      },
+      {
+        id: 'balance-a-binary-search-tree-ii',
+        title: 'Balance a Binary Search Tree II',
+        leetcodeNumber: 1382,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a BST, convert it into a balanced BST. Perform an in-order traversal to get sorted values, then build a balanced BST using the sorted array by always choosing the middle element as the root.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'Divide and Conquer', 'In-order Traversal'],
+      },
+      {
+        id: 'binary-tree-from-preorder-and-postorder',
+        title: 'Construct Binary Tree from Preorder and Postorder',
+        leetcodeNumber: 889,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given preorder and postorder traversal arrays, reconstruct a binary tree. The root is preorder[0]. The left subtree root is preorder[1]; find it in postorder to determine left subtree size, then recurse for both subtrees.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Divide and Conquer', 'Recursion'],
+      },
+      {
+        id: 'binary-tree-level-order-ii',
+        title: 'Binary Tree Level Order Traversal II',
+        leetcodeNumber: 107,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the bottom-up level order traversal of its nodes values (from leaves to root, left to right at each level). Use standard BFS and then reverse the result.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Level Order'],
+      },
+      {
+        id: 'binary-tree-vertical-order-traversal-ii',
+        title: 'Binary Tree Vertical Order Traversal II',
+        leetcodeNumber: 314,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the vertical order traversal of its nodes values. For each node at position (row, col), the left child has position (row+1, col-1) and the right child has position (row+1, col+1). The column index determines the order. Use BFS with column tracking.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Hash Map', 'Sorting'],
+      },
+      {
+        id: 'block-placement-queries',
+        title: 'Block Placement Queries',
+        leetcodeNumber: 2940,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Process queries on a number line [0, inf]. Type 1: place an obstacle at x. Type 2: can we place a block of size sz ending at position x (i.e., does [x-sz+1, x] have no obstacle)? Use a sorted set of obstacle positions and binary search to check gaps.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Search', 'Sorted Set', 'Design'],
+      },
+      {
+        id: 'booking-concert-tickets',
+        title: 'Booking Concert Tickets in Groups',
+        leetcodeNumber: 2286,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'A concert has n rows each with maxRow seats. Support gather(k, maxRow): find lowest row ≤ maxRow with k consecutive seats, book them. Support scatter(k, maxRow): book k seats across rows ≤ maxRow as early as possible. Uses segment tree for range max and prefix sum queries.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Search', 'Design'],
+      },
+      {
+        id: 'boundary-of-binary-tree-ii',
+        title: 'Boundary of Binary Tree',
+        leetcodeNumber: 545,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the values of its boundary nodes in counter-clockwise order: root, left boundary (excluding leaves), leaves (left to right), right boundary (excluding leaves, bottom to top).',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Boundary Traversal'],
+      },
+      {
+        id: 'construct-binary-search-tree-from-preorder',
+        title: 'Construct BST from Preorder Traversal',
+        leetcodeNumber: 1008,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a preorder traversal of a BST, reconstruct the BST. The first element is the root. Using BST bounds (min, max), place each preorder element in the correct position without needing the inorder.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'Preorder', 'Divide and Conquer'],
+      },
+      {
+        id: 'construct-binary-tree-from-inorder-postorder-ii',
+        title: 'Construct Binary Tree from Inorder & Postorder Traversal II',
+        leetcodeNumber: 106,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given inorder and postorder traversal arrays, reconstruct the binary tree. The last element of postorder is always the root. Find that root in inorder to split left and right subtrees, then recurse.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Divide and Conquer'],
+      },
+      {
+        id: 'construct-binary-tree-from-preorder-inorder-ii',
+        title: 'Construct Binary Tree from Preorder & Inorder Traversal II',
+        leetcodeNumber: 105,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given preorder and inorder traversal arrays, reconstruct the binary tree. The first element of preorder is always the root. Find that root in inorder to split left and right subtrees, then recurse.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Divide and Conquer', 'Hash Map'],
+      },
+      {
+        id: 'convert-bst-to-greater-tree-ii',
+        title: 'Convert BST to Greater Tree II',
+        leetcodeNumber: 538,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Convert a BST so each node value becomes the original value plus the sum of all values greater than it in the BST. Use reverse in-order traversal (right → root → left) while accumulating a running sum.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'DFS', 'In-order Traversal', 'Reverse In-order'],
+      },
+      {
+        id: 'count-good-nodes-ii',
+        title: 'Count Good Nodes in Binary Tree',
+        leetcodeNumber: 1448,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a binary tree, a node X is ',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Path Maximum'],
+      },
+      {
+        id: 'count-good-triplets-in-array',
+        title: 'Count Good Triplets in an Array',
+        leetcodeNumber: 2179,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given two permutations nums1 and nums2 of [0,n-1], count triplets (x,y,z) such that x appears before y before z in both nums1 and nums2. Map values to their positions in nums1, then count inversions using a BIT on the reordered nums2 sequence.',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Merge Sort', 'Array', 'Permutation'],
+      },
+      {
+        id: 'count-inversions-bit',
+        title: 'Count Inversions (Binary Indexed Tree)',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of inversions in an array: pairs (i,j) where i < j and arr[i] > arr[j]. Process elements left to right. For each element, query BIT for count of previously inserted elements > current element, then insert current. Uses coordinate compression.',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Merge Sort', 'Array', 'Classic'],
+      },
+      {
+        id: 'count-of-range-sum-bit',
+        title: 'Count of Range Sum (BIT / Fenwick Tree)',
+        leetcodeNumber: 327,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Count range sums in [lower, upper] using a Binary Indexed Tree (BIT). Compute prefix sums, coordinate compress them, then for each prefix[i] query the BIT for count of previous prefix[j] in [prefix[i]-upper, prefix[i]-lower].',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Prefix Sum', 'Coordinate Compression'],
+      },
+      {
+        id: 'count-of-range-sum-segment',
+        title: 'Count of Range Sum (Segment Tree)',
+        leetcodeNumber: 327,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Count the number of range sums that lie in [lower, upper]. Compute prefix sums, then for each prefix[i] count how many previous prefix[j] satisfy lower <= prefix[i] - prefix[j] <= upper. Use a segment tree on coordinate-compressed prefix sums.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Divide and Conquer', 'Prefix Sum', 'Merge Sort'],
+      },
+      {
+        id: 'count-of-smaller-numbers-segment',
+        title: 'Count of Smaller Numbers After Self (Segment Tree)',
+        leetcodeNumber: 315,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'For each element nums[i], count how many elements to its right are smaller. Process from right to left: query the segment tree for count of elements < nums[i], then insert nums[i]. Uses coordinate compression.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Indexed Tree', 'Divide and Conquer', 'Merge Sort'],
+      },
+      {
+        id: 'create-sorted-array-through-instructions',
+        title: 'Create Sorted Array through Instructions',
+        leetcodeNumber: 1649,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Insert each element of instructions into a sorted array. The cost to insert instructions[i] is min(count of elements < instructions[i], count of elements > instructions[i]) already in the array. Return total cost mod 1e9+7. Use a BIT for O(log n) counting.',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Segment Tree', 'Merge Sort', 'Array'],
+      },
+      {
+        id: 'deepest-leaves-sum-ii',
+        title: 'Deepest Leaves Sum',
+        leetcodeNumber: 1302,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the sum of values of its deepest leaves. Use BFS level by level — the sum of the last level gives the answer. Alternatively, use DFS tracking maximum depth.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'DFS'],
+      },
+      {
+        id: 'delete-node-in-bst-ii',
+        title: 'Delete Node in a BST II',
+        leetcodeNumber: 450,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Delete a node with a given key from a BST. Three cases: (1) node has no children — simply remove it; (2) node has one child — replace with that child; (3) node has two children — replace with in-order successor (smallest in right subtree), then delete successor.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'DFS', 'Recursion'],
+      },
+      {
+        id: 'diameter-of-n-ary-tree',
+        title: 'Diameter of N-ary Tree',
+        leetcodeNumber: 1522,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The diameter of an N-ary tree is the length of the longest path between any two nodes. This path may or may not pass through the root. Use DFS: at each node, find the two longest child paths and update the global maximum.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Diameter'],
+      },
+      {
+        id: 'falling-squares',
+        title: 'Falling Squares',
+        leetcodeNumber: 699,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Squares fall onto the X-axis. Each square [left, size] falls from the sky, lands on top of existing squares in its column range. After each drop, return the maximum height of all stacked squares. Uses a segment tree with lazy propagation for range-max queries.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Coordinate Compression', 'Array'],
+      },
+      {
+        id: 'flip-equivalent-binary-trees-ii',
+        title: 'Flip Equivalent Binary Trees II',
+        leetcodeNumber: 951,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Two binary trees are flip equivalent if one can be transformed into the other by a series of flip operations (swapping left and right children at any node). Recursively check: either children match directly or are flipped.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Recursion', 'Flip Equivalence'],
+      },
+      {
+        id: 'handling-sum-queries-after-update',
+        title: 'Handling Sum Queries After Update',
+        leetcodeNumber: 2569,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given two binary arrays nums1 and nums2, handle three query types: (1) flip nums1[l..r], (2) add sum(nums1)*p to nums2[l..r], (3) return sum of nums2. Use a segment tree with lazy propagation on nums1 for range flips and track the count of 1s.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Lazy Propagation', 'Array'],
+      },
+      {
+        id: 'house-robber-iii-tree',
+        title: 'House Robber III (Tree)',
+        leetcodeNumber: 337,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The thief can rob houses arranged in a binary tree. Adjacent houses (directly connected) cannot both be robbed. Return the maximum amount that can be robbed. Use DFS returning a pair: (rob this node, skip this node). rob = node.val + skip(left) + skip(right). skip = max(rob/skip left) + max(rob/skip right).',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Dynamic Programming'],
+      },
+      {
+        id: 'increasing-order-search-tree-ii',
+        title: 'Increasing Order Search Tree II',
+        leetcodeNumber: 897,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Rearrange a BST so the leftmost node becomes the root and every node has no left child and only a right child. Perform an in-order traversal to get sorted values, then rebuild as a right-skewed tree.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'DFS', 'In-order Traversal'],
+      },
+      {
+        id: 'insert-into-a-bst-ii',
+        title: 'Insert into a Binary Search Tree II',
+        leetcodeNumber: 701,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Insert a value into a BST. Traverse the tree: if val < current node go left, else go right. When reaching a null position, insert the new node there. The BST property is maintained.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'DFS', 'Recursion', 'Insertion'],
+      },
+      {
+        id: 'intervals-between-identical-elements',
+        title: 'Intervals Between Identical Elements',
+        leetcodeNumber: 2121,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'For each index i, compute the sum of distances to all other indices with the same value. Group indices by value, then for each group use prefix sums: distance to left neighbors = i*left_count - sum_of_left_indices, distance to right neighbors = sum_of_right_indices - i*right_count.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', 'Hash Map', 'Array'],
+      },
+      {
+        id: 'invert-binary-tree-ii',
+        title: 'Invert Binary Tree II',
+        leetcodeNumber: 226,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Mirror a binary tree by swapping left and right children at every node. Use iterative BFS (level-order) to swap children level by level, contrasting with the recursive DFS approach.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Queue', 'Iterative', 'Mirror'],
+      },
+      {
+        id: 'leaf-similar-trees-ii',
+        title: 'Leaf-Similar Trees',
+        leetcodeNumber: 872,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Two binary trees are leaf-similar if their leaf value sequences (left to right) are the same. Use DFS on each tree to collect the leaf sequence, then compare the two sequences.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Leaf Sequence'],
+      },
+      {
+        id: 'longest-increasing-subsequence-bit',
+        title: 'Longest Increasing Subsequence (BIT)',
+        leetcodeNumber: 300,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the length of the longest strictly increasing subsequence. Use a BIT after coordinate compression: for each element x, query BIT for max LIS ending at values < x, set dp[x] = that max + 1, update BIT at rank(x) with dp[x].',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Dynamic Programming', 'Binary Search'],
+      },
+      {
+        id: 'longest-path-with-different-characters',
+        title: 'Longest Path With Different Adjacent Characters',
+        leetcodeNumber: 2246,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a tree rooted at node 0 with n nodes labeled 0 to n-1, and a string s where s[i] is the character of node i, find the longest path where no two adjacent nodes have the same character. Use DFS: for each node, collect the two longest valid child paths and combine them.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'String'],
+      },
+      {
+        id: 'longest-substring-with-at-most-k-distinct-segment',
+        title: 'Longest Substring with At Most K Distinct Characters',
+        leetcodeNumber: 340,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the length of the longest substring with at most k distinct characters. Use a sliding window with a frequency map: expand right pointer, when distinct chars exceed k shrink left pointer until within limit.',
+        hasVisualization: true,
+        tags: ['Sliding Window', 'Hash Map', 'String', 'Two Pointers'],
+      },
+      {
+        id: 'max-sum-of-rectangle-no-larger-than-k',
+        title: 'Max Sum of Rectangle No Larger Than K',
+        leetcodeNumber: 363,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the maximum sum rectangle in a matrix that does not exceed k. Fix left and right column boundaries, compute row prefix sums between columns, then use a sorted set (or BIT) to find the maximum prefix sum ≤ current_prefix_sum - k.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Search', 'Prefix Sum', 'Ordered Set'],
+      },
+      {
+        id: 'maximum-binary-tree-ii',
+        title: 'Maximum Binary Tree II',
+        leetcodeNumber: 998,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a maximum binary tree and an integer val, insert val into the tree. A maximum binary tree means each node is greater than all nodes in its subtrees. Insert val as a new right subtree node if val is smaller than root; otherwise make root the left child of a new node with value val.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Recursion', 'Maximum Binary Tree'],
+      },
+      {
+        id: 'maximum-depth-of-binary-tree-ii',
+        title: 'Maximum Depth of Binary Tree',
+        leetcodeNumber: 104,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given the root of a binary tree, return its maximum depth — the number of nodes along the longest path from the root node down to the farthest leaf node. Use recursive DFS: depth of node = 1 + max(depth(left), depth(right)).',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Recursion'],
+      },
+      {
+        id: 'maximum-depth-of-n-ary-tree',
+        title: 'Maximum Depth of N-ary Tree',
+        leetcodeNumber: 559,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given the root of an N-ary tree, return its maximum depth — the number of nodes along the longest path from root to the farthest leaf. Represented as a binary tree for visualization (children stored left-to-right using left/right pointers).',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'BFS', 'Recursion'],
+      },
+      {
+        id: 'merge-two-binary-trees-ii',
+        title: 'Merge Two Binary Trees II',
+        leetcodeNumber: 617,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Merge two binary trees by overlapping them. When two nodes overlap, sum their values. If only one node exists at a position, use that node. Recursively merge left and right subtrees.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Recursion', 'Merge'],
+      },
+      {
+        id: 'minimum-depth-of-binary-tree-ii',
+        title: 'Minimum Depth of Binary Tree',
+        leetcodeNumber: 111,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given the root of a binary tree, return its minimum depth — the number of nodes along the shortest path from the root to the nearest leaf node. A leaf is a node with no children. Handle the case where one child is null (not a leaf path).',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'BFS'],
+      },
+      {
+        id: 'my-calendar-segment',
+        title: 'My Calendar I (Segment Tree)',
+        leetcodeNumber: 729,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Implement a calendar that allows booking events [start, end) such that no two events overlap. Use a sorted interval list or segment tree. Return true if booking succeeds (no double booking), false otherwise.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Search', 'Design', 'Ordered Set'],
+      },
+      {
+        id: 'n-ary-tree-level-order',
+        title: 'N-ary Tree Level Order Traversal',
+        leetcodeNumber: 429,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an N-ary tree, return the level order traversal of its nodes values. Use BFS — at each level, collect all nodes and enqueue all their children. Visualized as a binary tree.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Level Order'],
+      },
+      {
+        id: 'number-of-flowers-in-full-bloom',
+        title: 'Number of Flowers in Full Bloom',
+        leetcodeNumber: 2251,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given flower bloom intervals [start,end] and person arrival times, count how many flowers are blooming when each person arrives. Sort bloom starts and ends separately. For person at time t: blooms started = upper_bound(starts, t), blooms ended = upper_bound(ends, t-1). Answer = started - ended.',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Prefix Sum', 'Sorting', 'Hash Map'],
+      },
+      {
+        id: 'number-of-longest-increasing-bit',
+        title: 'Number of Longest Increasing Subsequences (BIT)',
+        leetcodeNumber: 673,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Count the number of longest increasing subsequences. Use two BITs after coordinate compression: one tracks max LIS length ending at each rank, another tracks count of such subsequences. For each element, query both BITs, then update.',
+        hasVisualization: true,
+        tags: ['Binary Indexed Tree', 'Dynamic Programming', 'Segment Tree'],
+      },
+      {
+        id: 'online-majority-element-in-subarray',
+        title: 'Online Majority Element In Subarray',
+        leetcodeNumber: 1157,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an array, answer queries: is element threshold the majority (appears > (right-left+1)/2 times) in arr[left..right]? Preprocess by storing sorted indices for each value. For each query, binary search to count occurrences in range, then verify with Boyer-Moore.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Search', 'Random', 'Design'],
+      },
+      {
+        id: 'path-sum-all-paths',
+        title: 'Path Sum II (All Paths)',
+        leetcodeNumber: 113,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a binary tree and a target sum, return all root-to-leaf paths where the sum of node values equals targetSum. Use DFS with backtracking: explore each path, and when a leaf is reached with the remaining sum = 0, record the path.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Backtracking', 'Path Sum'],
+      },
+      {
+        id: 'range-frequency-queries',
+        title: 'Range Frequency Queries',
+        leetcodeNumber: 2080,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Preprocess an array to answer queries: how many times does value appear in arr[left..right]? Store sorted indices for each value. For each query, binary search to find count in range in O(log n).',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Hash Map', 'Array', 'Design'],
+      },
+      {
+        id: 'range-module-segment',
+        title: 'Range Module (Segment Tree with Lazy Propagation)',
+        leetcodeNumber: 715,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design a Range Module that tracks ranges of numbers. Support addRange(left, right), removeRange(left, right), and queryRange(left, right). Uses a segment tree with lazy propagation over a coordinate-compressed domain.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Lazy Propagation', 'Design', 'Ordered Set'],
+      },
+      {
+        id: 'range-sum-query-mutable-ii',
+        title: 'Range Sum Query - Mutable (Segment Tree)',
+        leetcodeNumber: 307,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a mutable integer array, support two operations: update(index, val) and sumRange(left, right). Use a segment tree where each node stores the sum of a range. Build in O(n), update in O(log n), query in O(log n).',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Indexed Tree', 'Array', 'Design'],
+      },
+      {
+        id: 'rectangle-area-ii',
+        title: 'Rectangle Area II',
+        leetcodeNumber: 850,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Compute the total area covered by a set of axis-aligned rectangles, handling overlaps. Use a coordinate compression sweep line: sort all x-coordinates, for each vertical strip compute the active y-coverage using a segment tree or interval union.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Line Sweep', 'Coordinate Compression', 'Array'],
+      },
+      {
+        id: 'reverse-pairs-segment',
+        title: 'Reverse Pairs (Segment Tree)',
+        leetcodeNumber: 493,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Count reverse pairs (i, j) where i < j and nums[i] > 2 * nums[j]. Process from right to left: for each nums[i], query the BIT for count of elements already inserted that are < nums[i]/2, then insert nums[i]. Uses coordinate compression.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Binary Indexed Tree', 'Divide and Conquer', 'Merge Sort'],
+      },
+      {
+        id: 'root-to-leaf-path-sum-ii',
+        title: 'Path Sum (Root to Leaf)',
+        leetcodeNumber: 112,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given the root of a binary tree and a target sum, return true if there is a root-to-leaf path such that adding up all the values along the path equals targetSum. Use recursive DFS: subtract node value from target and check if any leaf gives remaining = 0.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Path Sum'],
+      },
+      {
+        id: 'serialize-and-deserialize-binary-tree-ii',
+        title: 'Serialize and Deserialize Binary Tree II',
+        leetcodeNumber: 297,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Design an algorithm to serialize a binary tree to a string and deserialize it back using BFS (level-order). During serialization each level is recorded with null markers. Deserialization rebuilds by pairing each node with its children tokens.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Design', 'String'],
+      },
+      {
+        id: 'serialize-and-deserialize-bst',
+        title: 'Serialize and Deserialize BST',
+        leetcodeNumber: 449,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Serialize a BST to a string using preorder traversal (no nulls needed — BST property lets us reconstruct). Deserialize by inserting values back in preorder sequence, using BST bounds to place each node correctly.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'Design', 'Preorder'],
+      },
+      {
+        id: 'sliding-window-median-segment',
+        title: 'Sliding Window Median',
+        leetcodeNumber: 480,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the median of each sliding window of size k. Use a segment tree or two heaps. As the window slides, add the new element and remove the outgoing element, then query the median in O(log n) per step.',
+        hasVisualization: true,
+        tags: ['Segment Tree', 'Sliding Window', 'Heap', 'Two Pointers'],
+      },
+      {
+        id: 'stamping-the-grid-segment',
+        title: 'Stamping the Grid',
+        leetcodeNumber: 2132,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a binary grid and stamp dimensions, determine if you can stamp the grid to fill all empty cells (0s) without covering occupied cells (1s). Use 2D prefix sums to check if a stamp placement is valid (no 1s in the region) and a 2D difference array to mark covered cells.',
+        hasVisualization: true,
+        tags: ['Prefix Sum', '2D Difference Array', 'Greedy', 'Array'],
+      },
+      {
+        id: 'subtree-of-another-tree-ii',
+        title: 'Subtree of Another Tree II',
+        leetcodeNumber: 572,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and values as subRoot. At each node in root, check if the subtree rooted there is identical to subRoot.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Recursion', 'String Matching'],
+      },
+      {
+        id: 'sum-root-to-leaf-numbers-ii',
+        title: 'Sum Root to Leaf Numbers',
+        leetcodeNumber: 129,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Each root-to-leaf path in the tree represents a number. For example, path 1->2->3 represents 123. Return the total sum of all root-to-leaf numbers. Use DFS, passing the accumulated number down: num = num*10 + node.val.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Math'],
+      },
+      {
+        id: 'symmetric-tree-ii',
+        title: 'Symmetric Tree II',
+        leetcodeNumber: 101,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Check whether a binary tree is symmetric (mirror of itself) using an iterative BFS approach. Use a queue storing pairs of nodes that should be mirrors. For each pair, check values match and enqueue mirrored children.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Queue', 'Symmetry', 'Iterative'],
+      },
+      {
+        id: 'tree-of-coprimes',
+        title: 'Tree of Coprimes',
+        leetcodeNumber: 1766,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a tree with node values, for each node find the closest ancestor (deepest) whose value is coprime with the node\\',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Math', 'GCD'],
+      },
+      {
+        id: 'trim-a-binary-search-tree-ii',
+        title: 'Trim a Binary Search Tree II',
+        leetcodeNumber: 669,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a BST and bounds [low, high], trim the BST so all values lie within [low, high]. If a node value is less than low, its left subtree is also out of range — return trimmed right subtree. If greater than high, return trimmed left subtree. Otherwise trim both children.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'DFS', 'Recursion'],
+      },
+      {
+        id: 'unique-binary-search-trees-ii',
+        title: 'Unique Binary Search Trees II',
+        leetcodeNumber: 95,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer n, generate all structurally unique BSTs that store values 1 to n. For each possible root r (1 to n), all values less than r form the left subtree and all values greater form the right subtree. Recurse and combine all left/right pairs.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'Dynamic Programming', 'Backtracking', 'Recursion'],
+      },
+      {
+        id: 'unique-binary-search-trees-iii',
+        title: 'Unique Binary Search Trees III (Count)',
+        leetcodeNumber: 96,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer n, return the number of structurally unique BSTs storing values 1 to n (Catalan number). Use dynamic programming: dp[i] = sum of dp[j-1] * dp[i-j] for j from 1 to i, where j is the root.',
+        hasVisualization: true,
+        tags: ['Tree', 'BST', 'Dynamic Programming', 'Math', 'Catalan Number'],
+      },
+      {
+        id: 'vertical-order-traversal-ii',
+        title: 'Vertical Order Traversal of a Binary Tree',
+        leetcodeNumber: 987,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the vertical order traversal. For each node at (row, col), collect values sorted by (col, row, val). Nodes in the same position are sorted by value. Use DFS to collect (row, col, val) tuples, then sort and group by column.',
+        hasVisualization: true,
+        tags: ['Tree', 'DFS', 'Sorting', 'Hash Map'],
+      },
+      {
+        id: 'zigzag-level-order-traversal-ii',
+        title: 'Binary Tree Zigzag Level Order Traversal',
+        leetcodeNumber: 103,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given the root of a binary tree, return the zigzag level order traversal of its nodes values. In zigzag order, odd levels go left-to-right and even levels go right-to-left. Use BFS level by level, reversing alternate levels.',
+        hasVisualization: true,
+        tags: ['Tree', 'BFS', 'Level Order'],
       },
     ],
   },
@@ -8422,6 +10821,444 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['graph', 'BFS', 'bidirectional BFS', 'word transformation', 'string'],
       },
+    
+      {
+        id: 'alien-dictionary-iii',
+        title: 'Alien Dictionary',
+        leetcodeNumber: 269,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a sorted list of words from an alien language, derive the order of characters in that language. Build a graph of character ordering constraints from adjacent words, then perform topological sort (Kahn\\',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'String'],
+      },
+      {
+        id: 'build-a-matrix-with-conditions',
+        title: 'Build a Matrix with Conditions',
+        leetcodeNumber: 2392,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given k and row/column conditions specifying relative ordering of integers 1..k, build a k×k matrix where each integer appears exactly once, satisfying all ordering constraints. Use topological sort to determine the row order and column order of each integer, then place them in the matrix.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Matrix'],
+      },
+      {
+        id: 'collect-coins-in-tree',
+        title: 'Collect Coins in a Tree',
+        leetcodeNumber: 2603,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a tree where each node has some coins, collect all coins using the minimum number of edges traversed. From any node you can collect coins within 2 hops. Strategy: (1) Trim all leaf nodes with 0 coins repeatedly (topological sort), (2) trim 2 more rounds, (3) answer is 2 * remaining edges.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Tree'],
+      },
+      {
+        id: 'coloring-a-border',
+        title: 'Coloring A Border',
+        leetcodeNumber: 1034,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a 2D grid, a starting cell (row, col) with original color, and a new color, find the connected component containing the start, then color only its border cells with the new color. Border cells are those on the grid edge or adjacent to a different-color cell.',
+        hasVisualization: true,
+        tags: ['Graph', 'DFS', 'BFS', 'Matrix'],
+      },
+      {
+        id: 'connecting-cities-with-minimum-cost',
+        title: 'Connecting Cities With Minimum Cost',
+        leetcodeNumber: 1135,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'There are N cities numbered 1 to N. Given connections where connections[i] = [city1, city2, cost], find the minimum cost to connect all cities. If impossible, return -1. Classic MST problem solved with Kruskal\\',
+        hasVisualization: true,
+        tags: ['Graph', 'MST', 'Union-Find', 'Kruskal'],
+      },
+      {
+        id: 'count-visited-nodes-in-directed-graph',
+        title: 'Count Visited Nodes in a Directed Graph',
+        leetcodeNumber: 2876,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'In a directed graph where each node has exactly one outgoing edge (edges[i] = j), starting from each node, count how many distinct nodes are visited before revisiting a node (entering a cycle). Use topological sort to process non-cycle nodes and cycle detection to handle cycle nodes.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Cycle Detection'],
+      },
+      {
+        id: 'count-ways-to-build-rooms',
+        title: 'Count Ways to Build Rooms in an Ant Colony',
+        leetcodeNumber: 1916,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a tree rooted at node 0 (prevRoom[i] is the parent of room i), count the number of valid topological orderings to build all rooms (each room must be built after its prevRoom). Use topological sort with combinatorics: multiply factorial of subtree sizes and divide by product of child subtree factorials.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'Combinatorics', 'Tree'],
+      },
+      {
+        id: 'critical-connections-in-network-ii',
+        title: 'Critical Connections in a Network II',
+        leetcodeNumber: 1192,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find all critical connections (bridges) in a network. A bridge is an edge whose removal increases the number of connected components. Uses Tarjan\\',
+        hasVisualization: true,
+        tags: ['Graph', 'DFS', 'Tarjan', 'Bridge Finding'],
+      },
+      {
+        id: 'find-all-possible-recipes',
+        title: 'Find All Possible Recipes from Given Supplies',
+        leetcodeNumber: 2115,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given recipes with ingredient lists, and an initial set of supplies, determine which recipes can be made. Recipes can use other recipes as ingredients. Model as a DAG and use topological sort: ingredients with no dependencies (available supplies) start the process, and recipes become available as their ingredients are gathered.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Hash Map'],
+      },
+      {
+        id: 'find-critical-and-pseudo-critical-edges',
+        title: 'Find Critical and Pseudo-Critical Edges in MST',
+        leetcodeNumber: 1489,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find all critical edges (removing increases MST weight) and pseudo-critical edges (can appear in some MST but not all) in the MST of an undirected graph. Uses brute-force: for each edge, check MST without it and with it forced.',
+        hasVisualization: true,
+        tags: ['Graph', 'MST', 'Kruskal', 'Union-Find'],
+      },
+      {
+        id: 'find-eventual-safe-states-ii',
+        title: 'Find Eventual Safe States',
+        leetcodeNumber: 802,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a directed graph, a node is ',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'DFS'],
+      },
+      {
+        id: 'flower-planting-with-no-adjacent',
+        title: 'Flower Planting With No Adjacent',
+        leetcodeNumber: 1042,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'You have n gardens and paths between them. Plant one of 4 flower types in each garden so that no two adjacent gardens have the same flower type. Since each garden has at most 3 neighbors and we have 4 types, a greedy approach always works.',
+        hasVisualization: true,
+        tags: ['Graph', 'Greedy', 'Graph Coloring'],
+      },
+      {
+        id: 'graph-valid-tree-ii',
+        title: 'Graph Valid Tree II',
+        leetcodeNumber: 261,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given n nodes and a list of undirected edges, check if they form a valid tree. A valid tree must have exactly n-1 edges and be fully connected (no cycles, no disconnected components). Uses Union-Find.',
+        hasVisualization: true,
+        tags: ['Graph', 'Union-Find', 'DFS', 'Tree'],
+      },
+      {
+        id: 'keys-and-rooms-ii',
+        title: 'Keys and Rooms II',
+        leetcodeNumber: 841,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'There are n rooms numbered 0 to n-1. You start in room 0. Each room has a list of keys to other rooms. You can visit a room only if you have its key. Determine if you can visit all rooms. Classic DFS/BFS reachability from node 0.',
+        hasVisualization: true,
+        tags: ['Graph', 'DFS', 'BFS', 'Reachability'],
+      },
+      {
+        id: 'largest-color-value-directed-graph',
+        title: 'Largest Color Value in a Directed Graph',
+        leetcodeNumber: 1857,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a directed graph where each node has a color (a-z), find the largest number of nodes with the same color on any valid path. Use topological sort with DP: for each node, maintain a count array of colors seen on paths ending at that node. Propagate maximums through the DAG.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Dynamic Programming'],
+      },
+      {
+        id: 'longest-increasing-path-matrix-ii',
+        title: 'Longest Increasing Path in a Matrix',
+        leetcodeNumber: 329,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the length of the longest increasing path in an m x n matrix, moving only up/down/left/right. Use DFS with memoization: for each cell, compute the longest path starting from it, caching results to avoid recomputation.',
+        hasVisualization: true,
+        tags: ['Matrix', 'DFS', 'Memoization', 'Dynamic Programming'],
+      },
+      {
+        id: 'longest-path-in-dag',
+        title: 'Longest Path in DAG',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the longest path in a Directed Acyclic Graph (DAG). Use topological sort (Kahn\\',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'DAG', 'Dynamic Programming'],
+      },
+      {
+        id: 'maximum-employees-to-be-invited',
+        title: 'Maximum Employees to Be Invited to a Meeting',
+        leetcodeNumber: 2127,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Each employee i wants to sit next to favorite[i]. Arrange them around a circular table such that each employee sits next to their favorite. Find the maximum number of employees that can be invited. Use topological sort to find chain lengths into cycles, then handle cycles of length 2 (mutual favorites) vs longer cycles separately.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Cycle Detection'],
+      },
+      {
+        id: 'min-cost-to-connect-all-sticks',
+        title: 'Minimum Cost to Connect Sticks',
+        leetcodeNumber: 1167,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of sticks, combine two sticks at cost = sum of their lengths. Find the minimum cost to combine all sticks into one. Use a min-heap: always pick the two shortest sticks to minimize cost at each step.',
+        hasVisualization: true,
+        tags: ['Graph', 'Heap', 'Greedy'],
+      },
+      {
+        id: 'minimum-cost-to-connect-all-points-ii',
+        title: 'Minimum Cost to Connect All Points II',
+        leetcodeNumber: 1584,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array of points where points[i] = [xi, yi], connect all points with minimum total cost. Cost between two points is their Manhattan distance. Uses Prim\\',
+        hasVisualization: true,
+        tags: ['Graph', 'MST', 'Prim', 'Manhattan Distance'],
+      },
+      {
+        id: 'minimum-cost-to-make-at-least-one-valid-path',
+        title: 'Minimum Cost to Make at Least One Valid Path in a Grid',
+        leetcodeNumber: 1368,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a grid where each cell has a direction (1=right, 2=left, 3=down, 4=up), find the minimum cost to go from (0,0) to (m-1,n-1). Moving in the cell\\',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'Deque', '0-1 BFS', 'Shortest Path'],
+      },
+      {
+        id: 'minimum-height-trees-ii',
+        title: 'Minimum Height Trees',
+        leetcodeNumber: 310,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an undirected tree with n nodes, find all roots that produce minimum height trees. The key insight: roots of minimum height trees are always the center node(s) of the tree (at most 2). Use a topological sort approach: repeatedly trim leaf nodes (degree 1) until 1 or 2 nodes remain. Those are the MHT roots.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Tree'],
+      },
+      {
+        id: 'minimum-number-of-vertices-to-reach-all',
+        title: 'Minimum Number of Vertices to Reach All Nodes',
+        leetcodeNumber: 1557,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a DAG, find the smallest set of vertices from which all nodes are reachable. The key insight: any node with in-degree > 0 can be reached from some other node, so it doesn\\',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'In-Degree'],
+      },
+      {
+        id: 'minimum-spanning-tree-kruskal',
+        title: 'Kruskal',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Kruskal',
+        hasVisualization: true,
+        tags: ['Graph', 'MST', 'Union-Find', 'Greedy', 'Sorting'],
+      },
+      {
+        id: 'minimum-spanning-tree-prim',
+        title: 'Prim',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Prim',
+        hasVisualization: true,
+        tags: ['Graph', 'MST', 'Greedy', 'Heap'],
+      },
+      {
+        id: 'minimum-time-to-complete-all-tasks',
+        title: 'Minimum Time to Complete All Tasks',
+        leetcodeNumber: 2589,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'A computer can run tasks with given durations and execution windows [start, end]. A task must run for exactly duration seconds within its [start, end] interval. Find the minimum total seconds the computer must be running. Use greedy: sort by end time, then for each task greedily reuse already-running seconds in its window and add new time at the end if needed.',
+        hasVisualization: true,
+        tags: ['Graph', 'Greedy', 'Topological Sort', 'Sorting'],
+      },
+      {
+        id: 'network-delay-time-iii',
+        title: 'Network Delay Time III',
+        leetcodeNumber: 743,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'You have a network of n nodes and weighted directed edges. Given source node k, find the minimum time for a signal to reach ALL nodes. If any node is unreachable, return -1. Uses Bellman-Ford algorithm instead of Dijkstra for variety.',
+        hasVisualization: true,
+        tags: ['Graph', 'Bellman-Ford', 'Shortest Path'],
+      },
+      {
+        id: 'number-of-connected-components-ii',
+        title: 'Number of Connected Components in Undirected Graph II',
+        leetcodeNumber: 323,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given n nodes (0 to n-1) and a list of undirected edges, count the number of connected components. Uses Union-Find with path compression and union by rank for O(α(n)) per operation.',
+        hasVisualization: true,
+        tags: ['Graph', 'Union-Find', 'DFS'],
+      },
+      {
+        id: 'number-of-islands-matrix',
+        title: 'Number of Islands (Matrix)',
+        leetcodeNumber: 200,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of islands in a 2D grid of 1s (land) and 0s (water). An island is surrounded by water and is formed by connecting adjacent land cells horizontally or vertically. Use DFS/BFS to mark each connected component.',
+        hasVisualization: true,
+        tags: ['Matrix', 'DFS', 'BFS', 'Graph'],
+      },
+      {
+        id: 'number-of-provinces-ii',
+        title: 'Number of Provinces II',
+        leetcodeNumber: 547,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an n x n adjacency matrix isConnected where isConnected[i][j] = 1 means city i and j are directly connected, find the number of provinces (connected components). Solved with DFS traversal instead of Union-Find.',
+        hasVisualization: true,
+        tags: ['Graph', 'DFS', 'Connected Components'],
+      },
+      {
+        id: 'number-of-ways-to-reach-destination-ii',
+        title: 'Number of Ways to Arrive at Destination',
+        leetcodeNumber: 1976,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a graph of roads with travel times, find the number of ways to reach the destination from node 0 with the minimum travel time. Combine Dijkstra\\',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'Dijkstra', 'Dynamic Programming'],
+      },
+      {
+        id: 'open-the-lock-ii',
+        title: 'Open the Lock II',
+        leetcodeNumber: 752,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'A lock has 4 wheels (0-9). Start at ',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'Shortest Path'],
+      },
+      {
+        id: 'optimize-water-distribution',
+        title: 'Optimize Water Distribution in a Village',
+        leetcodeNumber: 1168,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'There are n houses and you can build a well in any house or lay pipes between houses. Find minimum cost to supply water to all houses. Trick: add virtual node 0 connected to each house with well cost, then run Kruskal\\',
+        hasVisualization: true,
+        tags: ['Graph', 'MST', 'Union-Find', 'Kruskal'],
+      },
+      {
+        id: 'pacific-atlantic-waterflow-matrix',
+        title: 'Pacific Atlantic Water Flow',
+        leetcodeNumber: 417,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find all cells in an m x n matrix from which water can flow to both the Pacific ocean (top/left border) and Atlantic ocean (bottom/right border). BFS/DFS from each border inward, marking reachable cells, then return the intersection.',
+        hasVisualization: true,
+        tags: ['Matrix', 'BFS', 'DFS', 'Graph'],
+      },
+      {
+        id: 'parallel-courses-iii',
+        title: 'Parallel Courses III',
+        leetcodeNumber: 2050,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given n courses, prerequisite relations, and a time array for each course, find the minimum time to complete all courses. Courses can be taken in parallel if prerequisites are satisfied. Use topological sort with BFS: maintain the earliest start time for each course, and propagate through the DAG. The answer is the maximum completion time.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS', 'Dynamic Programming'],
+      },
+      {
+        id: 'possible-bipartition-ii',
+        title: 'Possible Bipartition II',
+        leetcodeNumber: 886,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given n people (1 to n) and a list of dislike pairs, determine if we can split everyone into two groups such that no two people who dislike each other are in the same group. This is equivalent to checking if the dislikes graph is bipartite.',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'Bipartite', '2-Coloring'],
+      },
+      {
+        id: 'reorder-routes-to-lead-to-city',
+        title: 'Reorder Routes to Make All Paths Lead to the City Zero',
+        leetcodeNumber: 1466,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a tree rooted at city 0 with directed roads, find the minimum number of edges that must be reversed so all cities can reach city 0. BFS from city 0: if an edge leads away from 0 (we traverse it in reverse), we must flip it, costing 1. Edges already pointing toward 0 cost 0.',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'Topological Sort', 'Tree'],
+      },
+      {
+        id: 'rotting-oranges-ii',
+        title: 'Rotting Oranges II',
+        leetcodeNumber: 994,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'In a grid: 0=empty, 1=fresh orange, 2=rotten orange. Every minute, rotten oranges spread rot to adjacent fresh oranges. Find minimum minutes until no fresh oranges remain, or -1 if impossible. Classic multi-source BFS.',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'Matrix', 'Multi-Source BFS'],
+      },
+      {
+        id: 'sequence-reconstruction',
+        title: 'Sequence Reconstruction',
+        leetcodeNumber: 444,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a sequence nums (a permutation of 1..n) and a list of subsequences, determine if nums is the only shortest supersequence that can be reconstructed from the subsequences. Use topological sort: build an ordering graph from the subsequences and verify there is a unique topological order matching nums.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS'],
+      },
+      {
+        id: 'shortest-bridge-ii',
+        title: 'Shortest Bridge II',
+        leetcodeNumber: 934,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a binary matrix with exactly two islands (groups of 1s), find the minimum number of 0s to flip to connect them. Use DFS to mark the first island, then BFS expanding outward to reach the second island.',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'DFS', 'Matrix'],
+      },
+      {
+        id: 'snakes-and-ladders-matrix',
+        title: 'Snakes and Ladders',
+        leetcodeNumber: 909,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the minimum number of moves to reach the last cell on an n x n snakes and ladders board. The board is numbered in Boustrophedon style (alternating left-to-right, right-to-left from bottom row). Use BFS from cell 1.',
+        hasVisualization: true,
+        tags: ['Matrix', 'BFS', 'Graph'],
+      },
+      {
+        id: 'sort-items-by-groups-respecting-dependencies',
+        title: 'Sort Items by Groups Respecting Dependencies',
+        leetcodeNumber: 1203,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'There are n items, each belonging to a group. Items have dependencies (DAG). Sort items such that: (1) items within a group are contiguous, (2) dependencies are respected. Solve with two-level topological sort: first sort items within groups, then sort groups, then combine.',
+        hasVisualization: true,
+        tags: ['Graph', 'Topological Sort', 'BFS'],
+      },
+      {
+        id: 'surrounded-regions-ii',
+        title: 'Surrounded Regions II',
+        leetcodeNumber: 130,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a matrix of \\',
+        hasVisualization: true,
+        tags: ['Graph', 'DFS', 'BFS', 'Matrix'],
+      },
+      {
+        id: 'word-ladder-iv',
+        title: 'Word Ladder IV',
+        leetcodeNumber: 127,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given beginWord, endWord, and a word list, find the length of the shortest transformation sequence from beginWord to endWord where each step changes exactly one letter and the intermediate word must be in the word list. Uses bidirectional BFS for efficiency.',
+        hasVisualization: true,
+        tags: ['Graph', 'BFS', 'Bidirectional BFS', 'String'],
+      },
     ],
   },
 
@@ -9046,6 +11883,27 @@ export const CATEGORIES: CategoryInfo[] = [
           'Given a string s and a dictionary of words, add spaces to s to construct all possible sentences where each word is a valid dictionary word. Use backtracking with memoization: at each position try every prefix and recurse if the prefix is in the dictionary.',
         hasVisualization: true,
         tags: ['backtracking', 'dynamic programming', 'trie', 'memoization', 'string'],
+      },
+    
+      {
+        id: 'letter-case-permutation-ii',
+        title: 'Letter Case Permutation II',
+        leetcodeNumber: 784,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a string, generate all possible strings by converting each letter to uppercase or lowercase. Digits remain unchanged. Use backtracking or BFS: at each character position, if it\\',
+        hasVisualization: true,
+        tags: ['Backtracking', 'String', 'Bit Manipulation'],
+      },
+      {
+        id: 'word-search-matrix',
+        title: 'Word Search',
+        leetcodeNumber: 79,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an m x n character grid and a word, return true if the word exists in the grid. The word can be constructed from adjacent (horizontally or vertically) cells. Each cell may be used only once. Use DFS/backtracking.',
+        hasVisualization: true,
+        tags: ['Matrix', 'DFS', 'Backtracking'],
       },
     ],
   },
@@ -10852,6 +13710,701 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['dynamic programming', 'dfs', 'memoization', 'string', 'simulation'],
       },
+    
+      {
+        id: 'all-possible-full-binary-trees-dp',
+        title: 'All Possible Full Binary Trees',
+        leetcodeNumber: 894,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'A full binary tree has every node with either 0 or 2 children. Given n (odd number), return all possible full binary trees with n nodes. Use recursive DP with memoization: for each odd left size l (1, 3, 5, ..., n-2), combine all trees of size l for left subtree with all trees of size n-l-1 for right subtree.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Recursion', 'Memoization'],
+      },
+      {
+        id: 'assignment-problem-hungarian',
+        title: 'Assignment Problem (Hungarian Algorithm)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Assign n workers to n jobs to minimize total cost using the Hungarian Algorithm (bitmask DP). dp[mask] = minimum cost to assign workers 0..popcount(mask)-1 to jobs indicated by mask. Time: O(n^2 * 2^n).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Assignment Problem', 'Optimization', 'Bit Manipulation'],
+      },
+      {
+        id: 'beautiful-arrangement-ii',
+        title: 'Beautiful Arrangement II',
+        leetcodeNumber: 667,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Construct an array using integers 1 to n such that there are exactly k distinct absolute differences between adjacent elements. Use a greedy interleaving strategy: first k+1 elements alternate max/min to create k distinct diffs, then fill remaining in sorted order.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Array', 'Greedy', 'Construction'],
+      },
+      {
+        id: 'best-time-to-buy-sell-stock-cooldown-ii',
+        title: 'Best Time to Buy and Sell Stock with Cooldown',
+        leetcodeNumber: 309,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'After selling stock, you must wait one cooldown day before buying again. State machine DP: held = max profit holding stock, sold = max profit just sold (in cooldown), rest = max profit in rest state. Transitions: held = max(held, rest - price), sold = held + price, rest = max(rest, sold).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine'],
+      },
+      {
+        id: 'best-time-to-buy-sell-stock-fee-ii',
+        title: 'Best Time to Buy and Sell Stock with Transaction Fee',
+        leetcodeNumber: 714,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find max profit buying and selling stocks with a transaction fee paid on each sale. Unlimited transactions allowed. State machine DP: cash = max profit not holding stock, hold = max profit holding stock. cash = max(cash, hold + price - fee), hold = max(hold, cash - price).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine', 'Greedy'],
+      },
+      {
+        id: 'best-time-to-buy-sell-stock-iv',
+        title: 'Best Time to Buy and Sell Stock IV',
+        leetcodeNumber: 188,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an array of stock prices and at most k transactions, find the maximum profit. State machine DP: for each transaction, track the max profit when holding or not holding stock. dp[t][0] = max profit with t transactions not holding, dp[t][1] = max profit holding.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine', 'Greedy'],
+      },
+      {
+        id: 'binary-lifting',
+        title: 'Binary Lifting (LCA)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Binary Lifting is a technique for O(log n) LCA (Lowest Common Ancestor) queries after O(n log n) preprocessing. For each node v, precompute ancestor[v][j] = the 2^j-th ancestor of v. LCA(u, v): first bring u and v to same depth, then simultaneously jump both in decreasing powers of 2 until they diverge; the parent of that divergence point is the LCA.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'LCA', 'Binary Lifting', 'Advanced'],
+      },
+      {
+        id: 'binary-tree-cameras-dp',
+        title: 'Binary Tree Cameras',
+        leetcodeNumber: 968,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Place cameras on tree nodes to monitor every node. A camera at node v monitors v, its parent, and its children. Minimize the number of cameras. Use DP with three states per node: 0 = not covered, 1 = has camera, 2 = covered (no camera). Post-order DFS: leaves return 0 (not covered), forcing parent to place a camera.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Greedy', 'DFS'],
+      },
+      {
+        id: 'can-i-win-bitmask',
+        title: 'Can I Win (Bitmask DP)',
+        leetcodeNumber: 464,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Two players alternately choose integers from 1 to maxChoosableInteger. The player who causes the cumulative total to reach or exceed desiredTotal wins. Uses bitmask DP where each bit indicates if that number has been chosen.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Game Theory', 'Minimax', 'Bit Manipulation'],
+      },
+      {
+        id: 'centroid-decomposition',
+        title: 'Centroid Decomposition',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Centroid Decomposition decomposes a tree recursively. The centroid of a tree is the node whose removal results in all subtrees having size <= n/2. By recursively finding centroids, we build a centroid tree of height O(log n). This enables efficient O(n log n) solutions for path problems: any path passes through the centroid of some decomposed subtree.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Centroid Decomposition', 'Advanced'],
+      },
+      {
+        id: 'count-number-of-maximum-bitwise-or',
+        title: 'Count Number of Maximum Bitwise-OR Subsets',
+        leetcodeNumber: 2044,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer array, find the maximum possible bitwise OR of a subset, then count how many subsets achieve that maximum. The maximum OR is the OR of all elements. Uses bitmask DP or enumeration over all 2^n subsets.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Array', 'Backtracking'],
+      },
+      {
+        id: 'count-subtrees-with-max-distance',
+        title: 'Count Subtrees with Max Distance Between Cities',
+        leetcodeNumber: 1617,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given n cities forming a tree, for each possible diameter d (1 to n-1), count how many subtrees have exactly d as their maximum distance between any two nodes. Enumerate all 2^n subsets, and for each connected subset compute the diameter using BFS/DFS. The diameter of a tree equals the sum of the two longest branches from any internal node.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'BFS', 'Bitmask', 'Hard'],
+      },
+      {
+        id: 'decode-ways-ii-dp',
+        title: 'Decode Ways II',
+        leetcodeNumber: 639,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Count ways to decode a string containing digits and ',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'String', 'State Machine'],
+      },
+      {
+        id: 'diameter-of-tree-dp',
+        title: 'Diameter of Binary Tree (Tree DP)',
+        leetcodeNumber: 543,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The diameter of a binary tree is the length of the longest path between any two nodes (not necessarily through root). Use tree DP: for each node, compute the height of its left and right subtrees. The diameter through this node = leftHeight + rightHeight. Track the global maximum across all nodes.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Diameter'],
+      },
+      {
+        id: 'distribute-coins-dp',
+        title: 'Distribute Coins in Binary Tree',
+        leetcodeNumber: 979,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Each node in a binary tree has some coins; total coins equals total nodes. In each move, you can move one coin between adjacent nodes. Return the minimum number of moves. Post-order DFS: for each node, compute the excess coins (node.val + leftFlow + rightFlow - 1). Each unit of excess/deficit requires one move to flow through the edge to parent.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Recursion'],
+      },
+      {
+        id: 'distribute-repeating-integers',
+        title: 'Distribute Repeating Integers',
+        leetcodeNumber: 1655,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an array of integers and customer quantity requirements, determine if all customers can be satisfied. Uses bitmask DP over customer subsets where dp[mask] = minimum number of distinct integers needed to satisfy customers in mask.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Backtracking', 'Bit Manipulation'],
+      },
+      {
+        id: 'domino-and-tromino-tiling-ii',
+        title: 'Domino and Tromino Tiling',
+        leetcodeNumber: 790,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count ways to tile a 2×n board using dominoes (1×2) and trominoes (L-shaped 2×2 minus one corner). DP recurrence: dp[n] = 2*dp[n-1] + dp[n-3]. Answer modulo 10^9+7.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine', 'Tiling'],
+      },
+      {
+        id: 'dungeon-game-matrix',
+        title: 'Dungeon Game',
+        leetcodeNumber: 174,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'A knight starts at top-left and must reach the princess at bottom-right of a dungeon grid (negative=demon, positive=magic). Find the minimum initial health needed to survive. Use DP from bottom-right: dp[i][j] = max(1, min(dp[i+1][j], dp[i][j+1]) - dungeon[i][j]).',
+        hasVisualization: true,
+        tags: ['Matrix', 'Dynamic Programming'],
+      },
+      {
+        id: 'euler-tour-technique',
+        title: 'Euler Tour Technique',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The Euler Tour of a tree visits each node multiple times: once when entering and once after each child is processed. This ',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Euler Tour', 'LCA'],
+      },
+      {
+        id: 'fair-distribution-of-cookies',
+        title: 'Fair Distribution of Cookies',
+        leetcodeNumber: 2305,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given cookie bags and k children, distribute all bags to minimize the maximum cookies any child receives (unfairness). Uses bitmask DP: subSum[mask]=total cookies in bags of mask, dp[i][mask]=min unfairness distributing bags in mask to i children.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Backtracking', 'Bit Manipulation'],
+      },
+      {
+        id: 'find-minimum-time-to-finish-jobs',
+        title: 'Find Minimum Time to Finish All Jobs',
+        leetcodeNumber: 1723,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given jobs and k workers, assign all jobs to workers to minimize the maximum working time of any worker. Uses bitmask DP: precompute subset sums, then dp[i][mask] = min max-time using i workers to handle jobs in mask.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Binary Search', 'Backtracking'],
+      },
+      {
+        id: 'flip-game-bitmask',
+        title: 'Flip Game II (Bitmask DP)',
+        leetcodeNumber: 294,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a game string of + and -, players alternate flipping ',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Game Theory', 'Minimax', 'Bit Manipulation'],
+      },
+      {
+        id: 'frog-jump-ii',
+        title: 'Frog Jump II',
+        leetcodeNumber: 2498,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given sorted stone positions, a frog must jump forward and back exactly once touching each stone. Minimize the maximum jump length. Greedy insight: skip every other stone on the way forward (take stones 0, 2, 4, ...) and pick up the rest on the way back. The answer is max gap between every other stone.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Greedy', 'Binary Search'],
+      },
+      {
+        id: 'heavy-light-decomposition',
+        title: 'Heavy-Light Decomposition',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Heavy-Light Decomposition (HLD) decomposes a tree into chains, allowing path queries to be answered efficiently using a segment tree or other data structure. Each node has a ',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Heavy-Light Decomposition', 'Advanced'],
+      },
+      {
+        id: 'house-robber-iii-dp',
+        title: 'House Robber III',
+        leetcodeNumber: 337,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'The thief has found a new place to rob: a binary tree neighborhood. Each node stores money. The constraint is that adjacent nodes (parent-child) cannot both be robbed. Use tree DP: for each node, compute two values — max money if this node is robbed, and max money if it is not robbed. The answer is the max of these two at the root.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Recursion'],
+      },
+      {
+        id: 'jump-game-dp',
+        title: 'Jump Game (DP Approach)',
+        leetcodeNumber: 55,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Determine if you can reach the last index from the first index. Each element gives maximum jump length. DP approach: dp[i] = true if index i is reachable. dp[i] = true if exists j < i where dp[j] && j + nums[j] >= i. Space-optimized: track furthest reachable index.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Greedy', 'Array'],
+      },
+      {
+        id: 'knight-dialer-ii',
+        title: 'Knight Dialer',
+        leetcodeNumber: 935,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count distinct phone numbers of length n a knight can dial starting from any digit (0-9) on a phone keypad. Knight moves follow chess rules. dp[i][d] = ways to form numbers of length i ending at digit d. Transition via knight jumps.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine', 'Graph'],
+      },
+      {
+        id: 'longest-path-different-colors-dp',
+        title: 'Longest Path with Different Adjacent Colors',
+        leetcodeNumber: 2246,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a tree (not necessarily binary) with colored nodes, find the longest path where no two adjacent nodes share the same color. Use tree DP: for each node, compute the longest downward path with a different color from the current node. The answer is updated as the sum of the two longest valid paths through each node.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Graph'],
+      },
+      {
+        id: 'lowest-common-ancestor-dp',
+        title: 'Lowest Common Ancestor (DP)',
+        leetcodeNumber: 1483,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Preprocess a binary tree so that LCA queries and k-th ancestor queries can be answered efficiently. Using DP: dp[node][j] = 2^j-th ancestor of node. For LCA(u, v): first equalize depths using binary lifting, then simultaneously move both nodes up. This DP-based approach answers each query in O(log n) after O(n log n) preprocessing.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'LCA', 'Binary Lifting'],
+      },
+      {
+        id: 'maximal-square-matrix',
+        title: 'Maximal Square',
+        leetcodeNumber: 221,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the largest square containing only 1s in a binary matrix and return its area. Use DP: dp[i][j] = side length of the largest square whose bottom-right corner is at (i,j). dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1 when matrix[i][j]==',
+        hasVisualization: true,
+        tags: ['Matrix', 'Dynamic Programming'],
+      },
+      {
+        id: 'maximize-score-after-n-operations',
+        title: 'Maximize Score After N Operations',
+        leetcodeNumber: 1799,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given 2n integers, perform n operations. In operation k, choose 2 elements, score += k * gcd(a, b), remove them. Maximize total score. Uses bitmask DP: dp[mask] = max score using elements in mask (popcount must be even).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Math', 'Bit Manipulation'],
+      },
+      {
+        id: 'maximum-compatibility-score-sum',
+        title: 'Maximum Compatibility Score Sum',
+        leetcodeNumber: 1947,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given student and mentor answer arrays, assign each student to exactly one mentor to maximize the total compatibility score. Compatibility = number of matching answers. Uses bitmask DP over mentor assignments.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Array'],
+      },
+      {
+        id: 'maximum-independent-set-tree',
+        title: 'Maximum Independent Set on Tree',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'An independent set is a set of vertices with no two adjacent. Find the maximum independent set on a tree. Tree DP: dp[v][0] = max IS size in subtree of v when v is NOT selected; dp[v][1] = max IS size when v IS selected. Transition: if v selected, no children can be selected. If v not selected, each child can be selected or not.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Independent Set'],
+      },
+      {
+        id: 'maximum-product-path-tree',
+        title: 'Maximum Product of Splitted Binary Tree',
+        leetcodeNumber: 1339,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a binary tree, remove one edge to split it into two subtrees. Return the maximum product of their subtree sums modulo 1e9+7. First compute the total sum. Then for each possible split (each node\\',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS'],
+      },
+      {
+        id: 'maximum-profit-in-job-scheduling-ii',
+        title: 'Maximum Profit in Job Scheduling',
+        leetcodeNumber: 1235,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given jobs with start, end, and profit, find maximum profit scheduling non-overlapping jobs. Sort by end time. dp[i] = max profit considering first i jobs. For each job, binary search for last non-overlapping job, then dp[i] = max(dp[i-1], dp[lastNonOverlap] + profit[i]).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Binary Search', 'Interval Scheduling'],
+      },
+      {
+        id: 'maximum-students-taking-exam',
+        title: 'Maximum Students Taking Exam',
+        leetcodeNumber: 1349,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a classroom grid where some seats are broken, find the maximum number of students that can take exam without cheating. Students cannot sit adjacent (left/right) or diagonally adjacent to another student. Uses bitmask DP row by row.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Matrix'],
+      },
+      {
+        id: 'minimum-cost-to-cut-rod',
+        title: 'Minimum Cost to Cut a Stick',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a rod of length n and cut positions, find the minimum cost to make all cuts. Cost of a cut = length of the segment being cut. DP on intervals: dp[i][j] = min cost to make all cuts between cut[i] and cut[j]. dp[i][j] = min over k of dp[i][k] + dp[k][j] + (cuts[j] - cuts[i]).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Interval DP'],
+      },
+      {
+        id: 'minimum-cost-to-make-array-equal',
+        title: 'Minimum Cost to Make Array Equal',
+        leetcodeNumber: 2448,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given arrays nums and cost, find a target value x minimizing sum(cost[i] * |nums[i] - x|). The optimal x is the weighted median of nums with weights cost. Use prefix sums on sorted (value, cost) pairs to compute cost at each candidate target efficiently.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Binary Search', 'Prefix Sum', 'Weighted Median'],
+      },
+      {
+        id: 'minimum-cost-to-split-array',
+        title: 'Minimum Cost to Split an Array',
+        leetcodeNumber: 2547,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Split array into subarrays where cost = k * (number of splits) + sum of trimmed subarray costs. Trimmed cost of a subarray = count of elements that appear more than once. dp[i] = min cost to split nums[0..i-1]. For each split point, compute trimmed cost using frequency counting.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Hash Map', 'Counting'],
+      },
+      {
+        id: 'minimum-cost-to-visit-every-node',
+        title: 'Minimum Cost to Visit Every Node (TSP Variant)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the minimum cost path that visits every node in a weighted graph starting from node 0. This is the Travelling Salesman Problem solved with bitmask DP: dp[mask][i] = minimum cost to have visited nodes in mask, currently at node i.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'TSP', 'Graph', 'Bit Manipulation'],
+      },
+      {
+        id: 'minimum-difficulty-of-job-schedule-ii',
+        title: 'Minimum Difficulty of a Job Schedule',
+        leetcodeNumber: 1335,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Schedule n jobs over d days such that each day completes at least one job in order. Day difficulty = max job difficulty that day. Minimize total difficulty. dp[i][j] = min difficulty completing first j jobs in i days. For each day boundary k, dp[i][j] = min(dp[i-1][k] + max(jobs[k..j-1])).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine', 'Scheduling'],
+      },
+      {
+        id: 'minimum-number-of-work-sessions',
+        title: 'Minimum Number of Work Sessions to Finish the Tasks',
+        leetcodeNumber: 1986,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given tasks with durations and a session length limit, find the minimum number of work sessions to complete all tasks. Tasks can be split across sessions but not split within. Uses bitmask DP: dp[mask] = minimum sessions and remaining time in last session.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Backtracking', 'Bit Manipulation'],
+      },
+      {
+        id: 'minimum-path-sum-matrix',
+        title: 'Minimum Path Sum',
+        leetcodeNumber: 64,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an m x n grid filled with non-negative numbers, find a path from top-left to bottom-right that minimizes the sum of all numbers along the path. You can only move right or down. Use DP: dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1]).',
+        hasVisualization: true,
+        tags: ['Matrix', 'Dynamic Programming'],
+      },
+      {
+        id: 'minimum-total-distance-traveled',
+        title: 'Minimum Total Distance Traveled',
+        leetcodeNumber: 2463,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Assign robots to factories to minimize total travel distance. Each factory[i] has a position and limited capacity. Sort both by position. dp[i][j] = min total distance assigning first i robots to first j factories. Transition: assign k consecutive robots to factory j.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Sorting', 'Assignment'],
+      },
+      {
+        id: 'minimum-white-tiles',
+        title: 'Minimum White Tiles After Covering With Carpets',
+        leetcodeNumber: 2209,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a floor string of ',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Prefix Sum', 'Greedy'],
+      },
+      {
+        id: 'minimum-xor-sum-of-two-arrays',
+        title: 'Minimum XOR Sum of Two Arrays',
+        leetcodeNumber: 1879,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given two arrays nums1 and nums2, rearrange nums2 to minimize sum of XOR of corresponding elements. Uses bitmask DP: dp[mask] = minimum XOR sum when pairing first popcount(mask) elements of nums1 with elements of nums2 indicated by mask.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Array'],
+      },
+      {
+        id: 'number-of-dice-rolls-with-target-ii',
+        title: 'Number of Dice Rolls With Target Sum',
+        leetcodeNumber: 1155,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count ways to roll n dice each with k faces (1..k) so that the sum equals target. dp[i][s] = ways to achieve sum s using i dice. dp[i][s] = sum of dp[i-1][s-f] for f in 1..k. Answer modulo 10^9+7.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Combinatorics'],
+      },
+      {
+        id: 'number-of-good-leaf-pairs-dp',
+        title: 'Number of Good Leaf Node Pairs',
+        leetcodeNumber: 1530,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a binary tree and integer distance, count pairs of leaf nodes whose shortest path distance is <= distance. Use tree DP: each dfs call returns an array of distances from current node to all leaves in its subtree. At each node, combine left and right leaf distance arrays, count pairs with sum <= distance, and return shifted-up distances.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Recursion'],
+      },
+      {
+        id: 'number-of-ways-to-wear-hats',
+        title: 'Number of Ways to Wear Different Hats',
+        leetcodeNumber: 1434,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given n people and 40 hat types where each person has a list of favorite hats, count the number of ways to assign a different hat to each person such that each person gets a hat they like. Uses bitmask DP over people assignments for each hat.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation'],
+      },
+      {
+        id: 'out-of-boundary-paths-dp',
+        title: 'Out of Boundary Paths',
+        leetcodeNumber: 576,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count paths for a ball starting at (startRow, startCol) in an m×n grid to move out of bounds in exactly maxMove moves. dp[move][r][c] = ways to exit in exactly (remaining) moves from (r,c). Sum contributions from all border-crossing moves.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'BFS', 'State Machine'],
+      },
+      {
+        id: 'paint-fence-dp',
+        title: 'Paint Fence',
+        leetcodeNumber: 276,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count ways to paint n fence posts with k colors so that at most 2 adjacent posts have the same color. DP: same[i] = ways last two posts are same color, diff[i] = ways last two posts differ. same[i] = diff[i-1], diff[i] = (same[i-1] + diff[i-1]) * (k-1).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine', 'Combinatorics'],
+      },
+      {
+        id: 'paint-house-dp',
+        title: 'Paint House',
+        leetcodeNumber: 256,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Paint n houses with 3 colors (Red, Blue, Green) such that no two adjacent houses have the same color. Minimize total cost. dp[i][c] = min cost to paint house i with color c, considering no same-color constraint with house i-1.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine'],
+      },
+      {
+        id: 'paint-house-ii-dp',
+        title: 'Paint House II',
+        leetcodeNumber: 265,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Paint n houses with k colors such that no two adjacent houses have the same color. Minimize total cost. Optimized O(nk) DP: track the best and second-best costs from previous house to avoid O(k^2) transitions.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'State Machine'],
+      },
+      {
+        id: 'parallel-courses-bitmask',
+        title: 'Parallel Courses (Bitmask DP)',
+        leetcodeNumber: 1136,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given course prerequisites as a DAG, find the minimum number of semesters to complete all courses. Each semester you can take any subset of courses whose prerequisites are met. Uses bitmask DP where dp[mask] = minimum semesters to complete courses in mask.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Topological Sort', 'Graph', 'Bit Manipulation'],
+      },
+      {
+        id: 'people-whose-list-of-favorite-companies',
+        title: 'People Whose List of Favorite Companies is Not a Subset',
+        leetcodeNumber: 1452,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find all people whose favorite company list is not a subset of any other person',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'String', 'Set'],
+      },
+      {
+        id: 'pizza-with-3n-slices',
+        title: 'Pizza With 3n Slices',
+        leetcodeNumber: 1388,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given 3n pizza slices in a circle, Alice picks first, then Bob picks adjacent, then Charlie picks adjacent. You (Alice) want to maximize your total. Equivalent to: pick n non-adjacent elements from a circular array to maximize sum. DP on two linear subarrays (house robber on circle).',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Greedy', 'House Robber'],
+      },
+      {
+        id: 're-rooting-technique',
+        title: 'Re-Rooting Technique',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Re-rooting (or rerooting) is a tree DP technique that computes, for each node, the answer if that node were the root. First DFS computes values rooted at node 0 (subtree sizes, distances). Second DFS propagates to children: when we move the root from parent to child, we can update the child\\',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Graph', 'Advanced'],
+      },
+      {
+        id: 'shortest-path-to-get-all-keys',
+        title: 'Shortest Path to Get All Keys',
+        leetcodeNumber: 864,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a grid with keys (a-f) and locks (A-F), find the shortest path to collect all keys. State is (row, col, keyMask). Uses BFS with bitmask state where each bit represents a collected key.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'BFS', 'Graph', 'Bit Manipulation'],
+      },
+      {
+        id: 'smallest-sufficient-team',
+        title: 'Smallest Sufficient Team',
+        leetcodeNumber: 1125,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the smallest team of people such that the team covers all required skills. Each person has a subset of skills. Uses bitmask DP where dp[mask] = minimum people needed to cover the skills in mask.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Array'],
+      },
+      {
+        id: 'special-permutations',
+        title: 'Special Permutations',
+        leetcodeNumber: 2741,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count permutations of nums where every adjacent pair (nums[i], nums[i+1]) satisfies: nums[i] % nums[i+1] == 0 or nums[i+1] % nums[i] == 0. Uses bitmask DP: dp[mask][i] = number of ways to arrange elements in mask ending with nums[i].',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'Bit Manipulation', 'Array'],
+      },
+      {
+        id: 'stickers-to-spell-word',
+        title: 'Stickers to Spell Word',
+        leetcodeNumber: 691,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given sticker strings and a target word, find the minimum number of stickers to spell the target. Uses bitmask DP where each bit represents whether a character in target has been covered. dp[mask] = min stickers to cover characters indicated by mask.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'BFS', 'Bit Manipulation'],
+      },
+      {
+        id: 'sum-of-distances-dp',
+        title: 'Sum of Distances in Tree',
+        leetcodeNumber: 834,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an undirected tree with n nodes, return an array where answer[i] is the sum of distances from node i to all other nodes. Solve in O(n) with two DFS passes: first pass computes subtree sizes and distances from root; second pass uses re-rooting to compute distances for all nodes.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Graph'],
+      },
+      {
+        id: 'traveling-salesman-problem',
+        title: 'Traveling Salesman Problem (TSP)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the shortest route that visits every city exactly once and returns to the starting city. Classic TSP solved with bitmask DP (Held-Karp algorithm): dp[mask][i] = minimum distance to visit cities in mask, ending at city i, starting from city 0.',
+        hasVisualization: true,
+        tags: ['Dynamic Programming', 'Bitmask', 'TSP', 'Graph', 'Held-Karp', 'Bit Manipulation'],
+      },
+      {
+        id: 'tree-coloring-problem',
+        title: 'Tree Coloring Problem',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Color a binary tree with k colors such that no two adjacent nodes (parent-child) share the same color. Use tree DP: dp[node][c] = minimum cost to color the subtree rooted at node with color c. For each node and color, sum the minimum cost of each child using any color different from c. Classic application of tree DP with state transitions.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Coloring', 'DFS'],
+      },
+      {
+        id: 'tree-dp-basics',
+        title: 'Tree DP Basics',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Tree DP (Dynamic Programming on Trees) is a fundamental technique where we compute DP states for each node based on its children\\',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Tutorial'],
+      },
+      {
+        id: 'tree-isomorphism',
+        title: 'Tree Isomorphism',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Two trees are isomorphic if one can be transformed into the other by renaming vertices. Canonical form algorithm: recursively compute a canonical string for each subtree by sorting children\\',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Hashing', 'Canonical Form'],
+      },
+      {
+        id: 'tree-knapsack',
+        title: 'Tree Knapsack (Dependent Knapsack)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Tree Knapsack (also called Dependent Knapsack) generalizes 0/1 knapsack to a tree structure: selecting a node requires selecting its parent. Given a tree where each node has a weight and value, and a budget W, maximize total value subject to total weight <= W and the dependency constraint. Use tree DP: dp[v][j] = max value using exactly j weight in subtree of v.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Knapsack', 'DFS'],
+      },
+      {
+        id: 'tree-path-queries',
+        title: 'Tree Path Queries',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Answer path queries on a tree efficiently. Given a binary tree and multiple queries asking for path sum or path max between two nodes, precompute using tree DP: depth[], parent[], subtree sums, and path sums from root. LCA (Lowest Common Ancestor) enables O(log n) query answering. This visualization shows precomputation of path sums using tree DP.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'LCA', 'Path Queries'],
+      },
+      {
+        id: 'unique-binary-search-trees-dp',
+        title: 'Unique Binary Search Trees',
+        leetcodeNumber: 96,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given n, return the number of structurally unique BSTs that store values 1..n. This is the nth Catalan number. Use DP: dp[i] = number of unique BSTs with i nodes. For each root k (1..i), dp[i] += dp[k-1] * dp[i-k] because there are dp[k-1] left subtrees and dp[i-k] right subtrees.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'Math', 'BST'],
+      },
+      {
+        id: 'unique-paths-matrix',
+        title: 'Unique Paths',
+        leetcodeNumber: 62,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of unique paths from the top-left to the bottom-right corner of an m x n grid, moving only right or down. Use DP: dp[i][j] = dp[i-1][j] + dp[i][j-1]. All cells in the first row and column have exactly 1 path.',
+        hasVisualization: true,
+        tags: ['Matrix', 'Dynamic Programming', 'Math'],
+      },
+      {
+        id: 'vertex-cover-tree',
+        title: 'Minimum Vertex Cover on Tree',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'A vertex cover is a set of vertices such that every edge has at least one endpoint in the set. Find the minimum vertex cover on a tree. Tree DP: dp[v][0] = min cover of subtree v where v is NOT in cover; dp[v][1] = min cover where v IS in cover. Transition: if v not in cover, all children must be in cover. If v in cover, each child can be in or not.',
+        hasVisualization: true,
+        tags: ['Tree', 'Dynamic Programming', 'DFS', 'Graph Theory'],
+      },
     ],
   },
 
@@ -11682,6 +15235,155 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['sorting', 'merge sort', 'insertion sort', 'hybrid', 'adaptive'],
       },
+    
+      {
+        id: 'custom-sort-string-iii',
+        title: 'Custom Sort String III',
+        leetcodeNumber: 791,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 791: Reorder string s so characters appear in the same relative order as in string order. Characters not in order can be placed anywhere. Use a frequency map and build the result.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Hash Map', 'String', 'Greedy'],
+      },
+      {
+        id: 'find-first-and-last-position-ii',
+        title: 'Find First and Last Position II',
+        leetcodeNumber: 34,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 34: Find the starting and ending position of a target in a sorted array. Run binary search twice: once biased left (first occurrence), once biased right (last occurrence). O(log n).',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Array', 'Sorting'],
+      },
+      {
+        id: 'find-minimum-in-rotated-sorted-array-ii-search',
+        title: 'Find Minimum in Rotated Sorted Array II',
+        leetcodeNumber: 154,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'LC 154: Find minimum in a rotated sorted array that may contain duplicates. Binary search with duplicate handling: when nums[mid]==nums[hi], shrink hi by 1. Worst case O(n).',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Array', 'Divide and Conquer', 'Sorting', 'Duplicates'],
+      },
+      {
+        id: 'insertion-sort-ii',
+        title: 'Insertion Sort II',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Insertion sort variant: build a sorted subarray by repeatedly picking the next element and inserting it into its correct position via backward shifting. Time: O(n²), Space: O(1).',
+        hasVisualization: true,
+        tags: ['Sorting', 'Insertion Sort', 'In-place', 'Stable'],
+      },
+      {
+        id: 'kth-largest-element-ii',
+        title: 'Kth Largest Element II',
+        leetcodeNumber: 215,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 215: Find the kth largest element in an unsorted array. Uses Quickselect for average O(n) time. Partition around a pivot and recurse on the relevant side.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Array', 'Quickselect', 'Divide and Conquer', 'Heap'],
+      },
+      {
+        id: 'kth-smallest-element-in-bst-ii',
+        title: 'Kth Smallest Element in BST II',
+        leetcodeNumber: 230,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 230: Find the kth smallest element in a BST. Inorder traversal of BST visits nodes in ascending order. Simulate inorder traversal and return the kth visited node.',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Tree', 'Depth-First Search', 'BST', 'Sorting'],
+      },
+      {
+        id: 'pancake-sorting-ii',
+        title: 'Pancake Sorting II',
+        leetcodeNumber: 969,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 969: Sort array using pancake flips. A k-flip reverses the first k elements. For each pass, find the max in unsorted portion, flip it to front, then flip to correct position.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Array', 'Two Pointers', 'Greedy'],
+      },
+      {
+        id: 'peak-index-in-mountain-array-ii',
+        title: 'Peak Index in Mountain Array II',
+        leetcodeNumber: 852,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 852: Find the peak index in a mountain array. Binary search: if arr[mid] < arr[mid+1] then peak is to the right, else peak is at or to the left. O(log n).',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Array', 'Sorting', 'Mountain Array'],
+      },
+      {
+        id: 'relative-sort-array-ii',
+        title: 'Relative Sort Array II',
+        leetcodeNumber: 1122,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'LC 1122: Sort arr1 such that elements appear in the same relative order as arr2. Elements not in arr2 appear at end sorted in ascending order.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Array', 'Hash Map', 'Custom Sort'],
+      },
+      {
+        id: 'search-a-2d-matrix-ii-search',
+        title: 'Search a 2D Matrix II',
+        leetcodeNumber: 240,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 240: Search in an m×n matrix where each row and column is sorted. Start from top-right: if target < current, move left; if target > current, move down. O(m+n).',
+        hasVisualization: true,
+        tags: ['Binary Search', 'Array', 'Divide and Conquer', 'Matrix', 'Sorting'],
+      },
+      {
+        id: 'selection-sort-ii',
+        title: 'Selection Sort II',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Selection sort variant: repeatedly find the minimum element from the unsorted portion and place it at the beginning. Time: O(n²), Space: O(1). Minimizes swaps.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Selection Sort', 'In-place', 'Comparison'],
+      },
+      {
+        id: 'sort-an-array',
+        title: 'Sort an Array',
+        leetcodeNumber: 912,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 912: Sort an array of integers in ascending order. Uses heap sort for O(n log n) time and O(1) space without the built-in sort function.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Array', 'Heap Sort', 'Divide and Conquer'],
+      },
+      {
+        id: 'sort-array-by-increasing-frequency-ii',
+        title: 'Sort Array by Increasing Frequency II',
+        leetcodeNumber: 1636,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'LC 1636: Sort the array such that elements with lower frequency come first. Break ties by sorting elements with higher value first.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Array', 'Hash Map', 'Custom Sort'],
+      },
+      {
+        id: 'sort-list-ii',
+        title: 'Sort List II',
+        leetcodeNumber: 148,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 148: Sort a linked list in O(n log n) time and O(1) space. Uses bottom-up merge sort to avoid recursion stack. Find sublist sizes of 1, 2, 4, 8... and merge pairs.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Linked List', 'Merge Sort', 'Bottom-up'],
+      },
+      {
+        id: 'top-k-frequent-elements-ii',
+        title: 'Top K Frequent Elements II',
+        leetcodeNumber: 347,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'LC 347: Return the k most frequent elements. Uses bucket sort by frequency. Build frequency map, place in buckets indexed by frequency, scan from highest bucket.',
+        hasVisualization: true,
+        tags: ['Sorting', 'Hash Map', 'Bucket Sort', 'Heap', 'Top K'],
+      },
     ],
   },
 
@@ -11892,6 +15594,187 @@ export const CATEGORIES: CategoryInfo[] = [
           'Given an array and a list of queries [left, right], return the XOR of elements from index left to right for each query. Build a prefix XOR array where prefix[i] = arr[0] XOR ... XOR arr[i-1]. Answer each query in O(1) using XOR property: query(l, r) = prefix[r+1] XOR prefix[l].',
         hasVisualization: true,
         tags: ['bit manipulation', 'prefix sum', 'array'],
+      },
+    
+      {
+        id: 'binary-number-with-alternating-bits',
+        title: 'Binary Number with Alternating Bits',
+        leetcodeNumber: 693,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given a positive integer n, check if it has alternating bits (adjacent bits are always different). XOR n with (n >> 1): the result should be all 1s. Check that result & (result + 1) == 0, which is true only when result is a sequence of all 1s (like 0111...1).',
+        hasVisualization: true,
+        tags: ['bit manipulation'],
+      },
+      {
+        id: 'bitwise-and-range-ii',
+        title: 'Bitwise AND of Numbers Range',
+        leetcodeNumber: 201,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given two integers left and right representing a range [left, right], return the bitwise AND of all numbers in that range. Key insight: the AND of a range keeps only the common prefix of left and right in binary. Repeatedly right-shift both until equal, then shift back.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math'],
+      },
+      {
+        id: 'count-triplets-that-can-form-two-arrays',
+        title: 'Count Triplets That Can Form Two Arrays of Equal XOR',
+        leetcodeNumber: 1442,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given array arr, count triplets (i, j, k) where 0<=i<j<=k<n and a XOR b == 0, where a = arr[i]^...^arr[j-1] and b = arr[j]^...^arr[k]. Since a^b=0 means a==b, and the XOR of the entire range [i,k] must be 0. For each pair (i,k) where XOR([i..k])==0, there are (k-i) valid j values.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'xor', 'array'],
+      },
+      {
+        id: 'decode-xored-permutation',
+        title: 'Decode XORed Permutation',
+        leetcodeNumber: 1734,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given encoded array where encoded[i] = perm[i] XOR perm[i+1] and perm is a permutation of [1..n], recover perm. Key: XOR all of 1..n to get totalXor. Use encoded[i] for even i to find perm[0] = totalXor XOR (encoded[1] XOR encoded[3] XOR ...). Then decode the rest.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'xor', 'array'],
+      },
+      {
+        id: 'find-xor-beauty',
+        title: 'Find XOR Beauty of Array',
+        leetcodeNumber: 2527,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an array nums, the XOR beauty is defined as XOR of all ',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math', 'xor'],
+      },
+      {
+        id: 'gray-code-ii',
+        title: 'Gray Code',
+        leetcodeNumber: 89,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given n, return the n-bit Gray code sequence: a list of 2^n integers where each consecutive pair differs by exactly one bit. Formula: gray(i) = i XOR (i >> 1). This directly converts a binary index to its Gray code without iterative construction.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math'],
+      },
+      {
+        id: 'hamming-distance-ii',
+        title: 'Hamming Distance',
+        leetcodeNumber: 461,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'The Hamming distance between two integers is the number of bit positions where they differ. Compute x XOR y (which has 1s exactly where x and y differ), then count the number of 1 bits (popcount) in the result.',
+        hasVisualization: true,
+        tags: ['bit manipulation'],
+      },
+      {
+        id: 'maximum-xor-after-operations',
+        title: 'Maximum XOR After Operations',
+        leetcodeNumber: 2317,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given nums array, you can apply operations: choose i, then replace nums[i] with nums[i] AND (nums[i] XOR x) for any x >= 0. You can clear any subset of bits in any element. The maximum XOR of any subarray is the OR of all elements, because we can always zero out bits to achieve any subset XOR up to the OR of all elements.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math', 'xor'],
+      },
+      {
+        id: 'maximum-xor-for-each-query',
+        title: 'Maximum XOR for Each Query',
+        leetcodeNumber: 1829,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a sorted array nums and maximumBit, for each query find k (0 <= k < 2^maximumBit) such that XOR of all nums XOR k is maximized. The optimal k is the bitwise NOT of the current prefix XOR masked to maximumBit bits. Process queries from right to left, removing the last element each time.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'prefix xor', 'array'],
+      },
+      {
+        id: 'minimum-flips-to-make-a-or-b-equal-c',
+        title: 'Minimum Flips to Make a OR b Equal to c',
+        leetcodeNumber: 1318,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given a, b, c, find minimum bit flips in a or b so that a OR b == c. For each bit: if c-bit is 0, both a-bit and b-bit must be 0 (cost = count of 1s in a and b at that position). If c-bit is 1, at least one of a-bit or b-bit must be 1 (cost = 1 if both are 0).',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'greedy'],
+      },
+      {
+        id: 'missing-number-bit',
+        title: 'Missing Number (Bit Approach)',
+        leetcodeNumber: 268,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an array nums containing n distinct numbers in range [0, n], find the missing number using XOR. XOR all indices 0..n with all elements. Pairs cancel out, leaving only the missing number. This is an elegant O(n) time, O(1) space solution.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'array', 'xor'],
+      },
+      {
+        id: 'number-complement',
+        title: 'Number Complement',
+        leetcodeNumber: 476,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given a positive integer num, return its complement. The complement flips all bits in its binary representation. Find the mask with all 1s of the same length as num (e.g., 5=101 → mask=111=7), then complement = mask XOR num.',
+        hasVisualization: true,
+        tags: ['bit manipulation'],
+      },
+      {
+        id: 'number-of-1-bits-ii',
+        title: 'Number of 1 Bits (Hamming Weight)',
+        leetcodeNumber: 191,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Count the number of set bits (1s) in the binary representation of a positive integer (Hamming weight). Use Brian Kernighan\\',
+        hasVisualization: true,
+        tags: ['bit manipulation'],
+      },
+      {
+        id: 'power-of-four-ii',
+        title: 'Power of Four',
+        leetcodeNumber: 342,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an integer n, return true if it is a power of four. Powers of four are powers of two whose single set bit is at an even position (0, 2, 4, ...). Use the mask 0x55555555 which has 1s at even bit positions. Check: n > 0, n & (n-1) == 0 (power of two), and n & 0x55555555 != 0 (bit at even position).',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math'],
+      },
+      {
+        id: 'power-of-two-ii',
+        title: 'Power of Two',
+        leetcodeNumber: 231,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an integer n, return true if it is a power of two. A power of two has exactly one bit set in its binary representation. Use the trick: n > 0 && (n & (n-1)) === 0. n-1 flips the trailing bits, so n & (n-1) clears the lowest set bit. If n is a power of two, this gives 0.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math'],
+      },
+      {
+        id: 'prime-number-of-set-bits',
+        title: 'Prime Number of Set Bits in Binary Representation',
+        leetcodeNumber: 762,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given a range [left, right], count integers whose number of set bits is prime. For each number, count its 1-bits, then check if that count is prime. Numbers in range have at most 20 bits, so only need to check primes up to 20: {2, 3, 5, 7, 11, 13, 17, 19}.',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'math'],
+      },
+      {
+        id: 'reverse-bits-ii',
+        title: 'Reverse Bits',
+        leetcodeNumber: 190,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Reverse the bits of a 32-bit unsigned integer. Process each bit from LSB to MSB: extract the lowest bit of n (n & 1), shift it into the result from the MSB side (result |= bit << (31 - i)), then shift n right.',
+        hasVisualization: true,
+        tags: ['bit manipulation'],
+      },
+      {
+        id: 'sort-integers-by-number-of-bits',
+        title: 'Sort Integers by The Number of 1 Bits',
+        leetcodeNumber: 1356,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Sort an array in ascending order by the number of 1 bits in each element\\',
+        hasVisualization: true,
+        tags: ['bit manipulation', 'sorting'],
       },
     ],
   },
@@ -12214,6 +16097,433 @@ export const CATEGORIES: CategoryInfo[] = [
           'You have two jugs of capacities x and y. Determine if it is possible to measure exactly target liters using these jugs. By Bezout theorem, we can measure any amount that is a multiple of GCD(x, y). So the answer is: target is reachable if target <= x + y and target % GCD(x, y) == 0.',
         hasVisualization: true,
         tags: ['math', 'gcd', 'depth-first search'],
+      },
+    
+      {
+        id: 'add-digits',
+        title: 'Add Digits',
+        leetcodeNumber: 258,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an integer num, repeatedly add all its digits until the result has only one digit, and return it. The O(1) solution uses the digital root formula: 0 if num=0, 9 if num%9==0, else num%9.',
+        hasVisualization: true,
+        tags: ['math', 'digital root', 'number theory'],
+      },
+      {
+        id: 'angle-between-hands-of-clock',
+        title: 'Angle Between Hands of a Clock',
+        leetcodeNumber: 1344,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given hour and minutes, return the smaller angle between the clock hands. The minute hand moves 6 degrees/minute. The hour hand moves 0.5 degrees/minute. Compute both angles and return the smaller (max 180 degrees).',
+        hasVisualization: true,
+        tags: ['math', 'geometry'],
+      },
+      {
+        id: 'bell-numbers-visualization',
+        title: 'Bell Numbers Visualization',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute Bell numbers B(n) — the total number of partitions of a set of n elements — using the Bell triangle (Aitken\\',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Bell Numbers', 'Set Partitions'],
+      },
+      {
+        id: 'catalan-number-visualization',
+        title: 'Catalan Number Visualization',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute the nth Catalan number using the recurrence C(n) = sum of C(i)*C(n-1-i) for i=0..n-1. Catalan numbers count balanced parentheses, binary trees, and more.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'DP', 'Catalan'],
+      },
+      {
+        id: 'check-if-point-is-reachable',
+        title: 'Check if Point is Reachable',
+        leetcodeNumber: 2543,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Starting from (1,1), can you reach (targetX, targetY) using two operations: (x,y)->(x+y,y) or (x,y)->(x,x+y)? Working backwards: if max > min, subtract min from max (reverse of addition). This is like GCD. Point is reachable iff targetX and targetY share gcd that is a power of 2 (since we start at (1,1)).',
+        hasVisualization: true,
+        tags: ['math', 'number theory', 'gcd'],
+      },
+      {
+        id: 'chinese-remainder-theorem',
+        title: 'Chinese Remainder Theorem',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Solve a system of simultaneous congruences x ≡ r_i (mod m_i) where the moduli are pairwise coprime, using the CRT construction.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'CRT', 'Modular Arithmetic'],
+      },
+      {
+        id: 'convex-hull',
+        title: 'Convex Hull',
+        leetcodeNumber: 587,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given a set of points, find the convex hull - the smallest convex polygon containing all points. Uses Andrew\\',
+        hasVisualization: true,
+        tags: ['math', 'geometry', 'convex hull', 'sorting'],
+      },
+      {
+        id: 'count-primes-ii',
+        title: 'Count Primes',
+        leetcodeNumber: 204,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of prime numbers strictly less than n. Uses the Sieve of Eratosthenes: mark all multiples of each prime as composite, starting from 2. The remaining unmarked numbers are prime.',
+        hasVisualization: true,
+        tags: ['math', 'sieve of eratosthenes', 'array'],
+      },
+      {
+        id: 'derangements-visualization',
+        title: 'Derangements Visualization',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count derangements D(n) — permutations where no element appears in its original position. Recurrence: D(n) = (n-1)*(D(n-1) + D(n-2)).',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Derangements', 'DP'],
+      },
+      {
+        id: 'divisor-function',
+        title: 'Divisor Function σ(n)',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Compute σ(n) — the sum of all divisors of n — and τ(n) — the count of divisors. Enumerate divisors up to √n and add both d and n/d.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Divisors'],
+      },
+      {
+        id: 'erect-the-fence',
+        title: 'Erect the Fence',
+        leetcodeNumber: 587,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given tree positions, find all trees on the perimeter of the convex hull (the minimum fence). Uses Andrew\\',
+        hasVisualization: true,
+        tags: ['math', 'geometry', 'convex hull', 'sorting'],
+      },
+      {
+        id: 'eulers-totient-function',
+        title: 'Euler',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute φ(n) — the count of integers from 1 to n that are coprime to n. Uses prime factorization: φ(n) = n * ∏(1 - 1/p) for each prime factor p of n.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Euler', 'Totient'],
+      },
+      {
+        id: 'excel-sheet-column-title',
+        title: 'Excel Sheet Column Title',
+        leetcodeNumber: 168,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an integer column number, return its corresponding Excel sheet column title. This is the reverse of base-26 conversion: repeatedly take (n-1) mod 26 to get the character, then divide by 26. Note: must use (n-1) since A=1 not 0.',
+        hasVisualization: true,
+        tags: ['math', 'string'],
+      },
+      {
+        id: 'extended-euclidean-algorithm',
+        title: 'Extended Euclidean Algorithm',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find integers x, y such that ax + by = gcd(a,b) using the extended Euclidean algorithm. Back-substitutes quotients to find Bezout coefficients.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'GCD', 'Extended GCD'],
+      },
+      {
+        id: 'factorial-trailing-zeroes-ii',
+        title: 'Factorial Trailing Zeroes',
+        leetcodeNumber: 172,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given an integer n, return the number of trailing zeroes in n!. Trailing zeroes come from factors of 10 = 2 * 5. Since there are always more factors of 2, we only count factors of 5: n/5 + n/25 + n/125 + ...',
+        hasVisualization: true,
+        tags: ['math'],
+      },
+      {
+        id: 'fibonacci-matrix-exponentiation',
+        title: 'Fibonacci via Matrix Exponentiation',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute F(n) in O(log n) using matrix exponentiation: [[1,1],[1,0]]^n gives [[F(n+1), F(n)],[F(n), F(n-1)]].',
+        hasVisualization: true,
+        tags: ['Math', 'Matrix', 'Fibonacci', 'Fast Power'],
+      },
+      {
+        id: 'fizzbuzz-ii',
+        title: 'FizzBuzz II',
+        leetcodeNumber: 412,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'For each number from 1 to n, output ',
+        hasVisualization: true,
+        tags: ['Math', 'Simulation', 'String'],
+      },
+      {
+        id: 'gcd-lcm-visualization',
+        title: 'GCD & LCM Visualization',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Compute GCD using the Euclidean algorithm and LCM using the formula lcm(a,b) = a*b/gcd(a,b). Visualize each division step.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'GCD', 'LCM'],
+      },
+      {
+        id: 'generating-functions-basics',
+        title: 'Generating Functions Basics',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Use ordinary generating functions (OGF) to count integer compositions. The OGF for each part is 1/(1-x) and multiplying polynomials gives the number of ways to form each sum.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Generating Functions', 'Polynomial'],
+      },
+      {
+        id: 'inclusion-exclusion-principle',
+        title: 'Inclusion-Exclusion Principle',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count integers from 1 to n divisible by at least one of the given divisors using inclusion-exclusion: |A∪B∪C| = |A|+|B|+|C| - |A∩B| - ... + |A∩B∩C|.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Inclusion-Exclusion'],
+      },
+      {
+        id: 'integer-to-roman-ii',
+        title: 'Integer to Roman',
+        leetcodeNumber: 12,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Convert an integer to a Roman numeral. Use a greedy approach with a table of values and symbols (including subtractive combinations like IV, IX). Repeatedly subtract the largest possible value and append the corresponding symbol.',
+        hasVisualization: true,
+        tags: ['math', 'string', 'greedy'],
+      },
+      {
+        id: 'josephus-problem-ii',
+        title: 'Josephus Problem II',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'n people stand in a circle. Every k-th person is eliminated. Find the position of the last survivor. Solved with the recurrence J(1)=0, J(n)=(J(n-1)+k) mod n.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Josephus', 'Recursion'],
+      },
+      {
+        id: 'largest-triangle-area',
+        title: 'Largest Triangle Area',
+        leetcodeNumber: 812,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given an array of points in the XY plane, find and return the maximum area of a triangle formed by any 3 of the points. Use the shoelace formula for triangle area: |x1(y2-y3) + x2(y3-y1) + x3(y1-y2)| / 2.',
+        hasVisualization: true,
+        tags: ['math', 'geometry', 'brute force'],
+      },
+      {
+        id: 'max-points-on-a-line-ii',
+        title: 'Max Points on a Line',
+        leetcodeNumber: 149,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Given an array of points, find the maximum number of points that lie on the same straight line. For each point, compute the slope to every other point using a hash map of reduced fractions (gcd normalization). The line through point i with most others gives the answer.',
+        hasVisualization: true,
+        tags: ['math', 'geometry', 'hash map', 'gcd'],
+      },
+      {
+        id: 'minimum-area-rectangle',
+        title: 'Minimum Area Rectangle',
+        leetcodeNumber: 939,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given points in the XY plane aligned to axes, find the minimum area rectangle that can be formed. For each pair of points as diagonal, check if the other two corners exist in a point set. Area = |dx| * |dy|.',
+        hasVisualization: true,
+        tags: ['math', 'geometry', 'hash set', 'array'],
+      },
+      {
+        id: 'mobius-function',
+        title: 'Möbius Function μ(n)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Compute the Möbius function μ(n): μ(1)=1, μ(n)=0 if n has a squared prime factor, μ(n)=(-1)^k if n is a product of k distinct primes. Uses a sieve.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Möbius', 'Sieve'],
+      },
+      {
+        id: 'modular-exponentiation',
+        title: 'Modular Exponentiation',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute base^exp mod m efficiently using fast exponentiation (square-and-multiply). Reduces O(exp) multiplications to O(log exp).',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Modular Arithmetic'],
+      },
+      {
+        id: 'modular-inverse',
+        title: 'Modular Inverse',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find x such that a*x ≡ 1 (mod m) using the extended Euclidean algorithm. A modular inverse exists iff gcd(a,m)=1.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Modular Arithmetic', 'Extended GCD'],
+      },
+      {
+        id: 'nCr-pascals-triangle',
+        title: 'nCr - Combinations via Pascals Triangle',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Compute C(n,r) using Pascals Triangle approach.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Pascal', 'DP'],
+      },
+      {
+        id: 'nim-game-ii',
+        title: 'Nim Game II (LC 292)',
+        leetcodeNumber: 292,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given n stones, two players alternately remove 1, 2, or 3 stones. The player who takes the last stone wins. You can win iff n mod 4 != 0.',
+        hasVisualization: true,
+        tags: ['Math', 'Game Theory', 'Nim'],
+      },
+      {
+        id: 'number-of-divisors-sieve',
+        title: 'Number of Divisors Sieve',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute τ(i) — the number of divisors — for every i from 1 to n using a sieve. For each i, increment the divisor count for all its multiples.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Divisors', 'Sieve'],
+      },
+      {
+        id: 'partition-function',
+        title: 'Integer Partition Function',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of ways to write n as an unordered sum of positive integers (integer partitions) using DP. p(n) = number of partitions of n.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'DP', 'Integer Partitions'],
+      },
+      {
+        id: 'permutation-sequence-ii',
+        title: 'Permutation Sequence II',
+        leetcodeNumber: 60,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the k-th permutation of numbers 1 to n in lexicographic order without generating all permutations. Use factorial number system: at each position, determine which digit goes there by dividing k by (n-1)!. Greedily pick the (k/(n-1)!)-th remaining digit. O(n²) time.',
+        hasVisualization: true,
+        tags: ['Math', 'Recursion', 'String'],
+      },
+      {
+        id: 'phi-function-sieve',
+        title: 'Euler',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute Euler\\',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Euler Totient', 'Sieve'],
+      },
+      {
+        id: 'pow-x-n-ii',
+        title: 'Pow(x, n)',
+        leetcodeNumber: 50,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Implement pow(x, n), which calculates x raised to the power n. Uses fast exponentiation (binary exponentiation): repeatedly square x and halve n, multiplying into result when n is odd. Handles negative exponents by inverting x.',
+        hasVisualization: true,
+        tags: ['math', 'recursion', 'binary exponentiation', 'divide and conquer'],
+      },
+      {
+        id: 'prime-factorization-visualization',
+        title: 'Prime Factorization',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Find the prime factorization of n by trial division. Divide out each prime factor starting from 2 until n becomes 1.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Prime Factors'],
+      },
+      {
+        id: 'probability-of-fair-coin',
+        title: 'Probability of Fair Coin',
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Simulate flipping a fair coin n times. Track the running count of heads/tails and show how the empirical probability converges to 0.5 as n grows.',
+        hasVisualization: true,
+        tags: ['Math', 'Probability', 'Simulation'],
+      },
+      {
+        id: 'robot-bounded-in-circle',
+        title: 'Robot Bounded in Circle',
+        leetcodeNumber: 1041,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'A robot follows instructions on an infinite plane. After one cycle, if the robot is back at origin OR not facing north, it will be bounded in a circle. Simulate one cycle and check the two conditions.',
+        hasVisualization: true,
+        tags: ['math', 'simulation', 'geometry'],
+      },
+      {
+        id: 'roman-to-integer-ii',
+        title: 'Roman to Integer',
+        leetcodeNumber: 13,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Convert a Roman numeral string to an integer. Scan left to right: if the current symbol is less than the next, subtract it; otherwise add it. Special cases include IV=4, IX=9, XL=40, XC=90, CD=400, CM=900.',
+        hasVisualization: true,
+        tags: ['math', 'string', 'hash map'],
+      },
+      {
+        id: 'sieve-of-eratosthenes-ii',
+        title: 'Sieve of Eratosthenes II',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find all prime numbers up to n using the Sieve of Eratosthenes. Mark multiples of each prime as composite, leaving only primes unmarked.',
+        hasVisualization: true,
+        tags: ['Math', 'Number Theory', 'Prime'],
+      },
+      {
+        id: 'sqrt-x-ii',
+        title: 'Sqrt(x)',
+        leetcodeNumber: 69,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Given a non-negative integer x, return the square root of x rounded down to the nearest integer. Uses binary search between 0 and x to find the largest integer whose square is <= x.',
+        hasVisualization: true,
+        tags: ['math', 'binary search'],
+      },
+      {
+        id: 'stars-and-bars-combinatorics',
+        title: 'Stars and Bars Combinatorics',
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of ways to distribute n identical items into k distinct bins using the stars-and-bars formula: C(n+k-1, k-1). Visualize the formula and enumerate small cases.',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Stars and Bars'],
+      },
+      {
+        id: 'stirling-numbers',
+        title: 'Stirling Numbers (Second Kind)',
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Compute Stirling numbers of the second kind S(n,k) — the number of ways to partition n objects into k non-empty subsets. Recurrence: S(n,k) = k*S(n-1,k) + S(n-1,k-1).',
+        hasVisualization: true,
+        tags: ['Math', 'Combinatorics', 'Stirling', 'DP'],
+      },
+      {
+        id: 'ugly-number-iii',
+        title: 'Ugly Number III',
+        leetcodeNumber: 1201,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the nth positive integer that is divisible by a, b, or c. Uses binary search on the answer combined with inclusion-exclusion principle: count(x) = x/a + x/b + x/c - x/lcm(a,b) - x/lcm(b,c) - x/lcm(a,c) + x/lcm(a,b,c).',
+        hasVisualization: true,
+        tags: ['math', 'binary search', 'inclusion-exclusion', 'lcm', 'gcd'],
+      },
+      {
+        id: 'valid-square',
+        title: 'Valid Square',
+        leetcodeNumber: 593,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Given 4 points, determine if they form a valid square. A valid square has 4 equal sides and 2 equal diagonals (longer than sides). Compute all 6 pairwise distances squared and check: exactly 2 distinct values where smaller appears 4 times (sides) and larger appears 2 times (diagonals).',
+        hasVisualization: true,
+        tags: ['math', 'geometry'],
       },
     ],
   },

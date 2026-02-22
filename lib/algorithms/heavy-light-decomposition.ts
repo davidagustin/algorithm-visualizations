@@ -161,7 +161,7 @@ const heavyLightDecomposition: AlgorithmDefinition = {
       explanation: 'DFS1 complete. Heavy edges identified (connect each node to its heaviest child). Now running DFS2 to assign chain heads and positions.',
       variables: {},
       visualization: makeViz(null, Object.fromEntries(
-        heavy.map((h, i) => h >= 0 && tree[i] != null ? [h, 'found'] : [-1, '']).filter(([k]) => k >= 0)
+        heavy.map((h, i) => h >= 0 && tree[i] != null ? [h, 'found'] : [-1, '']).filter(([k]) => (k as number) >= 0)
       )),
     });
 
