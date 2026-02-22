@@ -859,7 +859,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 547,
         description:
           'Group connected nodes into communities using Union-Find with path compression and union by rank.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'union-find'],
       },
       {
@@ -869,7 +869,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 207,
         description:
           'Determine if all courses can be completed given prerequisite constraints using topological sort.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'topological-sort', 'dfs'],
       },
       {
@@ -879,7 +879,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 743,
         description:
           'Find the shortest paths from a source node to all other nodes using Dijkstra\'s algorithm.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'dijkstra', 'heap'],
       },
       {
@@ -889,7 +889,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 1584,
         description:
           'Find the minimum cost to connect all points using a minimum spanning tree algorithm.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'mst', 'greedy'],
       },
     ],
