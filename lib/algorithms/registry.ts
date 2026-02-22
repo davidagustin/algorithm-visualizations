@@ -645,7 +645,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 199,
         description:
           'Return the values visible when looking at a binary tree from the right side using level-order traversal.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'bfs'],
       },
       {
@@ -655,7 +655,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 662,
         description:
           'Find the maximum width among all levels of a binary tree using indexed BFS.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'bfs'],
       },
       {
@@ -665,7 +665,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 98,
         description:
           'Validate whether a binary tree satisfies binary search tree properties using range constraints.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'bst', 'dfs'],
       },
       {
@@ -675,7 +675,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 236,
         description:
           'Find the deepest node that is an ancestor of both given nodes in a binary tree.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'recursion', 'dfs'],
       },
       {
@@ -685,7 +685,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 105,
         description:
           'Reconstruct a binary tree given its preorder and inorder traversal sequences.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'recursion', 'divide-and-conquer'],
       },
       {
@@ -695,7 +695,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 124,
         description:
           'Find the path with the maximum sum in a binary tree where the path can start and end at any node.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'recursion', 'dfs', 'dynamic-programming'],
       },
       {
@@ -705,7 +705,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 101,
         description:
           'Check whether a binary tree is a mirror of itself around its center.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'recursion', 'bfs'],
       },
       {
@@ -715,7 +715,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 314,
         description:
           'Group binary tree nodes by their vertical column index using BFS and a column offset map.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'bfs', 'hash-map'],
       },
       {
@@ -725,7 +725,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 230,
         description:
           'Find the kth smallest element in a BST using an in-order traversal.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'bst', 'dfs'],
       },
       {
@@ -735,7 +735,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 297,
         description:
           'Encode a binary tree to a string and decode it back using preorder traversal with null markers.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'design', 'string'],
       },
     ],
@@ -757,7 +757,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 208,
         description:
           'Implement a trie with insert, search, and startsWith operations for efficient prefix lookups.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['trie', 'design', 'string'],
       },
       {
@@ -767,7 +767,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 211,
         description:
           'Design a data structure that supports adding words and searching with wildcard dot characters.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['trie', 'design', 'string', 'backtracking'],
       },
       {
@@ -777,7 +777,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 212,
         description:
           'Find all words from a dictionary that can be formed on a character board using a trie-guided DFS.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['trie', 'backtracking', 'matrix'],
       },
     ],
@@ -799,7 +799,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 133,
         description:
           'Create a deep copy of a connected undirected graph using BFS or DFS with a visited map.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'bfs', 'dfs', 'hash-map'],
       },
       {
@@ -809,7 +809,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 200,
         description:
           'Count the number of distinct islands in a 2D grid by flood-filling connected land cells.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'bfs', 'dfs', 'matrix'],
       },
       {
@@ -819,7 +819,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 994,
         description:
           'Determine how many rounds it takes for all cells to become infected using multi-source BFS.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'bfs', 'matrix'],
       },
       {
@@ -829,7 +829,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 785,
         description:
           'Check if a graph can be two-colored so no adjacent nodes share the same color.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'bfs', 'dfs'],
       },
       {
@@ -839,7 +839,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 329,
         description:
           'Find the longest strictly increasing path in a matrix using DFS with memoization.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'dfs', 'dynamic-programming', 'matrix'],
       },
       {
@@ -849,7 +849,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 127,
         description:
           'Find the shortest word ladder from begin to end word, changing one letter at a time, using BFS.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['graph', 'bfs', 'string'],
       },
       {
@@ -911,7 +911,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 46,
         description:
           'Generate all possible orderings of a list of distinct numbers by swapping and backtracking.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['backtracking', 'recursion'],
       },
       {
@@ -921,7 +921,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 78,
         description:
           'Generate the power set of a list of distinct integers by including or excluding each element.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['backtracking', 'recursion', 'bit-manipulation'],
       },
       {
@@ -941,7 +941,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 39,
         description:
           'Find all unique combinations of candidates that sum to a target, allowing repeated use of elements.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['backtracking', 'recursion'],
       },
       {
@@ -951,7 +951,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 17,
         description:
           'Map digit sequences to all possible letter combinations from a phone keypad.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['backtracking', 'recursion', 'string'],
       },
     ],
