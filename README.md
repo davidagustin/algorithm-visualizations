@@ -236,9 +236,11 @@ Deploy to [Vercel](https://vercel.com), [Netlify](https://netlify.com), or any N
 
 If Algomations has helped you prepare for interviews, consider supporting continued development:
 
-- **Card** — [donate via Stripe](https://buy.stripe.com/fZucN5epreyuchqdtZfnO00)
-- **BTC** — `bc1qkqrp0v0av6ch6ekm2e2scav93a0d83mawcjcd3`
-- **ETH** — `0x846a124b1438f5dc657309e686c57b03647888f2`
+[![Donate](https://img.shields.io/badge/Donate-Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/fZucN5epreyuchqdtZfnO00)
+
+**BTC**: `bc1qkqrp0v0av6ch6ekm2e2scav93a0d83mawcjcd3`
+
+**ETH**: `0x846a124b1438f5dc657309e686c57b03647888f2`
 
 ---
 
