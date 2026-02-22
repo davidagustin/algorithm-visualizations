@@ -1,169 +1,138 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, ArrayVisualization } from '../types';
 
 const bucketSortVisualization: AlgorithmDefinition = {
   id: 'bucket-sort-visualization',
-  title: 'Bucket Sort Visualization',
+  title: 'Bucket Sort',
   difficulty: 'Medium',
   category: 'Sorting',
   description:
-    'Bucket sort distributes elements into a number of buckets, sorts each bucket individually (typically with insertion sort), then concatenates. Works well when input is uniformly distributed over a range. Time complexity is O(n + k) average case. Each element is placed in bucket floor(val / bucketSize). Good for floating-point values in [0, 1].',
-  tags: ['sorting', 'bucket', 'distribution sort', 'counting'],
-
+    'Bucket sort distributes elements into buckets, sorts each bucket, then concatenates. Best for uniformly distributed data. Average O(n+k), worst O(n²) if all in one bucket.',
+  tags: ['Sorting', 'Bucket Sort', 'Distribution', 'Non-comparative'],
   code: {
-    pseudocode: `function bucketSort(arr, numBuckets):
-  min_val = min(arr), max_val = max(arr)
-  bucketSize = (max - min) / numBuckets
-  buckets = [[] for _ in range(numBuckets)]
-  for val in arr:
-    idx = floor((val - min) / bucketSize)
-    idx = min(idx, numBuckets-1)
-    buckets[idx].append(val)
+    pseudocode: `function bucketSort(arr):
+  n = arr.length
+  buckets = array of n empty lists
+  for x in arr:
+    idx = floor(n * x / (max+1))
+    buckets[idx].append(x)
   for bucket in buckets:
     insertionSort(bucket)
-  return concat(buckets)`,
-
-    python: `def bucketSort(arr, num_buckets=5):
+  return concat all buckets`,
+    python: `def bucket_sort(arr):
     if not arr: return arr
-    min_val, max_val = min(arr), max(arr)
-    bucket_size = (max_val - min_val) / num_buckets or 1
-    buckets = [[] for _ in range(num_buckets)]
-    for val in arr:
-        idx = min(int((val - min_val) / bucket_size), num_buckets - 1)
-        buckets[idx].append(val)
+    n = len(arr)
+    max_val = max(arr) + 1
+    buckets = [[] for _ in range(n)]
+    for x in arr:
+        idx = int(n * x / max_val)
+        buckets[idx].append(x)
     result = []
-    for bucket in buckets:
-        result.extend(sorted(bucket))
+    for b in buckets:
+        result.extend(sorted(b))
     return result`,
-
-    javascript: `function bucketSort(arr, numBuckets = 5) {
-  const min = Math.min(...arr), max = Math.max(...arr);
-  const size = (max - min) / numBuckets || 1;
-  const buckets = Array.from({length: numBuckets}, () => []);
-  for (const val of arr) {
-    const idx = Math.min(Math.floor((val-min)/size), numBuckets-1);
-    buckets[idx].push(val);
+    javascript: `function bucketSort(arr) {
+  const n = arr.length;
+  const max = Math.max(...arr) + 1;
+  const buckets = Array.from({length: n}, () => []);
+  for (const x of arr) {
+    const idx = Math.floor(n * x / max);
+    buckets[idx].push(x);
   }
-  return buckets.flatMap(b => b.sort((a,b) => a-b));
+  return buckets.flatMap(b => b.sort((a, b) => a - b));
 }`,
-
-    java: `public int[] bucketSort(int[] arr, int numBuckets) {
-    int min = Arrays.stream(arr).min().getAsInt();
-    int max = Arrays.stream(arr).max().getAsInt();
-    double size = (max - min + 1.0) / numBuckets;
+    java: `public int[] bucketSort(int[] arr) {
+    int n = arr.length;
+    int max = Arrays.stream(arr).max().getAsInt() + 1;
     List<List<Integer>> buckets = new ArrayList<>();
-    for (int i = 0; i < numBuckets; i++) buckets.add(new ArrayList<>());
-    for (int val : arr) {
-        int idx = Math.min((int)((val - min) / size), numBuckets - 1);
-        buckets.get(idx).add(val);
-    }
-    int i = 0;
-    for (List<Integer> bucket : buckets) {
-        Collections.sort(bucket);
-        for (int val : bucket) arr[i++] = val;
+    for (int i = 0; i < n; i++) buckets.add(new ArrayList<>());
+    for (int x : arr) buckets.get(n * x / max).add(x);
+    int idx = 0;
+    for (List<Integer> b : buckets) {
+        Collections.sort(b);
+        for (int x : b) arr[idx++] = x;
     }
     return arr;
 }`,
   },
-
-  defaultInput: {
-    nums: [42, 32, 33, 52, 37, 47, 51, 25, 60, 20],
-  },
-
+  defaultInput: { nums: [29, 25, 3, 49, 9, 37, 21, 43] },
   inputFields: [
     {
       name: 'nums',
-      label: 'Array to Sort',
+      label: 'Array',
       type: 'array',
-      defaultValue: [42, 32, 33, 52, 37, 47, 51, 25, 60, 20],
-      placeholder: '42,32,33,52,37,47,51,25',
-      helperText: 'Comma-separated integers to sort',
+      defaultValue: [29, 25, 3, 49, 9, 37, 21, 43],
+      placeholder: '29,25,3,49,9,37,21,43',
+      helperText: 'Comma-separated non-negative integers',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const arr = input.nums as number[];
+    const nums = (input.nums as number[]).slice();
     const steps: AlgorithmStep[] = [];
-    const numBuckets = 5;
+    const n = nums.length;
 
-    const minVal = Math.min(...arr);
-    const maxVal = Math.max(...arr);
-    const bucketSize = (maxVal - minVal) / numBuckets || 1;
+    const makeViz = (
+      arr: number[],
+      highlights: Record<number, string>,
+      labels: Record<number, string>,
+      auxEntries?: { key: string; value: string }[],
+    ): ArrayVisualization => ({
+      type: 'array',
+      array: [...arr],
+      highlights,
+      labels,
+      ...(auxEntries ? { auxData: { label: 'Bucket Sort', entries: auxEntries } } : {}),
+    });
 
     steps.push({
       line: 1,
-      explanation: `Bucket Sort on [${arr.join(', ')}]. min=${minVal}, max=${maxVal}. Using ${numBuckets} buckets, each spanning ${bucketSize.toFixed(1)} values.`,
-      variables: { minVal, maxVal, numBuckets, bucketSize: bucketSize.toFixed(1) },
-      visualization: {
-        type: 'array',
-        array: [...arr],
-        highlights: {},
-        labels: Object.fromEntries(arr.map((v, i) => [i, `${v}`])),
-      },
+      explanation: `Begin bucket sort on [${nums.join(', ')}]. Distribute elements into ${n} buckets.`,
+      variables: { nums: [...nums], buckets: n },
+      visualization: makeViz(nums, {}, {}),
     });
 
-    const buckets: number[][] = Array.from({ length: numBuckets }, () => []);
+    const maxVal = Math.max(...nums) + 1;
+    const buckets: number[][] = Array.from({ length: n }, () => []);
 
-    for (let i = 0; i < arr.length; i++) {
-      const val = arr[i];
-      const idx = Math.min(Math.floor((val - minVal) / bucketSize), numBuckets - 1);
-      buckets[idx].push(val);
-
+    for (let i = 0; i < n; i++) {
+      const idx = Math.floor(n * nums[i] / maxVal);
+      buckets[idx].push(nums[i]);
       steps.push({
-        line: 5,
-        explanation: `arr[${i}]=${val}: bucket index = floor((${val}-${minVal})/${bucketSize.toFixed(1)}) = ${idx}. Buckets: ${buckets.map((b, bi) => `B${bi}:[${b.join(',')}]`).join(' ')}.`,
-        variables: { val, bucketIdx: idx },
-        visualization: {
-          type: 'array',
-          array: [...arr],
-          highlights: { [i]: 'active' },
-          labels: Object.fromEntries(arr.map((v, j) => [j, j === i ? `->B${idx}` : `${v}`])),
-        },
+        line: 4,
+        explanation: `Place ${nums[i]} into bucket ${idx} (= floor(${n} * ${nums[i]} / ${maxVal})).`,
+        variables: { value: nums[i], bucket: idx },
+        visualization: makeViz(nums, { [i]: 'active' }, { [i]: `b${idx}` },
+          [{ key: 'Value', value: String(nums[i]) }, { key: 'Bucket', value: String(idx) },
+           { key: 'Buckets', value: buckets.map((b, j) => `b${j}:[${b.join(',')}]`).filter(s => !s.includes('[]')).join(' ') }]),
       });
     }
 
     steps.push({
-      line: 7,
-      explanation: `All elements distributed. Buckets: ${buckets.map((b, i) => `B${i}:[${b.join(',')}]`).join(', ')}.`,
-      variables: { buckets: buckets.map((b, i) => `B${i}:[${b.join(',')}]`).join(', ') },
-      visualization: {
-        type: 'array',
-        array: buckets.map(b => b.length),
-        highlights: Object.fromEntries(buckets.map((_, i) => [i, 'active'])),
-        labels: Object.fromEntries(buckets.map((b, i) => [i, `B${i}:[${b.join(',')}]`])),
-      },
+      line: 6,
+      explanation: `All elements distributed. Now sort each bucket.`,
+      variables: { buckets: buckets.map(b => [...b]) },
+      visualization: makeViz(nums,
+        Object.fromEntries(nums.map((_, i) => [i, 'comparing'])),
+        {},
+        [{ key: 'Buckets', value: buckets.map((b, j) => b.length ? `b${j}:[${b.join(',')}]` : '').filter(Boolean).join(' ') }],
+      ),
     });
 
-    // Sort each bucket
-    for (let bi = 0; bi < numBuckets; bi++) {
-      if (buckets[bi].length > 1) {
-        const before = [...buckets[bi]];
-        buckets[bi].sort((a, b) => a - b);
-        steps.push({
-          line: 8,
-          explanation: `Sort bucket ${bi}: [${before.join(',')}] => [${buckets[bi].join(',')}].`,
-          variables: { bucket: bi, before: before.join(','), after: buckets[bi].join(',') },
-          visualization: {
-            type: 'array',
-            array: buckets[bi],
-            highlights: Object.fromEntries(buckets[bi].map((_, i) => [i, 'found'])),
-            labels: Object.fromEntries(buckets[bi].map((v, i) => [i, `${v}`])),
-          },
-        });
-      }
+    const result: number[] = [];
+    for (const bucket of buckets) {
+      bucket.sort((a, b) => a - b);
+      result.push(...bucket);
     }
 
-    const result = buckets.flat();
-
     steps.push({
-      line: 9,
-      explanation: `Concatenate all sorted buckets. Final sorted array: [${result.join(', ')}].`,
-      variables: { sorted: `[${result.join(', ')}]` },
-      visualization: {
-        type: 'array',
-        array: result,
-        highlights: Object.fromEntries(result.map((_, i) => [i, 'sorted'])),
-        labels: {},
-      },
+      line: 8,
+      explanation: `Each bucket sorted. Concatenate: [${result.join(', ')}].`,
+      variables: { result: [...result] },
+      visualization: makeViz(result,
+        Object.fromEntries(result.map((_, i) => [i, 'found'])),
+        {},
+        [{ key: 'Sorted', value: result.join(', ') }],
+      ),
     });
 
     return steps;

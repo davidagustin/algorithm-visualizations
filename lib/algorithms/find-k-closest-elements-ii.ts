@@ -1,158 +1,181 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, ArrayVisualization } from '../types';
 
-const findKClosestElementsIi: AlgorithmDefinition = {
+const findKClosestElementsII: AlgorithmDefinition = {
   id: 'find-k-closest-elements-ii',
-  title: 'Find K Closest Elements (Heap Approach)',
+  title: 'Find K Closest Elements II',
   leetcodeNumber: 658,
   difficulty: 'Medium',
-  category: 'Heap',
+  category: 'Sorting',
   description:
-    'Given a sorted array, an integer k, and a target x, find the k closest elements to x. Heap approach: use a max-heap of size k keyed by (distance, value). Push each element with its distance; if the heap exceeds size k, pop the farthest. The remaining k elements are the closest. Sort the result.',
-  tags: ['heap', 'binary search', 'two pointers', 'sorted array'],
-
+    'LC 658: Find k closest elements to x in a sorted array. Binary search for the left boundary of the k-element window. Compare arr[mid] vs arr[mid+k] to shift window.',
+  tags: ['Binary Search', 'Array', 'Sorting', 'Two Pointers', 'Sliding Window'],
   code: {
     pseudocode: `function findClosestElements(arr, k, x):
-  // Max-heap by distance
-  maxHeap = []
-
-  for num in arr:
-    dist = abs(num - x)
-    maxHeap.push((dist, num))
-    if maxHeap.size > k:
-      maxHeap.pop()  // remove farthest
-
-  result = [num for (_, num) in maxHeap]
-  return sorted(result)`,
-
-    python: `import heapq
-
-def findClosestElements(arr: list[int], k: int, x: int) -> list[int]:
-    # max-heap by (distance, -value) using negation
-    heap = []
-    for num in arr:
-        d = abs(num - x)
-        heapq.heappush(heap, (-d, -num))
-        if len(heap) > k:
-            heapq.heappop(heap)
-    return sorted(-v for _, v in heap)`,
-
+  lo = 0, hi = n - k
+  while lo < hi:
+    mid = (lo + hi) / 2
+    # Compare distance from x to left vs right end of window
+    if x - arr[mid] > arr[mid+k] - x:
+      lo = mid + 1  # window should shift right
+    else:
+      hi = mid  # window is at or left of mid
+  return arr[lo..lo+k-1]`,
+    python: `def findClosestElements(arr, k, x):
+    lo, hi = 0, len(arr) - k
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if x - arr[mid] > arr[mid + k] - x:
+            lo = mid + 1
+        else:
+            hi = mid
+    return arr[lo:lo + k]`,
     javascript: `function findClosestElements(arr, k, x) {
-  // Simulate max-heap
-  const heap = [];
-  for (const num of arr) {
-    const dist = Math.abs(num - x);
-    heap.push([dist, num]);
-    heap.sort((a, b) => b[0] - a[0] || b[1] - a[1]); // max dist first
-    if (heap.length > k) heap.shift();
+  let lo = 0, hi = arr.length - k;
+  while (lo < hi) {
+    const mid = Math.floor((lo + hi) / 2);
+    if (x - arr[mid] > arr[mid + k] - x) lo = mid + 1;
+    else hi = mid;
   }
-  return heap.map(([, n]) => n).sort((a, b) => a - b);
+  return arr.slice(lo, lo + k);
 }`,
-
     java: `public List<Integer> findClosestElements(int[] arr, int k, int x) {
-    PriorityQueue<int[]> pq = new PriorityQueue<>(
-        (a,b) -> a[0]!=b[0] ? b[0]-a[0] : b[1]-a[1]);
-    for (int num : arr) {
-        pq.offer(new int[]{Math.abs(num-x), num});
-        if (pq.size() > k) pq.poll();
+    int lo = 0, hi = arr.length - k;
+    while (lo < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (x - arr[mid] > arr[mid + k] - x) lo = mid + 1;
+        else hi = mid;
     }
-    List<Integer> res = new ArrayList<>();
-    while (!pq.isEmpty()) res.add(pq.poll()[1]);
-    Collections.sort(res);
-    return res;
+    List<Integer> result = new ArrayList<>();
+    for (int i = lo; i < lo + k; i++) result.add(arr[i]);
+    return result;
 }`,
   },
-
-  defaultInput: {
-    nums: [1, 2, 3, 4, 5, 6, 7, 8],
-  },
-
+  defaultInput: { arr: [1, 2, 3, 4, 5], k: 4, x: 3 },
   inputFields: [
     {
-      name: 'nums',
+      name: 'arr',
       label: 'Sorted Array',
       type: 'array',
-      defaultValue: [1, 2, 3, 4, 5, 6, 7, 8],
-      placeholder: '1,2,3,4,5,6,7,8',
-      helperText: 'Sorted array to find k closest elements (k=3, x=5 used for demo)',
+      defaultValue: [1, 2, 3, 4, 5],
+      placeholder: '1,2,3,4,5',
+      helperText: 'Sorted array of integers',
+    },
+    {
+      name: 'k',
+      label: 'k',
+      type: 'number',
+      defaultValue: 4,
+      placeholder: '4',
+      helperText: 'Number of closest elements',
+    },
+    {
+      name: 'x',
+      label: 'x',
+      type: 'number',
+      defaultValue: 3,
+      placeholder: '3',
+      helperText: 'Target value',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const arr = input.nums as number[];
-    const k = 3;
-    const x = 5;
+    const arr = (input.arr as number[]).slice();
+    const k = input.k as number;
+    const x = input.x as number;
     const steps: AlgorithmStep[] = [];
+    const n = arr.length;
 
-    // Max-heap simulated as sorted array [farthest first]
-    let heap: Array<[number, number]> = []; // [dist, val]
+    const makeViz = (
+      highlights: Record<number, string>,
+      labels: Record<number, string>,
+      auxEntries?: { key: string; value: string }[],
+    ): ArrayVisualization => ({
+      type: 'array',
+      array: [...arr],
+      highlights,
+      labels,
+      ...(auxEntries ? { auxData: { label: 'K Closest Elements', entries: auxEntries } } : {}),
+    });
 
     steps.push({
       line: 1,
-      explanation: `Find ${k} closest elements to x=${x} in [${arr.join(', ')}] using a max-heap of size k=${k}.`,
-      variables: { k, x, arr: arr.join(', ') },
-      visualization: {
-        type: 'array',
-        array: [...arr],
-        highlights: {},
-        labels: arr.reduce((acc: Record<number, string>, v, i) => { acc[i] = `d=${Math.abs(v - x)}`; return acc; }, {}),
-      },
+      explanation: `Find ${k} closest elements to x=${x} in [${arr.join(', ')}].`,
+      variables: { arr: [...arr], k, x },
+      visualization: makeViz({}, {},
+        [{ key: 'k', value: String(k) }, { key: 'x', value: String(x) }]),
     });
 
-    for (const num of arr) {
-      const dist = Math.abs(num - x);
-      heap.push([dist, num]);
-      heap.sort((a, b) => b[0] - a[0] || b[1] - a[1]); // max dist at front
+    let lo = 0, hi = n - k;
 
-      if (heap.length > k) {
-        const removed = heap.shift()!;
+    steps.push({
+      line: 2,
+      explanation: `Binary search for left boundary. lo=${lo}, hi=${hi} (= n-k = ${n}-${k}).`,
+      variables: { lo, hi },
+      visualization: makeViz(
+        { [lo]: 'pointer', [hi]: 'comparing' },
+        { [lo]: 'lo', [hi]: 'hi' },
+        [{ key: 'Range', value: `lo=${lo}, hi=${hi}` }],
+      ),
+    });
+
+    while (lo < hi) {
+      const mid = Math.floor((lo + hi) / 2);
+      const distLeft = x - arr[mid];
+      const distRight = arr[mid + k] - x;
+
+      const hl: Record<number, string> = {};
+      hl[lo] = 'pointer';
+      hl[mid] = 'active';
+      hl[Math.min(mid + k, n - 1)] = 'comparing';
+      hl[hi] = 'pointer';
+
+      steps.push({
+        line: 4,
+        explanation: `mid=${mid}. dist(x, arr[${mid}])=|${x}-${arr[mid]}|=${distLeft}, dist(x, arr[${mid + k}])=|${arr[mid + k]}-${x}|=${distRight}.`,
+        variables: { mid, distLeft, distRight, arr_mid: arr[mid], arr_mid_k: arr[mid + k] },
+        visualization: makeViz(hl,
+          { [mid]: `arr[${mid}]`, [mid + k < n ? mid + k : n - 1]: `arr[${mid + k}]` },
+          [{ key: `|x-arr[${mid}]|`, value: String(distLeft) }, { key: `|arr[${mid + k}]-x|`, value: String(distRight) }],
+        ),
+      });
+
+      if (distLeft > distRight) {
         steps.push({
           line: 6,
-          explanation: `Push (dist=${dist}, val=${num}). Heap size ${heap.length + 1} > k=${k}. Remove farthest: (dist=${removed[0]}, val=${removed[1]}). Heap: [${heap.map(([d, v]) => `(${d},${v})`).join(', ')}].`,
-          variables: { pushed: num, dist, removed: removed[1], heapSize: heap.length },
-          visualization: {
-            type: 'array',
-            array: arr.map(v => Math.abs(v - x)),
-            highlights: {
-              [arr.indexOf(num)]: 'active',
-              [arr.indexOf(removed[1])]: 'mismatch',
-            },
-            labels: {
-              [arr.indexOf(num)]: `d=${dist}`,
-              [arr.indexOf(removed[1])]: 'removed',
-            },
-          },
+          explanation: `${distLeft} > ${distRight}: arr[${mid}] is farther from x. Shift window right. lo=${mid + 1}.`,
+          variables: { lo: mid + 1 },
+          visualization: makeViz({ ...hl, [mid]: 'visited' }, {},
+            [{ key: 'Direction', value: 'Shift right →' }]),
         });
+        lo = mid + 1;
       } else {
         steps.push({
-          line: 4,
-          explanation: `Push (dist=${dist}, val=${num}). Heap size = ${heap.length} <= k=${k}. Heap: [${heap.map(([d, v]) => `(${d},${v})`).join(', ')}].`,
-          variables: { pushed: num, dist, heapSize: heap.length },
-          visualization: {
-            type: 'array',
-            array: arr.map(v => Math.abs(v - x)),
-            highlights: { [arr.indexOf(num)]: 'active' },
-            labels: { [arr.indexOf(num)]: `d=${dist}` },
-          },
+          line: 8,
+          explanation: `${distLeft} <= ${distRight}: arr[${mid + k}] is farther or equal. Keep window. hi=${mid}.`,
+          variables: { hi: mid },
+          visualization: makeViz({ ...hl, [mid + k < n ? mid + k : n - 1]: 'visited' }, {},
+            [{ key: 'Direction', value: '← Stay or left' }]),
         });
+        hi = mid;
       }
     }
 
-    const result = heap.map(([, v]) => v).sort((a, b) => a - b);
+    const result = arr.slice(lo, lo + k);
+    const hl: Record<number, string> = {};
+    for (let i = lo; i < lo + k; i++) hl[i] = 'found';
 
     steps.push({
-      line: 9,
-      explanation: `Heap contains k=${k} closest elements: ${heap.map(([d, v]) => `val=${v}(d=${d})`).join(', ')}. Sorted result: [${result.join(', ')}].`,
-      variables: { result: result.join(', '), k, x },
-      visualization: {
-        type: 'array',
-        array: result,
-        highlights: result.reduce((acc: Record<number, string>, _, i) => { acc[i] = 'found'; return acc; }, {}),
-        labels: result.reduce((acc: Record<number, string>, v, i) => { acc[i] = `v=${v},d=${Math.abs(v - x)}`; return acc; }, {}),
-      },
+      line: 1,
+      explanation: `K closest elements start at index ${lo}: [${result.join(', ')}].`,
+      variables: { result: [...result], lo, k },
+      visualization: makeViz(hl,
+        Object.fromEntries(result.map((v, i) => [lo + i, String(v)])),
+        [{ key: 'Result', value: result.join(', ') }, { key: 'x', value: String(x) }],
+      ),
     });
 
     return steps;
   },
 };
 
-export default findKClosestElementsIi;
+export default findKClosestElementsII;

@@ -6,98 +6,84 @@ const radixSortVisualization: AlgorithmDefinition = {
   difficulty: 'Medium',
   category: 'Sorting',
   description:
-    'Non-comparison integer sort. Process digits from least significant to most significant (LSD). For each digit position, use counting sort as a stable subroutine to group elements by that digit. O(d*(n+k)) time where d is digits, k=10. Handles integers without comparisons.',
-  tags: ['sorting', 'radix', 'non-comparison', 'LSD', 'digit', 'counting sort'],
-
+    'Radix sort processes digits from least significant to most significant, using counting sort as a subroutine. Time: O(d*(n+k)) where d=digits, k=base. Non-comparative sort.',
+  tags: ['Sorting', 'Radix Sort', 'Counting Sort', 'Non-comparative'],
   code: {
     pseudocode: `function radixSort(arr):
   max = max(arr)
-  exp = 1  // 1, 10, 100, ...
-  while max // exp > 0:
-    countingSortByDigit(arr, exp)
-    exp *= 10
+  for exp = 1; max/exp > 0; exp *= 10:
+    countSort(arr, exp)
 
-function countingSortByDigit(arr, exp):
-  n = len(arr)
-  output = [0] * n
-  count = [0] * 10
-  for x in arr:
-    digit = (x // exp) % 10
-    count[digit]++
+function countSort(arr, exp):
+  output = new array[n]
+  count = new array[10] filled with 0
+  for i in arr: count[(i/exp)%10]++
   for i = 1 to 9: count[i] += count[i-1]
   for i = n-1 down to 0:
-    digit = (arr[i] // exp) % 10
-    output[count[digit] - 1] = arr[i]
-    count[digit]--
-  arr[:] = output`,
-
+    output[count[(arr[i]/exp)%10]-1] = arr[i]
+    count[(arr[i]/exp)%10]--
+  copy output to arr`,
     python: `def radix_sort(arr):
     max_val = max(arr)
     exp = 1
     while max_val // exp > 0:
-        counting_sort_by_digit(arr, exp)
+        counting_sort(arr, exp)
         exp *= 10
     return arr
 
-def counting_sort_by_digit(arr, exp):
+def counting_sort(arr, exp):
     n = len(arr)
     output = [0] * n
     count = [0] * 10
-    for x in arr:
-        count[(x // exp) % 10] += 1
-    for i in range(1, 10):
-        count[i] += count[i - 1]
-    for i in range(n - 1, -1, -1):
-        digit = (arr[i] // exp) % 10
-        output[count[digit] - 1] = arr[i]
-        count[digit] -= 1
-    arr[:] = output`,
-
+    for i in arr: count[(i // exp) % 10] += 1
+    for i in range(1, 10): count[i] += count[i-1]
+    for i in range(n-1, -1, -1):
+        idx = (arr[i] // exp) % 10
+        output[count[idx]-1] = arr[i]
+        count[idx] -= 1
+    for i in range(n): arr[i] = output[i]`,
     javascript: `function radixSort(arr) {
   const max = Math.max(...arr);
   for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
-    countingSortByDigit(arr, exp);
+    countingSort(arr, exp);
   }
   return arr;
 }
-function countingSortByDigit(arr, exp) {
-  const n = arr.length, output = new Array(n).fill(0), count = new Array(10).fill(0);
+function countingSort(arr, exp) {
+  const n = arr.length;
+  const output = new Array(n);
+  const count = new Array(10).fill(0);
   for (const x of arr) count[Math.floor(x / exp) % 10]++;
-  for (let i = 1; i < 10; i++) count[i] += count[i - 1];
-  for (let i = n - 1; i >= 0; i--) {
-    const d = Math.floor(arr[i] / exp) % 10;
-    output[count[d] - 1] = arr[i];
-    count[d]--;
+  for (let i = 1; i < 10; i++) count[i] += count[i-1];
+  for (let i = n-1; i >= 0; i--) {
+    const idx = Math.floor(arr[i] / exp) % 10;
+    output[--count[idx]] = arr[i];
   }
-  arr.splice(0, n, ...output);
+  for (let i = 0; i < n; i++) arr[i] = output[i];
 }`,
-
     java: `public void radixSort(int[] arr) {
     int max = Arrays.stream(arr).max().getAsInt();
     for (int exp = 1; max / exp > 0; exp *= 10)
-        countingSortByDigit(arr, exp);
+        countingSort(arr, exp);
 }
-private void countingSortByDigit(int[] arr, int exp) {
+private void countingSort(int[] arr, int exp) {
     int n = arr.length;
-    int[] output = new int[n], count = new int[10];
+    int[] output = new int[n];
+    int[] count = new int[10];
     for (int x : arr) count[(x / exp) % 10]++;
-    for (int i = 1; i < 10; i++) count[i] += count[i - 1];
-    for (int i = n - 1; i >= 0; i--) {
-        int d = (arr[i] / exp) % 10;
-        output[--count[d]] = arr[i];
+    for (int i = 1; i < 10; i++) count[i] += count[i-1];
+    for (int i = n-1; i >= 0; i--) {
+        int idx = (arr[i] / exp) % 10;
+        output[--count[idx]] = arr[i];
     }
     System.arraycopy(output, 0, arr, 0, n);
 }`,
   },
-
-  defaultInput: {
-    arr: [170, 45, 75, 90, 802, 24, 2, 66],
-  },
-
+  defaultInput: { nums: [170, 45, 75, 90, 802, 24, 2, 66] },
   inputFields: [
     {
-      name: 'arr',
-      label: 'Array to Sort',
+      name: 'nums',
+      label: 'Array',
       type: 'array',
       defaultValue: [170, 45, 75, 90, 802, 24, 2, 66],
       placeholder: '170,45,75,90,802,24,2,66',
@@ -106,124 +92,96 @@ private void countingSortByDigit(int[] arr, int exp) {
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const initial = input.arr as number[];
+    const nums = (input.nums as number[]).slice();
     const steps: AlgorithmStep[] = [];
-    const arr = [...initial];
-    const n = arr.length;
-
-    const maxVal = Math.max(...arr);
-    const numDigits = maxVal === 0 ? 1 : Math.floor(Math.log10(maxVal)) + 1;
+    const n = nums.length;
 
     const makeViz = (
-      current: number[],
       highlights: Record<number, string>,
       labels: Record<number, string>,
-      digitPos: string
+      auxEntries?: { key: string; value: string }[],
     ): ArrayVisualization => ({
       type: 'array',
-      array: current,
+      array: [...nums],
       highlights,
       labels,
-      auxData: {
-        label: `Sorting by ${digitPos} digit`,
-        entries: current.map((v, i) => ({
-          key: `arr[${i}]`,
-          value: String(v),
-        })),
-      },
+      ...(auxEntries ? { auxData: { label: 'Radix Sort', entries: auxEntries } } : {}),
     });
 
     steps.push({
       line: 1,
-      explanation: `Radix sort on [${arr.join(', ')}]. Max = ${maxVal}, so ${numDigits} digit pass(es) needed (LSD to MSD).`,
-      variables: { array: [...arr], maxVal, numDigits },
-      visualization: makeViz(arr, {}, {}, 'units'),
+      explanation: `Begin radix sort on [${nums.join(', ')}]. Sort digit by digit from LSD to MSD.`,
+      variables: { nums: [...nums] },
+      visualization: makeViz({}, {}),
     });
 
-    const digitNames = ['units (1s)', 'tens (10s)', 'hundreds (100s)', 'thousands (1000s)'];
-
+    const maxVal = Math.max(...nums);
     let exp = 1;
-    let passNum = 0;
+    let pass = 1;
 
     while (Math.floor(maxVal / exp) > 0) {
-      passNum++;
-      const digitName = digitNames[passNum - 1] || `10^${passNum - 1}`;
-
-      // Show digits for this position
-      const digits = arr.map((x) => Math.floor(x / exp) % 10);
+      const digitName = exp === 1 ? 'ones' : exp === 10 ? 'tens' : exp === 100 ? 'hundreds' : `${exp}s`;
 
       steps.push({
         line: 3,
-        explanation: `Pass ${passNum}: Sort by ${digitName}. Extract digit = (value / ${exp}) % 10 for each element.`,
-        variables: { pass: passNum, exp, digitName },
+        explanation: `Pass ${pass}: Sort by the ${digitName} digit (exp=${exp}).`,
+        variables: { exp, pass, maxVal },
         visualization: makeViz(
-          [...arr],
-          arr.reduce((h, _, i) => ({ ...h, [i]: 'active' }), {}),
-          digits.reduce((l, d, i) => ({ ...l, [i]: `d=${d}` }), {}),
-          digitName
+          Object.fromEntries(nums.map((_, i) => [i, 'active'])),
+          Object.fromEntries(nums.map((v, i) => [i, String(Math.floor(v / exp) % 10)])),
+          [{ key: 'Pass', value: String(pass) }, { key: 'Digit', value: digitName }],
         ),
       });
 
-      // Count
+      const output = new Array(n);
       const count = new Array(10).fill(0);
-      for (const x of arr) count[Math.floor(x / exp) % 10]++;
+
+      for (const x of nums) count[Math.floor(x / exp) % 10]++;
 
       steps.push({
-        line: 10,
-        explanation: `Count occurrences of each digit (0-9): [${count.join(', ')}].`,
-        variables: { count: [...count] },
+        line: 8,
+        explanation: `Count occurrences of each digit: [${count.join(', ')}].`,
+        variables: { count: [...count], digit: digitName },
         visualization: makeViz(
-          [...arr],
-          {},
-          {},
-          digitName
+          Object.fromEntries(nums.map((_, i) => [i, 'comparing'])),
+          Object.fromEntries(nums.map((v, i) => [i, String(Math.floor(v / exp) % 10)])),
+          [{ key: 'Count', value: count.join(',') }],
         ),
       });
 
-      // Prefix sum
       for (let i = 1; i < 10; i++) count[i] += count[i - 1];
 
-      steps.push({
-        line: 11,
-        explanation: `Prefix sums: [${count.join(', ')}]. These give output positions for each digit.`,
-        variables: { prefixCount: [...count] },
-        visualization: makeViz([...arr], {}, {}, digitName),
-      });
-
-      // Place in output
-      const output = new Array(n).fill(0);
       for (let i = n - 1; i >= 0; i--) {
-        const d = Math.floor(arr[i] / exp) % 10;
-        const pos = count[d] - 1;
-        output[pos] = arr[i];
-        count[d]--;
+        const idx = Math.floor(nums[i] / exp) % 10;
+        output[--count[idx]] = nums[i];
       }
 
-      arr.splice(0, n, ...output);
+      for (let i = 0; i < n; i++) nums[i] = output[i];
 
       steps.push({
-        line: 15,
-        explanation: `After sorting by ${digitName}: [${arr.join(', ')}]. Elements are stably sorted by this digit position.`,
-        variables: { afterPass: [...arr], pass: passNum },
+        line: 12,
+        explanation: `After sorting by ${digitName} digit: [${nums.join(', ')}].`,
+        variables: { arr: [...nums], pass },
         visualization: makeViz(
-          [...arr],
-          arr.reduce((h, _, i) => ({ ...h, [i]: 'sorted' }), {}),
+          Object.fromEntries(nums.map((_, i) => [i, 'found'])),
           {},
-          digitName
+          [{ key: 'After pass', value: nums.join(', ') }],
         ),
       });
 
       exp *= 10;
+      pass++;
     }
 
-    const finalHL: Record<number, string> = {};
-    for (let i = 0; i < n; i++) finalHL[i] = 'sorted';
-
     steps.push({
-      line: 5,
-      explanation: `Radix sort complete after ${passNum} pass(es)! Sorted array: [${arr.join(', ')}].`,
-      variables: { result: [...arr] },
-      visualization: { type: 'array', array: [...arr], highlights: finalHL, labels: {} },
+      line: 1,
+      explanation: `Radix sort complete! Sorted: [${nums.join(', ')}].`,
+      variables: { result: [...nums] },
+      visualization: makeViz(
+        Object.fromEntries(nums.map((_, i) => [i, 'found'])),
+        {},
+        [{ key: 'Sorted', value: nums.join(', ') }],
+      ),
     });
 
     return steps;

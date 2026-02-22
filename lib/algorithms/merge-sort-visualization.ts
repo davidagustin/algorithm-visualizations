@@ -6,87 +6,93 @@ const mergeSortVisualization: AlgorithmDefinition = {
   difficulty: 'Medium',
   category: 'Sorting',
   description:
-    'Divide-and-conquer sorting algorithm. Recursively split the array into halves until single elements remain, then merge sorted halves back together by comparing and placing elements in order. Achieves O(n log n) time and O(n) space.',
-  tags: ['sorting', 'divide and conquer', 'merge', 'recursion'],
-
+    'Classic merge sort algorithm. Divide the array into halves, recursively sort each half, then merge the sorted halves together. Time: O(n log n), Space: O(n).',
+  tags: ['Sorting', 'Divide and Conquer', 'Merge Sort', 'Recursion'],
   code: {
-    pseudocode: `function mergeSort(arr):
-  if len(arr) <= 1: return arr
-  mid = len(arr) / 2
-  left = mergeSort(arr[:mid])
-  right = mergeSort(arr[mid:])
-  return merge(left, right)
+    pseudocode: `function mergeSort(arr, lo, hi):
+  if lo >= hi: return
+  mid = (lo + hi) / 2
+  mergeSort(arr, lo, mid)
+  mergeSort(arr, mid+1, hi)
+  merge(arr, lo, mid, hi)
 
-function merge(left, right):
-  result = []
-  while left and right:
-    if left[0] <= right[0]:
-      result.append(left.pop(0))
-    else:
-      result.append(right.pop(0))
-  return result + left + right`,
-
+function merge(arr, lo, mid, hi):
+  left = arr[lo..mid]
+  right = arr[mid+1..hi]
+  i = j = 0, k = lo
+  while i < left.len and j < right.len:
+    if left[i] <= right[j]: arr[k++] = left[i++]
+    else: arr[k++] = right[j++]
+  copy remaining`,
     python: `def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
-    return merge(left, right)
+    def sort(lo, hi):
+        if lo >= hi: return
+        mid = (lo + hi) // 2
+        sort(lo, mid)
+        sort(mid + 1, hi)
+        merge(lo, mid, hi)
 
-def merge(left, right):
-    result = []
-    i = j = 0
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            result.append(left[i]); i += 1
-        else:
-            result.append(right[j]); j += 1
-    return result + left[i:] + right[j:]`,
+    def merge(lo, mid, hi):
+        left = arr[lo:mid+1]
+        right = arr[mid+1:hi+1]
+        i = j = 0; k = lo
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                arr[k] = left[i]; i += 1
+            else:
+                arr[k] = right[j]; j += 1
+            k += 1
+        while i < len(left): arr[k] = left[i]; i += 1; k += 1
+        while j < len(right): arr[k] = right[j]; j += 1; k += 1
 
+    sort(0, len(arr) - 1)
+    return arr`,
     javascript: `function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
-  const mid = Math.floor(arr.length / 2);
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid));
-  return merge(left, right);
-}
-function merge(left, right) {
-  const result = [];
-  let i = 0, j = 0;
-  while (i < left.length && j < right.length) {
-    if (left[i] <= right[j]) result.push(left[i++]);
-    else result.push(right[j++]);
+  function sort(lo, hi) {
+    if (lo >= hi) return;
+    const mid = Math.floor((lo + hi) / 2);
+    sort(lo, mid);
+    sort(mid + 1, hi);
+    merge(lo, mid, hi);
   }
-  return [...result, ...left.slice(i), ...right.slice(j)];
+  function merge(lo, mid, hi) {
+    const left = arr.slice(lo, mid + 1);
+    const right = arr.slice(mid + 1, hi + 1);
+    let i = 0, j = 0, k = lo;
+    while (i < left.length && j < right.length) {
+      if (left[i] <= right[j]) arr[k++] = left[i++];
+      else arr[k++] = right[j++];
+    }
+    while (i < left.length) arr[k++] = left[i++];
+    while (j < right.length) arr[k++] = right[j++];
+  }
+  sort(0, arr.length - 1);
+  return arr;
 }`,
-
-    java: `public int[] mergeSort(int[] arr) {
-    if (arr.length <= 1) return arr;
-    int mid = arr.length / 2;
-    int[] left = mergeSort(Arrays.copyOfRange(arr, 0, mid));
-    int[] right = mergeSort(Arrays.copyOfRange(arr, mid, arr.length));
-    return merge(left, right);
+    java: `public void mergeSort(int[] arr, int lo, int hi) {
+    if (lo >= hi) return;
+    int mid = lo + (hi - lo) / 2;
+    mergeSort(arr, lo, mid);
+    mergeSort(arr, mid + 1, hi);
+    merge(arr, lo, mid, hi);
 }
-private int[] merge(int[] left, int[] right) {
-    int[] result = new int[left.length + right.length];
-    int i = 0, j = 0, k = 0;
-    while (i < left.length && j < right.length)
-        result[k++] = left[i] <= right[j] ? left[i++] : right[j++];
-    while (i < left.length) result[k++] = left[i++];
-    while (j < right.length) result[k++] = right[j++];
-    return result;
+private void merge(int[] arr, int lo, int mid, int hi) {
+    int[] left = Arrays.copyOfRange(arr, lo, mid + 1);
+    int[] right = Arrays.copyOfRange(arr, mid + 1, hi + 1);
+    int i = 0, j = 0, k = lo;
+    while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) arr[k++] = left[i++];
+        else arr[k++] = right[j++];
+    }
+    while (i < left.length) arr[k++] = left[i++];
+    while (j < right.length) arr[k++] = right[j++];
 }`,
   },
-
-  defaultInput: {
-    arr: [38, 27, 43, 3, 9, 82, 10],
-  },
-
+  defaultInput: { nums: [38, 27, 43, 3, 9, 82, 10] },
   inputFields: [
     {
-      name: 'arr',
-      label: 'Array to Sort',
+      name: 'nums',
+      label: 'Array',
       type: 'array',
       defaultValue: [38, 27, 43, 3, 9, 82, 10],
       placeholder: '38,27,43,3,9,82,10',
@@ -95,106 +101,81 @@ private int[] merge(int[] left, int[] right) {
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const initial = input.arr as number[];
+    const nums = (input.nums as number[]).slice();
     const steps: AlgorithmStep[] = [];
-    let arr = [...initial];
-    const n = arr.length;
 
     const makeViz = (
-      current: number[],
       highlights: Record<number, string>,
-      labels: Record<number, string>
+      labels: Record<number, string>,
+      auxEntries?: { key: string; value: string }[],
     ): ArrayVisualization => ({
       type: 'array',
-      array: current,
+      array: [...nums],
       highlights,
       labels,
+      ...(auxEntries ? { auxData: { label: 'Merge Sort', entries: auxEntries } } : {}),
     });
 
     steps.push({
       line: 1,
-      explanation: `Start merge sort on [${arr.join(', ')}]. Recursively divide into halves, then merge sorted halves.`,
-      variables: { array: [...arr] },
-      visualization: makeViz(arr, {}, {}),
+      explanation: `Begin merge sort on [${nums.join(', ')}].`,
+      variables: { nums: [...nums] },
+      visualization: makeViz({}, {}),
     });
 
-    // Simulate merge sort iteratively (bottom-up for clear visualization)
-    // Show split phases first
-    const mid1 = Math.floor(n / 2);
-    const leftHL: Record<number, string> = {};
-    const rightHL: Record<number, string> = {};
-    for (let i = 0; i < mid1; i++) leftHL[i] = 'active';
-    for (let i = mid1; i < n; i++) rightHL[i] = 'comparing';
-
-    steps.push({
-      line: 3,
-      explanation: `Split array at mid=${mid1}: left half [${arr.slice(0, mid1).join(', ')}] and right half [${arr.slice(mid1).join(', ')}].`,
-      variables: { mid: mid1, left: arr.slice(0, mid1), right: arr.slice(mid1) },
-      visualization: makeViz(arr, { ...leftHL, ...rightHL }, { [0]: 'left', [mid1]: 'right' }),
-    });
-
-    // Bottom-up merge sort visualization
-    let size = 1;
-    while (size < n) {
-      const newArr = [...arr];
-      for (let start = 0; start < n; start += 2 * size) {
-        const mid = Math.min(start + size, n);
-        const end = Math.min(start + 2 * size, n);
-
-        // Show the two halves being merged
-        const mergeHL: Record<number, string> = {};
-        for (let i = start; i < mid; i++) mergeHL[i] = 'active';
-        for (let i = mid; i < end; i++) mergeHL[i] = 'comparing';
-
-        steps.push({
-          line: 8,
-          explanation: `Merge subarrays [${arr.slice(start, mid).join(', ')}] and [${arr.slice(mid, end).join(', ')}] (indices ${start}-${mid - 1} and ${mid}-${end - 1}).`,
-          variables: { left: arr.slice(start, mid), right: arr.slice(mid, end), mergeSize: size },
-          visualization: makeViz([...arr], mergeHL, { [start]: 'L', [mid < n ? mid : mid - 1]: 'R' }),
-        });
-
-        // Perform merge
-        const left = arr.slice(start, mid);
-        const right = arr.slice(mid, end);
-        let i = 0, j = 0, k = start;
-        while (i < left.length && j < right.length) {
-          const compareHL: Record<number, string> = {};
-          compareHL[start + i] = 'swapping';
-          compareHL[mid + j] = 'swapping';
-
-          if (left[i] <= right[j]) {
-            newArr[k] = left[i++];
-          } else {
-            newArr[k] = right[j++];
-          }
-          k++;
-        }
-        while (i < left.length) newArr[k++] = left[i++];
-        while (j < right.length) newArr[k++] = right[j++];
-
-        // Show merged result
-        const sortedHL: Record<number, string> = {};
-        for (let s = start; s < end; s++) sortedHL[s] = 'sorted';
-
-        steps.push({
-          line: 13,
-          explanation: `Merged result: [${newArr.slice(start, end).join(', ')}] placed at indices ${start}-${end - 1}.`,
-          variables: { merged: newArr.slice(start, end) },
-          visualization: makeViz([...newArr], sortedHL, {}),
-        });
+    function sort(lo: number, hi: number, depth: number) {
+      if (lo >= hi) return;
+      const mid = Math.floor((lo + hi) / 2);
+      const hl: Record<number, string> = {};
+      for (let i = lo; i <= mid; i++) hl[i] = 'pointer';
+      for (let i = mid + 1; i <= hi; i++) hl[i] = 'comparing';
+      steps.push({
+        line: 3,
+        explanation: `Divide [${lo}..${hi}] at mid=${mid}.`,
+        variables: { lo, hi, mid, depth },
+        visualization: makeViz(hl, { [lo]: 'lo', [mid]: 'mid', [hi]: 'hi' },
+          [{ key: 'Action', value: 'Divide' }, { key: 'Depth', value: String(depth) }]),
+      });
+      sort(lo, mid, depth + 1);
+      sort(mid + 1, hi, depth + 1);
+      const left = nums.slice(lo, mid + 1);
+      const right = nums.slice(mid + 1, hi + 1);
+      steps.push({
+        line: 7,
+        explanation: `Merge left=[${left.join(', ')}] and right=[${right.join(', ')}].`,
+        variables: { left: [...left], right: [...right] },
+        visualization: makeViz(hl, {},
+          [{ key: 'Left', value: left.join(',') }, { key: 'Right', value: right.join(',') }]),
+      });
+      let i = 0, j = 0, k = lo;
+      while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) nums[k++] = left[i++];
+        else nums[k++] = right[j++];
       }
-      arr = newArr;
-      size *= 2;
+      while (i < left.length) nums[k++] = left[i++];
+      while (j < right.length) nums[k++] = right[j++];
+      const mergeHl: Record<number, string> = {};
+      for (let x = lo; x <= hi; x++) mergeHl[x] = 'found';
+      steps.push({
+        line: 7,
+        explanation: `Merged [${lo}..${hi}]: [${nums.slice(lo, hi + 1).join(', ')}].`,
+        variables: { merged: nums.slice(lo, hi + 1) },
+        visualization: makeViz(mergeHl, {},
+          [{ key: 'Merged', value: nums.slice(lo, hi + 1).join(', ') }]),
+      });
     }
 
-    const finalHL: Record<number, string> = {};
-    for (let i = 0; i < n; i++) finalHL[i] = 'sorted';
+    if (nums.length > 1) sort(0, nums.length - 1, 0);
 
     steps.push({
-      line: 6,
-      explanation: `Merge sort complete! Sorted array: [${arr.join(', ')}].`,
-      variables: { result: [...arr] },
-      visualization: makeViz(arr, finalHL, {}),
+      line: 1,
+      explanation: `Merge sort complete! Sorted: [${nums.join(', ')}].`,
+      variables: { result: [...nums] },
+      visualization: makeViz(
+        Object.fromEntries(nums.map((_, i) => [i, 'found'])),
+        {},
+        [{ key: 'Sorted', value: nums.join(', ') }],
+      ),
     });
 
     return steps;

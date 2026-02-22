@@ -1,234 +1,225 @@
 import type { AlgorithmDefinition, AlgorithmStep, ArrayVisualization } from '../types';
 
-const medianOfTwoSortedArraysIi: AlgorithmDefinition = {
+const medianOfTwoSortedArraysII: AlgorithmDefinition = {
   id: 'median-of-two-sorted-arrays-ii',
-  title: 'Median of Two Sorted Arrays (Merge Approach)',
+  title: 'Median of Two Sorted Arrays II',
   leetcodeNumber: 4,
   difficulty: 'Hard',
-  category: 'Binary Search',
+  category: 'Sorting',
   description:
-    'Find the median of two sorted arrays using a merge-based approach. Merge the two arrays step by step until reaching the median position. For odd total length return the middle element; for even total length return the average of the two middle elements. O((m+n)) time.',
-  tags: ['binary search', 'merge', 'sorting', 'median'],
-
+    'LC 4: Find the median of two sorted arrays in O(log(min(m,n))). Binary search on the smaller array to find the correct partition where max_left <= min_right.',
+  tags: ['Binary Search', 'Array', 'Divide and Conquer', 'Sorting'],
   code: {
     pseudocode: `function findMedianSortedArrays(nums1, nums2):
-  merged = merge(nums1, nums2)
-  n = len(merged)
-  if n is odd:
-    return merged[n / 2]
-  else:
-    return (merged[n/2 - 1] + merged[n/2]) / 2
-
-function merge(a, b):
-  result = [], i = 0, j = 0
-  while i < len(a) and j < len(b):
-    if a[i] <= b[j]: append a[i++]
-    else: append b[j++]
-  append remaining elements
-  return result`,
-
-    python: `def findMedianSortedArrays(nums1: list[int], nums2: list[int]) -> float:
-    merged = []
-    i, j = 0, 0
-    while i < len(nums1) and j < len(nums2):
-        if nums1[i] <= nums2[j]:
-            merged.append(nums1[i]); i += 1
+  if len(nums1) > len(nums2): swap them
+  m, n = len(nums1), len(nums2)
+  lo, hi = 0, m
+  while lo <= hi:
+    i = (lo + hi) / 2    # partition nums1
+    j = (m + n + 1) / 2 - i  # partition nums2
+    if i < m and nums2[j-1] > nums1[i]: lo = i+1
+    elif i > 0 and nums1[i-1] > nums2[j]: hi = i-1
+    else:
+      maxLeft = max(nums1[i-1] if i>0, nums2[j-1] if j>0)
+      if (m+n) odd: return maxLeft
+      minRight = min(nums1[i] if i<m, nums2[j] if j<n)
+      return (maxLeft + minRight) / 2`,
+    python: `def findMedianSortedArrays(nums1, nums2):
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
+    m, n = len(nums1), len(nums2)
+    lo, hi = 0, m
+    while lo <= hi:
+        i = (lo + hi) // 2
+        j = (m + n + 1) // 2 - i
+        if i < m and nums2[j-1] > nums1[i]: lo = i + 1
+        elif i > 0 and nums1[i-1] > nums2[j]: hi = i - 1
         else:
-            merged.append(nums2[j]); j += 1
-    merged.extend(nums1[i:])
-    merged.extend(nums2[j:])
-    n = len(merged)
-    return merged[n // 2] if n % 2 else (merged[n // 2 - 1] + merged[n // 2]) / 2`,
-
+            max_left = max(nums1[i-1] if i > 0 else -inf, nums2[j-1] if j > 0 else -inf)
+            if (m + n) % 2 == 1: return max_left
+            min_right = min(nums1[i] if i < m else inf, nums2[j] if j < n else inf)
+            return (max_left + min_right) / 2`,
     javascript: `function findMedianSortedArrays(nums1, nums2) {
-  const merged = [];
-  let i = 0, j = 0;
-  while (i < nums1.length && j < nums2.length) {
-    if (nums1[i] <= nums2[j]) merged.push(nums1[i++]);
-    else merged.push(nums2[j++]);
+  if (nums1.length > nums2.length) [nums1, nums2] = [nums2, nums1];
+  const m = nums1.length, n = nums2.length;
+  let lo = 0, hi = m;
+  while (lo <= hi) {
+    const i = Math.floor((lo + hi) / 2);
+    const j = Math.floor((m + n + 1) / 2) - i;
+    if (i < m && nums2[j-1] > nums1[i]) lo = i + 1;
+    else if (i > 0 && nums1[i-1] > nums2[j]) hi = i - 1;
+    else {
+      const maxLeft = Math.max(i > 0 ? nums1[i-1] : -Infinity, j > 0 ? nums2[j-1] : -Infinity);
+      if ((m + n) % 2 === 1) return maxLeft;
+      const minRight = Math.min(i < m ? nums1[i] : Infinity, j < n ? nums2[j] : Infinity);
+      return (maxLeft + minRight) / 2;
+    }
   }
-  while (i < nums1.length) merged.push(nums1[i++]);
-  while (j < nums2.length) merged.push(nums2[j++]);
-  const n = merged.length;
-  return n % 2 ? merged[n >> 1] : (merged[n / 2 - 1] + merged[n / 2]) / 2;
 }`,
-
     java: `public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-    int[] merged = new int[nums1.length + nums2.length];
-    int i = 0, j = 0, k = 0;
-    while (i < nums1.length && j < nums2.length)
-        merged[k++] = nums1[i] <= nums2[j] ? nums1[i++] : nums2[j++];
-    while (i < nums1.length) merged[k++] = nums1[i++];
-    while (j < nums2.length) merged[k++] = nums2[j++];
-    int n = merged.length;
-    return n % 2 == 1 ? merged[n / 2] : (merged[n / 2 - 1] + merged[n / 2]) / 2.0;
+    if (nums1.length > nums2.length) { int[] t = nums1; nums1 = nums2; nums2 = t; }
+    int m = nums1.length, n = nums2.length, lo = 0, hi = m;
+    while (lo <= hi) {
+        int i = (lo + hi) / 2, j = (m + n + 1) / 2 - i;
+        if (i < m && nums2[j-1] > nums1[i]) lo = i + 1;
+        else if (i > 0 && nums1[i-1] > nums2[j]) hi = i - 1;
+        else {
+            int maxLeft = Math.max(i > 0 ? nums1[i-1] : Integer.MIN_VALUE, j > 0 ? nums2[j-1] : Integer.MIN_VALUE);
+            if ((m + n) % 2 == 1) return maxLeft;
+            int minRight = Math.min(i < m ? nums1[i] : Integer.MAX_VALUE, j < n ? nums2[j] : Integer.MAX_VALUE);
+            return (maxLeft + minRight) / 2.0;
+        }
+    }
+    return 0;
 }`,
   },
-
-  defaultInput: {
-    nums1: [1, 3, 8],
-    nums2: [2, 5, 6, 10],
-  },
-
+  defaultInput: { nums1: [1, 3], nums2: [2] },
   inputFields: [
     {
       name: 'nums1',
       label: 'Array 1',
       type: 'array',
-      defaultValue: [1, 3, 8],
-      placeholder: '1,3,8',
+      defaultValue: [1, 3],
+      placeholder: '1,3',
       helperText: 'First sorted array',
     },
     {
       name: 'nums2',
       label: 'Array 2',
       type: 'array',
-      defaultValue: [2, 5, 6, 10],
-      placeholder: '2,5,6,10',
+      defaultValue: [2],
+      placeholder: '2',
       helperText: 'Second sorted array',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const nums1 = input.nums1 as number[];
-    const nums2 = input.nums2 as number[];
+    let nums1 = (input.nums1 as number[]).slice();
+    let nums2 = (input.nums2 as number[]).slice();
     const steps: AlgorithmStep[] = [];
 
-    const merged: number[] = [];
-    let i = 0, j = 0;
-
     const makeViz = (
+      arr: number[],
       highlights: Record<number, string>,
-      labels: Record<number, string>
+      labels: Record<number, string>,
+      auxEntries?: { key: string; value: string }[],
     ): ArrayVisualization => ({
       type: 'array',
-      array: [...merged],
+      array: [...arr],
       highlights,
       labels,
+      ...(auxEntries ? { auxData: { label: 'Median 2 Arrays', entries: auxEntries } } : {}),
     });
 
     steps.push({
       line: 1,
-      explanation: `Merge nums1=[${nums1.join(', ')}] and nums2=[${nums2.join(', ')}] step by step.`,
-      variables: { nums1: `[${nums1.join(', ')}]`, nums2: `[${nums2.join(', ')}]` },
-      visualization: {
-        type: 'array',
-        array: [...nums1, ...nums2],
-        highlights: {
-          ...nums1.reduce((acc: Record<number, string>, _, idx) => ({ ...acc, [idx]: 'active' }), {}),
-          ...nums2.reduce((acc: Record<number, string>, _, idx) => ({ ...acc, [nums1.length + idx]: 'pointer' }), {}),
-        },
-        labels: {
-          0: 'A[0]',
-          [nums1.length]: 'B[0]',
-        },
-      },
+      explanation: `Find median of [${nums1.join(',')}] and [${nums2.join(',')}].`,
+      variables: { nums1: [...nums1], nums2: [...nums2] },
+      visualization: makeViz([...nums1, ...nums2],
+        Object.fromEntries([...nums1, ...nums2].map((_, i) => [i, i < nums1.length ? 'pointer' : 'comparing'])),
+        Object.fromEntries([...nums1, ...nums2].map((_, i) => [i, i < nums1.length ? 'A' : 'B'])),
+        [{ key: 'A', value: nums1.join(',') }, { key: 'B', value: nums2.join(',') }],
+      ),
     });
 
-    while (i < nums1.length && j < nums2.length) {
+    if (nums1.length > nums2.length) {
+      [nums1, nums2] = [nums2, nums1];
       steps.push({
-        line: 7,
-        explanation: `Compare nums1[${i}]=${nums1[i]} and nums2[${j}]=${nums2[j]}. Pick ${nums1[i] <= nums2[j] ? nums1[i] : nums2[j]}.`,
-        variables: { 'i (in nums1)': i, 'j (in nums2)': j, 'nums1[i]': nums1[i], 'nums2[j]': nums2[j] },
-        visualization: {
-          type: 'array',
-          array: [...nums1, ...nums2],
-          highlights: {
-            [i]: 'comparing',
-            [nums1.length + j]: 'comparing',
+        line: 2,
+        explanation: `Swap arrays so nums1 is shorter. nums1=[${nums1.join(',')}], nums2=[${nums2.join(',')}].`,
+        variables: { nums1: [...nums1], nums2: [...nums2] },
+        visualization: makeViz([...nums1, ...nums2],
+          Object.fromEntries([...nums1, ...nums2].map((_, i) => [i, i < nums1.length ? 'pointer' : 'comparing'])),
+          Object.fromEntries([...nums1, ...nums2].map((_, i) => [i, i < nums1.length ? 'A' : 'B'])),
+          [{ key: 'Swapped', value: 'A is shorter' }],
+        ),
+      });
+    }
+
+    const m = nums1.length, n = nums2.length;
+    let lo = 0, hi = m;
+    let median = 0;
+
+    while (lo <= hi) {
+      const i = Math.floor((lo + hi) / 2);
+      const j = Math.floor((m + n + 1) / 2) - i;
+
+      const maxLeft1 = i > 0 ? nums1[i - 1] : -Infinity;
+      const minRight1 = i < m ? nums1[i] : Infinity;
+      const maxLeft2 = j > 0 ? nums2[j - 1] : -Infinity;
+      const minRight2 = j < n ? nums2[j] : Infinity;
+
+      steps.push({
+        line: 5,
+        explanation: `Partition: i=${i} in A, j=${j} in B. maxLeft1=${maxLeft1 === -Infinity ? '-∞' : maxLeft1}, maxLeft2=${maxLeft2 === -Infinity ? '-∞' : maxLeft2}, minRight1=${minRight1 === Infinity ? '∞' : minRight1}, minRight2=${minRight2 === Infinity ? '∞' : minRight2}.`,
+        variables: { i, j, maxLeft1, maxLeft2, minRight1, minRight2 },
+        visualization: makeViz([...nums1, ...nums2],
+          {
+            ...(i > 0 ? { [i - 1]: 'pointer' } : {}),
+            ...(i < m ? { [i]: 'comparing' } : {}),
+            ...(j > 0 ? { [m + j - 1]: 'pointer' } : {}),
+            ...(j < n ? { [m + j]: 'comparing' } : {}),
           },
-          labels: {
-            [i]: `A[${i}]`,
-            [nums1.length + j]: `B[${j}]`,
-          },
-        },
+          {},
+          [{ key: 'i', value: String(i) }, { key: 'j', value: String(j) },
+           { key: 'maxL1', value: maxLeft1 === -Infinity ? '-∞' : String(maxLeft1) },
+           { key: 'maxL2', value: maxLeft2 === -Infinity ? '-∞' : String(maxLeft2) }],
+        ),
       });
 
-      if (nums1[i] <= nums2[j]) {
-        merged.push(nums1[i]);
+      if (i < m && maxLeft2 > minRight1) {
+        lo = i + 1;
         steps.push({
           line: 8,
-          explanation: `nums1[${i}]=${nums1[i]} <= nums2[${j}]=${nums2[j]}. Append ${nums1[i]} to merged. i=${i + 1}.`,
-          variables: { merged: `[${merged.join(', ')}]` },
-          visualization: makeViz(
-            { [merged.length - 1]: 'found' },
-            { [merged.length - 1]: `${merged[merged.length - 1]}` }
-          ),
+          explanation: `maxLeft2=${maxLeft2} > minRight1=${minRight1}. Move partition right in A. lo=${lo}.`,
+          variables: { lo },
+          visualization: makeViz([...nums1, ...nums2], {}, {},
+            [{ key: 'Adjust', value: 'Move right in A' }]),
         });
-        i++;
-      } else {
-        merged.push(nums2[j]);
+      } else if (i > 0 && maxLeft1 > minRight2) {
+        hi = i - 1;
         steps.push({
-          line: 10,
-          explanation: `nums2[${j}]=${nums2[j]} < nums1[${i}]=${nums1[i]}. Append ${nums2[j]} to merged. j=${j + 1}.`,
-          variables: { merged: `[${merged.join(', ')}]` },
-          visualization: makeViz(
-            { [merged.length - 1]: 'found' },
-            { [merged.length - 1]: `${merged[merged.length - 1]}` }
+          line: 9,
+          explanation: `maxLeft1=${maxLeft1} > minRight2=${minRight2}. Move partition left in A. hi=${hi}.`,
+          variables: { hi },
+          visualization: makeViz([...nums1, ...nums2], {}, {},
+            [{ key: 'Adjust', value: 'Move left in A' }]),
+        });
+      } else {
+        const maxLeft = Math.max(maxLeft1, maxLeft2);
+        if ((m + n) % 2 === 1) {
+          median = maxLeft;
+        } else {
+          const minRight = Math.min(minRight1, minRight2);
+          median = (maxLeft + minRight) / 2;
+        }
+        steps.push({
+          line: 11,
+          explanation: `Valid partition found! maxLeft=${maxLeft === -Infinity ? '-∞' : maxLeft}. Median=${median}.`,
+          variables: { median, maxLeft, minRight: Math.min(minRight1, minRight2) },
+          visualization: makeViz([...nums1, ...nums2],
+            Object.fromEntries([...nums1, ...nums2].map((_, k) => [k, 'found'])),
+            {},
+            [{ key: 'Median', value: String(median) }],
           ),
         });
-        j++;
+        break;
       }
     }
 
-    while (i < nums1.length) {
-      merged.push(nums1[i]);
-      steps.push({
-        line: 12,
-        explanation: `Append remaining nums1[${i}]=${nums1[i]}.`,
-        variables: { merged: `[${merged.join(', ')}]` },
-        visualization: makeViz(
-          { [merged.length - 1]: 'active' },
-          { [merged.length - 1]: `${merged[merged.length - 1]}` }
-        ),
-      });
-      i++;
-    }
-
-    while (j < nums2.length) {
-      merged.push(nums2[j]);
-      steps.push({
-        line: 13,
-        explanation: `Append remaining nums2[${j}]=${nums2[j]}.`,
-        variables: { merged: `[${merged.join(', ')}]` },
-        visualization: makeViz(
-          { [merged.length - 1]: 'active' },
-          { [merged.length - 1]: `${merged[merged.length - 1]}` }
-        ),
-      });
-      j++;
-    }
-
-    const n = merged.length;
-    let median: number;
-    if (n % 2 === 1) {
-      median = merged[Math.floor(n / 2)];
-      steps.push({
-        line: 15,
-        explanation: `Merged: [${merged.join(', ')}]. Odd length ${n}. Median = merged[${Math.floor(n / 2)}] = ${median}.`,
-        variables: { merged: `[${merged.join(', ')}]`, medianIndex: Math.floor(n / 2), result: median },
-        visualization: makeViz(
-          { [Math.floor(n / 2)]: 'found' },
-          { [Math.floor(n / 2)]: `median=${median}` }
-        ),
-      });
-    } else {
-      const left = merged[n / 2 - 1];
-      const right = merged[n / 2];
-      median = (left + right) / 2;
-      steps.push({
-        line: 17,
-        explanation: `Merged: [${merged.join(', ')}]. Even length ${n}. Median = (${left}+${right})/2 = ${median}.`,
-        variables: { merged: `[${merged.join(', ')}]`, leftMid: left, rightMid: right, result: median },
-        visualization: makeViz(
-          { [n / 2 - 1]: 'found', [n / 2]: 'found' },
-          { [n / 2 - 1]: `${left}`, [n / 2]: `${right}` }
-        ),
-      });
-    }
+    steps.push({
+      line: 1,
+      explanation: `Median of the two sorted arrays is ${median}.`,
+      variables: { median },
+      visualization: makeViz([...nums1, ...nums2],
+        Object.fromEntries([...nums1, ...nums2].map((_, i) => [i, 'found'])),
+        {},
+        [{ key: 'Median', value: String(median) }],
+      ),
+    });
 
     return steps;
   },
 };
 
-export default medianOfTwoSortedArraysIi;
+export default medianOfTwoSortedArraysII;

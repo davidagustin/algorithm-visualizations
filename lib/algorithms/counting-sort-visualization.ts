@@ -6,59 +6,46 @@ const countingSortVisualization: AlgorithmDefinition = {
   difficulty: 'Easy',
   category: 'Sorting',
   description:
-    'Sort integers by counting occurrences of each value. Compute a count array, accumulate prefix sums to get positions, then place each element at its correct index. O(n + k) time and space where k is the range of values. Non-comparison based sorting.',
-  tags: ['sorting', 'counting', 'non-comparison', 'linear time', 'integer'],
-
+    'Counting sort counts occurrences of each element and uses prefix sums to place elements in sorted order. Time: O(n+k), Space: O(k) where k is the range of values.',
+  tags: ['Sorting', 'Counting Sort', 'Non-comparative', 'Linear Time'],
   code: {
-    pseudocode: `function countingSort(arr):
-  k = max(arr) + 1
-  count = array of zeros, size k
+    pseudocode: `function countingSort(arr, maxVal):
+  count = new array[maxVal+1] filled with 0
   for x in arr: count[x]++
-  // Prefix sum
-  for i = 1 to k-1:
-    count[i] += count[i-1]
-  // Place in output
-  output = array of zeros, size n
+  for i = 1 to maxVal: count[i] += count[i-1]
+  output = new array[n]
   for i = n-1 down to 0:
-    x = arr[i]
-    output[count[x] - 1] = x
-    count[x]--
+    output[count[arr[i]]-1] = arr[i]
+    count[arr[i]]--
   return output`,
-
     python: `def counting_sort(arr):
     if not arr: return arr
-    k = max(arr) + 1
-    count = [0] * k
-    for x in arr:
-        count[x] += 1
-    for i in range(1, k):
-        count[i] += count[i - 1]
+    max_val = max(arr)
+    count = [0] * (max_val + 1)
+    for x in arr: count[x] += 1
+    for i in range(1, max_val + 1):
+        count[i] += count[i-1]
     output = [0] * len(arr)
-    for i in range(len(arr) - 1, -1, -1):
-        x = arr[i]
-        output[count[x] - 1] = x
-        count[x] -= 1
+    for i in range(len(arr)-1, -1, -1):
+        output[count[arr[i]]-1] = arr[i]
+        count[arr[i]] -= 1
     return output`,
-
     javascript: `function countingSort(arr) {
-  const k = Math.max(...arr) + 1;
-  const count = new Array(k).fill(0);
+  const max = Math.max(...arr);
+  const count = new Array(max + 1).fill(0);
   for (const x of arr) count[x]++;
-  for (let i = 1; i < k; i++) count[i] += count[i - 1];
-  const output = new Array(arr.length).fill(0);
+  for (let i = 1; i <= max; i++) count[i] += count[i-1];
+  const output = new Array(arr.length);
   for (let i = arr.length - 1; i >= 0; i--) {
-    const x = arr[i];
-    output[count[x] - 1] = x;
-    count[x]--;
+    output[--count[arr[i]]] = arr[i];
   }
   return output;
 }`,
-
     java: `public int[] countingSort(int[] arr) {
-    int k = Arrays.stream(arr).max().getAsInt() + 1;
-    int[] count = new int[k];
+    int max = Arrays.stream(arr).max().getAsInt();
+    int[] count = new int[max + 1];
     for (int x : arr) count[x]++;
-    for (int i = 1; i < k; i++) count[i] += count[i - 1];
+    for (int i = 1; i <= max; i++) count[i] += count[i-1];
     int[] output = new int[arr.length];
     for (int i = arr.length - 1; i >= 0; i--) {
         output[--count[arr[i]]] = arr[i];
@@ -66,139 +53,100 @@ const countingSortVisualization: AlgorithmDefinition = {
     return output;
 }`,
   },
-
-  defaultInput: {
-    arr: [4, 2, 2, 8, 3, 3, 1],
-  },
-
+  defaultInput: { nums: [4, 2, 2, 8, 3, 3, 1] },
   inputFields: [
     {
-      name: 'arr',
-      label: 'Array to Sort',
+      name: 'nums',
+      label: 'Array',
       type: 'array',
       defaultValue: [4, 2, 2, 8, 3, 3, 1],
       placeholder: '4,2,2,8,3,3,1',
-      helperText: 'Comma-separated non-negative integers',
+      helperText: 'Comma-separated non-negative integers (small range)',
     },
   ],
 
   generateSteps(input: Record<string, unknown>): AlgorithmStep[] {
-    const initial = input.arr as number[];
+    const nums = (input.nums as number[]).slice();
     const steps: AlgorithmStep[] = [];
-    const arr = [...initial];
-    const n = arr.length;
+    const n = nums.length;
 
-    if (n === 0) return steps;
-
-    const k = Math.max(...arr) + 1;
-    const count = new Array(k).fill(0);
+    const makeViz = (
+      arr: number[],
+      highlights: Record<number, string>,
+      labels: Record<number, string>,
+      auxEntries?: { key: string; value: string }[],
+    ): ArrayVisualization => ({
+      type: 'array',
+      array: [...arr],
+      highlights,
+      labels,
+      ...(auxEntries ? { auxData: { label: 'Counting Sort', entries: auxEntries } } : {}),
+    });
 
     steps.push({
       line: 1,
-      explanation: `Counting sort on [${arr.join(', ')}]. Max value = ${k - 1}, so count array has ${k} slots.`,
-      variables: { array: [...arr], k },
-      visualization: {
-        type: 'array',
-        array: [...arr],
-        highlights: {},
-        labels: {},
-        auxData: { label: 'Count Array', entries: Array.from({ length: k }, (_, i) => ({ key: String(i), value: '0' })) },
-      },
+      explanation: `Begin counting sort on [${nums.join(', ')}].`,
+      variables: { nums: [...nums] },
+      visualization: makeViz(nums, {}, {}),
     });
 
-    // Phase 1: Count occurrences
-    for (let idx = 0; idx < n; idx++) {
-      const x = arr[idx];
-      count[x]++;
+    const maxVal = Math.max(...nums);
+    const count = new Array(maxVal + 1).fill(0);
 
+    // Count occurrences
+    for (let i = 0; i < n; i++) {
+      count[nums[i]]++;
       steps.push({
-        line: 4,
-        explanation: `arr[${idx}] = ${x}: increment count[${x}] to ${count[x]}.`,
-        variables: { index: idx, value: x, 'count[x]': count[x] },
-        visualization: {
-          type: 'array',
-          array: [...arr],
-          highlights: { [idx]: 'active' },
-          labels: { [idx]: `${x}` },
-          auxData: {
-            label: 'Count Array',
-            entries: Array.from({ length: k }, (_, i) => ({ key: String(i), value: String(count[i]) })),
-          },
-        },
+        line: 3,
+        explanation: `Count arr[${i}]=${nums[i]}. count[${nums[i]}]=${count[nums[i]]}.`,
+        variables: { index: i, value: nums[i], count: [...count] },
+        visualization: makeViz(nums, { [i]: 'active' }, { [i]: String(nums[i]) },
+          [{ key: 'Counting', value: `arr[${i}]=${nums[i]}` }, { key: 'count[]', value: count.slice(0, maxVal + 1).join(',') }]),
       });
     }
 
-    steps.push({
-      line: 5,
-      explanation: `Counting complete. Now compute prefix sums to get final positions.`,
-      variables: { count: [...count] },
-      visualization: {
-        type: 'array',
-        array: [...arr],
-        highlights: {},
-        labels: {},
-        auxData: {
-          label: 'Count Array (raw)',
-          entries: Array.from({ length: k }, (_, i) => ({ key: String(i), value: String(count[i]) })),
-        },
-      },
-    });
-
-    // Phase 2: Prefix sums
-    for (let i = 1; i < k; i++) {
+    // Prefix sums
+    for (let i = 1; i <= maxVal; i++) {
       count[i] += count[i - 1];
-      steps.push({
-        line: 6,
-        explanation: `Prefix sum: count[${i}] = count[${i - 1}] + count[${i}] = ${count[i]}. Means ${i} should go up to index ${count[i] - 1}.`,
-        variables: { i, 'count[i]': count[i] },
-        visualization: {
-          type: 'array',
-          array: [...arr],
-          highlights: {},
-          labels: {},
-          auxData: {
-            label: 'Count Array (prefix sums)',
-            entries: Array.from({ length: k }, (_, j) => ({ key: String(j), value: String(count[j]) })),
-          },
-        },
-      });
     }
-
-    // Phase 3: Place elements
-    const output = new Array(n).fill(0);
-    const countSnapshot = [...count];
-
-    for (let i = n - 1; i >= 0; i--) {
-      const x = arr[i];
-      const pos = count[x] - 1;
-      output[pos] = x;
-      count[x]--;
-
-      steps.push({
-        line: 10,
-        explanation: `Place arr[${i}]=${x} at output[${pos}]. count[${x}] now ${count[x]}.`,
-        variables: { i, value: x, outputIndex: pos },
-        visualization: {
-          type: 'array',
-          array: [...output],
-          highlights: { [pos]: 'swapping' },
-          labels: { [pos]: `${x}` },
-          auxData: {
-            label: 'Output Array (building)',
-            entries: output.map((v, j) => ({ key: String(j), value: v === 0 && !output.slice(0, j + 1).some((_, p) => p === j && output[p] !== 0) ? '-' : String(v) })),
-          },
-        },
-      });
-    }
-
-    const finalHL: Record<number, string> = {};
-    for (let i = 0; i < n; i++) finalHL[i] = 'sorted';
 
     steps.push({
-      line: 12,
-      explanation: `Counting sort complete! Sorted array: [${output.join(', ')}].`,
-      variables: { result: output },
-      visualization: { type: 'array', array: output, highlights: finalHL, labels: {} },
+      line: 4,
+      explanation: `Prefix sum count array: [${count.join(', ')}]. count[i] = number of elements <= i.`,
+      variables: { count: [...count] },
+      visualization: makeViz(nums,
+        Object.fromEntries(nums.map((_, i) => [i, 'comparing'])),
+        {},
+        [{ key: 'Prefix count', value: count.join(',') }],
+      ),
+    });
+
+    // Build output
+    const output = new Array(n);
+    for (let i = n - 1; i >= 0; i--) {
+      output[--count[nums[i]]] = nums[i];
+    }
+
+    steps.push({
+      line: 6,
+      explanation: `Place elements using count array. Output: [${output.join(', ')}].`,
+      variables: { output: [...output] },
+      visualization: makeViz(output,
+        Object.fromEntries(output.map((_, i) => [i, 'found'])),
+        {},
+        [{ key: 'Output', value: output.join(', ') }],
+      ),
+    });
+
+    steps.push({
+      line: 1,
+      explanation: `Counting sort complete! Sorted: [${output.join(', ')}].`,
+      variables: { result: [...output] },
+      visualization: makeViz(output,
+        Object.fromEntries(output.map((_, i) => [i, 'found'])),
+        {},
+        [{ key: 'Sorted', value: output.join(', ') }],
+      ),
     });
 
     return steps;
