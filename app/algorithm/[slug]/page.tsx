@@ -255,7 +255,7 @@ export default function AlgorithmPage({
           <Breadcrumb catName={catName} catId={categoryInfo?.id || ''} title={title} />
 
           {/* Title bar */}
-          <div className="mb-6 animate-slide-up">
+          <div className="mb-6">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2">
               <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
                 {title}
@@ -304,7 +304,7 @@ export default function AlgorithmPage({
           </div>
 
           {/* Custom Input */}
-          <div className="mb-6 animate-slide-up delay-100">
+          <div className="mb-6 ">
             <InputPanel
               fields={algorithm.inputFields}
               values={inputValues}
@@ -314,7 +314,7 @@ export default function AlgorithmPage({
           </div>
 
           {/* Explanation + Variables */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 animate-slide-up delay-200">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 ">
             {step && (
               <>
                 <div className="glass rounded-xl p-4">
@@ -333,7 +333,7 @@ export default function AlgorithmPage({
           </div>
 
           {/* Main visualization layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 animate-slide-up delay-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 ">
             {/* Left: Code Panel */}
             <div className="h-[350px] sm:h-[450px] lg:h-[500px] flex flex-col">
               <CodePanel
@@ -369,7 +369,7 @@ export default function AlgorithmPage({
           </div>
 
           {/* Controls */}
-          <div className="mb-6 animate-slide-up delay-400">
+          <div className="mb-6 ">
             <Controls
               isPlaying={isPlaying}
               onTogglePlay={handleTogglePlay}
@@ -407,7 +407,7 @@ export default function AlgorithmPage({
         <Breadcrumb catName={catName} catId={categoryInfo?.id || ''} title={title} />
 
         {/* Title bar */}
-        <div className="mb-8 animate-slide-up">
+        <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
             <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
               {title}
@@ -456,7 +456,7 @@ export default function AlgorithmPage({
         </div>
 
         {/* Coming Soon Banner */}
-        <div className="glass-strong rounded-2xl p-8 text-center mb-8 animate-slide-up delay-100">
+        <div className="glass-strong rounded-2xl p-8 text-center mb-8 ">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4" style={{ background: 'var(--gradient-brand)' }}>
             <svg
               width="32"
@@ -504,7 +504,7 @@ export default function AlgorithmPage({
 
         {/* Category description */}
         {categoryInfo && (
-          <div className="glass rounded-xl p-6 animate-slide-up delay-200">
+          <div className="glass rounded-xl p-6 ">
             <div className="flex items-center gap-3 mb-3">
               <span className="text-2xl">{categoryInfo.icon}</span>
               <h3 className={`text-lg font-semibold ${categoryInfo.color}`}>
