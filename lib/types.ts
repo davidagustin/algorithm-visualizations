@@ -8,7 +8,19 @@ export type Category =
   | 'Dynamic Programming'
   | 'Sorting'
   | 'Two Pointers'
-  | 'Binary Search';
+  | 'Binary Search'
+  | 'Hash Map'
+  | 'Fast And Slow Pointers'
+  | 'Sliding Window'
+  | 'Heap'
+  | 'Interval'
+  | 'Prefix Sum'
+  | 'Trie'
+  | 'Graph'
+  | 'Backtracking'
+  | 'Greedy'
+  | 'Bit Manipulation'
+  | 'Math';
 
 export type Language = 'python' | 'javascript' | 'java' | 'pseudocode';
 
