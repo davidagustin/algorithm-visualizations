@@ -3242,6 +3242,268 @@ export const CATEGORIES: CategoryInfo[] = [
       },
     ],
   },
+
+  // ─── Array Manipulation & Rearrangement ─────────────────────────────
+  {
+    id: 'array-manipulation-rearrangement',
+    name: 'Array Manipulation & Rearrangement',
+    icon: '⟺',
+    color: 'text-orange-400',
+    gradient: 'from-orange-500/20 to-orange-600/10',
+    borderColor: 'border-orange-500/30',
+    problems: [
+      {
+        id: 'maximum-product-subarray',
+        title: 'Maximum Product Subarray',
+        difficulty: 'Medium',
+        leetcodeNumber: 152,
+        description:
+          'Find the contiguous subarray with the largest product. Track both max and min products at each position because two negatives can yield a positive maximum.',
+        hasVisualization: true,
+        tags: ['dynamic-programming', 'array', 'subarray', 'product'],
+      },
+      {
+        id: 'contains-duplicate-ii',
+        title: 'Contains Duplicate II',
+        difficulty: 'Easy',
+        leetcodeNumber: 219,
+        description:
+          'Check if an array contains two distinct indices i and j such that nums[i] equals nums[j] and the absolute difference of i and j is at most k.',
+        hasVisualization: true,
+        tags: ['hash-map', 'array', 'sliding-window'],
+      },
+      {
+        id: 'summary-ranges',
+        title: 'Summary Ranges',
+        difficulty: 'Easy',
+        leetcodeNumber: 228,
+        description:
+          'Return the smallest sorted list of ranges that cover all numbers in a sorted unique integer array. A range covers all integers in the inclusive interval.',
+        hasVisualization: true,
+        tags: ['array', 'ranges', 'sorted'],
+      },
+      {
+        id: 'pascal-triangle-ii',
+        title: "Pascal's Triangle II",
+        difficulty: 'Easy',
+        leetcodeNumber: 119,
+        description:
+          'Return the kth (0-indexed) row of Pascal triangle. Each element is the sum of the two elements directly above it. Compute in-place by updating right to left.',
+        hasVisualization: true,
+        tags: ['array', 'dynamic-programming', 'math'],
+      },
+      {
+        id: 'set-matrix-zeroes',
+        title: 'Set Matrix Zeroes',
+        difficulty: 'Medium',
+        leetcodeNumber: 73,
+        description:
+          'If an element in an m x n integer matrix is 0, set its entire row and column to 0. Use the first row and first column as markers for O(1) extra space.',
+        hasVisualization: true,
+        tags: ['array', 'matrix', 'in-place'],
+      },
+      {
+        id: 'find-disappeared-numbers',
+        title: 'Find All Numbers Disappeared in an Array',
+        difficulty: 'Easy',
+        leetcodeNumber: 448,
+        description:
+          'Given an array of n integers where values are in [1,n], find all integers in [1,n] that do not appear. Use in-place negation as a visited marker.',
+        hasVisualization: true,
+        tags: ['array', 'hash-table', 'in-place'],
+      },
+      {
+        id: 'third-maximum-number',
+        title: 'Third Maximum Number',
+        difficulty: 'Easy',
+        leetcodeNumber: 414,
+        description:
+          'Find the third distinct maximum number in an array. If it does not exist, return the maximum. Track the top three distinct values in a single pass.',
+        hasVisualization: true,
+        tags: ['array', 'sorting', 'greedy'],
+      },
+      {
+        id: 'array-partition',
+        title: 'Array Partition',
+        difficulty: 'Easy',
+        leetcodeNumber: 561,
+        description:
+          'Given 2n integers, group them into n pairs to maximize the sum of the minimum of each pair. Sort the array and sum every other element starting at index 0.',
+        hasVisualization: true,
+        tags: ['array', 'sorting', 'greedy'],
+      },
+      {
+        id: 'reshape-matrix',
+        title: 'Reshape the Matrix',
+        difficulty: 'Easy',
+        leetcodeNumber: 566,
+        description:
+          'Reshape an m x n matrix into an r x c matrix while preserving row-major order. If the total elements differ, return the original matrix.',
+        hasVisualization: true,
+        tags: ['array', 'matrix', 'simulation'],
+      },
+      {
+        id: 'can-place-flowers',
+        title: 'Can Place Flowers',
+        difficulty: 'Easy',
+        leetcodeNumber: 605,
+        description:
+          'Determine if n flowers can be planted in a flowerbed without any two flowers being adjacent. Greedily plant whenever a position and its neighbors are all empty.',
+        hasVisualization: true,
+        tags: ['array', 'greedy'],
+      },
+      {
+        id: 'maximum-average-subarray',
+        title: 'Maximum Average Subarray I',
+        difficulty: 'Easy',
+        leetcodeNumber: 643,
+        description:
+          'Find the contiguous subarray of length k with the maximum average using a sliding window technique.',
+        hasVisualization: true,
+        tags: ['sliding-window', 'array', 'subarray'],
+      },
+      {
+        id: 'shortest-unsorted-subarray',
+        title: 'Shortest Unsorted Continuous Subarray',
+        difficulty: 'Medium',
+        leetcodeNumber: 581,
+        description:
+          'Find the shortest subarray that when sorted makes the entire array sorted. Track the running max left-to-right and running min right-to-left to locate boundaries.',
+        hasVisualization: true,
+        tags: ['array', 'sorting', 'two-pointers'],
+      },
+      {
+        id: 'non-decreasing-array',
+        title: 'Non-decreasing Array',
+        difficulty: 'Medium',
+        leetcodeNumber: 665,
+        description:
+          'Check if an array can become non-decreasing by modifying at most one element. When a violation is found, decide greedily whether to lower the previous or raise the current element.',
+        hasVisualization: true,
+        tags: ['array', 'greedy'],
+      },
+      {
+        id: 'toeplitz-matrix',
+        title: 'Toeplitz Matrix',
+        difficulty: 'Easy',
+        leetcodeNumber: 766,
+        description:
+          'A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element. Check each cell against its upper-left neighbor.',
+        hasVisualization: true,
+        tags: ['array', 'matrix'],
+      },
+      {
+        id: 'monotonic-array',
+        title: 'Monotonic Array',
+        difficulty: 'Easy',
+        leetcodeNumber: 896,
+        description:
+          'Determine if an array is monotonic (entirely non-increasing or non-decreasing) in a single pass using two boolean flags updated simultaneously.',
+        hasVisualization: true,
+        tags: ['array', 'monotonic'],
+      },
+      {
+        id: 'sort-array-by-parity',
+        title: 'Sort Array By Parity',
+        difficulty: 'Easy',
+        leetcodeNumber: 905,
+        description:
+          'Move all even integers to the beginning and all odd integers to the end using two in-place pointers converging from both ends.',
+        hasVisualization: true,
+        tags: ['two-pointers', 'array', 'in-place'],
+      },
+      {
+        id: 'valid-mountain-array',
+        title: 'Valid Mountain Array',
+        difficulty: 'Easy',
+        leetcodeNumber: 941,
+        description:
+          'Check if an array is mountain-shaped: strictly increasing to a peak (not first or last element) then strictly decreasing. Use a single index walk.',
+        hasVisualization: true,
+        tags: ['array', 'two-pointers'],
+      },
+      {
+        id: 'k-diff-pairs',
+        title: 'K-diff Pairs in an Array',
+        difficulty: 'Medium',
+        leetcodeNumber: 532,
+        description:
+          'Count unique k-diff pairs in an array where a pair has absolute difference equal to k. Use a frequency map and check for each key whether key+k also exists.',
+        hasVisualization: true,
+        tags: ['hash-map', 'array', 'two-pointers'],
+      },
+      {
+        id: 'find-all-duplicates',
+        title: 'Find All Duplicates in an Array',
+        difficulty: 'Medium',
+        leetcodeNumber: 442,
+        description:
+          'Find all elements appearing twice in an array where values are in [1,n]. Use the in-place negation trick: if the element at abs(num)-1 is already negative, num is a duplicate.',
+        hasVisualization: true,
+        tags: ['array', 'hash-table', 'in-place'],
+      },
+      {
+        id: 'max-chunks-to-sort',
+        title: 'Max Chunks To Make Sorted',
+        difficulty: 'Medium',
+        leetcodeNumber: 769,
+        description:
+          'Given a permutation of [0,n-1], find the maximum number of chunks that can be independently sorted to produce the full sorted array. A chunk ends where the running max equals the current index.',
+        hasVisualization: true,
+        tags: ['array', 'greedy', 'sorting'],
+      },
+      {
+        id: 'image-smoother',
+        title: 'Image Smoother',
+        difficulty: 'Easy',
+        leetcodeNumber: 661,
+        description:
+          'Apply a mean filter to an image matrix: replace each cell with the floor of the average of itself and all valid neighbors within distance 1.',
+        hasVisualization: true,
+        tags: ['array', 'matrix', 'simulation'],
+      },
+      {
+        id: 'transpose-matrix',
+        title: 'Transpose Matrix',
+        difficulty: 'Easy',
+        leetcodeNumber: 867,
+        description:
+          'Return the transpose of a 2D integer matrix by swapping rows and columns: element at [i][j] moves to [j][i].',
+        hasVisualization: true,
+        tags: ['array', 'matrix', 'simulation'],
+      },
+      {
+        id: 'first-missing-positive',
+        title: 'First Missing Positive',
+        difficulty: 'Hard',
+        leetcodeNumber: 41,
+        description:
+          'Find the smallest missing positive integer in O(n) time and O(1) space. Use cyclic sort to place each value in its correct index, then scan for the first mismatch.',
+        hasVisualization: true,
+        tags: ['array', 'hash-table', 'cyclic-sort'],
+      },
+      {
+        id: 'max-product-three-numbers',
+        title: 'Maximum Product of Three Numbers',
+        difficulty: 'Easy',
+        leetcodeNumber: 628,
+        description:
+          'Find the maximum product of three numbers in an integer array. After sorting, compare the product of the top three vs the two smallest and the largest.',
+        hasVisualization: true,
+        tags: ['array', 'sorting', 'math', 'greedy'],
+      },
+      {
+        id: 'duplicate-zeros',
+        title: 'Duplicate Zeros',
+        difficulty: 'Easy',
+        leetcodeNumber: 1089,
+        description:
+          'Duplicate each zero in a fixed-length array in-place, shifting remaining elements right and discarding elements beyond the original length. Use a two-pass right-to-left approach.',
+        hasVisualization: true,
+        tags: ['array', 'two-pointers', 'in-place'],
+      },
+    ],
+  },
 ];
 
 // ─── Interview Recommended Problems ──────────────────────────────────────────
