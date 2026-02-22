@@ -24,6 +24,8 @@ export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
     const cat = searchParams.get('category');
     if (cat && categories.some((c) => c.id === cat)) {
       setCategoryFilter(cat);
+    } else {
+      setCategoryFilter('all');
     }
   }, [searchParams, categories]);
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('All');
