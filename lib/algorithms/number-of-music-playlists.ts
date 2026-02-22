@@ -104,20 +104,10 @@ const numberOfMusicPlaylists: AlgorithmDefinition = {
       explanation: `Count playlists: n=${n} songs, length=${goal}, cooldown k=${k}. dp[i][j] = playlists of length i with j unique songs. dp[0][0]=1.`,
       variables: { n, goal, k },
       visualization: {
-        type: 'dp' as const,
-        table: {
-          headers: ['Length \\ Unique', ...Array.from({ length: n + 1 }, (_, j) => `j=${j}`)],
-          rows: [
-            {
-              label: 'i=0',
-              cells: [
-                { value: 'i=0', highlight: 'default' as string },
-                { value: 1, highlight: 'found' as string },
-                ...Array.from({ length: n }, () => ({ value: 0, highlight: 'default' as string })),
-              ],
-            },
-          ],
-        },
+        type: 'dp-table' as const,
+        values: [1, ...Array.from({ length: n }, () => 0)] as (number | null)[],
+        highlights: { 0: 'found' } as Record<number, string>,
+        labels: Array.from({ length: n + 1 }, (_, j) => `i=0,j=${j}`),
       },
     });
 
@@ -153,11 +143,12 @@ const numberOfMusicPlaylists: AlgorithmDefinition = {
         explanation: `Length ${i}: dp[${i}][j] for j=1..${n} = [${dp[i].slice(1).join(', ')}]. New song choices: (n-j+1). Replay choices: max(0, j-${k}).`,
         variables: { length: i, dpRow: dp[i].slice(1, n + 1) },
         visualization: {
-          type: 'dp' as const,
-          table: {
-            headers: ['Length \\ Unique', ...Array.from({ length: n + 1 }, (_, j) => `j=${j}`)],
-            rows: [...tableRows],
-          },
+          type: 'dp-table' as const,
+          values: dp[i].slice(0, n + 1) as (number | null)[],
+          highlights: Object.fromEntries(
+            dp[i].slice(0, n + 1).map((v, j) => [j, i === goal && j === n ? 'found' : v > 0 ? 'active' : 'default'])
+          ) as Record<number, string>,
+          labels: Array.from({ length: n + 1 }, (_, j) => `i=${i},j=${j}`),
         },
       });
     }
@@ -167,11 +158,10 @@ const numberOfMusicPlaylists: AlgorithmDefinition = {
       explanation: `Total valid playlists of length ${goal} using all ${n} songs: ${dp[goal][n]} (mod 10^9+7).`,
       variables: { answer: dp[goal][n], n, goal, k },
       visualization: {
-        type: 'dp' as const,
-        table: {
-          headers: ['Length \\ Unique', ...Array.from({ length: n + 1 }, (_, j) => `j=${j}`)],
-          rows: [...tableRows],
-        },
+        type: 'dp-table' as const,
+        values: dp[goal].slice(0, n + 1) as (number | null)[],
+        highlights: { [n]: 'found' } as Record<number, string>,
+        labels: Array.from({ length: n + 1 }, (_, j) => `i=${goal},j=${j}`),
       },
     });
 

@@ -91,20 +91,13 @@ const tallestBillboard: AlgorithmDefinition = {
 
     let dp = new Map<number, number>([[0, 0]]);
 
-    const makeViz = (currentRod: number, rodIdx: number, dpState: Map<number, number>) => {
+    const makeViz = (_currentRod: number, _rodIdx: number, dpState: Map<number, number>) => {
       const diffs = [...dpState.keys()].sort((a, b) => a - b).slice(0, 8);
       return {
-        type: 'dp' as const,
-        table: {
-          headers: ['Diff (|h1-h2|)', 'Max Taller Height'],
-          rows: diffs.map(d => ({
-            label: `diff=${d}`,
-            cells: [
-              { value: d, highlight: d === 0 ? 'found' : 'default' as string },
-              { value: dpState.get(d)!, highlight: d === 0 ? 'found' : 'active' as string },
-            ],
-          })),
-        },
+        type: 'dp-table' as const,
+        values: diffs.map(d => dpState.get(d)!) as (number | null)[],
+        highlights: Object.fromEntries(diffs.map((d, i) => [i, d === 0 ? 'found' : 'active'])) as Record<number, string>,
+        labels: diffs.map(d => `diff=${d}`),
       };
     };
 

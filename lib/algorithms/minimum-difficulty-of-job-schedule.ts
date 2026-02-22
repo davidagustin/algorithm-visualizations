@@ -151,20 +151,12 @@ const minimumDifficultyOfJobSchedule: AlgorithmDefinition = {
         explanation: `Day ${day}: Computed dp[${day}][*]. Best schedule using ${day} day(s) for each job count: [${rowDisplay.join(', ')}].`,
         variables: { day, dpRow: rowDisplay },
         visualization: {
-          type: 'dp' as const,
-          table: {
-            headers: ['Day', ...Array.from({ length: n + 1 }, (_, i) => `i=${i}`)],
-            rows: Array.from({ length: day + 1 }, (_, dayIdx) => ({
-              label: `Day ${dayIdx}`,
-              cells: [
-                { value: `d=${dayIdx}`, highlight: 'default' as string },
-                ...dp[dayIdx].slice(0, n + 1).map((v, i) => ({
-                  value: v >= INF ? 'INF' : v,
-                  highlight: dayIdx === day && i === n ? 'found' : dayIdx === day ? 'active' : 'default',
-                })),
-              ],
-            })),
-          },
+          type: 'dp-table' as const,
+          values: dp[day].slice(0, n + 1).map(v => v >= INF ? null : v),
+          highlights: Object.fromEntries(
+            dp[day].slice(0, n + 1).map((_, i) => [i, i === n ? 'found' : 'active'])
+          ),
+          labels: Array.from({ length: n + 1 }, (_, i) => `d${day},i${i}`),
         },
       });
     }

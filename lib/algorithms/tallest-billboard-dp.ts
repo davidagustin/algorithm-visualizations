@@ -157,17 +157,10 @@ Map<Integer,Integer>solve(int[]r,int s,int e){
       explanation: `Left half enumeration done: ${L.size} diff states. Sample: ${lEntries.map(([d, t]) => `diff=${d}->total=${t}`).join(', ')}.`,
       variables: { leftStates: L.size },
       visualization: {
-        type: 'dp' as const,
-        table: {
-          headers: ['Diff', 'Max Total (left)'],
-          rows: lEntries.map(([d, t]) => ({
-            label: `diff=${d}`,
-            cells: [
-              { value: d, highlight: 'active' as string },
-              { value: t, highlight: 'active' as string },
-            ],
-          })),
-        },
+        type: 'dp-table' as const,
+        values: lEntries.map(([, t]) => t) as (number | null)[],
+        highlights: Object.fromEntries(lEntries.map((_, i) => [i, 'active'])) as Record<number, string>,
+        labels: lEntries.map(([d]) => `diff=${d}`),
       },
     });
 
@@ -177,17 +170,10 @@ Map<Integer,Integer>solve(int[]r,int s,int e){
       explanation: `Right half enumeration done: ${R.size} diff states. Sample: ${rEntries.map(([d, t]) => `diff=${d}->total=${t}`).join(', ')}.`,
       variables: { rightStates: R.size },
       visualization: {
-        type: 'dp' as const,
-        table: {
-          headers: ['Diff', 'Max Total (right)'],
-          rows: rEntries.map(([d, t]) => ({
-            label: `diff=${d}`,
-            cells: [
-              { value: d, highlight: 'found' as string },
-              { value: t, highlight: 'found' as string },
-            ],
-          })),
-        },
+        type: 'dp-table' as const,
+        values: rEntries.map(([, t]) => t) as (number | null)[],
+        highlights: Object.fromEntries(rEntries.map((_, i) => [i, 'found'])) as Record<number, string>,
+        labels: rEntries.map(([d]) => `diff=${d}`),
       },
     });
 

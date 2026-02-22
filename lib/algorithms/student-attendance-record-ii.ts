@@ -100,38 +100,26 @@ const studentAttendanceRecordIi: AlgorithmDefinition = {
     let dp = Array.from({ length: 2 }, () => new Array(3).fill(0)) as number[][];
     dp[0][0] = 1;
 
-    const makeDP = (dayLabel: string) => ({
-      type: 'dp' as const,
-      table: {
-        headers: ['State (A\\L)', 'L=0', 'L=1', 'L=2'],
-        rows: [
-          {
-            label: 'A=0',
-            cells: [
-              { value: 'A=0', highlight: 'default' as string },
-              { value: dp[0][0], highlight: dp[0][0] > 0 ? 'active' : 'default' },
-              { value: dp[0][1], highlight: dp[0][1] > 0 ? 'active' : 'default' },
-              { value: dp[0][2], highlight: dp[0][2] > 0 ? 'active' : 'default' },
-            ],
-          },
-          {
-            label: 'A=1',
-            cells: [
-              { value: 'A=1', highlight: 'default' as string },
-              { value: dp[1][0], highlight: dp[1][0] > 0 ? 'found' : 'default' },
-              { value: dp[1][1], highlight: dp[1][1] > 0 ? 'found' : 'default' },
-              { value: dp[1][2], highlight: dp[1][2] > 0 ? 'found' : 'default' },
-            ],
-          },
-        ],
-      },
-    });
+    const makeDP = () => {
+      // Flatten dp[2][3] into a 6-element array: [dp[0][0], dp[0][1], dp[0][2], dp[1][0], dp[1][1], dp[1][2]]
+      const values: (number | null)[] = [dp[0][0], dp[0][1], dp[0][2], dp[1][0], dp[1][1], dp[1][2]];
+      const highlights: Record<number, string> = {
+        0: dp[0][0] > 0 ? 'active' : 'default',
+        1: dp[0][1] > 0 ? 'active' : 'default',
+        2: dp[0][2] > 0 ? 'active' : 'default',
+        3: dp[1][0] > 0 ? 'found' : 'default',
+        4: dp[1][1] > 0 ? 'found' : 'default',
+        5: dp[1][2] > 0 ? 'found' : 'default',
+      };
+      const labels = ['A0L0', 'A0L1', 'A0L2', 'A1L0', 'A1L1', 'A1L2'];
+      return { type: 'dp-table' as const, values, highlights, labels };
+    };
 
     steps.push({
       line: 1,
       explanation: `Initialize DP table. dp[a][l] = number of valid sequences with a absences and l trailing lates. Start: dp[0][0]=1.`,
       variables: { n, day: 0, total: 1 },
-      visualization: makeDP('Day 0'),
+      visualization: makeDP(),
     });
 
     const limit = Math.min(n, 5);
@@ -151,7 +139,7 @@ const studentAttendanceRecordIi: AlgorithmDefinition = {
         line: 8,
         explanation: `After day ${day}: Added P (present), A (absent if allowed), L (late if <2 consecutive). Total valid sequences so far: ${total}.`,
         variables: { day, totalSequences: total },
-        visualization: makeDP(`Day ${day}`),
+        visualization: makeDP(),
       });
     }
 
@@ -175,7 +163,7 @@ const studentAttendanceRecordIi: AlgorithmDefinition = {
       line: 10,
       explanation: `Final answer: ${ans} valid attendance records of length ${n} make a student eligible for an award.`,
       variables: { n, answer: ans },
-      visualization: makeDP(`Day ${n} (Final)`),
+      visualization: makeDP(),
     });
 
     return steps;

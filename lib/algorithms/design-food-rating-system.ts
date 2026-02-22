@@ -200,7 +200,7 @@ class FoodRatings:
         type: 'array',
         array: actualRatings,
         highlights: { 1: 'found', 2: 'found' },
-        labels: { 1: 'japanese', 2: 'japanese', 1: `top: ${topJapanese[1]}` },
+        labels: { 1: `top: ${topJapanese[1]}`, 2: 'japanese' },
       },
     });
 

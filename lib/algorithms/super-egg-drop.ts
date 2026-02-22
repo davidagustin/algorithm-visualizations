@@ -96,19 +96,10 @@ const superEggDrop: AlgorithmDefinition = {
       explanation: `Super Egg Drop with k=${k} eggs and n=${n} floors. dp[m][eggs] = max floors verifiable with m moves and given eggs.`,
       variables: { k, n, m },
       visualization: {
-        type: 'dp' as const,
-        table: {
-          headers: ['Moves (m)', ...Array.from({ length: k }, (_, j) => `${j + 1} egg(s)`)],
-          rows: [
-            {
-              label: 'm=0',
-              cells: [
-                { value: 'm=0', highlight: 'default' as string },
-                ...Array.from({ length: k }, () => ({ value: 0, highlight: 'default' as string })),
-              ],
-            },
-          ],
-        },
+        type: 'dp-table' as const,
+        values: Array.from({ length: k }, () => 0) as (number | null)[],
+        highlights: {} as Record<number, string>,
+        labels: Array.from({ length: k }, (_, j) => `m=0,${j + 1}egg`),
       },
     });
 
@@ -145,11 +136,12 @@ const superEggDrop: AlgorithmDefinition = {
         explanation: `Move ${m}: dp[${m}][j] = dp[${m - 1}][j-1] + dp[${m - 1}][j] + 1. With ${m} moves and ${k} eggs, can check ${dp[m][k]} floors. Need ${n}.`,
         variables: { m, eggsRow: Array.from({ length: k }, (_, j) => dp[m][j + 1]), target: n },
         visualization: {
-          type: 'dp' as const,
-          table: {
-            headers: ['Moves (m)', ...Array.from({ length: k }, (_, j) => `${j + 1} egg(s)`)],
-            rows: [...tableRows],
-          },
+          type: 'dp-table' as const,
+          values: Array.from({ length: k }, (_, j) => dp[m][j + 1]) as (number | null)[],
+          highlights: Object.fromEntries(
+            Array.from({ length: k }, (_, j) => [j, dp[m][j + 1] >= n && j + 1 === k ? 'found' : dp[m][j + 1] > 0 ? 'active' : 'default'])
+          ) as Record<number, string>,
+          labels: Array.from({ length: k }, (_, j) => `m=${m},${j + 1}egg`),
         },
       });
     }
@@ -159,11 +151,10 @@ const superEggDrop: AlgorithmDefinition = {
       explanation: `With ${m} moves, we can verify all ${n} floors using ${k} eggs. Minimum number of moves required: ${m}.`,
       variables: { answer: m, maxFloorsVerifiable: dp[m][k] },
       visualization: {
-        type: 'dp' as const,
-        table: {
-          headers: ['Moves (m)', ...Array.from({ length: k }, (_, j) => `${j + 1} egg(s)`)],
-          rows: [...tableRows],
-        },
+        type: 'dp-table' as const,
+        values: Array.from({ length: k }, (_, j) => dp[m][j + 1]) as (number | null)[],
+        highlights: { [k - 1]: 'found' } as Record<number, string>,
+        labels: Array.from({ length: k }, (_, j) => `m=${m},${j + 1}egg`),
       },
     });
 

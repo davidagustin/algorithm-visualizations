@@ -98,28 +98,26 @@ const paintHouseIi: AlgorithmDefinition = {
     const n = costs.length;
     const k = costs[0].length;
 
-    const makeDP = (highlight: Record<string, string>, note: string) => ({
-      type: 'dp' as const,
-      table: {
-        headers: ['House', ...Array.from({ length: k }, (_, j) => `Color ${j + 1}`)],
-        rows: costs.map((row, i) => ({
-          label: `House ${i + 1}`,
-          cells: [
-            { value: `H${i + 1}`, highlight: 'default' as string },
-            ...row.map((v, j) => ({
-              value: v,
-              highlight: highlight[`${i},${j}`] || 'default',
-            })),
-          ],
-        })),
-      },
-    });
+    const makeDP = (highlight: Record<string, string>) => {
+      const values: (number | null)[] = costs.flatMap(row => row);
+      const highlights: Record<number, string> = {};
+      costs.forEach((row, i) => {
+        row.forEach((_, j) => {
+          const idx = i * k + j;
+          if (highlight[`${i},${j}`]) highlights[idx] = highlight[`${i},${j}`];
+        });
+      });
+      const labels: string[] = costs.flatMap((_, i) =>
+        Array.from({ length: k }, (__, j) => `H${i + 1}C${j + 1}`)
+      );
+      return { type: 'dp-table' as const, values, highlights, labels };
+    };
 
     steps.push({
       line: 1,
       explanation: `Starting Paint House II with ${n} houses and ${k} colors. Initialized cost table with base costs.`,
       variables: { n, k, house: 0 },
-      visualization: makeDP({}, 'initial'),
+      visualization: makeDP({}),
     });
 
     for (let i = 1; i < n; i++) {
@@ -139,7 +137,7 @@ const paintHouseIi: AlgorithmDefinition = {
         line: 3,
         explanation: `House ${i + 1}: Previous row min1=${min1} at color ${minIdx + 1}, min2=${min2}. These are the two lowest costs from house ${i}.`,
         variables: { house: i + 1, min1, min2, minIdx: minIdx + 1 },
-        visualization: makeDP(prevHighlights, 'finding mins'),
+        visualization: makeDP(prevHighlights),
       });
 
       for (let j = 0; j < k; j++) {
@@ -154,7 +152,7 @@ const paintHouseIi: AlgorithmDefinition = {
         line: 8,
         explanation: `Updated house ${i + 1} costs by adding optimal previous costs. Current row: [${costs[i].join(', ')}].`,
         variables: { house: i + 1, updatedCosts: costs[i] },
-        visualization: makeDP(curHighlights, 'updated'),
+        visualization: makeDP(curHighlights),
       });
     }
 
@@ -167,7 +165,7 @@ const paintHouseIi: AlgorithmDefinition = {
       line: 10,
       explanation: `Minimum cost to paint all houses is ${minCost}, achieved by using color ${minJ + 1} for the last house.`,
       variables: { minCost, bestColorLastHouse: minJ + 1 },
-      visualization: makeDP(finalHL, 'result'),
+      visualization: makeDP(finalHL),
     });
 
     return steps;

@@ -112,20 +112,12 @@ const uncrossedLines: AlgorithmDefinition = {
         explanation: `Row ${i} (nums1[${i - 1}]=${nums1[i - 1]}): dp[${i}] = [${dp[i].join(', ')}]. Matches with nums2 extend LCS.`,
         variables: { i, nums1Char: nums1[i - 1], dpRow: dp[i] },
         visualization: {
-          type: 'dp' as const,
-          table: {
-            headers: ['', ...['', ...nums2].map((v, j) => j === 0 ? '0' : `${v}`)],
-            rows: dp.slice(0, i + 1).map((row, ri) => ({
-              label: ri === 0 ? '0' : `${nums1[ri - 1]}`,
-              cells: [
-                { value: ri === 0 ? '' : `${nums1[ri - 1]}`, highlight: 'default' as string },
-                ...row.map((v, ci) => ({
-                  value: v,
-                  highlight: ri === i && ci === n ? 'found' : ri === i ? 'active' : 'default',
-                })),
-              ],
-            })),
-          },
+          type: 'dp-table' as const,
+          values: dp[i].slice(0, n + 1) as (number | null)[],
+          highlights: Object.fromEntries(
+            dp[i].slice(0, n + 1).map((_, ci) => [ci, ci === n ? 'found' : 'active'])
+          ) as Record<number, string>,
+          labels: Array.from({ length: n + 1 }, (_, ci) => ci === 0 ? `i=${i}` : `j=${ci}`),
         },
       });
     }
