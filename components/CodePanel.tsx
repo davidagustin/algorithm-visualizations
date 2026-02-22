@@ -58,7 +58,31 @@ export default function CodePanel({
   const [showLineNumbers, setShowLineNumbers] = useState(true);
   const [showSettings, setShowSettings] = useState(false);
 
-  const lines = useMemo(() => code[language].split('\n'), [code, language]);
+  const rawLines = useMemo(() => code[language].split('\n'), [code, language]);
+
+  // Detect the base indent unit in the source code (smallest non-zero leading whitespace)
+  const baseIndent = useMemo(() => {
+    let minIndent = Infinity;
+    for (const line of rawLines) {
+      if (line.trim().length === 0) continue;
+      const leading = line.match(/^( +)/);
+      if (leading && leading[1].length > 0 && leading[1].length < minIndent) {
+        minIndent = leading[1].length;
+      }
+    }
+    return minIndent === Infinity ? 2 : minIndent;
+  }, [rawLines]);
+
+  // Re-indent lines when tabSize changes
+  const lines = useMemo(() => {
+    if (tabSize === baseIndent) return rawLines;
+    return rawLines.map((line) => {
+      const leading = line.match(/^( *)/);
+      if (!leading || leading[1].length === 0) return line;
+      const level = Math.round(leading[1].length / baseIndent);
+      return ' '.repeat(level * tabSize) + line.trimStart();
+    });
+  }, [rawLines, tabSize, baseIndent]);
 
   // Track visited lines
   useEffect(() => {
@@ -213,7 +237,7 @@ export default function CodePanel({
       <div
         ref={scrollRef}
         className="flex-1 overflow-y-auto py-3 font-mono"
-        style={{ fontSize: `${fontSize}px`, tabSize, lineHeight: `${lineHeight}px` }}
+        style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}
       >
         {lines.map((line, index) => {
           const lineNum = index + 1;

@@ -13,6 +13,7 @@ import { getVisualization } from '@/lib/algorithms/index';
 import type { AlgorithmDefinition, Language, AlgorithmStep } from '@/lib/types';
 import { LANGUAGES } from '@/lib/types';
 import Header from '@/components/Header';
+import AIChatDrawer from '@/components/AIChatDrawer';
 import CodePanel from '@/components/CodePanel';
 import Controls from '@/components/Controls';
 import StepExplanation from '@/components/StepExplanation';
@@ -313,9 +314,9 @@ export default function AlgorithmPage({
           </div>
 
           {/* Main visualization layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 animate-slide-up delay-200">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 animate-slide-up delay-200">
             {/* Left: Code Panel */}
-            <div className="h-[500px] flex flex-col">
+            <div className="h-[350px] sm:h-[450px] lg:h-[500px] flex flex-col">
               <CodePanel
                 code={algorithm.code}
                 currentLine={step?.line || 0}
@@ -325,7 +326,7 @@ export default function AlgorithmPage({
             </div>
 
             {/* Right: Visualization */}
-            <div className="glass rounded-xl p-4 h-[500px] flex flex-col overflow-hidden">
+            <div className="glass rounded-xl p-3 sm:p-4 h-[300px] sm:h-[400px] lg:h-[500px] flex flex-col overflow-hidden">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3 shrink-0">
                 Visualization
               </h3>
@@ -383,6 +384,15 @@ export default function AlgorithmPage({
             )}
           </div>
         </div>
+
+        {/* AI Chat Drawer */}
+        <AIChatDrawer
+          algorithm={algorithm}
+          currentStep={step}
+          currentStepIndex={currentStep}
+          totalSteps={steps.length}
+          language={language}
+        />
       </div>
     );
   }
@@ -568,7 +578,12 @@ function Breadcrumb({ catName, title }: { catName: string; title: string }) {
       </svg>
       {catName && (
         <>
-          <span className="text-[var(--text-muted)]">{catName}</span>
+          <Link
+            href="/#problems"
+            className="hover:text-[var(--text-secondary)] transition-colors duration-150"
+          >
+            {catName}
+          </Link>
           <svg
             width="12"
             height="12"

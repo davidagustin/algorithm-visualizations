@@ -1,6 +1,7 @@
 import { CATEGORIES, getAllProblems } from '@/lib/algorithms/registry';
 import type { CategoryInfo } from '@/lib/algorithms/registry';
 import Header from '@/components/Header';
+import { DonationAddresses } from '@/components/DonationAddresses';
 import ProblemBrowser from './ProblemBrowser';
 
 export default function Home() {
@@ -123,14 +124,26 @@ export default function Home() {
 
       {/* ─── Footer ────────────────────────────────────────────── */}
       <footer className="border-t border-[var(--border-subtle)] py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-[var(--text-muted)] mb-2">
-            Built for developers who learn by seeing
-          </p>
-          <p className="gradient-text text-lg font-bold">Algomations</p>
-          <p className="text-xs text-[var(--text-muted)] mt-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <span className="gradient-text text-xl font-bold">Algomations</span>
+            </div>
+            <p className="text-[var(--text-muted)] text-sm text-center">
+              Built for developers who learn by seeing.
+            </p>
+            <div className="flex items-center gap-4 text-[var(--text-muted)] text-sm">
+              <span>Made with</span>
+              <span className="text-red-500">&#9829;</span>
+              <span>using Next.js</span>
+            </div>
+          </div>
+
+          <DonationAddresses />
+
+          <div className="mt-6 pt-6 border-t border-[var(--border-subtle)] text-center text-[var(--text-muted)] text-xs">
             &copy; {new Date().getFullYear()} Algomations. All rights reserved.
-          </p>
+          </div>
         </div>
       </footer>
     </div>

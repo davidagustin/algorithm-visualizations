@@ -1,0 +1,43 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "schedule:weekends",
+    ":automergeMinor",
+    ":automergeDigest",
+    ":automergePatch"
+  ],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "major"]
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "labels": ["dependencies", "auto-merge"]
+    },
+    {
+      "matchPackageNames": ["next", "react", "react-dom", "@types/react", "@types/react-dom"],
+      "groupName": "React & Next.js",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["typescript", "@types/node"],
+      "groupName": "TypeScript",
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["tailwindcss", "@tailwindcss/*"],
+      "groupName": "Tailwind CSS"
+    },
+    {
+      "matchPackageNames": ["framer-motion"],
+      "groupName": "Framer Motion"
+    }
+  ]
+}

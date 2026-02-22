@@ -101,13 +101,29 @@ export default function Controls({
     [seekFromEvent]
   );
 
+  const handleTouchStart = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      seekFromEvent(e.touches[0].clientX);
+    },
+    [seekFromEvent]
+  );
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      seekFromEvent(e.touches[0].clientX);
+    },
+    [seekFromEvent]
+  );
+
   return (
-    <div className="glass-strong rounded-xl px-4 py-3">
+    <div className="glass-strong rounded-xl px-3 sm:px-4 py-3">
       {/* Clickable Progress Bar */}
       <div
         ref={progressBarRef}
         onClick={handleProgressClick}
-        className="w-full h-2.5 bg-[var(--bg-overlay)] rounded-full mb-3 cursor-pointer relative group"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        className="w-full h-3 sm:h-2.5 bg-[var(--bg-overlay)] rounded-full mb-3 cursor-pointer relative group touch-none"
         role="slider"
         aria-valuenow={currentStep + 1}
         aria-valuemin={1}
