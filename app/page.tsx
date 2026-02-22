@@ -182,7 +182,7 @@ function CategoryCard({
       className={`card-hover glass rounded-xl p-5 block group`}
     >
       <div className="flex items-start justify-between mb-3">
-        <span className="text-2xl">{category.icon}</span>
+        <span className={`text-2xl font-mono font-bold ${category.color}`}>{category.icon}</span>
         <span
           className={`text-xs font-mono px-2 py-0.5 rounded-full border ${category.borderColor} bg-gradient-to-r ${category.gradient}`}
         >

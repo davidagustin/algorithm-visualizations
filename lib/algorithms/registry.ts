@@ -25,7 +25,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'two-pointers',
     name: 'Two Pointers',
-    icon: '👉',
+    icon: '⇌',
     color: 'text-blue-400',
     gradient: 'from-blue-500/20 to-blue-600/10',
     borderColor: 'border-blue-500/30',
@@ -97,7 +97,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'hash-maps-and-sets',
     name: 'Hash Maps And Sets',
-    icon: '🗂️',
+    icon: '#',
     color: 'text-emerald-400',
     gradient: 'from-emerald-500/20 to-emerald-600/10',
     borderColor: 'border-emerald-500/30',
@@ -158,7 +158,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'linked-lists',
     name: 'Linked Lists',
-    icon: '🔗',
+    icon: '⟶',
     color: 'text-violet-400',
     gradient: 'from-violet-500/20 to-violet-600/10',
     borderColor: 'border-violet-500/30',
@@ -230,7 +230,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'fast-and-slow-pointers',
     name: 'Fast And Slow Pointers',
-    icon: '🐇',
+    icon: '⏩',
     color: 'text-pink-400',
     gradient: 'from-pink-500/20 to-pink-600/10',
     borderColor: 'border-pink-500/30',
@@ -272,7 +272,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'sliding-windows',
     name: 'Sliding Windows',
-    icon: '🪟',
+    icon: '⊞',
     color: 'text-amber-400',
     gradient: 'from-amber-500/20 to-amber-600/10',
     borderColor: 'border-amber-500/30',
@@ -314,7 +314,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'binary-search',
     name: 'Binary Search',
-    icon: '🔍',
+    icon: '⟁',
     color: 'text-cyan-400',
     gradient: 'from-cyan-500/20 to-cyan-600/10',
     borderColor: 'border-cyan-500/30',
@@ -406,7 +406,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'stacks',
     name: 'Stacks',
-    icon: '📚',
+    icon: '▤',
     color: 'text-orange-400',
     gradient: 'from-orange-500/20 to-orange-600/10',
     borderColor: 'border-orange-500/30',
@@ -478,7 +478,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'heaps',
     name: 'Heaps',
-    icon: '🏔️',
+    icon: '△',
     color: 'text-rose-400',
     gradient: 'from-rose-500/20 to-rose-600/10',
     borderColor: 'border-rose-500/30',
@@ -529,7 +529,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'intervals',
     name: 'Intervals',
-    icon: '📏',
+    icon: '⊢',
     color: 'text-teal-400',
     gradient: 'from-teal-500/20 to-teal-600/10',
     borderColor: 'border-teal-500/30',
@@ -571,7 +571,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'prefix-sums',
     name: 'Prefix Sums',
-    icon: '📊',
+    icon: 'Σ',
     color: 'text-indigo-400',
     gradient: 'from-indigo-500/20 to-indigo-600/10',
     borderColor: 'border-indigo-500/30',
@@ -613,7 +613,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'trees',
     name: 'Trees',
-    icon: '🌳',
+    icon: '⌥',
     color: 'text-green-400',
     gradient: 'from-green-500/20 to-green-600/10',
     borderColor: 'border-green-500/30',
@@ -745,7 +745,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'tries',
     name: 'Tries',
-    icon: '🔤',
+    icon: 'T·',
     color: 'text-fuchsia-400',
     gradient: 'from-fuchsia-500/20 to-fuchsia-600/10',
     borderColor: 'border-fuchsia-500/30',
@@ -787,7 +787,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'graphs',
     name: 'Graphs',
-    icon: '🕸️',
+    icon: '◇',
     color: 'text-sky-400',
     gradient: 'from-sky-500/20 to-sky-600/10',
     borderColor: 'border-sky-500/30',
@@ -899,7 +899,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'backtracking',
     name: 'Backtracking',
-    icon: '🔙',
+    icon: '↺',
     color: 'text-yellow-400',
     gradient: 'from-yellow-500/20 to-yellow-600/10',
     borderColor: 'border-yellow-500/30',
@@ -961,7 +961,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'dynamic-programming',
     name: 'Dynamic Programming',
-    icon: '🧮',
+    icon: '▦',
     color: 'text-purple-400',
     gradient: 'from-purple-500/20 to-purple-600/10',
     borderColor: 'border-purple-500/30',
@@ -1062,7 +1062,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'greedy',
     name: 'Greedy',
-    icon: '🤑',
+    icon: '▸',
     color: 'text-lime-400',
     gradient: 'from-lime-500/20 to-lime-600/10',
     borderColor: 'border-lime-500/30',
@@ -1104,7 +1104,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'sort-and-search',
     name: 'Sort And Search',
-    icon: '🔀',
+    icon: '⇅',
     color: 'text-red-400',
     gradient: 'from-red-500/20 to-red-600/10',
     borderColor: 'border-red-500/30',
@@ -1156,7 +1156,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'bit-manipulation',
     name: 'Bit Manipulation',
-    icon: '🔢',
+    icon: '⊕',
     color: 'text-slate-400',
     gradient: 'from-slate-500/20 to-slate-600/10',
     borderColor: 'border-slate-500/30',
@@ -1197,7 +1197,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'math-and-geometry',
     name: 'Math And Geometry',
-    icon: '📐',
+    icon: '∠',
     color: 'text-stone-400',
     gradient: 'from-stone-500/20 to-stone-600/10',
     borderColor: 'border-stone-500/30',

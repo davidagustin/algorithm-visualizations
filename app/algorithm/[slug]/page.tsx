@@ -2,7 +2,7 @@
 
 import React, { use, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   CATEGORIES,
   getProblemById,
@@ -350,20 +350,11 @@ export default function AlgorithmPage({
                 Visualization
               </h3>
               <div className="flex-1 flex items-center justify-center overflow-auto">
-                <AnimatePresence mode="wait">
-                  {step && (
-                    <motion.div
-                      key={currentStep}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.15 }}
-                      className="w-full"
-                    >
-                      <VisualizationRenderer visualization={step.visualization} />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {step && (
+                  <div className="w-full">
+                    <VisualizationRenderer visualization={step.visualization} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -506,7 +497,7 @@ export default function AlgorithmPage({
         {categoryInfo && (
           <div className="glass rounded-xl p-6 ">
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-2xl">{categoryInfo.icon}</span>
+              <span className={`text-2xl font-mono font-bold ${categoryInfo.color}`}>{categoryInfo.icon}</span>
               <h3 className={`text-lg font-semibold ${categoryInfo.color}`}>
                 {categoryInfo.name}
               </h3>
