@@ -180,7 +180,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 19,
         description:
           'Remove the kth node from the end of a linked list using a two-pointer gap technique.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'two-pointers'],
       },
       {
@@ -190,7 +190,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 160,
         description:
           'Find the node where two singly linked lists intersect by aligning their traversal lengths.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'two-pointers'],
       },
       {
@@ -200,7 +200,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 146,
         description:
           'Design a data structure that supports get and put operations in O(1) using a hash map and doubly linked list.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'hash-map', 'design'],
       },
       {
@@ -210,7 +210,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 234,
         description:
           'Determine whether a singly linked list is a palindrome using O(1) extra space.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'two-pointers', 'palindrome'],
       },
       {
@@ -220,7 +220,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 430,
         description:
           'Flatten a doubly linked list where nodes may have child sublists into a single-level list.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['linked-list', 'recursion', 'dfs'],
       },
     ],
@@ -336,7 +336,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 34,
         description:
           'Find the first and last positions of a target value in a sorted array using two binary searches.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'array'],
       },
       {
@@ -346,7 +346,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 875,
         description:
           'Binary search on the answer to find the optimal cutting height that yields at least the required amount of wood.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'greedy'],
       },
       {
@@ -356,7 +356,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 33,
         description:
           'Search for a target in a sorted array that has been rotated at an unknown pivot.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'array'],
       },
       {
@@ -366,7 +366,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 4,
         description:
           'Find the median of two sorted arrays in O(log(min(m,n))) time by binary searching the partition point.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'array', 'divide-and-conquer'],
       },
       {
@@ -376,7 +376,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 74,
         description:
           'Search for a target in a row-sorted matrix by treating it as a virtual flattened sorted array.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'matrix'],
       },
       {
@@ -386,7 +386,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 162,
         description:
           'Find a peak element in an array where neighbors are unequal using binary search on the gradient.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'array'],
       },
       {
@@ -396,7 +396,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 528,
         description:
           'Pick an index at random with probability proportional to its weight using prefix sums and binary search.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['binary-search', 'prefix-sum', 'random'],
       },
     ],
@@ -428,7 +428,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 496,
         description:
           'For each element, find the next greater element to its right using a monotonic stack.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['stack', 'array', 'monotonic-stack'],
       },
       {
@@ -438,7 +438,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 224,
         description:
           'Evaluate a mathematical expression string with parentheses, addition, and subtraction using a stack.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['stack', 'string', 'math'],
       },
       {
@@ -448,7 +448,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 1209,
         description:
           'Remove all adjacent groups of k duplicate characters repeatedly using a stack-based approach.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['stack', 'string'],
       },
       {
@@ -458,7 +458,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 232,
         description:
           'Implement a FIFO queue using only two LIFO stacks with amortized O(1) operations.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['stack', 'queue', 'design'],
       },
       {
@@ -468,7 +468,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 239,
         description:
           'Find the maximum value in each sliding window of size k using a monotonic deque.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['stack', 'deque', 'sliding-window'],
       },
     ],
@@ -490,7 +490,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 692,
         description:
           'Find the k most frequently occurring strings using a hash map and a min-heap of size k.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['heap', 'hash-map', 'sorting'],
       },
       {
@@ -500,7 +500,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 23,
         description:
           'Merge k sorted linked lists into one sorted list using a min-heap to always pick the smallest head.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['heap', 'linked-list', 'merge'],
       },
       {
@@ -510,7 +510,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 295,
         description:
           'Find the median from a continuous data stream efficiently using a max-heap and min-heap.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['heap', 'design', 'stream'],
       },
       {
@@ -519,7 +519,7 @@ export const CATEGORIES: CategoryInfo[] = [
         difficulty: 'Medium',
         description:
           'Sort a nearly sorted array where each element is at most k positions from its final position using a min-heap.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['heap', 'array', 'sorting'],
       },
     ],
@@ -541,7 +541,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 56,
         description:
           'Merge all overlapping intervals by sorting and greedily extending the current interval.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['intervals', 'sorting', 'greedy'],
       },
       {
@@ -551,7 +551,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 986,
         description:
           'Find all overlapping segments between two sorted lists of intervals using a two-pointer approach.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['intervals', 'two-pointers'],
       },
       {
@@ -561,7 +561,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 253,
         description:
           'Determine the maximum number of intervals that overlap at any single point using a sweep line.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['intervals', 'sorting', 'sweep-line'],
       },
     ],
@@ -583,7 +583,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 303,
         description:
           'Answer range sum queries in O(1) time after an O(n) prefix sum precomputation.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['prefix-sum', 'array'],
       },
       {
@@ -593,7 +593,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 560,
         description:
           'Count the number of subarrays that sum to k using prefix sums and a hash map.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['prefix-sum', 'hash-map', 'array'],
       },
       {
@@ -603,7 +603,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 238,
         description:
           'Compute an array where each element is the product of all other elements without using division.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['prefix-sum', 'array'],
       },
     ],
@@ -635,7 +635,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 110,
         description:
           'Check whether a binary tree is height-balanced where subtree depths differ by at most one.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['tree', 'recursion', 'dfs'],
       },
       {
@@ -1074,7 +1074,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 55,
         description:
           'Determine if you can reach the last index of an array by greedily tracking the farthest reachable position.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['greedy', 'array'],
       },
       {
@@ -1084,7 +1084,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 134,
         description:
           'Find the starting gas station index for a circular tour where you never run out of fuel.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['greedy', 'array'],
       },
       {
@@ -1094,7 +1094,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 135,
         description:
           'Distribute minimum candies to children in a line so each child with a higher rating gets more than neighbors.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['greedy', 'array'],
       },
     ],
@@ -1116,7 +1116,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 148,
         description:
           'Sort a linked list in O(n log n) time using merge sort with slow-fast pointer splitting.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['sorting', 'linked-list', 'merge-sort'],
       },
       {
@@ -1126,7 +1126,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 912,
         description:
           'Implement an efficient sorting algorithm such as merge sort or quicksort for an integer array.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['sorting', 'array', 'divide-and-conquer'],
       },
       {
@@ -1136,7 +1136,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 215,
         description:
           'Find the kth largest element using quickselect for average O(n) time without full sorting.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['sorting', 'array', 'quickselect'],
       },
       {
@@ -1209,7 +1209,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 54,
         description:
           'Traverse a matrix in spiral order by peeling off the outermost layer in each iteration.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['matrix', 'simulation'],
       },
       {
@@ -1219,7 +1219,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 7,
         description:
           'Reverse the digits of a signed 32-bit integer, returning 0 if the result overflows.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['math'],
       },
       {
@@ -1229,7 +1229,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 149,
         description:
           'Find the maximum number of points that lie on the same straight line using slope grouping.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['math', 'geometry', 'hash-map'],
       },
       {
@@ -1238,7 +1238,7 @@ export const CATEGORIES: CategoryInfo[] = [
         difficulty: 'Medium',
         description:
           'Find the survivor position when every kth person is eliminated in a circle using the Josephus recurrence.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['math', 'recursion'],
       },
       {
@@ -1248,7 +1248,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 118,
         description:
           'Generate the first n rows of Pascal\'s triangle where each entry is the sum of the two above it.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['math', 'array', 'dynamic-programming'],
       },
     ],
