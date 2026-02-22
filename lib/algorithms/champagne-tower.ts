@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, DPVisualization } from '../types';
 
 const champagneTower: AlgorithmDefinition = {
   id: 'champagne-tower',
@@ -107,16 +107,23 @@ const champagneTower: AlgorithmDefinition = {
     const tower: number[][] = Array.from({ length: row + 1 }, (_, i) => new Array(i + 1).fill(0));
     tower[0][0] = poured;
 
+    function makeDPViz(rowData: number[], activeGlass: number, rowIdx: number): DPVisualization {
+      const vals: (number | null)[] = rowData.map(v => Math.round(v * 100) / 100);
+      const highlights: Record<number, string> = {};
+      for (let i = 0; i < rowData.length; i++) {
+        if (i === activeGlass) highlights[i] = 'active';
+        else if (rowData[i] > 0) highlights[i] = 'found';
+        else highlights[i] = 'default';
+      }
+      const labels: string[] = rowData.map((_, i) => `[${rowIdx}][${i}]`);
+      return { type: 'dp-table', values: vals, highlights, labels };
+    }
+
     steps.push({
       line: 1,
       explanation: `Pour ${poured} cups into the top glass. Simulate overflow row by row down to row ${row}. Query glass at [${row}][${glass}].`,
       variables: { poured, targetRow: row, targetGlass: glass },
-      visualization: {
-        type: 'array',
-        array: [poured],
-        highlights: { 0: 'active' },
-        labels: { 0: 'top' },
-      },
+      visualization: makeDPViz([poured], 0, 0),
     });
 
     for (let i = 0; i < row; i++) {
@@ -134,12 +141,7 @@ const champagneTower: AlgorithmDefinition = {
         line: 5,
         explanation: `After row ${i}: overflow propagated down. Row ${i + 1} now: [${rowDisplay.join(', ')}].`,
         variables: { afterRow: i, nextRowValues: rowDisplay },
-        visualization: {
-          type: 'array',
-          array: rowDisplay,
-          highlights: i + 1 === row ? { [glass]: 'found' } : {},
-          labels: Object.fromEntries(rowDisplay.map((_, idx) => [idx, `[${i + 1}][${idx}]`])),
-        },
+        visualization: makeDPViz(tower[i + 1], i + 1 === row ? glass : -1, i + 1),
       });
     }
 
@@ -149,12 +151,7 @@ const champagneTower: AlgorithmDefinition = {
       line: 10,
       explanation: `Glass at row ${row}, position ${glass} is ${rounded} full (capped at 1.0).`,
       variables: { answer: rounded, uncapped: Math.round(tower[row][glass] * 1000) / 1000 },
-      visualization: {
-        type: 'array',
-        array: tower[row].map(v => Math.round(Math.min(1, v) * 100) / 100),
-        highlights: { [glass]: 'found' },
-        labels: Object.fromEntries(tower[row].map((_, i) => [i, `g${i}`])),
-      },
+      visualization: makeDPViz(tower[row].map(v => Math.min(1, v)), glass, row),
     });
 
     return steps;

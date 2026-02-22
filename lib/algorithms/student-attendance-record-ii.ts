@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, DPVisualization } from '../types';
 
 const studentAttendanceRecordIi: AlgorithmDefinition = {
   id: 'student-attendance-record-ii',

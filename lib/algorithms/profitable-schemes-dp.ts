@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, AlgorithmStep, ArrayVisualization } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, DPVisualization } from '../types';
 
 const profitableSchemesDp: AlgorithmDefinition = {
   id: 'profitable-schemes-dp',
@@ -113,18 +113,26 @@ const profitableSchemesDp: AlgorithmDefinition = {
     const dp: number[][] = Array.from({ length: n + 1 }, () => new Array(minProfit + 1).fill(0));
     dp[0][0] = 1;
 
-    const makeViz = (dpRow: number[], highlights: Record<number, string>, rowLabel: string): ArrayVisualization => ({
-      type: 'array',
-      array: [...dpRow],
-      highlights,
-      labels: Object.fromEntries(dpRow.map((_, i) => [i, `p>=${i}`])),
-    });
+    const makeViz = (dpRow: number[], activeIdx: number): DPVisualization => {
+      const highlights: Record<number, string> = {};
+      for (let i = 0; i < dpRow.length; i++) {
+        if (i === activeIdx) highlights[i] = 'active';
+        else if (dpRow[i] > 0) highlights[i] = 'found';
+        else highlights[i] = 'default';
+      }
+      return {
+        type: 'dp-table',
+        values: dpRow.slice(),
+        highlights,
+        labels: dpRow.map((_, i) => `p>=${i}`),
+      };
+    };
 
     steps.push({
       line: 3,
       explanation: `Initialize dp[0..${n}][0..${minProfit}] = 0, dp[0][0] = 1. n=${n}, minProfit=${minProfit}.`,
       variables: { n, minProfit, crimes: group.length },
-      visualization: makeViz([...dp[0]], { 0: 'found' }, 'j=0'),
+      visualization: makeViz([...dp[0]], 0),
     });
 
     for (let i = 0; i < group.length; i++) {
@@ -134,7 +142,7 @@ const profitableSchemesDp: AlgorithmDefinition = {
         line: 5,
         explanation: `Crime ${i + 1}: group=${g}, profit=${p}. Updating dp in reverse.`,
         variables: { crime: i + 1, g, p },
-        visualization: makeViz([...dp[g]], {}, `j=${g}`),
+        visualization: makeViz([...dp[Math.min(g, n)]], -1),
       });
       for (let j = n; j >= g; j--) {
         for (let k = minProfit; k >= 0; k--) {
@@ -146,9 +154,9 @@ const profitableSchemesDp: AlgorithmDefinition = {
       }
       steps.push({
         line: 9,
-        explanation: `After crime ${i + 1}: dp row j=${g} = [${dp[g].join(', ')}].`,
+        explanation: `After crime ${i + 1}: dp row j=${g} = [${dp[Math.min(g, n)].join(', ')}].`,
         variables: { crime: i + 1 },
-        visualization: makeViz([...dp[g]], { [minProfit]: 'found' }, `j=${g}`),
+        visualization: makeViz([...dp[Math.min(g, n)]], minProfit),
       });
     }
 
@@ -159,7 +167,7 @@ const profitableSchemesDp: AlgorithmDefinition = {
       line: 10,
       explanation: `Sum dp[j][${minProfit}] for j=0..${n} = ${result}. Total profitable schemes.`,
       variables: { result },
-      visualization: makeViz([...dp[0]], { [minProfit]: 'found' }, 'j=0'),
+      visualization: makeViz([...dp[0]], minProfit),
     });
 
     return steps;

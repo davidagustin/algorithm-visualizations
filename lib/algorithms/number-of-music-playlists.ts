@@ -1,4 +1,4 @@
-import type { AlgorithmDefinition, AlgorithmStep } from '../types';
+import type { AlgorithmDefinition, AlgorithmStep, DPVisualization } from '../types';
 
 const numberOfMusicPlaylists: AlgorithmDefinition = {
   id: 'number-of-music-playlists',
