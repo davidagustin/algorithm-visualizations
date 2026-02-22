@@ -30,7 +30,7 @@ export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
   }, [searchParams, categories]);
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('All');
   const [viewMode, setViewMode] = useState<ViewMode>('cards');
-  const [vizOnly, setVizOnly] = useState(false);
+  const [interviewOnly, setInterviewOnly] = useState(false);
 
   const allProblems = useMemo(() => {
     return categories.flatMap((cat) =>
@@ -54,10 +54,10 @@ export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
         if (cat && !cat.problems.some((cp) => cp.id === p.id)) return false;
       }
       if (difficultyFilter !== 'All' && p.difficulty !== difficultyFilter) return false;
-      if (vizOnly && !p.hasVisualization) return false;
+      if (interviewOnly && !p.isInterviewRecommended) return false;
       return true;
     });
-  }, [allProblems, search, categoryFilter, difficultyFilter, vizOnly, categories]);
+  }, [allProblems, search, categoryFilter, difficultyFilter, interviewOnly, categories]);
 
   const difficultyBadge = (d: Difficulty) => {
     const cls =
@@ -145,7 +145,7 @@ export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
             </div>
           </div>
 
-          {/* Second row: Category, Difficulty, VizOnly */}
+          {/* Second row: Category, Difficulty, Interview */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-wrap">
             {/* Category select */}
             <select
@@ -186,25 +186,25 @@ export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
               )}
             </div>
 
-            {/* Visualized Only toggle */}
+            {/* Interview Recommended toggle */}
             <label className="flex items-center gap-2 cursor-pointer select-none ml-auto">
               <span className="text-xs text-[var(--text-muted)]">
-                Interactive only
+                Interview recommended
               </span>
               <button
                 role="switch"
-                aria-checked={vizOnly}
-                onClick={() => setVizOnly(!vizOnly)}
+                aria-checked={interviewOnly}
+                onClick={() => setInterviewOnly(!interviewOnly)}
                 className={`relative w-9 h-5 rounded-full transition-colors duration-200 ${
-                  vizOnly
-                    ? 'bg-blue-500/40 border-blue-500/50'
+                  interviewOnly
+                    ? 'bg-amber-500/40 border-amber-500/50'
                     : 'bg-[var(--bg-overlay)] border-[var(--border-default)]'
                 } border`}
               >
                 <span
                   className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full transition-transform duration-200 ${
-                    vizOnly
-                      ? 'translate-x-4 bg-blue-400'
+                    interviewOnly
+                      ? 'translate-x-4 bg-amber-400'
                       : 'translate-x-0 bg-[var(--text-muted)]'
                   }`}
                 />
@@ -221,7 +221,7 @@ export default function ProblemBrowser({ categories }: ProblemBrowserProps) {
               {filtered.length}
             </span>{' '}
             of {allProblems.length} problems
-            {vizOnly && ' (interactive only)'}
+            {interviewOnly && ' (interview recommended)'}
           </p>
         </div>
       </div>
@@ -317,10 +317,9 @@ function CardView({
                 </h3>
               </div>
 
-              {problem.hasVisualization && (
-                <span className="shrink-0 flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Interactive
+              {problem.isInterviewRecommended && (
+                <span className="shrink-0 flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                  Interview
                 </span>
               )}
             </div>
@@ -391,8 +390,8 @@ function TableView({
               <th className="px-4 py-3 text-left text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider hidden md:table-cell">
                 Tags
               </th>
-              <th className="px-4 py-3 text-center text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider w-20">
-                Status
+              <th className="px-4 py-3 text-center text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider w-20 hidden sm:table-cell">
+                Interview
               </th>
             </tr>
           </thead>
@@ -438,11 +437,10 @@ function TableView({
                       ))}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-center">
-                    {problem.hasVisualization ? (
-                      <span className="inline-flex items-center gap-1 text-emerald-400">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                        <span className="text-[10px] font-medium">VIZ</span>
+                  <td className="px-4 py-3 text-center hidden sm:table-cell">
+                    {problem.isInterviewRecommended ? (
+                      <span className="inline-flex items-center gap-1 text-amber-400">
+                        <span className="text-xs font-medium">★</span>
                       </span>
                     ) : (
                       <span className="text-[10px] text-[var(--text-muted)]">

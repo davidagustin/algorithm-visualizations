@@ -3,6 +3,7 @@ export type Difficulty = 'Easy' | 'Medium' | 'Hard';
 export type Category =
   | 'Arrays'
   | 'Stack'
+  | 'Queue'
   | 'Linked List'
   | 'Tree'
   | 'Dynamic Programming'
@@ -20,7 +21,9 @@ export type Category =
   | 'Backtracking'
   | 'Greedy'
   | 'Bit Manipulation'
-  | 'Math';
+  | 'Math'
+  | 'String'
+  | 'Design';
 
 export type Language = 'python' | 'javascript' | 'java' | 'pseudocode';
 

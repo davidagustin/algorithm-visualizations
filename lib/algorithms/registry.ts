@@ -8,6 +8,7 @@ export interface ProblemInfo {
   description: string;
   hasVisualization: boolean;
   tags: string[];
+  isInterviewRecommended?: boolean;
 }
 
 export interface CategoryInfo {
@@ -3242,6 +3243,74 @@ export const CATEGORIES: CategoryInfo[] = [
     ],
   },
 ];
+
+// ─── Interview Recommended Problems ──────────────────────────────────────────
+// Classic problems frequently asked in coding interviews (Blind 75 + essentials)
+
+const INTERVIEW_RECOMMENDED_IDS = new Set([
+  // Two Pointers
+  'pair-sum-sorted', 'triplet-sum', 'is-palindrome-valid', 'largest-container', 'trapping-rain-water',
+  // Hash Maps
+  'pair-sum-unsorted', 'contains-duplicate', 'group-anagrams', 'top-k-frequent-elements',
+  'valid-anagram', 'longest-chain-of-consecutive-numbers', 'encode-decode-strings',
+  // Linked Lists
+  'linked-list-reversal', 'remove-kth-last-node', 'merge-two-sorted-lists', 'lru-cache',
+  'add-two-numbers', 'copy-list-with-random-pointer', 'reverse-nodes-in-k-group',
+  // Fast & Slow Pointers
+  'linked-list-loop', 'find-duplicate-number', 'happy-number',
+  // Sliding Windows
+  'longest-substring-with-unique-characters', 'minimum-window-substring', 'permutation-in-string',
+  // Binary Search
+  'find-the-insertion-index', 'find-target-in-rotated-sorted-array', 'find-median-from-two-sorted-arrays',
+  'find-minimum-rotated-sorted-array', 'time-based-key-value-store', 'matrix-search',
+  // Stacks
+  'valid-parentheses', 'daily-temperatures', 'min-stack', 'largest-rectangle-histogram',
+  'generate-parentheses', 'reverse-polish-notation', 'decode-string',
+  // Heaps
+  'k-most-frequent-strings', 'combine-sorted-linked-lists', 'median-of-integer-stream',
+  'last-stone-weight',
+  // Intervals
+  'merge-overlapping-intervals', 'insert-interval', 'meeting-rooms-ii', 'non-overlapping-intervals',
+  // Prefix Sums
+  'product-array-without-current-element', 'k-sum-subarrays',
+  // Trees
+  'invert-binary-tree', 'max-depth-binary-tree', 'same-tree', 'subtree-of-another-tree',
+  'bst-validation', 'lowest-common-ancestor', 'binary-tree-level-order-traversal',
+  'serialize-deserialize-binary-tree', 'kth-smallest-in-bst', 'diameter-of-binary-tree',
+  'build-binary-tree-from-preorder-inorder', 'balanced-binary-tree-validation',
+  'binary-tree-zigzag-traversal', 'path-sum',
+  // Tries
+  'design-a-trie', 'insert-and-search-words-with-wildcards',
+  // Graphs
+  'graph-deep-copy', 'count-islands', 'prerequisites', 'pacific-atlantic-water-flow',
+  'word-search', 'number-of-connected-components', 'graph-valid-tree',
+  // Backtracking
+  'find-all-permutations', 'find-all-subsets', 'combinations-of-a-sum', 'phone-keypad-combinations',
+  // Dynamic Programming
+  'climbing-stairs', 'minimum-coin-combination', 'longest-common-subsequence',
+  'longest-palindrome-in-string', 'maximum-subarray-sum', 'best-time-buy-sell-stock',
+  'decode-ways', 'word-break', 'longest-increasing-subsequence', 'edit-distance',
+  'neighborhood-burglary', 'house-robber-ii', 'unique-paths-with-obstacles',
+  'partition-equal-subset-sum', 'target-sum',
+  // Greedy
+  'jump-to-the-end', 'partition-labels',
+  // Sort & Search
+  'kth-largest-integer',
+  // Bit Manipulation
+  'lonely-integer', 'hamming-weights-of-integers', 'missing-number', 'reverse-bits',
+  'number-of-1-bits', 'sum-of-two-integers',
+  // Math & Geometry
+  'spiral-traversal', 'rotate-image',
+]);
+
+// Enrich problems with interview recommendation flag
+CATEGORIES.forEach(cat =>
+  cat.problems.forEach(p => {
+    if (INTERVIEW_RECOMMENDED_IDS.has(p.id)) {
+      p.isInterviewRecommended = true;
+    }
+  })
+);
 
 // ─── Helper Functions ─────────────────────────────────────────────────
 
