@@ -4237,6 +4237,256 @@ export const CATEGORIES: CategoryInfo[] = [
         hasVisualization: true,
         tags: ['tree', 'dfs', 'sorting', 'coordinate system', 'hash map'],
       },
+      {
+        id: 'path-sum-iii',
+        title: 'Path Sum III',
+        leetcodeNumber: 437,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count the number of paths in a binary tree that sum to a target value. The path does not need to start or end at the root. Uses prefix sum with DFS for O(n) time.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'prefix sum', 'hash map'],
+      },
+      {
+        id: 'binary-tree-cameras',
+        title: 'Binary Tree Cameras',
+        leetcodeNumber: 968,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Place the minimum number of cameras on tree nodes so that every node is monitored. Uses a greedy bottom-up DFS with three states: uncovered, has camera, covered.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'greedy', 'dynamic programming'],
+      },
+      {
+        id: 'flatten-binary-tree-linked-list',
+        title: 'Flatten Binary Tree to Linked List (Morris)',
+        leetcodeNumber: 114,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Flatten a binary tree in-place to a right-linked list following preorder traversal using Morris traversal technique.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'linked list', 'morris traversal'],
+      },
+      {
+        id: 'populating-next-right-pointers-ii',
+        title: 'Populating Next Right Pointers in Each Node II',
+        leetcodeNumber: 117,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Populate each next pointer to point to the next right node at the same level for a general binary tree. Uses the established next pointers of the previous level with O(1) extra space.',
+        hasVisualization: true,
+        tags: ['tree', 'bfs', 'linked list', 'level order'],
+      },
+      {
+        id: 'construct-quad-tree',
+        title: 'Construct Quad Tree',
+        leetcodeNumber: 427,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Build a quad tree from an n x n binary matrix by recursively splitting non-uniform regions into four quadrants using divide and conquer.',
+        hasVisualization: true,
+        tags: ['tree', 'divide and conquer', 'matrix', 'recursion'],
+      },
+      {
+        id: 'step-by-step-directions-binary-tree',
+        title: 'Step-By-Step Directions From a Binary Tree Node to Another',
+        leetcodeNumber: 2096,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the shortest path directions (L, R, U) between two nodes in a binary tree by finding paths from root to each node and using their LCA.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'lca', 'string'],
+      },
+      {
+        id: 'amount-of-time-for-binary-tree-infection',
+        title: 'Amount of Time for Binary Tree to Be Infected',
+        leetcodeNumber: 2385,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the number of minutes to infect an entire binary tree starting from a given node. Converts tree to undirected graph then uses BFS level-by-level.',
+        hasVisualization: true,
+        tags: ['tree', 'bfs', 'graph', 'dfs'],
+      },
+      {
+        id: 'count-nodes-equal-to-average-subtree',
+        title: 'Count Nodes Equal to Average of Subtree',
+        leetcodeNumber: 2265,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count nodes where the node value equals the floor of the average of all values in its subtree. Uses post-order DFS to compute subtree sums and counts.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'post-order', 'average'],
+      },
+      {
+        id: 'find-duplicate-subtrees',
+        title: 'Find Duplicate Subtrees',
+        leetcodeNumber: 652,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find all duplicate subtrees in a binary tree by serializing each subtree as a string via post-order DFS and tracking serializations in a hash map.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'hash map', 'serialization'],
+      },
+      {
+        id: 'binary-tree-coloring-game',
+        title: 'Binary Tree Coloring Game',
+        leetcodeNumber: 1145,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Determine if the second player can guarantee winning a coloring game by picking adjacent to the first player node that controls the majority of nodes.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'greedy', 'math'],
+      },
+      {
+        id: 'complete-binary-tree-inserter',
+        title: 'Complete Binary Tree Inserter',
+        leetcodeNumber: 919,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a data structure that inserts values into a complete binary tree maintaining level-order, finding the parent at index (size-1)//2 in a BFS array.',
+        hasVisualization: true,
+        tags: ['tree', 'bfs', 'design', 'array'],
+      },
+      {
+        id: 'delete-leaves-with-given-value',
+        title: 'Delete Leaves With a Given Value',
+        leetcodeNumber: 1325,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Recursively delete all leaf nodes equal to a target value. After deletion, previously non-leaf nodes may become leaves and also need deleting. Uses post-order DFS.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'post-order', 'recursion'],
+      },
+      {
+        id: 'longest-univalue-path',
+        title: 'Longest Univalue Path',
+        leetcodeNumber: 687,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the longest path in a binary tree where all adjacent nodes have the same value. Uses post-order DFS computing left and right arms of same-value nodes.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'post-order', 'path'],
+      },
+      {
+        id: 'smallest-subtree-with-deepest-nodes',
+        title: 'Smallest Subtree with all the Deepest Nodes',
+        leetcodeNumber: 865,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the LCA of all deepest leaves in a binary tree using DFS that returns (node, depth) pairs. Equal depths indicate the current node is the LCA.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'lca', 'depth'],
+      },
+      {
+        id: 'binary-tree-longest-consecutive-sequence',
+        title: 'Binary Tree Longest Consecutive Sequence',
+        leetcodeNumber: 298,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the longest consecutive downward path in a binary tree where each next node is exactly 1 greater than its parent. Uses DFS with streak tracking.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'consecutive', 'path'],
+      },
+      {
+        id: 'flip-binary-tree-to-match-preorder',
+        title: 'Flip Binary Tree To Match Preorder Traversal',
+        leetcodeNumber: 971,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find the minimum flips (swap children) to make the preorder traversal of a binary tree match a given voyage sequence. Uses greedy DFS.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'greedy', 'preorder'],
+      },
+      {
+        id: 'sum-of-distances-in-tree',
+        title: 'Sum of Distances in Tree',
+        leetcodeNumber: 834,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Compute the sum of distances from each node to all other nodes in a tree using two DFS passes: first to compute subtree sizes, second to re-root for all nodes.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'rerooting', 'graph'],
+      },
+      {
+        id: 'number-of-good-leaf-nodes-pairs',
+        title: 'Number of Good Leaf Nodes Pairs',
+        leetcodeNumber: 1530,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Count pairs of leaf nodes with path distance at most a given threshold. Uses post-order DFS where each node returns a list of distances to leaf nodes in its subtree.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'post-order', 'leaf nodes'],
+      },
+      {
+        id: 'path-sum-iv',
+        title: 'Path Sum IV',
+        leetcodeNumber: 666,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Compute the sum of all root-to-leaf path sums where the tree is encoded as 3-digit numbers (depth, position, value). Decode into a hash map then DFS.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'hash map', 'encoding'],
+      },
+      {
+        id: 'binary-tree-maximum-path-sum',
+        title: 'Binary Tree Maximum Path Sum',
+        leetcodeNumber: 124,
+        difficulty: 'Hard' as Difficulty,
+        description:
+          'Find the maximum path sum through any sequence of nodes in a binary tree. Post-order DFS computes max gain from each subtree (clamped at 0) and updates a global maximum.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'dynamic programming', 'post-order'],
+      },
+      {
+        id: 'recover-binary-search-tree-swap',
+        title: 'Recover Binary Search Tree (Swap)',
+        leetcodeNumber: 99,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Find and fix two nodes swapped in a BST by using in-order traversal. Violations in sorted order reveal the two swapped nodes which are then swapped back.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'inorder', 'bst'],
+      },
+      {
+        id: 'count-complete-tree-nodes-ii',
+        title: 'Count Complete Tree Nodes (Binary Search)',
+        leetcodeNumber: 222,
+        difficulty: 'Easy' as Difficulty,
+        description:
+          'Count nodes in a complete binary tree in O(log^2 n) time by comparing left-path and right-path heights. Equal heights indicate a perfect subtree with 2^h - 1 nodes.',
+        hasVisualization: true,
+        tags: ['tree', 'binary search', 'complete binary tree', 'math'],
+      },
+      {
+        id: 'construct-binary-tree-from-string',
+        title: 'Construct Binary Tree from String',
+        leetcodeNumber: 536,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Build a binary tree from a string representation where each node is "val(left)(right)". Uses recursive descent parsing to handle integers and parentheses.',
+        hasVisualization: true,
+        tags: ['tree', 'recursion', 'string parsing', 'stack'],
+      },
+      {
+        id: 'maximum-product-of-splitted-tree',
+        title: 'Maximum Product of Splitted Binary Tree',
+        leetcodeNumber: 1339,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Remove one edge to split a binary tree into two subtrees and maximize the product of their sums. Uses two DFS passes: first for total sum, second to evaluate each split.',
+        hasVisualization: true,
+        tags: ['tree', 'dfs', 'math', 'greedy'],
+      },
+      {
+        id: 'operations-on-tree',
+        title: 'Operations on Tree',
+        leetcodeNumber: 1993,
+        difficulty: 'Medium' as Difficulty,
+        description:
+          'Design a tree data structure supporting lock, unlock, and upgrade operations. Upgrade locks a node and frees all locked descendants if no ancestor is locked.',
+        hasVisualization: true,
+        tags: ['tree', 'design', 'dfs', 'hash map'],
+      },
     ],
   },
 
