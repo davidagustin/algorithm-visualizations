@@ -983,7 +983,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 322,
         description:
           'Find the fewest coins needed to make a target amount using bottom-up dynamic programming.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'array'],
       },
       {
@@ -993,7 +993,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 62,
         description:
           'Count the number of unique paths from top-left to bottom-right of a grid moving only right or down.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'matrix'],
       },
       {
@@ -1003,7 +1003,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 198,
         description:
           'Maximize the amount robbed from non-adjacent houses along a street using DP.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'array'],
       },
       {
@@ -1013,7 +1013,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 1143,
         description:
           'Find the length of the longest subsequence common to two strings using a 2D DP table.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'string'],
       },
       {
@@ -1023,7 +1023,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 5,
         description:
           'Find the longest palindromic substring by expanding around each center or using DP.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'string', 'palindrome'],
       },
       {
@@ -1033,7 +1033,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 53,
         description:
           'Find the contiguous subarray with the largest sum using Kadane\'s algorithm.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'array', 'greedy'],
       },
       {
@@ -1042,7 +1042,7 @@ export const CATEGORIES: CategoryInfo[] = [
         difficulty: 'Medium',
         description:
           'Maximize the value of items packed into a weight-limited knapsack where each item is taken or left.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'array'],
       },
       {
@@ -1052,7 +1052,7 @@ export const CATEGORIES: CategoryInfo[] = [
         leetcodeNumber: 221,
         description:
           'Find the area of the largest square containing only ones in a binary matrix using DP.',
-        hasVisualization: false,
+        hasVisualization: true,
         tags: ['dynamic-programming', 'matrix'],
       },
     ],
