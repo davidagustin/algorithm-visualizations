@@ -125,6 +125,11 @@ export default function AlgorithmPage({
     setIsPlaying(false);
   }, []);
 
+  const handleSeek = useCallback((step: number) => {
+    setIsPlaying(false);
+    setCurrentStep(Math.max(0, Math.min(step, steps.length - 1)));
+  }, [steps.length]);
+
   const handleTogglePlay = useCallback(() => {
     setIsPlaying((prev) => !prev);
   }, []);
@@ -351,6 +356,7 @@ export default function AlgorithmPage({
               onStepForward={handleStepForward}
               onStepBackward={handleStepBackward}
               onReset={handleReset}
+              onSeek={handleSeek}
               speed={speed}
               onSpeedChange={setSpeed}
               currentStep={currentStep}

@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useMemo, useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Language, LANGUAGES } from '@/lib/types';
 import { HighlightedLine } from '@/lib/syntax';
 
@@ -10,6 +10,35 @@ interface CodePanelProps {
   currentLine: number;
   language: Language;
   onLanguageChange: (lang: Language) => void;
+}
+
+const FONT_SIZES = [12, 13, 14, 15, 16, 18, 20];
+const TAB_SIZES = [2, 4, 8];
+
+function SettingsIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+    </svg>
+  );
+}
+
+function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <button
+      onClick={() => onChange(!checked)}
+      className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors duration-200 ${
+        checked ? 'bg-blue-500' : 'bg-[var(--border-strong)]'
+      }`}
+    >
+      <span
+        className={`inline-block h-3.5 w-3.5 rounded-full bg-white transition-transform duration-200 ${
+          checked ? 'translate-x-[18px]' : 'translate-x-[3px]'
+        }`}
+      />
+    </button>
+  );
 }
 
 export default function CodePanel({
@@ -21,6 +50,13 @@ export default function CodePanel({
   const scrollRef = useRef<HTMLDivElement>(null);
   const activeLineRef = useRef<HTMLDivElement>(null);
   const visitedLines = useRef<Set<number>>(new Set());
+  const settingsRef = useRef<HTMLDivElement>(null);
+
+  const [fontSize, setFontSize] = useState(14);
+  const [tabSize, setTabSize] = useState(2);
+  const [wordWrap, setWordWrap] = useState(false);
+  const [showLineNumbers, setShowLineNumbers] = useState(true);
+  const [showSettings, setShowSettings] = useState(false);
 
   const lines = useMemo(() => code[language].split('\n'), [code, language]);
 
@@ -54,27 +90,131 @@ export default function CodePanel({
     }
   }, [currentLine]);
 
+  // Close settings on outside click
+  useEffect(() => {
+    if (!showSettings) return;
+    function handleClick(e: MouseEvent) {
+      if (settingsRef.current && !settingsRef.current.contains(e.target as Node)) {
+        setShowSettings(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showSettings]);
+
+  const lineHeight = Math.round(fontSize * 1.7);
+
   return (
     <div className="code-block flex flex-col h-full overflow-hidden">
-      {/* Language Tabs */}
-      <div className="flex items-center gap-1 px-3 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-elevated)] shrink-0">
-        {LANGUAGES.map((lang) => (
+      {/* Header: Language Tabs + Settings */}
+      <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--border-subtle)] bg-[var(--bg-elevated)] shrink-0">
+        <div className="flex items-center gap-1">
+          {LANGUAGES.map((lang) => (
+            <button
+              key={lang.id}
+              onClick={() => onLanguageChange(lang.id)}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 ${
+                language === lang.id
+                  ? 'bg-[rgba(102,126,234,0.2)] text-blue-300 border border-blue-500/30'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-overlay)]'
+              }`}
+            >
+              {lang.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Settings Button */}
+        <div className="relative" ref={settingsRef}>
           <button
-            key={lang.id}
-            onClick={() => onLanguageChange(lang.id)}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 ${
-              language === lang.id
-                ? 'bg-[rgba(102,126,234,0.2)] text-blue-300 border border-blue-500/30'
+            onClick={() => setShowSettings((v) => !v)}
+            className={`p-1.5 rounded-md transition-all duration-200 ${
+              showSettings
+                ? 'text-blue-300 bg-[rgba(102,126,234,0.2)]'
                 : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-overlay)]'
             }`}
+            title="Editor Settings"
           >
-            {lang.label}
+            <SettingsIcon />
           </button>
-        ))}
+
+          {/* Settings Dropdown */}
+          <AnimatePresence>
+            {showSettings && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: -4 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -4 }}
+                transition={{ duration: 0.15 }}
+                className="absolute right-0 top-full mt-2 z-50 w-64 glass-strong rounded-xl p-4 shadow-2xl"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                    Editor Settings
+                  </h3>
+                  <button
+                    onClick={() => setShowSettings(false)}
+                    className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="flex flex-col gap-3.5">
+                  {/* Font Size */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-[var(--text-secondary)]">Font size</span>
+                    <select
+                      value={fontSize}
+                      onChange={(e) => setFontSize(Number(e.target.value))}
+                      className="bg-[var(--bg-overlay)] text-xs text-[var(--text-primary)] border border-[var(--border-default)] rounded-md px-2 py-1 outline-none focus:border-blue-500/50"
+                    >
+                      {FONT_SIZES.map((s) => (
+                        <option key={s} value={s}>{s}px</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Tab Size */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-[var(--text-secondary)]">Tab size</span>
+                    <select
+                      value={tabSize}
+                      onChange={(e) => setTabSize(Number(e.target.value))}
+                      className="bg-[var(--bg-overlay)] text-xs text-[var(--text-primary)] border border-[var(--border-default)] rounded-md px-2 py-1 outline-none focus:border-blue-500/50"
+                    >
+                      {TAB_SIZES.map((s) => (
+                        <option key={s} value={s}>{s} spaces</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Word Wrap */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-[var(--text-secondary)]">Word wrap</span>
+                    <Toggle checked={wordWrap} onChange={setWordWrap} />
+                  </div>
+
+                  {/* Line Numbers */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-[var(--text-secondary)]">Line numbers</span>
+                    <Toggle checked={showLineNumbers} onChange={setShowLineNumbers} />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Code Area */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto py-3 font-mono text-sm leading-6">
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto py-3 font-mono"
+        style={{ fontSize: `${fontSize}px`, tabSize, lineHeight: `${lineHeight}px` }}
+      >
         {lines.map((line, index) => {
           const lineNum = index + 1;
           const isActive = lineNum === currentLine;
@@ -91,18 +231,28 @@ export default function CodePanel({
                   ? 'code-line-visited'
                   : ''
               }`}
+              style={{ minHeight: `${lineHeight}px` }}
             >
               {/* Line Number */}
-              <span
-                className={`inline-block w-10 shrink-0 text-right pr-4 select-none text-xs leading-6 ${
-                  isActive ? 'text-blue-400 font-bold' : 'text-[var(--text-muted)]'
-                }`}
-              >
-                {lineNum}
-              </span>
+              {showLineNumbers && (
+                <span
+                  className={`inline-block w-10 shrink-0 text-right pr-4 select-none ${
+                    isActive ? 'text-blue-400 font-bold' : 'text-[var(--text-muted)]'
+                  }`}
+                  style={{ fontSize: `${Math.max(fontSize - 2, 10)}px`, lineHeight: `${lineHeight}px` }}
+                >
+                  {lineNum}
+                </span>
+              )}
 
               {/* Code Content */}
-              <span className="flex-1 whitespace-pre">
+              <span
+                className="flex-1"
+                style={{
+                  whiteSpace: wordWrap ? 'pre-wrap' : 'pre',
+                  wordBreak: wordWrap ? 'break-all' : undefined,
+                }}
+              >
                 {isActive ? (
                   <motion.span
                     initial={{ opacity: 0.7 }}

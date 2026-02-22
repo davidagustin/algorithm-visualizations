@@ -133,6 +133,11 @@ export default function Visualizer({ algorithm }: VisualizerProps) {
     setCurrentStep(0);
   }, []);
 
+  const handleSeek = useCallback((step: number) => {
+    setIsPlaying(false);
+    setCurrentStep(Math.max(0, Math.min(step, totalSteps - 1)));
+  }, [totalSteps]);
+
   const handleSpeedChange = useCallback((newSpeed: number) => {
     setSpeed(newSpeed);
   }, []);
@@ -187,7 +192,31 @@ export default function Visualizer({ algorithm }: VisualizerProps) {
 
   return (
     <div className="flex flex-col gap-4 w-full">
-      {/* Main Split View */}
+      {/* Top: Explanation + Variables side by side */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <StepExplanation
+          explanation={currentStepData.explanation}
+          stepNumber={currentStep}
+          totalSteps={totalSteps}
+        />
+        <VariableWatch variables={currentStepData.variables} />
+      </div>
+
+      {/* Controls */}
+      <Controls
+        isPlaying={isPlaying}
+        onTogglePlay={handleTogglePlay}
+        onStepForward={handleStepForward}
+        onStepBackward={handleStepBackward}
+        onReset={handleReset}
+        onSeek={handleSeek}
+        speed={speed}
+        onSpeedChange={handleSpeedChange}
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+      />
+
+      {/* Main Split View: Code + Visualization */}
       <div className="flex flex-col lg:flex-row gap-4 min-h-[400px]">
         {/* Left: Code Panel */}
         <div className="w-full lg:w-2/5 xl:w-1/3 min-h-[300px] lg:min-h-0">
@@ -225,80 +254,33 @@ export default function Visualizer({ algorithm }: VisualizerProps) {
         </div>
       </div>
 
-      {/* Step Explanation */}
-      <StepExplanation
-        explanation={currentStepData.explanation}
-        stepNumber={currentStep}
-        totalSteps={totalSteps}
-      />
-
-      {/* Controls */}
-      <Controls
-        isPlaying={isPlaying}
-        onTogglePlay={handleTogglePlay}
-        onStepForward={handleStepForward}
-        onStepBackward={handleStepBackward}
-        onReset={handleReset}
-        speed={speed}
-        onSpeedChange={handleSpeedChange}
-        currentStep={currentStep}
-        totalSteps={totalSteps}
-      />
-
-      {/* Collapsible Sections */}
-      <div className="flex flex-col gap-3">
-        {/* Variable Watch (collapsible) */}
-        <div>
-          <button
-            onClick={() => setShowVariables((v) => !v)}
-            className="flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-2"
-          >
-            <ChevronIcon open={showVariables} />
-            <span className="font-medium">Variables</span>
-          </button>
-          <AnimatePresence>
-            {showVariables && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25, ease: 'easeInOut' }}
-                className="overflow-hidden"
-              >
-                <VariableWatch variables={currentStepData.variables} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Input Panel (collapsible) */}
-        <div>
-          <button
-            onClick={() => setShowInput((v) => !v)}
-            className="flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-2"
-          >
-            <ChevronIcon open={showInput} />
-            <span className="font-medium">Custom Input</span>
-          </button>
-          <AnimatePresence>
-            {showInput && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25, ease: 'easeInOut' }}
-                className="overflow-hidden"
-              >
-                <InputPanel
-                  fields={algorithm.inputFields}
-                  values={customInput}
-                  onChange={handleInputChange}
-                  onSubmit={handleInputSubmit}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+      {/* Custom Input (collapsible) */}
+      <div>
+        <button
+          onClick={() => setShowInput((v) => !v)}
+          className="flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors mb-2"
+        >
+          <ChevronIcon open={showInput} />
+          <span className="font-medium">Custom Input</span>
+        </button>
+        <AnimatePresence>
+          {showInput && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <InputPanel
+                fields={algorithm.inputFields}
+                values={customInput}
+                onChange={handleInputChange}
+                onSubmit={handleInputSubmit}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
