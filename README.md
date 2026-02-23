@@ -21,14 +21,15 @@
 
 Algomations is an interactive algorithm learning platform that animates the execution of classic coding interview problems **line by line**. Watch variables change in real time, supply your own inputs, get instant AI explanations, and build the genuine intuition that carries you through technical interviews — all without leaving your browser.
 
-Browse **85+ problems** across **19 pattern categories**, from Two Pointers and Sliding Windows to Dynamic Programming and Backtracking. Ten of those problems come with full step-through visualizations. The rest are catalogued with difficulty ratings and LeetCode links so you always know what to study next.
+Browse **1,700+ problems** across **20 pattern categories**, from Two Pointers and Sliding Windows to Dynamic Programming and Backtracking. Every problem comes with a full step-through visualization. 236 problems are curated as interview-recommended, drawn from Blind 75, NeetCode 150, and FAANG favorites.
 
 ---
 
 ## Features
 
 ### Core Visualizer
-- **Step-through animations** — watch highlighted code execute line by line across Two Sum, Binary Search, N-Queens, and 7 more classic problems
+- **Step-through animations** — watch highlighted code execute line by line across all 1,700+ problems
+- **Four visualization types** — Array bars, Stack, Binary Tree SVG, and DP Table, each matched to the problem's data structure
 - **Multi-language code** — Python, JavaScript, Java, and Pseudocode for every visualization
 - **Playback controls** — play, pause, step forward/backward, adjustable speed (0.5x–2x), and a seekable progress bar
 - **Custom inputs** — modify algorithm inputs and observe in real time how behavior changes
@@ -40,9 +41,10 @@ Browse **85+ problems** across **19 pattern categories**, from Two Pointers and 
 - **Zero data sent to any server** — all inference happens on your machine, completely private
 
 ### Problem Library
-- **85+ problems** organized across 19 interview pattern categories
+- **1,700+ problems** organized across 20 interview pattern categories
+- **236 interview-recommended problems** — curated from Blind 75, NeetCode 150, and FAANG favorites, marked with a badge for quick identification
 - **Card and table views** — browse in a visual grid or a dense table layout
-- **Smart filtering** — filter by category, difficulty, name search, or toggle to show only visualized problems
+- **Smart filtering** — filter by category, difficulty, name search, or toggle to show only interview-recommended problems
 
 ### UI & Experience
 - **Light and dark themes** — toggle between modes; dark is the default, with glassmorphism panels, gradient accents, and smooth transitions powered by Framer Motion 12
@@ -59,48 +61,49 @@ Browse **85+ problems** across **19 pattern categories**, from Two Pointers and 
 
 ## Interactive Visualizations
 
-Ten problems with full step-through animations:
+All 1,700+ problems have full step-through animations. Every problem renders a live visualization matched to its data structure — Array bars for sorting and pointer problems, Stack for push/pop problems, Binary Tree SVG for tree traversals, and DP Table for dynamic programming. A sample of covered problems:
 
-| # | Problem | Pattern | LeetCode |
-|---|---------|---------|----------|
-| 1 | Two Sum (sorted) | Two Pointers | [#167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) |
-| 2 | Two Sum (unsorted) | Hash Map | [#1](https://leetcode.com/problems/two-sum/) |
-| 3 | Valid Parentheses | Stack | [#20](https://leetcode.com/problems/valid-parentheses/) |
-| 4 | Binary Search / Search Insert Position | Binary Search | [#704](https://leetcode.com/problems/binary-search/) / [#35](https://leetcode.com/problems/search-insert-position/) |
-| 5 | Longest Substring Without Repeating Characters | Sliding Window | [#3](https://leetcode.com/problems/longest-substring-without-repeating-characters/) |
-| 6 | Reverse Linked List | Linked Lists | [#206](https://leetcode.com/problems/reverse-linked-list/) |
-| 7 | Invert Binary Tree | Trees | [#226](https://leetcode.com/problems/invert-binary-tree/) |
-| 8 | Climbing Stairs | Dynamic Programming | [#70](https://leetcode.com/problems/climbing-stairs/) |
-| 9 | N-Queens | Backtracking | [#51](https://leetcode.com/problems/n-queens/) |
-| 10 | Sort Colors (Dutch National Flag) | Three Pointers | [#75](https://leetcode.com/problems/sort-colors/) |
+| Problem | Pattern | LeetCode |
+|---------|---------|----------|
+| Two Sum (sorted) | Two Pointers | [#167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) |
+| Two Sum (unsorted) | Hash Map | [#1](https://leetcode.com/problems/two-sum/) |
+| Valid Parentheses | Stack | [#20](https://leetcode.com/problems/valid-parentheses/) |
+| Binary Search / Search Insert Position | Binary Search | [#704](https://leetcode.com/problems/binary-search/) / [#35](https://leetcode.com/problems/search-insert-position/) |
+| Longest Substring Without Repeating Characters | Sliding Window | [#3](https://leetcode.com/problems/longest-substring-without-repeating-characters/) |
+| Reverse Linked List | Linked Lists | [#206](https://leetcode.com/problems/reverse-linked-list/) |
+| Invert Binary Tree | Trees | [#226](https://leetcode.com/problems/invert-binary-tree/) |
+| Climbing Stairs | Dynamic Programming | [#70](https://leetcode.com/problems/climbing-stairs/) |
+| N-Queens | Backtracking | [#51](https://leetcode.com/problems/n-queens/) |
+| Sort Colors (Dutch National Flag) | Three Pointers | [#75](https://leetcode.com/problems/sort-colors/) |
 
 ---
 
 ## All Problems
 
-85+ problems across 19 interview pattern categories:
+1,661 problems across 20 interview pattern categories:
 
 | Category | Count |
 |----------|-------|
-| Two Pointers | ~5 |
-| Hash Maps & Sets | ~5 |
-| Linked Lists | ~4 |
-| Fast & Slow Pointers | ~3 |
-| Sliding Windows | ~4 |
-| Binary Search | ~5 |
-| Stacks | ~5 |
-| Heaps | ~4 |
-| Intervals | ~4 |
-| Prefix Sums | ~3 |
-| Trees | ~7 |
-| Tries | ~3 |
-| Graphs | ~7 |
-| Backtracking | ~4 |
-| Dynamic Programming | ~8 |
-| Greedy | ~5 |
-| Sort & Search | ~4 |
-| Bit Manipulation | ~4 |
-| Math & Geometry | ~4 |
+| Two Pointers | 177 |
+| Hash Maps & Sets | 119 |
+| Linked Lists | 67 |
+| Fast & Slow Pointers | 5 |
+| Sliding Windows | 85 |
+| Binary Search | 68 |
+| Stacks | 112 |
+| Heaps | 46 |
+| Intervals | 8 |
+| Prefix Sums | 38 |
+| Trees | 173 |
+| Tries | 13 |
+| Graphs | 199 |
+| Backtracking | 64 |
+| Dynamic Programming | 251 |
+| Greedy | 62 |
+| Sort & Search | 35 |
+| Bit Manipulation | 38 |
+| Math & Geometry | 76 |
+| Array Manipulation & Rearrangement | 25 |
 
 ---
 
@@ -160,9 +163,9 @@ algorithm-visualizations/
     ├── types.ts                        # Core TypeScript types
     ├── syntax.tsx                      # Syntax highlighter
     └── algorithms/
-        ├── registry.ts                 # All 85+ problems by category
+        ├── registry.ts                 # All 1,700+ problems by category
         ├── index.ts                    # Visualization loader
-        └── *.ts                        # Individual algorithm step generators
+        └── *.ts                        # 1,700+ individual algorithm step generators
 ```
 
 ---
